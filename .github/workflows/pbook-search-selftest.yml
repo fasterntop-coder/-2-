@@ -29,6 +29,7 @@ jobs:
           python -m py_compile tools/recover_exact_patch_from_manifest.py
           python -m py_compile tools/recover_checkpoint_mosaic.py
           python -m py_compile tools/extract_apply_manifest.py
+          python -m py_compile tools/recover_b118_sidecars.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
@@ -41,10 +42,13 @@ jobs:
         run: python tools/recover_checkpoint_mosaic.py selftest
       - name: Validate legacy apply-script parser
         run: python tools/extract_apply_manifest.py selftest
+      - name: Validate B118 sidecar recovery
+        run: python tools/recover_b118_sidecars.py selftest
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
           python -m json.tool manifests/PBOOK_BT_GLYPH_TARGETS.json >/dev/null
           python -m json.tool manifests/PBOOK_BT_B110_LINEAGE.json >/dev/null
           python -m json.tool manifests/B118_CHECKPOINT_LINEAGE.json >/dev/null
+          python -m json.tool manifests/B118_SIDECAR_LIBRARY.json >/dev/null
           python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
