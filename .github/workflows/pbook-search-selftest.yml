@@ -27,6 +27,7 @@ jobs:
           python -m py_compile tools/run_pbook_bt_height_low.py
           python -m py_compile tools/recover_pbook_bt_b110.py
           python -m py_compile tools/recover_exact_patch_from_manifest.py
+          python -m py_compile tools/recover_checkpoint_mosaic.py
           python -m py_compile tools/extract_apply_manifest.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
@@ -36,6 +37,8 @@ jobs:
         run: python tools/recover_pbook_bt_b110.py selftest
       - name: Validate complete exact-patch roundtrip
         run: python tools/recover_exact_patch_from_manifest.py selftest
+      - name: Validate multi-checkpoint sector mosaic roundtrip
+        run: python tools/recover_checkpoint_mosaic.py selftest
       - name: Validate legacy apply-script parser
         run: python tools/extract_apply_manifest.py selftest
       - name: Validate JSON manifests
