@@ -35,6 +35,7 @@ jobs:
           python -m py_compile tools/extract_mes_fixed_layout.py
           python -m py_compile tools/assemble_exact_mes_assets.py
           python -m py_compile tools/recover_exact_assets_from_checkpoints.py
+          python -m py_compile tools/extract_b118_assets_manifest.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
@@ -57,8 +58,10 @@ jobs:
         run: python tools/extract_mes_fixed_layout.py selftest
       - name: Validate exact MES asset assembly
         run: python tools/assemble_exact_mes_assets.py selftest
-      - name: Validate historical checkpoint asset recovery
+      - name: Validate correct MODE1 checkpoint asset recovery
         run: python tools/recover_exact_assets_from_checkpoints.py selftest
+      - name: Validate B118 58-asset workbook manifest extraction
+        run: python tools/extract_b118_assets_manifest.py selftest
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
