@@ -36,6 +36,7 @@ jobs:
           python -m py_compile tools/assemble_exact_mes_assets.py
           python -m py_compile tools/recover_exact_assets_from_checkpoints.py
           python -m py_compile tools/extract_b118_assets_manifest.py
+          python -m py_compile tools/recover_integrate_production_assets.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
@@ -62,6 +63,10 @@ jobs:
         run: python tools/recover_exact_assets_from_checkpoints.py selftest
       - name: Validate B118 58-asset workbook manifest extraction
         run: python tools/extract_b118_assets_manifest.py selftest
+      - name: Validate exact story/movie production integration
+        run: |
+          python tools/recover_integrate_production_assets.py selftest
+          python tools/recover_integrate_production_assets.py validate manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
@@ -71,4 +76,5 @@ jobs:
           python -m json.tool manifests/B118_SIDECAR_LIBRARY.json >/dev/null
           python -m json.tool manifests/B124_SYSTEM_SYS14_TARGETS.json >/dev/null
           python -m json.tool manifests/BATCH183_187_EXACT_TARGETS.json >/dev/null
+          python -m json.tool manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json >/dev/null
           python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
