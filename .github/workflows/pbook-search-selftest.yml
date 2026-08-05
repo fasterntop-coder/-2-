@@ -5,6 +5,7 @@ on:
     paths:
       - "tools/pbook_palette_transfer_search.py"
       - "tools/extract_glyph_by_sha.py"
+      - "tools/run_pbook_bt_height_low.py"
       - "jobs/**"
       - "manifests/**"
       - ".github/workflows/pbook-search-selftest.yml"
@@ -25,6 +26,7 @@ jobs:
         run: |
           python -m py_compile tools/pbook_palette_transfer_search.py
           python -m py_compile tools/extract_glyph_by_sha.py
+          python -m py_compile tools/run_pbook_bt_height_low.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
