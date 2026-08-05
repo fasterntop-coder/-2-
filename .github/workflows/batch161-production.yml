@@ -1,0 +1,54 @@
+name: Batch161 SK0403 production
+
+on:
+  push:
+    paths:
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - "manifests/SK0403_FINAL_EXACT_TARGET.json"
+      - "tools/compose_production_manifests.py"
+      - "tools/recover_integrate_production_assets.py"
+      - ".github/workflows/batch161-production.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile tools
+        run: |
+          python -m py_compile tools/compose_production_manifests.py
+          python -m py_compile tools/recover_integrate_production_assets.py
+      - name: Validate composer selftest
+        run: python tools/compose_production_manifests.py selftest
+      - name: Compose exact 34-asset production manifest
+        run: |
+          python tools/compose_production_manifests.py compose \
+            manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json \
+            manifests/SK0403_FINAL_EXACT_TARGET.json \
+            --output /tmp/CD1_PRODUCTION_34_ASSETS.json
+      - name: Validate exact production contract
+        run: |
+          python tools/recover_integrate_production_assets.py validate /tmp/CD1_PRODUCTION_34_ASSETS.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('/tmp/CD1_PRODUCTION_34_ASSETS.json').read_text(encoding='utf-8'))
+          assert p['scope']['asset_count'] == 34
+          assert p['scope']['story_assets'] == 31
+          assert p['scope']['movie_assets'] == 3
+          assert p['scope']['subtitle_events'] == 33
+          assets={a['iso_path']:a for a in p['assets']}
+          a=assets['SAKURA1/SK0403.BIN']
+          assert a['lba'] == 45626
+          assert a['size'] == 113392
+          assert a['source_sha256'] == '2736d124c75afcf99cf0d8646427ba9478b84215c8de64fb29aa73f7cefa9b1e'
+          assert a['replacement_sha256'] == '94576a14ff92abff690fde9acdd9e5673b834f7d62391be39971f7d70e4932b5'
+          assert a['reverse_decode'] == 'PASS_506_OF_506'
+          PY
