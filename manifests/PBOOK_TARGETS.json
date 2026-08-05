@@ -1,0 +1,32 @@
+{
+  "batch": 140,
+  "purpose": "Verified source/target gates for exact PBOOK reconstruction",
+  "assets": {
+    "PBOOK_BT": {
+      "lba": 15609,
+      "size": 87712,
+      "source_sha256": "43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64",
+      "target_sha256": "4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe",
+      "changed_raw_sector_lbas": [15640,15641,15642,15643,15644,15645,15646,15647,15648,15649,15650,15651]
+    },
+    "PBOOK_EC": {
+      "lba": 15652,
+      "size": 87456,
+      "source_sha256": "3118ecdf03d7225f9666298b7c93b357c276bbdc27ce0b7020baca12003db3bc",
+      "target_sha256": "378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5",
+      "changed_raw_sector_lbas": [15659,15660,15661,15662,15663]
+    },
+    "PBOOK_RC": {
+      "lba": 15695,
+      "size": 58208,
+      "source_sha256": "56f8607a5c3ab6c5ad79b1b3de2910822f3880fa7f2e3938b273a1dfa27bc201",
+      "target_sha256": "c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907",
+      "changed_raw_sector_lbas": [15697,15698,15699,15700,15701,15702,15703,15704,15705,15706,15707,15708]
+    }
+  },
+  "safety": {
+    "emit_only_on_whole_asset_sha_match": true,
+    "unverified_patch_allowed": false,
+    "copyrighted_asset_bytes_included": false
+  }
+}
