@@ -1,59 +1,68 @@
 # Sakura Taisen 2 Disc 1 Patch Project
 
 - Goal: CD1 Korean patch candidate 100%
-- Current exact local scope: 39/58
-- Historical static certificate: 58/58
+- Current exact battle/static local scope: 39/58
+- Historical battle/static certificate: 58/58
+- Exact story/movie production scope: 33 assets
 
 ## Current batch
 
-### Batch 153 — PASS TOOLCHAIN
+### Batch 154 — PASS PRODUCTION TOOLCHAIN
 
-The recovery path now covers the complete historical B118 58-asset census, and a raw MODE1/2352 extraction defect in the Batch152 checkpoint scanner has been corrected.
+The active direction has changed from repeated recovery-only analysis to executable Korean story and movie production integration.
 
-## New and corrected components
+## Exact production scope
 
-- `tools/extract_b118_assets_manifest.py`
-- corrected `tools/recover_exact_assets_from_checkpoints.py`
-- `START_B153_RECOVER_ALL_58_ASSETS.cmd`
-- `reports/BATCH153_REPORT.md`
+The following retained historical translation outputs are now fixed in one trusted manifest:
 
-## B118 workbook manifest gate
+- Batch 51 story MES: 9 assets
+- Batch 52 story MES: 18 assets
+- Batch 62 SKCM story/system dialogue: 3 assets
+- Batch 64 Korean-subtitled movies: 3 CAK assets / 33 subtitle events
 
-The extractor reads the retained workbook `Assets 58` worksheet and emits a normalized recovery manifest only after all of these pass:
+Total:
 
-- exact workbook SHA-256: `e8c85862c10b6d30ed21156b17ca93be834c5cb5f76cf1f58d97c1db6ca22ce9`
-- exactly 58 expected assets and indexes 0–57
-- unique asset names and starting LBAs
-- valid original and candidate whole-asset SHA-256 values
-- changed-LBA count matches every row
-- no changed-LBA overlap or declared LBA conflict
-- exactly 1,626 unique changed raw sectors
+- story assets: 30
+- movie assets: 3
+- exact production assets: 33
 
-## MODE1/2352 correction
+## New production components
 
-Checkpoint assets are no longer read as one contiguous raw byte range from `LBA × 2352`.
+- `manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json`
+- `tools/recover_integrate_production_assets.py`
+- `START_B154_PRODUCTION_INTEGRATION.cmd`
+- `reports/BATCH154_REPORT.md`
 
-Each asset is now reconstructed from the 2,048-byte user-data area at raw-sector offsets `16..2063` for every sector. MODE1 sync and mode byte are checked before extraction. This prevents sector headers, EDC, ECC-P and ECC-Q bytes from contaminating recovered assets.
+## Production path
 
-## Recovery behavior
+The Batch154 builder recursively scans loose files, ZIP archives and full raw checkpoint BINs. It accepts a translated asset only when the complete size and replacement SHA-256 match the trusted manifest.
 
-The Batch153 launcher:
+When the exact pristine Disc 1 BIN is present, it performs:
 
-1. validates and normalizes the B118 workbook into a 58-asset manifest;
-2. scans loose exact `.MES` and `.CG` assets;
-3. scans loose checkpoint BINs;
-4. scans assets and checkpoint BINs inside ZIP archives;
-5. emits an asset only when its complete size and target SHA-256 match.
+1. full source BIN size and SHA-256 gate;
+2. per-asset source SHA-256 Expected Write gate;
+3. exact replacement insertion;
+4. MODE1/2352 EDC, ECC-P and ECC-Q regeneration;
+5. complete changed-sector accounting;
+6. exact re-extraction of every applied asset;
+7. local BIN/CUE, result JSON and sparse raw-sector patch generation.
 
-Whole Disc images are never copied or modified.
+Partial production candidates are allowed only for exact recovered replacement assets. No guessed bytes are accepted.
 
-## Safety gates
+## Safety
 
-- No game, workbook, font or glyph bytes committed.
-- No hash inversion or estimated payload generation.
-- Exact whole-asset SHA-256 required for recovered output.
-- Expected Write, EDC/ECC, re-extraction and final whole-disc SHA remain mandatory before cumulative patch acceptance.
+- pristine Disc 1 SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
+- no game, translated asset, font or movie bytes committed
+- failed Expected Write, EDC/ECC, sector accounting or re-extraction deletes the candidate
+- all binary build outputs remain local
 
-## Next
+## Active execution dependency
 
-Run Batch153 against retained local B110–B152 archive folders. Reconcile recovered assets against the existing 39/58 exact scope, preserve per-asset provenance, and promote any newly recovered exact targets into the cumulative integration vault.
+A real production candidate now requires the exact B51/B52/B62/B64 replacement files, or a retained checkpoint BIN/ZIP containing them, together with the exact pristine Disc 1 BIN. As soon as any subset is recovered, the builder can create a verified partial cumulative candidate instead of returning to analysis-only work.
+
+## Next production work
+
+1. recover and integrate the 33 exact story/movie assets from retained archives;
+2. record actual applied asset and subtitle-event counts;
+3. continue untranslated story or movie content as new production assets;
+4. merge the verified story/movie candidate with the exact battle/static baseline before SSF and hardware validation.
