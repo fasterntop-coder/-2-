@@ -3,66 +3,61 @@
 - Goal: CD1 Korean patch candidate 100%
 - Current exact battle/static local scope: 39/58
 - Historical battle/static certificate: 58/58
+- Direct fixed recovery baseline: 19 exact B113 assets
 - Exact story/movie production scope: 33 assets
 
 ## Current batch
 
-### Batch 154 — PASS PRODUCTION TOOLCHAIN
+### Batch 155 — PASS EXACT BASELINE PROMOTION
 
-The active direction has changed from repeated recovery-only analysis to executable Korean story and movie production integration.
+The verified Batch113 nineteen-asset cumulative battle/static baseline is now recoverable directly from retained loose files, ZIP archives or raw MODE1/2352 checkpoint BINs. The recovery route no longer depends on locating or parsing the later B118 workbook.
 
-## Exact production scope
+## Direct exact battle/static scope
 
-The following retained historical translation outputs are now fixed in one trusted manifest:
+- PBOOK graphics: 3
+- battle/system MES banks: 16
+- exact assets: 19
+- historical changed raw sectors: 492
+- historical LBA conflicts: 0
+- historical MODE1/2352 EDC/ECC: 492/492 PASS
+- historical re-extraction: 19/19 PASS
+
+## New components
+
+- `manifests/BATCH113_19_EXACT_TARGETS.json`
+- `START_B155_RECOVER_BATCH113_19_ASSETS.cmd`
+- `reports/BATCH155_REPORT.md`
+
+Every output still requires complete size and whole-asset SHA-256 equality. Raw checkpoints are decoded sector-by-sector from the 2,048-byte user-data area.
+
+## Story/movie production scope
+
+The Batch154 production manifest remains active:
 
 - Batch 51 story MES: 9 assets
 - Batch 52 story MES: 18 assets
 - Batch 62 SKCM story/system dialogue: 3 assets
 - Batch 64 Korean-subtitled movies: 3 CAK assets / 33 subtitle events
+- exact story/movie production assets: 33
 
-Total:
+## Cumulative production path
 
-- story assets: 30
-- movie assets: 3
-- exact production assets: 33
-
-## New production components
-
-- `manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json`
-- `tools/recover_integrate_production_assets.py`
-- `START_B154_PRODUCTION_INTEGRATION.cmd`
-- `reports/BATCH154_REPORT.md`
-
-## Production path
-
-The Batch154 builder recursively scans loose files, ZIP archives and full raw checkpoint BINs. It accepts a translated asset only when the complete size and replacement SHA-256 match the trusted manifest.
-
-When the exact pristine Disc 1 BIN is present, it performs:
+Recovered B113 assets and B51/B52/B62/B64 translated assets are collected into the same local vault. The production builder then applies exact recovered replacements to the pristine Disc 1 only after:
 
 1. full source BIN size and SHA-256 gate;
-2. per-asset source SHA-256 Expected Write gate;
-3. exact replacement insertion;
+2. per-asset Expected Write source SHA-256 gate;
+3. exact replacement SHA-256 gate;
 4. MODE1/2352 EDC, ECC-P and ECC-Q regeneration;
-5. complete changed-sector accounting;
-6. exact re-extraction of every applied asset;
-7. local BIN/CUE, result JSON and sparse raw-sector patch generation.
-
-Partial production candidates are allowed only for exact recovered replacement assets. No guessed bytes are accepted.
+5. changed-sector accounting;
+6. exact re-extraction of every applied asset.
 
 ## Safety
 
 - pristine Disc 1 SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
 - no game, translated asset, font or movie bytes committed
+- no estimated or inferred payloads
 - failed Expected Write, EDC/ECC, sector accounting or re-extraction deletes the candidate
-- all binary build outputs remain local
 
 ## Active execution dependency
 
-A real production candidate now requires the exact B51/B52/B62/B64 replacement files, or a retained checkpoint BIN/ZIP containing them, together with the exact pristine Disc 1 BIN. As soon as any subset is recovered, the builder can create a verified partial cumulative candidate instead of returning to analysis-only work.
-
-## Next production work
-
-1. recover and integrate the 33 exact story/movie assets from retained archives;
-2. record actual applied asset and subtitle-event counts;
-3. continue untranslated story or movie content as new production assets;
-4. merge the verified story/movie candidate with the exact battle/static baseline before SSF and hardware validation.
+A real cumulative BIN now requires retained checkpoint BIN/ZIP or loose translated files containing any of the fixed B113 nineteen assets and B51/B52/B62/B64 story/movie assets, together with the exact pristine Disc 1 BIN. Any exact recovered subset can be promoted into a verified partial candidate.
