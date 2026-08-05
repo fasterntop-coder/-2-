@@ -1,12 +1,9 @@
-name: PBOOK recovery and palette self-tests
+name: ST2 exact recovery self-tests
 
 on:
   push:
     paths:
-      - "tools/pbook_palette_transfer_search.py"
-      - "tools/extract_glyph_by_sha.py"
-      - "tools/run_pbook_bt_height_low.py"
-      - "tools/recover_pbook_bt_b110.py"
+      - "tools/**"
       - "jobs/**"
       - "manifests/**"
       - ".github/workflows/pbook-search-selftest.yml"
@@ -29,12 +26,15 @@ jobs:
           python -m py_compile tools/extract_glyph_by_sha.py
           python -m py_compile tools/run_pbook_bt_height_low.py
           python -m py_compile tools/recover_pbook_bt_b110.py
+          python -m py_compile tools/recover_exact_patch_from_manifest.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
         run: python tools/pbook_palette_transfer_search.py selftest
-      - name: Validate raw-sector and ZIP recovery
+      - name: Validate PBOOK raw-sector and ZIP recovery
         run: python tools/recover_pbook_bt_b110.py selftest
+      - name: Validate complete exact-patch roundtrip
+        run: python tools/recover_exact_patch_from_manifest.py selftest
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
