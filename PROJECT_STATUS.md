@@ -30,7 +30,7 @@ GitHub Actions:
 
 - Run 1: SUCCESS
 - Run 2: SUCCESS
-- Run 3: end-to-end runner compile validation initiated
+- Run 3: SUCCESS — end-to-end runner compilation and all safety self-tests passed
 
 ## Safety
 
