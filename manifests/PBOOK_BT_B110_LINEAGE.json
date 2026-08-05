@@ -1,0 +1,36 @@
+{
+  "batch": 110,
+  "classification": "VERIFIED_INDEPENDENT_RECONSTRUCTION",
+  "asset": "PBOOK_BT.CG",
+  "lba": 15609,
+  "size": 87712,
+  "pristine_source_sha256": "43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64",
+  "verified_candidate_sha256": "4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe",
+  "historical_batch82_sha256": "6739fa7f8370694505a3c5e39328e8ffd8c6161e2e148aced305bd9878259fdc",
+  "historical_byte_identical": false,
+  "active_text_translated": 36,
+  "non_text_preserved": 23,
+  "inactive_unreferenced_alias_preserved": 4,
+  "descriptor_codec_roundtrip": "63/63 PASS",
+  "changed_bytes": 9750,
+  "outside_active_ranges_changed_bytes": 0,
+  "methods": {
+    "descriptors_0_18": "Batch84 Stage D safe overlay",
+    "descriptors_58_59": "Batch72 plate rebuild",
+    "other_active_text": "NanumSquare Bold descriptor-fit rebuild"
+  },
+  "integration": {
+    "asset_count": 5,
+    "changed_raw_sectors": 87,
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "mode1_edc_ecc": "PASS",
+    "reextraction": "5/5 PASS",
+    "output_disc_sha256": "c6fc9827ee5d8ae17c918a8d7468faa4769601e13329c7485b3df53d5fd17c14"
+  },
+  "policy": {
+    "emit_asset_only_on_whole_sha_match": true,
+    "whole_disc_distribution": false,
+    "unverified_candidate_emission": false
+  }
+}
