@@ -1,0 +1,39 @@
+{
+  "schema": "st2-exact-asset-lineage-delta-v1",
+  "batch": 117,
+  "expected_base_batch": 116,
+  "expected_base_assets": 42,
+  "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "added_asset_count": 14,
+  "cumulative_asset_count": 56,
+  "cumulative_verification": {
+    "output_disc_sha256": "83481538455dc236100629f60b2e9349d10ccef8e28141591464db2ff21bfd07",
+    "cue_sha256": "07284109c0a7498f6238c37631a4bd31c6d0da70cd5611db9a79e3892ffb3668",
+    "asset_count": 56,
+    "changed_raw_sectors": 1568,
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "mode1_edc_ecc": "PASS_1568_OF_1568",
+    "reextraction": "PASS_56_OF_56",
+    "new_bank_records": 3206,
+    "completed_battle_banks": 53,
+    "battle_static_records": 12417,
+    "battle_static_total": 12595
+  },
+  "assets": [
+    {"name":"SYS06","filename":"SYS06.MES","source_batch":117,"lba":206791,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS28","filename":"SYS28.MES","source_batch":117,"lba":207651,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS30","filename":"SYS30.MES","source_batch":117,"lba":207732,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS32","filename":"SYS32.MES","source_batch":117,"lba":207813,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS35","filename":"SYS35.MES","source_batch":117,"lba":207935,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS38","filename":"SYS38.MES","source_batch":117,"lba":208057,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS39","filename":"SYS39.MES","source_batch":117,"lba":208097,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS40","filename":"SYS40.MES","source_batch":117,"lba":208137,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS41","filename":"SYS41.MES","source_batch":117,"lba":208177,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS42","filename":"SYS42.MES","source_batch":117,"lba":208217,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS43","filename":"SYS43.MES","source_batch":117,"lba":208257,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS44","filename":"SYS44.MES","source_batch":117,"lba":208297,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS48","filename":"SYS48.MES","source_batch":117,"lba":208460,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS50","filename":"SYS50.MES","source_batch":117,"lba":208541,"size":80458,"target_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"}
+  ]
+}
