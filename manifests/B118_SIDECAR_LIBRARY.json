@@ -1,0 +1,39 @@
+{
+  "schema": "st2-b118-sidecar-library-v1",
+  "goal": "CD1_100_PERCENT",
+  "required": {
+    "reverse_decode": {
+      "filename": "BATCH118_REVERSE_DECODE.csv",
+      "file_library_id": "file_00000000889c8209a50e6e1a81247b08",
+      "rows": 445,
+      "bank_rows": {"SYSTEM": 222, "SYS14": 223},
+      "required_columns": ["bank", "record", "decoded_korean"]
+    },
+    "record_audit": {
+      "filename": "BATCH118_RECORD_AUDIT_458.csv",
+      "file_library_id": "file_00000000208c81fd91123a12274487a4",
+      "rows": 458,
+      "bank_rows": {"SYSTEM": 229, "SYS14": 229},
+      "required_columns": ["bank", "record", "source_record_sha256", "candidate_record_sha256"]
+    }
+  },
+  "workbook_fallback": {
+    "filename": "BATCH118_BATTLE_BANK_STATIC_100_PERCENT.xlsx",
+    "file_library_id": "file_00000000cde482078b446642e9924411",
+    "verified_historical_sha256": "e8c85862c10b6d30ed21156b17ca93be834c5cb5f76cf1f58d97c1db6ca22ce9",
+    "required_sheets": ["Reverse Decode", "Record Audit 458"]
+  },
+  "exact_targets": {
+    "SYSTEM": "aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58",
+    "SYS14": "06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d",
+    "validation_bin": "4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf"
+  },
+  "policy": {
+    "filename_only_trust": false,
+    "row_count_gate": true,
+    "bank_split_gate": true,
+    "record_uniqueness_gate": true,
+    "record_sha_format_gate": true,
+    "candidate_bytes_emitted": false
+  }
+}
