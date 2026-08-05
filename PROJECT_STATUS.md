@@ -4,115 +4,76 @@
 - Current exact battle/static local bytes: 39/58
 - Historical battle/static certificate: 58/58
 - Direct deterministic recovery target: 58/58 exact assets
-- Exact story/movie production scope: 33 assets
+- Exact story/movie production scope: 35 assets
 
 ## Current batch
 
-### Batch 160 — PASS FULL 58-ASSET RECOVERY CONTRACT
+### Batch 162 — PASS SK0504 EXACT PRODUCTION PROMOTION
 
-The direct exact battle/static recovery path has advanced through three cumulative stages in one production run:
+A second fully compiled story BIN has been promoted into the executable production scope.
 
-- Batch158: B116 cumulative 42 assets
-- Batch159: B117 cumulative 56 assets
-- Batch160: B118 cumulative 58 assets
+## Exact promoted story assets
 
-The execution path no longer depends on manually transcribing the historical B116/B117/B118 workbooks. A trusted B115 33-asset base and three small exact deltas are composed with strict lineage checks.
+### SK0403
 
-## Exact cumulative lineage
+- ISO path: `SAKURA1/SK0403.BIN`
+- LBA: 45626
+- size: 113392
+- source SHA-256: `2736d124c75afcf99cf0d8646427ba9478b84215c8de64fb29aa73f7cefa9b1e`
+- replacement SHA-256: `94576a14ff92abff690fde9acdd9e5673b834f7d62391be39971f7d70e4932b5`
+- reverse decode: 506/506 PASS
 
-### B116
+### SK0504
 
-New banks:
+- ISO path: `SAKURA1/SK0504.BIN`
+- LBA: 45926
+- size: 127140
+- source SHA-256: `52d5429c1d0e4029406d63f9b780bda3d78bb3de90233d4e5de488d2713d07bb`
+- replacement SHA-256: `619bee36d6e821665df9e09a0b0ffa36021b58fdbda0c3fbf0f81a9e7421f4ac`
+- records reviewed: 726/726
+- translated records: 725
+- control records preserved: 1
+- capacity overflow: 0
+- line overflow: 0
+- Japanese remaining: 0
+- reverse-decode mismatches: 0
+- validation: PASS_OFFLINE
 
-- SYS20, SYS47, STNSYS02, SYS21, STNSYS03
-- SYS23, SYS24, SYS22, SYS25
+## Production scope
 
-Historical gates:
+The active exact production composition is now:
 
-- 42 assets
-- 1,162 changed raw sectors
-- EDC/ECC PASS
-- re-extraction 42/42 PASS
-- verification BIN SHA-256: `d318c3a5a0291483da6ee1626341f561ac26c34009be502dbe07222abd5b8088`
-
-### B117
-
-New banks:
-
-- SYS06, SYS28, SYS30, SYS32, SYS35, SYS38, SYS39
-- SYS40, SYS41, SYS42, SYS43, SYS44, SYS48, SYS50
-
-Historical gates:
-
-- 56 assets
-- 1,568 changed raw sectors
-- EDC/ECC PASS
-- re-extraction 56/56 PASS
-- verification BIN SHA-256: `83481538455dc236100629f60b2e9349d10ccef8e28141591464db2ff21bfd07`
-
-### B118
-
-Final banks:
-
-- SYSTEM
-- SYS14
-
-Historical gates:
-
-- 58 assets
-- battle banks 55/55
-- battle records 12,595/12,595
-- 1,626 changed raw sectors
-- LBA conflicts 0
-- changes outside declared sectors 0
-- EDC/ECC PASS
-- re-extraction 58/58 PASS
-- verification BIN SHA-256: `75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20`
+- earlier story MES and SKCM assets: 30
+- promoted compiled story BIN assets: 2
+- Korean-subtitled movie assets: 3
+- total exact production assets: 35
+- subtitle events: 33
 
 ## New components
 
-- `tools/compose_exact_asset_lineage.py`
-- `manifests/BATCH116_9_EXACT_DELTA.json`
-- `manifests/BATCH117_14_EXACT_DELTA.json`
-- `manifests/BATCH118_2_EXACT_DELTA.json`
-- `START_B160_RECOVER_BATCH118_58_ASSETS.cmd`
-- `reports/BATCH158_160_REPORT.md`
+- `manifests/SK0504_FINAL_EXACT_TARGET.json`
+- `START_B162_PRODUCTION_WITH_SK0403_SK0504.cmd`
+- `.github/workflows/batch162-production.yml`
+- `reports/BATCH162_REPORT.md`
 
 ## Execution
 
-The Batch160 launcher:
+The Batch162 launcher composes the 35-asset manifest, recursively scans loose files, ZIP archives and retained checkpoint BINs, and applies every exact recovered subset to a pristine Disc 1 candidate only after all mandatory gates pass.
 
-1. generates a validated B116 42-asset manifest;
-2. generates a validated B117 56-asset manifest;
-3. generates a validated B118 58-asset manifest;
-4. scans loose assets, ZIP members and MODE1/2352 checkpoint BINs;
-5. emits only complete assets whose size and target SHA-256 match exactly.
-
-Lineage composition is aborted on base-batch discontinuity, cumulative-count mismatch, duplicate asset name, duplicate starting LBA, invalid size or invalid SHA-256.
-
-## Story/movie production scope
-
-The Batch154 production manifest remains active:
-
-- Batch51 story MES: 9 assets
-- Batch52 story MES: 18 assets
-- Batch62 SKCM story/system dialogue: 3 assets
-- Batch64 Korean-subtitled movies: 3 CAK assets / 33 subtitle events
-- exact story/movie production assets: 33
-
-Recovered battle/static and story/movie assets are collected in the local production vault. Final Disc application still requires pristine source SHA, per-asset Expected Write, exact replacement SHA, MODE1 EDC/ECC regeneration, changed-sector accounting and re-extraction.
-
-## Safety
+## Mandatory safety gates
 
 - pristine Disc 1 SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
-- no game, translated asset, font or movie bytes committed
-- no estimated or inferred payloads
-- failed gates produce no accepted recovery asset or candidate
+- per-asset source SHA-256 Expected Write
+- complete replacement size and SHA-256
+- MODE1/2352 EDC, ECC-P and ECC-Q regeneration
+- changed-sector accounting
+- exact re-extraction of every applied asset
+- no estimated or inferred payload bytes
+
+## Battle/static recovery status
+
+The repository knows and validates all 58 historical battle/static target hashes. Current physically reconstructed local byte scope remains 39/58 until the remaining exact payloads are recovered from loose files or checkpoint BIN/ZIP archives.
 
 ## Active byte dependency
 
-The repository now knows and validates all 58 exact historical targets. A real 58/58 local vault still requires retained loose translated files or checkpoint BIN/ZIP byte streams containing those targets. Current physically reconstructed local byte scope remains 39/58 until those payloads are recovered.
-
-## Next production work
-
-Run the full 58-asset scanner over retained archives, promote every recovered exact asset into the integration vault, and merge that vault with the 33 exact story/movie production targets before SSF and hardware validation.
+A real Batch162 Disc candidate requires the exact pristine Disc 1 BIN and at least one exact replacement asset from the 35-asset production manifest. Full 35/35 production integration requires the exact B51/B52/B62/B64 assets plus `SK0403_KR_R41_FINAL.BIN` and `SK0504.BIN` matching their registered replacement SHA-256 values.
