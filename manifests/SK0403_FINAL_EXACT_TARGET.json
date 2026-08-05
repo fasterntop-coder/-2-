@@ -1,0 +1,37 @@
+{
+  "format": "st2-disc1-production-assets-v1",
+  "goal": "CD1_100_PERCENT",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352,
+    "user_offset": 16,
+    "user_size": 2048
+  },
+  "scope": {
+    "asset_count": 1,
+    "story_assets": 1,
+    "movie_assets": 0,
+    "subtitle_events": 0,
+    "groups": {
+      "R41_BATCH33_SK0403_FINAL": 1
+    }
+  },
+  "assets": [
+    {
+      "iso_path": "SAKURA1/SK0403.BIN",
+      "lba": 45626,
+      "size": 113392,
+      "source_sha256": "2736d124c75afcf99cf0d8646427ba9478b84215c8de64fb29aa73f7cefa9b1e",
+      "replacement_sha256": "94576a14ff92abff690fde9acdd9e5673b834f7d62391be39971f7d70e4932b5",
+      "category": "story",
+      "group": "R41_BATCH33_SK0403_FINAL",
+      "record_count": 506,
+      "translated_text_records": 500,
+      "control_records": 6,
+      "font_slots_used": 521,
+      "font_slots_total": 566,
+      "reverse_decode": "PASS_506_OF_506"
+    }
+  ]
+}
