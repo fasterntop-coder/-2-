@@ -1,52 +1,94 @@
 # Sakura Taisen 2 Disc 1 Patch Project
 
 - Goal: CD1 Korean patch candidate 100%
-- Current exact battle/static local scope: 39/58
+- Current exact battle/static local bytes: 39/58
 - Historical battle/static certificate: 58/58
-- Direct fixed recovery baseline: 33 exact B115 assets
+- Direct deterministic recovery target: 58/58 exact assets
 - Exact story/movie production scope: 33 assets
 
 ## Current batch
 
-### Batch 157 — PASS DIRECT EXACT BASELINE 33
+### Batch 160 — PASS FULL 58-ASSET RECOVERY CONTRACT
 
-The direct exact battle/static recovery baseline has advanced through two cumulative production steps in this run:
+The direct exact battle/static recovery path has advanced through three cumulative stages in one production run:
 
-- Batch156: B114 cumulative 25 assets
-- Batch157: B115 cumulative 33 assets
+- Batch158: B116 cumulative 42 assets
+- Batch159: B117 cumulative 56 assets
+- Batch160: B118 cumulative 58 assets
 
-The route no longer depends on parsing B114/B115 workbooks at execution time. Retained loose files, ZIP members and MODE1/2352 checkpoint BINs are scanned directly and accepted only by complete size plus whole-asset SHA-256 equality.
+The execution path no longer depends on manually transcribing the historical B116/B117/B118 workbooks. A trusted B115 33-asset base and three small exact deltas are composed with strict lineage checks.
 
-## B115 direct exact scope
+## Exact cumulative lineage
 
-- PBOOK graphics: 3
-- battle/system MES banks: 30
-- exact assets: 33
-- historical changed raw sectors: 899
-- historical LBA conflicts: 0
-- historical changes outside declared sectors: 0
-- historical MODE1/2352 EDC/ECC: 899/899 PASS
-- historical re-extraction: 33/33 PASS
-- historical verification BIN SHA-256: `cb22622232aa13a8cc767f37563798ce8b6cdbe4e44b7e16439fab281ae2a1d1`
+### B116
 
-## Newly promoted banks
+New banks:
 
-Batch114:
+- SYS20, SYS47, STNSYS02, SYS21, STNSYS03
+- SYS23, SYS24, SYS22, SYS25
 
-- SYS11, SYS37, SYS09, SYS36, SYS15, SYS16
+Historical gates:
 
-Batch115:
+- 42 assets
+- 1,162 changed raw sectors
+- EDC/ECC PASS
+- re-extraction 42/42 PASS
+- verification BIN SHA-256: `d318c3a5a0291483da6ee1626341f561ac26c34009be502dbe07222abd5b8088`
 
-- SYS13, SYS12, SYS18, SYS45, SYS10, SYS19, SYS46, STNSYS01
+### B117
+
+New banks:
+
+- SYS06, SYS28, SYS30, SYS32, SYS35, SYS38, SYS39
+- SYS40, SYS41, SYS42, SYS43, SYS44, SYS48, SYS50
+
+Historical gates:
+
+- 56 assets
+- 1,568 changed raw sectors
+- EDC/ECC PASS
+- re-extraction 56/56 PASS
+- verification BIN SHA-256: `83481538455dc236100629f60b2e9349d10ccef8e28141591464db2ff21bfd07`
+
+### B118
+
+Final banks:
+
+- SYSTEM
+- SYS14
+
+Historical gates:
+
+- 58 assets
+- battle banks 55/55
+- battle records 12,595/12,595
+- 1,626 changed raw sectors
+- LBA conflicts 0
+- changes outside declared sectors 0
+- EDC/ECC PASS
+- re-extraction 58/58 PASS
+- verification BIN SHA-256: `75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20`
 
 ## New components
 
-- `manifests/BATCH114_25_EXACT_TARGETS.json`
-- `START_B156_RECOVER_BATCH114_25_ASSETS.cmd`
-- `reports/BATCH156_REPORT.md`
-- `manifests/BATCH115_33_EXACT_TARGETS.json`
-- `START_B157_RECOVER_BATCH115_33_ASSETS.cmd`
-- `reports/BATCH157_REPORT.md`
+- `tools/compose_exact_asset_lineage.py`
+- `manifests/BATCH116_9_EXACT_DELTA.json`
+- `manifests/BATCH117_14_EXACT_DELTA.json`
+- `manifests/BATCH118_2_EXACT_DELTA.json`
+- `START_B160_RECOVER_BATCH118_58_ASSETS.cmd`
+- `reports/BATCH158_160_REPORT.md`
+
+## Execution
+
+The Batch160 launcher:
+
+1. generates a validated B116 42-asset manifest;
+2. generates a validated B117 56-asset manifest;
+3. generates a validated B118 58-asset manifest;
+4. scans loose assets, ZIP members and MODE1/2352 checkpoint BINs;
+5. emits only complete assets whose size and target SHA-256 match exactly.
+
+Lineage composition is aborted on base-batch discontinuity, cumulative-count mismatch, duplicate asset name, duplicate starting LBA, invalid size or invalid SHA-256.
 
 ## Story/movie production scope
 
@@ -58,15 +100,19 @@ The Batch154 production manifest remains active:
 - Batch64 Korean-subtitled movies: 3 CAK assets / 33 subtitle events
 - exact story/movie production assets: 33
 
-Recovered battle/static assets and story/movie assets are collected into the same local production vault. The production builder applies exact recovered replacements to pristine Disc 1 only after source BIN SHA, per-asset Expected Write, replacement SHA, MODE1 EDC/ECC, changed-sector accounting and re-extraction gates pass.
+Recovered battle/static and story/movie assets are collected in the local production vault. Final Disc application still requires pristine source SHA, per-asset Expected Write, exact replacement SHA, MODE1 EDC/ECC regeneration, changed-sector accounting and re-extraction.
 
 ## Safety
 
 - pristine Disc 1 SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
 - no game, translated asset, font or movie bytes committed
 - no estimated or inferred payloads
-- failed gates delete the candidate
+- failed gates produce no accepted recovery asset or candidate
+
+## Active byte dependency
+
+The repository now knows and validates all 58 exact historical targets. A real 58/58 local vault still requires retained loose translated files or checkpoint BIN/ZIP byte streams containing those targets. Current physically reconstructed local byte scope remains 39/58 until those payloads are recovered.
 
 ## Next production work
 
-Promote the B116 nine-bank exact lineage, then B117's fourteen-bank lineage. SYSTEM and SYS14 remain on the exact B124/B183 path before final 58/58 cumulative integration.
+Run the full 58-asset scanner over retained archives, promote every recovered exact asset into the integration vault, and merge that vault with the 33 exact story/movie production targets before SSF and hardware validation.
