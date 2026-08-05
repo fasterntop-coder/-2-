@@ -67,6 +67,22 @@ jobs:
         run: |
           python tools/recover_integrate_production_assets.py selftest
           python tools/recover_integrate_production_assets.py validate manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json
+      - name: Validate Batch113 nineteen-asset recovery contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from tools.recover_exact_assets_from_checkpoints import validate_manifest
+          path = Path('manifests/BATCH113_19_EXACT_TARGETS.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          assets, disc = validate_manifest(data)
+          assert len(assets) == 19
+          assert len({a['lba'] for a in assets}) == 19
+          assert sum(a['name'].startswith('PBOOK_') for a in assets) == 3
+          assert data['historical_verification']['changed_raw_sectors'] == 492
+          assert data['historical_verification']['reextraction'] == 'PASS_19_OF_19'
+          assert disc['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
+          PY
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
@@ -76,5 +92,6 @@ jobs:
           python -m json.tool manifests/B118_SIDECAR_LIBRARY.json >/dev/null
           python -m json.tool manifests/B124_SYSTEM_SYS14_TARGETS.json >/dev/null
           python -m json.tool manifests/BATCH183_187_EXACT_TARGETS.json >/dev/null
+          python -m json.tool manifests/BATCH113_19_EXACT_TARGETS.json >/dev/null
           python -m json.tool manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json >/dev/null
           python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
