@@ -1,0 +1,67 @@
+{
+  "schema": "st2-b118-checkpoint-lineage-v1",
+  "goal": "Recover all 1,626 exact B118 target raw sectors from any retained checkpoint mix",
+  "disc_size": 659293824,
+  "raw_sector_size": 2352,
+  "source": {
+    "name": "Pristine Disc 1",
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "target": {
+    "name": "B118 BattleBank Static100",
+    "sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "cue_sha256": "e7c80b2f7235cfffc7ba729fea20a08e80b828a7f42cc08ec196a91ed8df2e20",
+    "assets": 58,
+    "changed_raw_sectors": 1626,
+    "battle_banks": "55/55",
+    "reextraction": "58/58 PASS",
+    "edc_ecc": "PASS"
+  },
+  "checkpoint_candidates": [
+    {
+      "batch": 110,
+      "sha256": "c6fc9827ee5d8ae17c918a8d7468faa4769601e13329c7485b3df53d5fd17c14",
+      "scope": "5 assets",
+      "expected_use": "Harvest PBOOK_BT, PBOOK_EC, PBOOK_RC, SYS26 and STNSYS00 target sectors"
+    },
+    {
+      "batch": 117,
+      "sha256": "83481538455dc236100629f60b2e9349d10ccef8e28141591464db2ff21bfd07",
+      "scope": "56 assets / 1,568 sectors",
+      "expected_use": "Highest-value single checkpoint; leaves only SYSTEM and SYS14"
+    },
+    {
+      "batch": 124,
+      "sha256": "4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf",
+      "scope": "SYSTEM and SYS14 only / 58 sectors",
+      "expected_use": "Complements B117 to recover the full B118 target mosaic"
+    },
+    {
+      "batch": 127,
+      "sha256": "ae8783a23cbfb388bd27f1fad5f0e75ed6a77628aa8233d27e0a32be9a196ade",
+      "scope": "25 assets / 727 sectors",
+      "expected_use": "Partial exact checkpoint when B117 is unavailable"
+    },
+    {
+      "batch": 130,
+      "sha256": "498ca08aef21217d155b894c6952d6f7d7bfe4390725a8e4a75d55d3dfd6f2ab",
+      "scope": "33 assets / 960 sectors",
+      "expected_use": "Broader partial checkpoint when B117 is unavailable"
+    },
+    {
+      "batch": 118,
+      "sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+      "scope": "58 assets / 1,626 sectors",
+      "expected_use": "Direct full target harvest"
+    }
+  ],
+  "acceptance_policy": {
+    "checkpoint_filename_trusted": false,
+    "checkpoint_whole_sha_required_for_sector_harvest": false,
+    "target_sector_sha256_required": true,
+    "expected_write_required_before_final_apply": true,
+    "whole_output_sha256_required": true,
+    "edc_ecc_preserved_by_exact_raw_sector_hash": true,
+    "unverified_sector_allowed": false
+  }
+}
