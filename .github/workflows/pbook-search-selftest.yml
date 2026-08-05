@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - "tools/pbook_palette_transfer_search.py"
+      - "tools/extract_glyph_by_sha.py"
+      - "jobs/**"
+      - "manifests/**"
       - ".github/workflows/pbook-search-selftest.yml"
   workflow_dispatch:
 
@@ -18,7 +21,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Compile
-        run: python -m py_compile tools/pbook_palette_transfer_search.py
+      - name: Compile tools
+        run: |
+          python -m py_compile tools/pbook_palette_transfer_search.py
+          python -m py_compile tools/extract_glyph_by_sha.py
+      - name: Recover exact synthetic glyphs by SHA
+        run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
         run: python tools/pbook_palette_transfer_search.py selftest
+      - name: Validate JSON manifests
+        run: |
+          python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
+          python -m json.tool manifests/PBOOK_BT_GLYPH_TARGETS.json >/dev/null
+          python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
