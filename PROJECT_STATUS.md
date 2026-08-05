@@ -6,56 +6,48 @@
 
 ## Current batch
 
-### Batch 151 — PASS
+### Batch 152 — PASS
 
-The exact SYSTEM/SYS14 rebuild path can now recover the historical character-to-slot maps directly from the B118 Font Lifecycle CSV or workbook.
+Later File Library checkpoints prove exact post-B151 outputs for SYSTEM, SYS14 and SYS20. The repository now has an executable recovery path for those exact assets.
 
 ## New components
 
-- `tools/recover_b118_character_maps.py`
-- `START_B151_RECOVER_CHARACTER_MAPS.cmd`
-- `reports/BATCH151_REPORT.md`
+- `manifests/BATCH183_187_EXACT_TARGETS.json`
+- `tools/recover_exact_assets_from_checkpoints.py`
+- `START_B152_RECOVER_BATCH183_187_ASSETS.cmd`
+- `reports/BATCH152_REPORT.md`
 
-## Exact character-map gates
+## Exact assets
 
-- exactly one SYSTEM row and one SYS14 row
-- SYSTEM custom characters: 364
-- SYS14 custom characters: 363
-- slot domain: 0..447
-- one Unicode character per key
-- unique character keys and unique slot values
-- no collision with declared reserved slots
-- optional font-source SHA-256 syntax validation
+- SYSTEM target: `aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58`
+- SYS14 target: `06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d`
+- SYS20 target: `55e978d10d4f2ca010b77bec0fa205692923f5ab3b5a2c7deeb1c830e3cf5e8c`
 
-Separate normalized bank maps are emitted only after every gate passes.
+## Historical checkpoint gates
 
-## Existing exact rebuild chain
+- Batch183 SYSTEM+SYS14 Disc SHA: `4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf`
+- Batch183 changed sectors: 58; MODE1/2352 EDC/ECC 58/58 PASS; re-extraction 2/2 PASS
+- Batch187 17-asset Disc SHA: `18e4acbe241319dbd3e29cf0f01628deba13326fb18cc6bcea00fdbc3ab5016f`
+- Batch187 changed sectors: 493; MODE1/2352 EDC/ECC 493/493 PASS; re-extraction 17/17 PASS
 
-1. `tools/recover_b118_sidecars.py`
-2. `tools/recover_b118_character_maps.py`
-3. `tools/extract_mes_fixed_layout.py`
-4. `tools/recover_fixed_record_layout.py`
-5. `tools/assemble_exact_mes_assets.py`
-6. B124 whole-asset SHA gates
-7. 58-sector Expected Write
-8. MODE1/2352 EDC/ECC
-9. SYSTEM/SYS14 2/2 re-extraction
-10. historical BIN/CUE SHA gates
+## Recovery behavior
+
+The scanner recursively inspects:
+
+- loose exact MES assets
+- loose 659,293,824-byte checkpoint BINs
+- assets inside ZIP archives
+- checkpoint BINs inside ZIP archives
+
+Only complete size + SHA-256 target matches are emitted. Whole Disc images are never copied or modified.
 
 ## Safety
 
-- No game, font or glyph bitmap bytes committed.
-- No guessed characters, slots, record boundaries or sector bytes accepted.
-- Invalid or ambiguous inputs fail closed.
+- No game, font or glyph bytes committed.
+- No guessed asset or sector bytes accepted.
+- Exact target SHA-256 is required before output.
+- Existing Expected Write, EDC/ECC, re-extraction and whole-disc historical gates remain authoritative.
 
-## Active execution inputs
+## Active execution input
 
-Real SYSTEM/SYS14 output requires filesystem-readable copies of:
-
-- pristine `SYSTEM.MES` — SHA-256 `943d6cf1fb996a416f90ad6e2bea2b147f4931623b480a1622cf200586ddd385`
-- pristine `SYS14.MES` — SHA-256 `69f618f86010c35f28d20efc40a9374a3fc99e594cc7b110ad91c4fa36ce1f5a`
-- `BATCH118_REVERSE_DECODE.csv`
-- `BATCH118_RECORD_AUDIT_458.csv`
-- `BATCH118_FONT_LIFECYCLE_MANIFEST.csv`
-
-The historical B118 workbook may replace all three CSV sidecars.
+Run the Batch152 scanner against retained local BIN/ZIP/archive folders. Any recovered SYSTEM, SYS14 or SYS20 becomes an exact reusable asset for the cumulative Disc 1 integration path.
