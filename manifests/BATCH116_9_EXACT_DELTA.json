@@ -1,0 +1,33 @@
+{
+  "schema": "st2-exact-asset-lineage-delta-v1",
+  "batch": 116,
+  "expected_base_batch": 115,
+  "expected_base_assets": 33,
+  "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "added_asset_count": 9,
+  "cumulative_asset_count": 42,
+  "cumulative_verification": {
+    "output_disc_sha256": "d318c3a5a0291483da6ee1626341f561ac26c34009be502dbe07222abd5b8088",
+    "asset_count": 42,
+    "changed_raw_sectors": 1162,
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "mode1_edc_ecc": "PASS_1162_OF_1162",
+    "reextraction": "PASS_42_OF_42",
+    "new_bank_records": 2061,
+    "completed_battle_banks": 39,
+    "battle_static_records": 11999,
+    "battle_static_total": 12595
+  },
+  "assets": [
+    {"name":"SYS20","filename":"SYS20.MES","source_batch":116,"lba":207364,"size":82030,"target_sha256":"55e978d10d4f2ca010b77bec0fa205692923f5ab3b5a2c7deeb1c830e3cf5e8c"},
+    {"name":"SYS47","filename":"SYS47.MES","source_batch":116,"lba":208419,"size":82030,"target_sha256":"e14d7ad549447b6c9a63c0f2cb473f4e274959613e32992a77e547ad938a018b"},
+    {"name":"STNSYS02","filename":"STNSYS02.MES","source_batch":116,"lba":208622,"size":82032,"target_sha256":"60a7b0c2bfade055910353c945d60244d1e132fe9c306b709aba51b414511945"},
+    {"name":"SYS21","filename":"SYS21.MES","source_batch":116,"lba":207405,"size":82030,"target_sha256":"b8ab1c7429f7234968afdc7c62c8ebbcefb2ae772a4b5b8e1cc98a871b342d8c"},
+    {"name":"STNSYS03","filename":"STNSYS03.MES","source_batch":116,"lba":208663,"size":82048,"target_sha256":"70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d"},
+    {"name":"SYS23","filename":"SYS23.MES","source_batch":116,"lba":207487,"size":82030,"target_sha256":"2725080f77197bdd0830545106d5301e9544dbc43843e6ef32b795d2fc2031d8"},
+    {"name":"SYS24","filename":"SYS24.MES","source_batch":116,"lba":207528,"size":82030,"target_sha256":"61241b315f6bd678d7ecf50cff9acc8acf96c63fa2b51b96e88b278e35624a96"},
+    {"name":"SYS22","filename":"SYS22.MES","source_batch":116,"lba":207446,"size":82030,"target_sha256":"d4bbcd86442f82295afd1631548a56030e0c791e74477b3ac96e31fb2db6c976"},
+    {"name":"SYS25","filename":"SYS25.MES","source_batch":116,"lba":207569,"size":81970,"target_sha256":"24c1c5acceb5ab5f8f8aa54193d08852bfb4fe1edd7d51c9377f22a077042a87"}
+  ]
+}
