@@ -1,0 +1,40 @@
+# User-owned game images and disc files
+*.bin
+*.cue
+*.iso
+*.mdf
+*.mds
+*.ccd
+*.img
+*.sub
+
+# Extracted copyrighted game assets
+local/
+inputs/
+PATCH_SECTORS/
+*.CG
+*.MES
+*.BIN
+
+# Generated outputs and diagnostics
+output/
+OUTPUT/
+*_OUTPUT/
+*.bmp
+*.png
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Keep repository metadata and scripts
+!README.md
+!PROJECT_STATUS.md
+!reports/**
+!manifests/**
+!jobs/**
+!tools/**
+!.github/**
