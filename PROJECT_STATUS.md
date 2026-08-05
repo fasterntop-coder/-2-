@@ -8,40 +8,40 @@
 
 ## Current batch
 
-### Batch 141 — PASS
+### Batch 142 — PASS
 
-The PBOOK_BT `高` / `低` descriptors are now connected to an executable exact-recovery pipeline.
+PBOOK_BT recovery was corrected from a palette-only reconstruction problem to a verified Batch110 asset-recovery problem.
 
-Recovered exact gates:
+The target SHA `4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe` is the Batch110 independent reconstruction that already passed 36/36 active text, 23/23 non-text preservation, 4/4 hold preservation, 63/63 descriptor roundtrip, EDC/ECC and five-asset re-extraction.
 
-- Descriptor 3 `高 -> 높`: offset `0x10280`, target region SHA `8796fc3d...`, changed bytes `72`
-- Descriptor 5 `低 -> 낮`: offset `0x10380`, target region SHA `5acee59d...`, changed bytes `78`
-- Whole PBOOK_BT target SHA: `4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe`
+New executable recovery chain:
 
-New executable chain:
+1. `tools/recover_pbook_bt_b110.py`
+2. `manifests/PBOOK_BT_B110_LINEAGE.json`
+3. `START_B142_RECOVER_PBOOK_BT.cmd`
+4. `reports/BATCH142_REPORT.md`
 
-1. `tools/extract_glyph_by_sha.py`
-2. `jobs/PBOOK_BT_HEIGHT_LOW.json`
-3. `tools/pbook_palette_transfer_search.py`
-4. `tools/run_pbook_bt_height_low.py`
-5. `START_PBOOK_BT_B140.cmd`
+The scanner recursively searches loose files and ZIP archives for:
 
-GitHub Actions:
+- exact 87,712-byte PBOOK_BT source/candidate assets
+- raw 659,293,824-byte Disc 1 images containing either asset
 
-- Run 1: SUCCESS
-- Run 2: SUCCESS
-- Run 3: SUCCESS — end-to-end runner compilation and all safety self-tests passed
+It extracts only PBOOK_BT and emits it only when the whole-asset SHA matches the pristine source or verified Batch110 candidate.
+
+## Exact gates
+
+- Pristine PBOOK_BT: `43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64`
+- B110 PBOOK_BT: `4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe`
+- Pristine Disc 1: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
+- B110 five-asset Disc 1: `c6fc9827ee5d8ae17c918a8d7468faa4769601e13329c7485b3df53d5fd17c14`
 
 ## Safety
 
-- No font file or game asset committed.
-- Glyph payloads are extracted locally only on unique exact SHA matches.
-- No candidate asset is emitted without both region SHA gates and the whole-asset SHA gate.
-
-## Active execution input
-
-The real run needs a pristine `PBOOK_BT.CG` and one user-owned Korean SYSTEM/MES asset containing the exact `높` and `낮` glyph payloads. The pipeline then performs the expanded multi-level search automatically.
+- No copyrighted game data committed.
+- No whole disc image emitted.
+- No unverified candidate emitted.
+- Palette-transfer inference remains available only as fallback.
 
 ## Next
 
-Execute the real height/low job. If it produces no exact hit, capture candidate telemetry and infer a background-dependent transfer matrix while preserving the proven descriptor geometry.
+Run the exact recovery scanner against retained local Disc 1/B110/B117/B118 BIN and ZIP material. Once the B110 PBOOK asset is recovered, merge it into the 39-asset exact baseline and regenerate the next SHA-gated BIN/CUE candidate.
