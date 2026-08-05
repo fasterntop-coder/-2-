@@ -1,0 +1,26 @@
+{
+  "schema": "st2-exact-asset-lineage-delta-v1",
+  "batch": 118,
+  "expected_base_batch": 117,
+  "expected_base_assets": 56,
+  "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "added_asset_count": 2,
+  "cumulative_asset_count": 58,
+  "cumulative_verification": {
+    "output_disc_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "asset_count": 58,
+    "changed_raw_sectors": 1626,
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "mode1_edc_ecc": "PASS_1626_OF_1626",
+    "reextraction": "PASS_58_OF_58",
+    "completed_battle_banks": 55,
+    "battle_static_records": 12595,
+    "battle_static_total": 12595,
+    "static_scope": "PASS_100_PERCENT"
+  },
+  "assets": [
+    {"name":"SYSTEM","filename":"SYSTEM.MES","source_batch":118,"lba":208745,"size":80458,"target_sha256":"aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58"},
+    {"name":"SYS14","filename":"SYS14.MES","source_batch":118,"lba":207118,"size":82032,"target_sha256":"06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d"}
+  ]
+}
