@@ -6,48 +6,54 @@
 
 ## Current batch
 
-### Batch 152 — PASS
+### Batch 153 — PASS TOOLCHAIN
 
-Later File Library checkpoints prove exact post-B151 outputs for SYSTEM, SYS14 and SYS20. The repository now has an executable recovery path for those exact assets.
+The recovery path now covers the complete historical B118 58-asset census, and a raw MODE1/2352 extraction defect in the Batch152 checkpoint scanner has been corrected.
 
-## New components
+## New and corrected components
 
-- `manifests/BATCH183_187_EXACT_TARGETS.json`
-- `tools/recover_exact_assets_from_checkpoints.py`
-- `START_B152_RECOVER_BATCH183_187_ASSETS.cmd`
-- `reports/BATCH152_REPORT.md`
+- `tools/extract_b118_assets_manifest.py`
+- corrected `tools/recover_exact_assets_from_checkpoints.py`
+- `START_B153_RECOVER_ALL_58_ASSETS.cmd`
+- `reports/BATCH153_REPORT.md`
 
-## Exact assets
+## B118 workbook manifest gate
 
-- SYSTEM target: `aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58`
-- SYS14 target: `06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d`
-- SYS20 target: `55e978d10d4f2ca010b77bec0fa205692923f5ab3b5a2c7deeb1c830e3cf5e8c`
+The extractor reads the retained workbook `Assets 58` worksheet and emits a normalized recovery manifest only after all of these pass:
 
-## Historical checkpoint gates
+- exact workbook SHA-256: `e8c85862c10b6d30ed21156b17ca93be834c5cb5f76cf1f58d97c1db6ca22ce9`
+- exactly 58 expected assets and indexes 0–57
+- unique asset names and starting LBAs
+- valid original and candidate whole-asset SHA-256 values
+- changed-LBA count matches every row
+- no changed-LBA overlap or declared LBA conflict
+- exactly 1,626 unique changed raw sectors
 
-- Batch183 SYSTEM+SYS14 Disc SHA: `4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf`
-- Batch183 changed sectors: 58; MODE1/2352 EDC/ECC 58/58 PASS; re-extraction 2/2 PASS
-- Batch187 17-asset Disc SHA: `18e4acbe241319dbd3e29cf0f01628deba13326fb18cc6bcea00fdbc3ab5016f`
-- Batch187 changed sectors: 493; MODE1/2352 EDC/ECC 493/493 PASS; re-extraction 17/17 PASS
+## MODE1/2352 correction
+
+Checkpoint assets are no longer read as one contiguous raw byte range from `LBA × 2352`.
+
+Each asset is now reconstructed from the 2,048-byte user-data area at raw-sector offsets `16..2063` for every sector. MODE1 sync and mode byte are checked before extraction. This prevents sector headers, EDC, ECC-P and ECC-Q bytes from contaminating recovered assets.
 
 ## Recovery behavior
 
-The scanner recursively inspects:
+The Batch153 launcher:
 
-- loose exact MES assets
-- loose 659,293,824-byte checkpoint BINs
-- assets inside ZIP archives
-- checkpoint BINs inside ZIP archives
+1. validates and normalizes the B118 workbook into a 58-asset manifest;
+2. scans loose exact `.MES` and `.CG` assets;
+3. scans loose checkpoint BINs;
+4. scans assets and checkpoint BINs inside ZIP archives;
+5. emits an asset only when its complete size and target SHA-256 match.
 
-Only complete size + SHA-256 target matches are emitted. Whole Disc images are never copied or modified.
+Whole Disc images are never copied or modified.
 
-## Safety
+## Safety gates
 
-- No game, font or glyph bytes committed.
-- No guessed asset or sector bytes accepted.
-- Exact target SHA-256 is required before output.
-- Existing Expected Write, EDC/ECC, re-extraction and whole-disc historical gates remain authoritative.
+- No game, workbook, font or glyph bytes committed.
+- No hash inversion or estimated payload generation.
+- Exact whole-asset SHA-256 required for recovered output.
+- Expected Write, EDC/ECC, re-extraction and final whole-disc SHA remain mandatory before cumulative patch acceptance.
 
-## Active execution input
+## Next
 
-Run the Batch152 scanner against retained local BIN/ZIP/archive folders. Any recovered SYSTEM, SYS14 or SYS20 becomes an exact reusable asset for the cumulative Disc 1 integration path.
+Run Batch153 against retained local B110–B152 archive folders. Reconcile recovered assets against the existing 39/58 exact scope, preserve per-asset provenance, and promote any newly recovered exact targets into the cumulative integration vault.
