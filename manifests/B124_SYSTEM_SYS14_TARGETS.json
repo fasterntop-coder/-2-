@@ -1,0 +1,48 @@
+{
+  "schema": "st2-b124-system-sys14-targets-v1",
+  "batch": 124,
+  "message_region": {
+    "start": 57344,
+    "end": 69632,
+    "offset_mode": "RELATIVE_TO_0xE000",
+    "record_count": 229
+  },
+  "assets": {
+    "SYSTEM": {
+      "path": "SAKURA2/SYSTEM.MES",
+      "lba": 208745,
+      "size": 80458,
+      "source_sha256": "943d6cf1fb996a416f90ad6e2bea2b147f4931623b480a1622cf200586ddd385",
+      "target_sha256": "aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58",
+      "translated_records": 222,
+      "control_records": 7,
+      "changed_raw_sectors": 29
+    },
+    "SYS14": {
+      "path": "SAKURA2/SYS14.MES",
+      "lba": 207118,
+      "size": 82032,
+      "source_sha256": "69f618f86010c35f28d20efc40a9374a3fc99e594cc7b110ad91c4fa36ce1f5a",
+      "target_sha256": "06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d",
+      "translated_records": 223,
+      "control_records": 6,
+      "changed_raw_sectors": 29
+    }
+  },
+  "disc_validation": {
+    "changed_raw_sectors": 58,
+    "lba_conflicts": 0,
+    "mode1_2352_edc_ecc": "PASS",
+    "reextraction": "2/2 PASS",
+    "verification_bin_sha256": "4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf",
+    "cue_sha256": "eb09178d66b35beed0a84fe2b93c4740c6bf8046c2aeb3dd1c375131dd5b4453"
+  },
+  "safety": {
+    "whole_asset_sha_required": true,
+    "record_sha_required": true,
+    "expected_write_required": true,
+    "edc_ecc_required": true,
+    "reextraction_required": true,
+    "guessed_bytes_allowed": false
+  }
+}
