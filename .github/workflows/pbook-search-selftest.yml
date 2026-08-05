@@ -46,4 +46,5 @@ jobs:
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
           python -m json.tool manifests/PBOOK_BT_GLYPH_TARGETS.json >/dev/null
           python -m json.tool manifests/PBOOK_BT_B110_LINEAGE.json >/dev/null
+          python -m json.tool manifests/B118_CHECKPOINT_LINEAGE.json >/dev/null
           python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
