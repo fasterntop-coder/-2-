@@ -3,61 +3,70 @@
 - Goal: CD1 Korean patch candidate 100%
 - Current exact battle/static local scope: 39/58
 - Historical battle/static certificate: 58/58
-- Direct fixed recovery baseline: 19 exact B113 assets
+- Direct fixed recovery baseline: 33 exact B115 assets
 - Exact story/movie production scope: 33 assets
 
 ## Current batch
 
-### Batch 155 — PASS EXACT BASELINE PROMOTION
+### Batch 157 — PASS DIRECT EXACT BASELINE 33
 
-The verified Batch113 nineteen-asset cumulative battle/static baseline is now recoverable directly from retained loose files, ZIP archives or raw MODE1/2352 checkpoint BINs. The recovery route no longer depends on locating or parsing the later B118 workbook.
+The direct exact battle/static recovery baseline has advanced through two cumulative production steps in this run:
 
-## Direct exact battle/static scope
+- Batch156: B114 cumulative 25 assets
+- Batch157: B115 cumulative 33 assets
+
+The route no longer depends on parsing B114/B115 workbooks at execution time. Retained loose files, ZIP members and MODE1/2352 checkpoint BINs are scanned directly and accepted only by complete size plus whole-asset SHA-256 equality.
+
+## B115 direct exact scope
 
 - PBOOK graphics: 3
-- battle/system MES banks: 16
-- exact assets: 19
-- historical changed raw sectors: 492
+- battle/system MES banks: 30
+- exact assets: 33
+- historical changed raw sectors: 899
 - historical LBA conflicts: 0
-- historical MODE1/2352 EDC/ECC: 492/492 PASS
-- historical re-extraction: 19/19 PASS
+- historical changes outside declared sectors: 0
+- historical MODE1/2352 EDC/ECC: 899/899 PASS
+- historical re-extraction: 33/33 PASS
+- historical verification BIN SHA-256: `cb22622232aa13a8cc767f37563798ce8b6cdbe4e44b7e16439fab281ae2a1d1`
+
+## Newly promoted banks
+
+Batch114:
+
+- SYS11, SYS37, SYS09, SYS36, SYS15, SYS16
+
+Batch115:
+
+- SYS13, SYS12, SYS18, SYS45, SYS10, SYS19, SYS46, STNSYS01
 
 ## New components
 
-- `manifests/BATCH113_19_EXACT_TARGETS.json`
-- `START_B155_RECOVER_BATCH113_19_ASSETS.cmd`
-- `reports/BATCH155_REPORT.md`
-
-Every output still requires complete size and whole-asset SHA-256 equality. Raw checkpoints are decoded sector-by-sector from the 2,048-byte user-data area.
+- `manifests/BATCH114_25_EXACT_TARGETS.json`
+- `START_B156_RECOVER_BATCH114_25_ASSETS.cmd`
+- `reports/BATCH156_REPORT.md`
+- `manifests/BATCH115_33_EXACT_TARGETS.json`
+- `START_B157_RECOVER_BATCH115_33_ASSETS.cmd`
+- `reports/BATCH157_REPORT.md`
 
 ## Story/movie production scope
 
 The Batch154 production manifest remains active:
 
-- Batch 51 story MES: 9 assets
-- Batch 52 story MES: 18 assets
-- Batch 62 SKCM story/system dialogue: 3 assets
-- Batch 64 Korean-subtitled movies: 3 CAK assets / 33 subtitle events
+- Batch51 story MES: 9 assets
+- Batch52 story MES: 18 assets
+- Batch62 SKCM story/system dialogue: 3 assets
+- Batch64 Korean-subtitled movies: 3 CAK assets / 33 subtitle events
 - exact story/movie production assets: 33
 
-## Cumulative production path
-
-Recovered B113 assets and B51/B52/B62/B64 translated assets are collected into the same local vault. The production builder then applies exact recovered replacements to the pristine Disc 1 only after:
-
-1. full source BIN size and SHA-256 gate;
-2. per-asset Expected Write source SHA-256 gate;
-3. exact replacement SHA-256 gate;
-4. MODE1/2352 EDC, ECC-P and ECC-Q regeneration;
-5. changed-sector accounting;
-6. exact re-extraction of every applied asset.
+Recovered battle/static assets and story/movie assets are collected into the same local production vault. The production builder applies exact recovered replacements to pristine Disc 1 only after source BIN SHA, per-asset Expected Write, replacement SHA, MODE1 EDC/ECC, changed-sector accounting and re-extraction gates pass.
 
 ## Safety
 
 - pristine Disc 1 SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
 - no game, translated asset, font or movie bytes committed
 - no estimated or inferred payloads
-- failed Expected Write, EDC/ECC, sector accounting or re-extraction deletes the candidate
+- failed gates delete the candidate
 
-## Active execution dependency
+## Next production work
 
-A real cumulative BIN now requires retained checkpoint BIN/ZIP or loose translated files containing any of the fixed B113 nineteen assets and B51/B52/B62/B64 story/movie assets, together with the exact pristine Disc 1 BIN. Any exact recovered subset can be promoted into a verified partial candidate.
+Promote the B116 nine-bank exact lineage, then B117's fourteen-bank lineage. SYSTEM and SYS14 remain on the exact B124/B183 path before final 58/58 cumulative integration.
