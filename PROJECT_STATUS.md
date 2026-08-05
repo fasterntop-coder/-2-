@@ -8,86 +8,87 @@
 
 ## Current batch
 
-### Batch 145 — PASS
+### Batch 147 — PASS
 
-The B118 recovery path no longer requires one surviving complete B118 BIN or one complete PATCH_SECTORS directory.
+The B118 sidecar recovery path now accepts and validates the actual historical
+File Library schemas instead of only the Batch 146 synthetic test schema.
 
-A new checkpoint-mosaic engine can combine different exact target sectors from multiple retained historical images and ZIP archives.
+## Corrected component
 
-## New components
+- `tools/recover_b118_sidecars.py`
+- `reports/BATCH147_REPORT.md`
+- `START_B146_RECOVER_B118_SIDECARS.cmd` remains the execution entry point.
 
-- `tools/recover_checkpoint_mosaic.py`
-- `manifests/B118_CHECKPOINT_LINEAGE.json`
-- `START_B145_CHECKPOINT_MOSAIC.cmd`
-- `reports/BATCH145_REPORT.md`
+## Historical Reverse Decode gate
 
-## Recovery sources
+Accepted source columns include:
 
-The engine scans:
+- `bank`
+- `record`
+- `type`
+- `expected`
+- `decoded`
+- `status`
 
-- loose 2,352-byte sector payloads
-- sector payloads stored inside ZIP files
-- loose 659,293,824-byte checkpoint BINs
-- checkpoint BINs stored inside ZIP files
+Required validation:
 
-Each checkpoint may contain only a subset of B118. The tool accepts a sector only when the complete raw-sector SHA-256 matches the trusted B118 manifest target for that LBA.
+- 445 rows
+- SYSTEM 222 / SYS14 223
+- unique bank/record keys in range 0..228
+- nonblank expected and decoded text
+- exact `expected == decoded`
+- `status == PASS` when present
+- strict subset of the 458 audited records
 
-## Known useful checkpoint lineage
+A canonical `decoded_korean` field is emitted for downstream compilers without
+removing the historical fields.
 
-- B110: 5 assets
-- B117: 56 assets / 1,568 sectors
-- B124: SYSTEM and SYS14 / 58 sectors
-- B127: 25 assets / 727 sectors
-- B130: 33 assets / 960 sectors
-- B118: 58 assets / 1,626 sectors
+## Historical Record Audit gate
 
-The highest-value recovery combination is B117 plus B124. Together they can provide all 1,626 B118 target sectors without a retained complete B118 image.
+Required validation:
 
-## Exact gates
+- 458 rows
+- SYSTEM 229 / SYS14 229
+- complete 0..228 record coverage for each bank
+- unique bank/record keys
+- valid hexadecimal 64-character source record SHA-256
+- valid hexadecimal 64-character candidate record SHA-256
 
-- Pristine Disc 1 SHA-256:
-  `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
-- B118 output SHA-256:
-  `75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20`
-- changed raw sectors: 1,626
-- assets: 58
-- battle banks: 55/55
-- legacy apply script: AST literal parsing only; never executed
-- target sector acceptance: complete 2,352-byte SHA-256 match
-- final source write: Expected Write SHA-256 required
-- final BIN: whole-output SHA-256 required
-- EDC/ECC: preserved through byte-exact historical raw-sector hashes
+## Exact downstream gates retained
 
-## Outputs
-
-`MOSAIC_RECOVERY_RESULT.json` records:
-
-- recovery count by source type
-- per-asset sector coverage
-- missing LBA list
-- checkpoint audit trail
-- per-sector provenance
-- sparse patch ZIP hash
-- final BIN/CUE hashes when complete
+- SYSTEM target SHA-256:
+  `aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58`
+- SYS14 target SHA-256:
+  `06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d`
+- combined verification BIN SHA-256:
+  `4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf`
+- combined verification CUE SHA-256:
+  `eb09178d66b35beed0a84fe2b93c4740c6bf8046c2aeb3dd1c375131dd5b4453`
+- Expected Write, MODE1/2352 EDC/ECC and 2/2 re-extraction remain mandatory.
 
 ## CI
 
-- GitHub Actions run 10: SUCCESS — multi-checkpoint mosaic roundtrip
-- GitHub Actions run 12: SUCCESS — toolchain plus checkpoint lineage manifest validation
+GitHub Actions run 17: SUCCESS.
 
-The synthetic test recovered disjoint target sectors from a loose checkpoint BIN, a checkpoint BIN inside ZIP, and a loose sector member inside ZIP, then reproduced the expected complete target BIN byte-for-byte.
+All compilation, PBOOK recovery, exact patch roundtrip, checkpoint mosaic,
+legacy apply parser and historical-header B118 sidecar recovery tests passed.
 
-## Active blocker
+## Active execution input
 
-File Library contains the B118 apply manifest, checkpoint reports, asset hashes and sector hash oracles, but not the actual 2,352-byte target sector bodies or retained checkpoint BIN bytes.
+The corrected tool must be run where the following exact File Library CSVs are
+mounted as real files:
 
-Real output creation now requires any local retained material containing target bytes, especially one or more of:
+- `BATCH118_REVERSE_DECODE.csv`
+- `BATCH118_RECORD_AUDIT_458.csv`
 
-- B117 BIN/ZIP
-- B124 BIN/ZIP or sparse delta package
-- B127/B130 BIN/ZIP
-- B118 BIN/ZIP
-- any historical PATCH_SECTORS directory or ZIP
-- the exact pristine Disc 1 BIN for final application
+The current connector exposes their indexed contents and IDs but not a mounted
+filesystem path usable by the compiler. No game bytes or sidecar rows were
+guessed or reconstructed from hashes.
 
-No sector is reconstructed from hashes or estimates.
+## Next
+
+Mount or otherwise expose the two exact CSV byte streams to the runtime, run
+sidecar normalization, then execute the SYSTEM/SYS14 exact compiler. Accept no
+output unless both whole-asset SHA gates, all record SHA gates, the 58-sector
+Expected Write/EDC/ECC gate, re-extraction and historical verification BIN/CUE
+SHA gates pass.
