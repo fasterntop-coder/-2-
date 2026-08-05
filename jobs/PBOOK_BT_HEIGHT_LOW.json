@@ -1,0 +1,45 @@
+{
+  "asset_name": "PBOOK_BT",
+  "source_path": "../local/PBOOK_BT.CG",
+  "source_sha256": "43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64",
+  "target_sha256": "4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe",
+  "output_path": "../output/PBOOK_BT_B140_EXACT.CG",
+  "regions": [
+    {
+      "name": "descriptor_3_high_to_height",
+      "japanese": "高",
+      "korean": "높",
+      "descriptor": 3,
+      "offset": "0x10280",
+      "width": 16,
+      "height": 16,
+      "stride_pixels": 16,
+      "mask_path": "../local/glyphs/높.4bpp",
+      "source_region_sha256": "6486ec3bd278dc168c5cab2801e151400ac202221fc306395324c52951bd71b8",
+      "expected_region_sha256": "8796fc3d66699132e361a438d9e13fc465195c63a16979c32982555fcf728a2d",
+      "expected_changed_bytes": 72,
+      "preserve_zero_mask": true
+    },
+    {
+      "name": "descriptor_5_low_to_low",
+      "japanese": "低",
+      "korean": "낮",
+      "descriptor": 5,
+      "offset": "0x10380",
+      "width": 16,
+      "height": 16,
+      "stride_pixels": 16,
+      "mask_path": "../local/glyphs/낮.4bpp",
+      "source_region_sha256": "7c67918af5689864ecd34ba47a487ed449efa72d56597d975af02e59133dbcc9",
+      "expected_region_sha256": "5acee59d5d8cafc9a1197710d5b9593b7bdcb8391ac25d9c2840f83715ffc6f0",
+      "expected_changed_bytes": 78,
+      "preserve_zero_mask": true
+    }
+  ],
+  "safety": {
+    "whole_source_sha_required": true,
+    "two_region_sha_gates_required": true,
+    "whole_target_sha_required": true,
+    "emit_unverified_candidate": false
+  }
+}
