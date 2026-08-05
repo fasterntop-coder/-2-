@@ -37,6 +37,7 @@ jobs:
           python -m py_compile tools/recover_exact_assets_from_checkpoints.py
           python -m py_compile tools/extract_b118_assets_manifest.py
           python -m py_compile tools/recover_integrate_production_assets.py
+          python -m py_compile tools/compose_exact_asset_lineage.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
@@ -97,6 +98,39 @@ jobs:
           assert b115['historical_verification']['output_disc_sha256'] == 'cb22622232aa13a8cc767f37563798ce8b6cdbe4e44b7e16439fab281ae2a1d1'
           assert d113['sha256'] == d114['sha256'] == d115['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
           PY
+      - name: Validate B116-B118 cumulative exact composition
+        run: |
+          python tools/compose_exact_asset_lineage.py selftest
+          mkdir -p /tmp/st2-lineage
+          python tools/compose_exact_asset_lineage.py compose manifests/BATCH115_33_EXACT_TARGETS.json manifests/BATCH116_9_EXACT_DELTA.json --output /tmp/st2-lineage/B116.json
+          python tools/compose_exact_asset_lineage.py compose manifests/BATCH115_33_EXACT_TARGETS.json manifests/BATCH116_9_EXACT_DELTA.json manifests/BATCH117_14_EXACT_DELTA.json --output /tmp/st2-lineage/B117.json
+          python tools/compose_exact_asset_lineage.py compose manifests/BATCH115_33_EXACT_TARGETS.json manifests/BATCH116_9_EXACT_DELTA.json manifests/BATCH117_14_EXACT_DELTA.json manifests/BATCH118_2_EXACT_DELTA.json --output /tmp/st2-lineage/B118.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from tools.recover_exact_assets_from_checkpoints import validate_manifest
+          expected = {
+              'B116.json': (116, 42, 1162, 'PASS_42_OF_42'),
+              'B117.json': (117, 56, 1568, 'PASS_56_OF_56'),
+              'B118.json': (118, 58, 1626, 'PASS_58_OF_58'),
+          }
+          loaded = {}
+          for name, (batch, count, sectors, reextract) in expected.items():
+              data = json.loads((Path('/tmp/st2-lineage') / name).read_text(encoding='utf-8'))
+              assets, disc = validate_manifest(data)
+              assert data['batch'] == batch
+              assert len(assets) == count
+              assert len({a['name'] for a in assets}) == count
+              assert len({a['lba'] for a in assets}) == count
+              assert data['historical_verification']['changed_raw_sectors'] == sectors
+              assert data['historical_verification']['reextraction'] == reextract
+              assert disc['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
+              loaded[batch] = {a['name'] for a in assets}
+          assert loaded[115] if 115 in loaded else True
+          assert loaded[116] < loaded[117] < loaded[118]
+          assert loaded[117] - loaded[116] == {'SYS06','SYS28','SYS30','SYS32','SYS35','SYS38','SYS39','SYS40','SYS41','SYS42','SYS43','SYS44','SYS48','SYS50'}
+          assert loaded[118] - loaded[117] == {'SYSTEM','SYS14'}
+          PY
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
@@ -109,5 +143,8 @@ jobs:
           python -m json.tool manifests/BATCH113_19_EXACT_TARGETS.json >/dev/null
           python -m json.tool manifests/BATCH114_25_EXACT_TARGETS.json >/dev/null
           python -m json.tool manifests/BATCH115_33_EXACT_TARGETS.json >/dev/null
+          python -m json.tool manifests/BATCH116_9_EXACT_DELTA.json >/dev/null
+          python -m json.tool manifests/BATCH117_14_EXACT_DELTA.json >/dev/null
+          python -m json.tool manifests/BATCH118_2_EXACT_DELTA.json >/dev/null
           python -m json.tool manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json >/dev/null
           python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
