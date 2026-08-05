@@ -1,0 +1,70 @@
+{
+  "schema": "st2-exact-checkpoint-assets-v1",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352
+  },
+  "assets": [
+    {
+      "name": "SYSTEM",
+      "lba": 208745,
+      "size": 80458,
+      "source_sha256": "943d6cf1fb996a416f90ad6e2bea2b147f4931623b480a1622cf200586ddd385",
+      "target_sha256": "aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58",
+      "records": 229,
+      "translated": 222,
+      "controls": 7,
+      "character_map": 364,
+      "historical_batch": 183
+    },
+    {
+      "name": "SYS14",
+      "lba": 207118,
+      "size": 82032,
+      "source_sha256": "69f618f86010c35f28d20efc40a9374a3fc99e594cc7b110ad91c4fa36ce1f5a",
+      "target_sha256": "06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d",
+      "records": 229,
+      "translated": 223,
+      "controls": 6,
+      "character_map": 363,
+      "historical_batch": 183
+    },
+    {
+      "name": "SYS20",
+      "lba": 207364,
+      "size": 82030,
+      "source_sha256": "ac87de82657b0517e36c6f0acf847eb9baf71565c0f63056f1232b31de75c6ad",
+      "target_sha256": "55e978d10d4f2ca010b77bec0fa205692923f5ab3b5a2c7deeb1c830e3cf5e8c",
+      "records": 229,
+      "translated": 224,
+      "controls": 5,
+      "character_map": 367,
+      "historical_batch": 186
+    }
+  ],
+  "checkpoint_discs": [
+    {
+      "batch": 183,
+      "scope": "SYSTEM+SYS14",
+      "changed_raw_sectors": 58,
+      "sha256": "4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf",
+      "cue_sha256": "eb09178d66b35beed0a84fe2b93c4740c6bf8046c2aeb3dd1c375131dd5b4453",
+      "edc_ecc": "58/58 PASS",
+      "reextraction": "2/2 PASS"
+    },
+    {
+      "batch": 187,
+      "scope": "17 exact static assets including SYS20",
+      "changed_raw_sectors": 493,
+      "sha256": "18e4acbe241319dbd3e29cf0f01628deba13326fb18cc6bcea00fdbc3ab5016f",
+      "edc_ecc": "493/493 PASS",
+      "reextraction": "17/17 PASS"
+    }
+  ],
+  "safety": {
+    "emit_only_on_exact_asset_sha": true,
+    "whole_disc_output": false,
+    "guessed_bytes_allowed": false
+  }
+}
