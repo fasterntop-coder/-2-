@@ -30,6 +30,7 @@ jobs:
           python -m py_compile tools/recover_checkpoint_mosaic.py
           python -m py_compile tools/extract_apply_manifest.py
           python -m py_compile tools/recover_b118_sidecars.py
+          python -m py_compile tools/recover_fixed_record_layout.py
       - name: Recover exact synthetic glyphs by SHA
         run: python tools/extract_glyph_by_sha.py selftest
       - name: Recover synthetic multi-level transfer
@@ -44,6 +45,8 @@ jobs:
         run: python tools/extract_apply_manifest.py selftest
       - name: Validate B118 sidecar recovery
         run: python tools/recover_b118_sidecars.py selftest
+      - name: Validate fixed-allocation record SHA recovery
+        run: python tools/recover_fixed_record_layout.py selftest
       - name: Validate JSON manifests
         run: |
           python -m json.tool manifests/PBOOK_TARGETS.json >/dev/null
