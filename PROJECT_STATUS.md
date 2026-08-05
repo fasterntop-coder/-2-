@@ -8,40 +8,49 @@
 
 ## Current batch
 
-### Batch 142 — PASS
+### Batch 143 — PASS
 
-PBOOK_BT recovery was corrected from a palette-only reconstruction problem to a verified Batch110 asset-recovery problem.
+The project now has an executable exact recovery path for the historical B117/B118 full integration, rather than analysis-only records.
 
-The target SHA `4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe` is the Batch110 independent reconstruction that already passed 36/36 active text, 23/23 non-text preservation, 4/4 hold preservation, 63/63 descriptor roundtrip, EDC/ECC and five-asset re-extraction.
+New toolchain:
 
-New executable recovery chain:
+1. `tools/recover_exact_patch_from_manifest.py`
+2. `START_B118_EXACT_RECOVERY.cmd`
+3. `tools/recover_pbook_bt_b110.py`
+4. `START_B142_RECOVER_PBOOK_BT.cmd`
+5. `reports/BATCH142_REPORT.md`
+6. `reports/BATCH143_REPORT.md`
 
-1. `tools/recover_pbook_bt_b110.py`
-2. `manifests/PBOOK_BT_B110_LINEAGE.json`
-3. `START_B142_RECOVER_PBOOK_BT.cmd`
-4. `reports/BATCH142_REPORT.md`
+## B118 target
 
-The scanner recursively searches loose files and ZIP archives for:
+- Battle banks: 55/55
+- Battle records: 12,595/12,595
+- Integrated assets: 58
+- Changed raw sectors: 1,626
+- Source BIN SHA: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
+- Target BIN SHA: `75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20`
 
-- exact 87,712-byte PBOOK_BT source/candidate assets
-- raw 659,293,824-byte Disc 1 images containing either asset
+## Exact recovery behavior
 
-It extracts only PBOOK_BT and emits it only when the whole-asset SHA matches the pristine source or verified Batch110 candidate.
+- Parses the historical apply script with AST without executing it.
+- Recovers sector payloads from loose files, ZIP members or an exact historical output BIN.
+- Checks every original LBA with Expected Write SHA-256.
+- Checks every 2,352-byte patched-sector SHA-256.
+- Creates a sparse exact-sector patch ZIP.
+- Creates a full BIN only from the exact pristine Disc 1 source.
+- Requires the complete output BIN SHA gate before reporting success.
+- Deletes failed output images.
 
-## Exact gates
+## CI
 
-- Pristine PBOOK_BT: `43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64`
-- B110 PBOOK_BT: `4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe`
-- Pristine Disc 1: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
-- B110 five-asset Disc 1: `c6fc9827ee5d8ae17c918a8d7468faa4769601e13329c7485b3df53d5fd17c14`
+GitHub Actions run 6: SUCCESS.
 
-## Safety
+Compilation, manifest parsing, patched-sector harvesting, Expected Write application, sparse package creation and whole-output byte-exact roundtrip all passed.
 
-- No copyrighted game data committed.
-- No whole disc image emitted.
-- No unverified candidate emitted.
-- Palette-transfer inference remains available only as fallback.
+## Active blocker
+
+The exact B117/B118 patched-sector bytes or a retained exact historical B117/B118 full BIN are not present in File Library. The source Disc 1 and apply manifests are known, but SHA values alone cannot reconstruct the missing 2,352-byte sector bodies.
 
 ## Next
 
-Run the exact recovery scanner against retained local Disc 1/B110/B117/B118 BIN and ZIP material. Once the B110 PBOOK asset is recovered, merge it into the 39-asset exact baseline and regenerate the next SHA-gated BIN/CUE candidate.
+Continue searching retained archives and later-lineage images for the exact B118 sectors. When found, the current engine will immediately generate the 58-asset sparse patch and the SHA-gated BIN/CUE candidate.
