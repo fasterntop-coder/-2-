@@ -1,0 +1,58 @@
+{
+  "format": "st2-disc1-production-assets-v1",
+  "goal": "CD1_100_PERCENT",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352,
+    "user_offset": 16,
+    "user_size": 2048
+  },
+  "scope": {
+    "asset_count": 33,
+    "story_assets": 30,
+    "movie_assets": 3,
+    "subtitle_events": 33,
+    "groups": {
+      "B51_STORY": 9,
+      "B52_STORY": 18,
+      "B62_STORY": 3,
+      "B64_MOVIE": 3
+    }
+  },
+  "assets": [
+    {"iso_path":"SAKURA2/EV04001.MES","lba":250542,"size":73191,"source_sha256":"ebd4bd205e82a594a24b59b54cb632335a9bef82df42838c45153c01e8a4df2a","replacement_sha256":"d39b5c7559e93802eb61af162a48a0e9328acb2a0b04a3cf87107ea53f77566f","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04002.MES","lba":250885,"size":71759,"source_sha256":"688dc1fdf7b328df9253ade87b0ffbccb0c978f2930ef6c86976a1d8fb324066","replacement_sha256":"ff19c15234593d71d506f5e3c7a5a272f4d6f5cdcd93ba1cd79536725d895a16","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04003.MES","lba":251122,"size":71946,"source_sha256":"c1e0da3be7ad4d4f01d8a9c3a9e454276343bc10ca3f374274d6a36c5bef25cf","replacement_sha256":"c5fdb4b5efb8e2589e441e20569d57370a9aa67b1fa09bb90a5998e4f3956491","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04005.MES","lba":250634,"size":72012,"source_sha256":"a1743bac1780287fdb3763a467d9f870d5939386830982c13bff08f0eca57beb","replacement_sha256":"d2cdd83990fedab9ac30441ecc5c798a27eef7701e80a416e51379d41b30f188","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04020.MES","lba":250684,"size":71822,"source_sha256":"4ec8b680269e3e1094a11e5a70ce77ccfb26e97e90a033e8a4692d4a46f86ca5","replacement_sha256":"b69f11a496a9af740fc5f098814bdc4d7e2fbf886b1f1395e51823bedeca4e23","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04022.MES","lba":250720,"size":73221,"source_sha256":"812d000ffdd85bdfef79c3fcaeac38d2bb0219803d24382beacaf63f147f0f70","replacement_sha256":"5b7470300af32075a25b7998cb8c417ad6717512d5359b25e817d737dd43d5c0","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04050.MES","lba":250935,"size":72196,"source_sha256":"e22a7b5e66d9e917fa14ff48f9829456f673d03c034a395f25d7507c6cc89c47","replacement_sha256":"9701d0bfc1ce941b2e55ad02be4ab0eb6ef0496eb52639620f9dc3a01187181d","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04053.MES","lba":250784,"size":72425,"source_sha256":"134c838bab1dd9da4fb977f1fc9413f7751829228aa76724dfb251465143dc36","replacement_sha256":"e73551c147c89f33bdf4a0a3f8b14f8ceca72a1916d08086f5f74bde3705aa0e","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV04055.MES","lba":250835,"size":72375,"source_sha256":"5ac6d62a4fe4585c05ac8508e6c6fb6199fb0f791adc32d7897c25f9f29c8f23","replacement_sha256":"bdb43bb896892c3e317d3c64918a66e5bc9d94dc45a2a6c9ca036231375c2f13","category":"story","group":"B51_STORY"},
+    {"iso_path":"SAKURA2/EV05001.MES","lba":252409,"size":72586,"source_sha256":"5918d16f27f7bcdd24e14222aa55ec0f824d77c2209634b78e1b0e1072e07007","replacement_sha256":"6c6f6dcdc0cf679748e88a6ebfab63a89a09cbdf5a17da72ef41b509295a1154","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05002.MES","lba":251489,"size":71844,"source_sha256":"e4a4ee65f5db8b52b94e785d17d7435812a56e9ac8f0246c61ec651a45b4f916","replacement_sha256":"77786bdb11c813f7799b63367ee9cc2584d563495600b3fb7c85d4c38543cbc1","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05003.MES","lba":251439,"size":72409,"source_sha256":"97617352a1bfc739f6f152ddc88c5f534b877ca628f17e1e7bbfbde0644d0d00","replacement_sha256":"20063ed812f030c34b3eeb1d79310d484dfc5e09160a783d71d8ed4d86a411dc","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05004.MES","lba":251539,"size":72063,"source_sha256":"ebdf48904831f2cea246c538962ef775c5bb2e700314b9ce10d717914d4e7242","replacement_sha256":"fce0e713af2ab28e84f3e0d444665a531a387b92306f0e6fa743d2370e6bfc4f","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05005.MES","lba":251589,"size":71979,"source_sha256":"808626b9ff0316179212ff3cbfb41d7b0d10741fa479493a8fae7cd971d1bfd4","replacement_sha256":"d7e355fe8da18d33bd96bd41275529d7b97fd4f25c6c16010a134a35ccd402b1","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05007.MES","lba":251639,"size":71847,"source_sha256":"17b1500e9f9a7903732aca37aa24ccfdaba5afa17dc7a8cee18b7258c11b18f0","replacement_sha256":"45d9b5ebc6d1dfa8e56901162b9e93c81b547cb917d6f59ab613e64920a830af","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05010.MES","lba":251693,"size":72409,"source_sha256":"97617352a1bfc739f6f152ddc88c5f534b877ca628f17e1e7bbfbde0644d0d00","replacement_sha256":"20063ed812f030c34b3eeb1d79310d484dfc5e09160a783d71d8ed4d86a411dc","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05018.MES","lba":251757,"size":71857,"source_sha256":"68e58f6f64ac41e38a27f5ae3b137ab7bef3f3b30d4ba6a5d634b2c38295df4b","replacement_sha256":"52d1fc229908f9d722c4356d134a386fa630f4367cf456b1c45531a009f98952","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05019.MES","lba":251808,"size":71890,"source_sha256":"ed57baa1451f04578edeff0bccc29e0f5b20615c24b8c8d6323282dc9b534970","replacement_sha256":"31b55059045570cce3d0cbe71428ec1290b06a2e892e33a875057e5ad7ab320c","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05020.MES","lba":251858,"size":72557,"source_sha256":"7ff9ceae174516061c569ef4438b807dce4b058be78bba173513bca5388856cf","replacement_sha256":"6d83a3052b517637077e727934c5f4fa1a80232445d653c913f7f87d18b5a7ea","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05021.MES","lba":251908,"size":72055,"source_sha256":"994a8f2079fb95368a4f2c003d4b110d11c504817b6c431dff56e0e9bded7976","replacement_sha256":"c8602688b6303bbf02466342d75d33547fc2bc391a09911f3710e20508f7b5b4","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05022.MES","lba":252459,"size":71831,"source_sha256":"fa98dc204b7e02e688a2e0222578113cb16cda32ed8bc5d06f79ee8e76422ec0","replacement_sha256":"1e8b6809d3198be8101cf4aef29a5992d4b203d4209c57ce3524d880f4b815a6","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05023.MES","lba":252358,"size":71771,"source_sha256":"92a96f66b15a18200b70027c21154a7dbc5ec7a393f1a54bd463e27e09393200","replacement_sha256":"da40992009c284041f2bc01f84dd99dbdf2ae815d2b5677f68354f3ba74dfe9b","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05025.MES","lba":251958,"size":71930,"source_sha256":"7c91e75296d8ebd67f5643caf06a1471a464320c2bff781c1176050926bab40c","replacement_sha256":"4349aa289aec811979a169ded143e2c8ff40e4a61c8ce1070795d99ccccd2130","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05026.MES","lba":252008,"size":71935,"source_sha256":"2ccd0008d43e6b8b63fbab822a0f56056f0e3aa62308130cb297ef274368143d","replacement_sha256":"17e27375fbef42466aba53ee1fa3b01d846abe7d5a7634754443a1ac964c3456","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05027.MES","lba":252058,"size":71924,"source_sha256":"3e55ca2a254322fe817fce16bc4cd15fa0f7a3f70237174f5083e24e9847cfde","replacement_sha256":"aced812561139d49565f5dc4e3f4c34767b80124a214afc74980c56acb26d518","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05051.MES","lba":252108,"size":71928,"source_sha256":"7f5efaf055b2c991d41bda9f4206b068592bfcad81c8383b06e1121a1c4e42a3","replacement_sha256":"d14316a4a2dcf9a1f91df170e1a49139d52d0c2c51b948a1d795a847f6053457","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA2/EV05052.MES","lba":252158,"size":71828,"source_sha256":"a95ca693b4d2d4b64b812052c803413b5773fdd0e274fc8a787b35076004054a","replacement_sha256":"066454bc1097695de9c0155f3ed1df81d6aa94cc4d888c89283c84237f95e565","category":"story","group":"B52_STORY"},
+    {"iso_path":"SAKURA1/SKCM02.BIN","lba":46030,"size":129652,"source_sha256":"ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af","replacement_sha256":"0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9","category":"story","group":"B62_STORY"},
+    {"iso_path":"SAKURA1/SKCM04.BIN","lba":46094,"size":91196,"source_sha256":"59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29","replacement_sha256":"c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8","category":"story","group":"B62_STORY"},
+    {"iso_path":"SAKURA1/SKCM05.BIN","lba":46139,"size":91416,"source_sha256":"99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257","replacement_sha256":"cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4","category":"story","group":"B62_STORY"},
+    {"iso_path":"SAKURA1/SK2MV_10.CAK","lba":124497,"size":9411120,"source_sha256":"38d588110ec1bd68be619f2ece59a0c29c2e71e6346c97e93c7a9d600193bf19","replacement_sha256":"55eaac6b98762a60f77bda33962bbe6760bcaf45e8277518acc758bb37b24019","audio_adx_sha256":"6be7331e6c6efcddf5e87db8ccdf30ff1f9e8b76a95fede5acc5881670aaeeff","subtitle_events":13,"category":"movie","group":"B64_MOVIE"},
+    {"iso_path":"SAKURA1/SK2MV_11.CAK","lba":129093,"size":11007384,"source_sha256":"b2847dfd3e1d36967063942241f06975837646677e35a478f4844d6876b9e964","replacement_sha256":"d408eca93ae59453e6747c99b823cc96ab5df2e76bd3c10813114eb5439cc67b","audio_adx_sha256":"044aeae7c384d44f02356fa0279ae42f11a51bf5c619c02973ff3c3636b525b2","subtitle_events":10,"category":"movie","group":"B64_MOVIE"},
+    {"iso_path":"SAKURA1/SK2MV_30.CAK","lba":134468,"size":7830436,"source_sha256":"b32f9f29b52da7e346c8c9cc1a37ac0f3f0fb2961d5f058a9805486009d43d9b","replacement_sha256":"fab3dd471e909958774170770a9191683d16e670edfed0434167c1ea7e8a988a","audio_adx_sha256":"b7c1c4b515eaa2e624bda81fb3216c66c57c264e7414ed343fcdc2add9862658","subtitle_events":10,"category":"movie","group":"B64_MOVIE"}
+  ]
+}
