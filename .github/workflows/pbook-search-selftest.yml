@@ -67,42 +67,35 @@ jobs:
         run: |
           python tools/recover_integrate_production_assets.py selftest
           python tools/recover_integrate_production_assets.py validate manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json
-      - name: Validate Batch113 nineteen-asset recovery contract
+      - name: Validate direct exact battle/static lineage
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           from tools.recover_exact_assets_from_checkpoints import validate_manifest
-          path = Path('manifests/BATCH113_19_EXACT_TARGETS.json')
-          data = json.loads(path.read_text(encoding='utf-8'))
-          assets, disc = validate_manifest(data)
-          assert len(assets) == 19
-          assert len({a['lba'] for a in assets}) == 19
-          assert sum(a['name'].startswith('PBOOK_') for a in assets) == 3
-          assert data['historical_verification']['changed_raw_sectors'] == 492
-          assert data['historical_verification']['reextraction'] == 'PASS_19_OF_19'
-          assert disc['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
-          PY
-      - name: Validate Batch114 twenty-five-asset recovery contract
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          from tools.recover_exact_assets_from_checkpoints import validate_manifest
-          b113 = json.loads(Path('manifests/BATCH113_19_EXACT_TARGETS.json').read_text(encoding='utf-8'))
-          b114 = json.loads(Path('manifests/BATCH114_25_EXACT_TARGETS.json').read_text(encoding='utf-8'))
-          a113, _ = validate_manifest(b113)
-          a114, disc = validate_manifest(b114)
-          names113 = {a['name'] for a in a113}
-          names114 = {a['name'] for a in a114}
-          assert len(a114) == 25
-          assert names113 < names114
-          assert names114 - names113 == {'SYS11','SYS37','SYS09','SYS36','SYS15','SYS16'}
-          assert len({a['lba'] for a in a114}) == 25
+          def load(name):
+              data = json.loads(Path(name).read_text(encoding='utf-8'))
+              assets, disc = validate_manifest(data)
+              return data, assets, disc
+          b113, a113, d113 = load('manifests/BATCH113_19_EXACT_TARGETS.json')
+          b114, a114, d114 = load('manifests/BATCH114_25_EXACT_TARGETS.json')
+          b115, a115, d115 = load('manifests/BATCH115_33_EXACT_TARGETS.json')
+          n113 = {a['name'] for a in a113}; n114 = {a['name'] for a in a114}; n115 = {a['name'] for a in a115}
+          assert len(a113) == 19 and len(a114) == 25 and len(a115) == 33
+          assert n113 < n114 < n115
+          assert n114 - n113 == {'SYS11','SYS37','SYS09','SYS36','SYS15','SYS16'}
+          assert n115 - n114 == {'SYS13','SYS12','SYS18','SYS45','SYS10','SYS19','SYS46','STNSYS01'}
+          assert len({a['lba'] for a in a115}) == 33
+          assert sum(a['name'].startswith('PBOOK_') for a in a115) == 3
+          assert b113['historical_verification']['changed_raw_sectors'] == 492
           assert b114['historical_verification']['changed_raw_sectors'] == 666
+          assert b115['historical_verification']['changed_raw_sectors'] == 899
+          assert b113['historical_verification']['reextraction'] == 'PASS_19_OF_19'
           assert b114['historical_verification']['reextraction'] == 'PASS_25_OF_25'
+          assert b115['historical_verification']['reextraction'] == 'PASS_33_OF_33'
           assert b114['historical_verification']['output_disc_sha256'] == '5b54f2f532e632d024f7aa44732cdaee4b52e1b7c587a1077bbe0d741f31c704'
-          assert disc['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
+          assert b115['historical_verification']['output_disc_sha256'] == 'cb22622232aa13a8cc767f37563798ce8b6cdbe4e44b7e16439fab281ae2a1d1'
+          assert d113['sha256'] == d114['sha256'] == d115['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
           PY
       - name: Validate JSON manifests
         run: |
@@ -115,5 +108,6 @@ jobs:
           python -m json.tool manifests/BATCH183_187_EXACT_TARGETS.json >/dev/null
           python -m json.tool manifests/BATCH113_19_EXACT_TARGETS.json >/dev/null
           python -m json.tool manifests/BATCH114_25_EXACT_TARGETS.json >/dev/null
+          python -m json.tool manifests/BATCH115_33_EXACT_TARGETS.json >/dev/null
           python -m json.tool manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json >/dev/null
           python -m json.tool jobs/PBOOK_BT_HEIGHT_LOW.json >/dev/null
