@@ -8,87 +8,71 @@
 
 ## Current batch
 
-### Batch 147 — PASS
+### Batch 149 — PASS
 
-The B118 sidecar recovery path now accepts and validates the actual historical
-File Library schemas instead of only the Batch 146 synthetic test schema.
+The SYSTEM/SYS14 exact-recovery path no longer depends on a hand-authored fixed-allocation layout JSON.
 
-## Corrected component
+## New components
 
-- `tools/recover_b118_sidecars.py`
-- `reports/BATCH147_REPORT.md`
-- `START_B146_RECOVER_B118_SIDECARS.cmd` remains the execution entry point.
+- `tools/extract_mes_fixed_layout.py`
+- `START_B149_EXTRACT_MES_LAYOUT.cmd`
+- `reports/BATCH149_REPORT.md`
 
-## Historical Reverse Decode gate
+The extractor searches candidate MES offset-table interpretations across:
 
-Accepted source columns include:
+- 16-bit and 32-bit entries
+- little-endian and big-endian values
+- offsets relative to `0xE000` and absolute offsets
 
-- `bank`
-- `record`
-- `type`
-- `expected`
-- `decoded`
-- `status`
+Structural plausibility is not sufficient. A layout is emitted only when all 229 source record slices reproduce the exact historical `source_record_sha256` values from `BATCH118_RECORD_AUDIT_458.csv`.
 
-Required validation:
+## Fixed-allocation output
 
-- 445 rows
-- SYSTEM 222 / SYS14 223
-- unique bank/record keys in range 0..228
-- nonblank expected and decoded text
-- exact `expected == decoded`
-- `status == PASS` when present
-- strict subset of the 458 audited records
+For every record the generated layout contains:
 
-A canonical `decoded_korean` field is emitted for downstream compilers without
-removing the historical fields.
+- exact record offset
+- exact allocation size
+- original four-byte metadata
+- source-record SHA-256
 
-## Historical Record Audit gate
+The final record is bounded by the historical `0x11000` message-region end, preserving its zero-filled remainder.
 
-Required validation:
+## Exact source gates
 
-- 458 rows
-- SYSTEM 229 / SYS14 229
-- complete 0..228 record coverage for each bank
-- unique bank/record keys
-- valid hexadecimal 64-character source record SHA-256
-- valid hexadecimal 64-character candidate record SHA-256
+- SYSTEM source SHA-256:
+  `943d6cf1fb996a416f90ad6e2bea2b147f4931623b480a1622cf200586ddd385`
+- SYS14 source SHA-256:
+  `69f618f86010c35f28d20efc40a9374a3fc99e594cc7b110ad91c4fa36ce1f5a`
+- record coverage: 229/229 per bank
+- message region: `0xE000..0x11000`
 
-## Exact downstream gates retained
+## Safety gates retained
 
-- SYSTEM target SHA-256:
-  `aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58`
-- SYS14 target SHA-256:
-  `06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d`
-- combined verification BIN SHA-256:
-  `4343b8845f7f9cd4725de085e3a779c7c77185c0e6043d99b5d226335b69f5cf`
-- combined verification CUE SHA-256:
-  `eb09178d66b35beed0a84fe2b93c4740c6bf8046c2aeb3dd1c375131dd5b4453`
-- Expected Write, MODE1/2352 EDC/ECC and 2/2 re-extraction remain mandatory.
+- source whole-asset SHA-256
+- complete and unique record-oracle coverage
+- all 229 source-record SHA matches
+- unique exact layout match
+- candidate-record SHA-256
+- SYSTEM/SYS14 whole-asset SHA-256
+- 58-sector Expected Write
+- MODE1/2352 EDC/ECC
+- 2/2 re-extraction
+- historical verification BIN/CUE SHA-256
 
-## CI
-
-GitHub Actions run 17: SUCCESS.
-
-All compilation, PBOOK recovery, exact patch roundtrip, checkpoint mosaic,
-legacy apply parser and historical-header B118 sidecar recovery tests passed.
+No game bytes, font bytes, sidecar rows, or guessed record boundaries are committed.
 
 ## Active execution input
 
-The corrected tool must be run where the following exact File Library CSVs are
-mounted as real files:
+The real run requires filesystem-readable copies of:
 
-- `BATCH118_REVERSE_DECODE.csv`
+- pristine `SYSTEM.MES`
+- pristine `SYS14.MES`
 - `BATCH118_RECORD_AUDIT_458.csv`
+- `BATCH118_REVERSE_DECODE.csv`
+- exact character-map JSON generated from the historical slot rules
 
-The current connector exposes their indexed contents and IDs but not a mounted
-filesystem path usable by the compiler. No game bytes or sidecar rows were
-guessed or reconstructed from hashes.
+File Library confirms the source hashes, 229-record relative layout model, final-record `0x11000` remainder rule, and exact record SHA oracles, but the indexed connector does not expose those files as mounted byte streams.
 
 ## Next
 
-Mount or otherwise expose the two exact CSV byte streams to the runtime, run
-sidecar normalization, then execute the SYSTEM/SYS14 exact compiler. Accept no
-output unless both whole-asset SHA gates, all record SHA gates, the 58-sector
-Expected Write/EDC/ECC gate, re-extraction and historical verification BIN/CUE
-SHA gates pass.
+Extract the two exact layout JSON files, recover all 445 translated fixed-allocation records by candidate SHA, preserve the 13 control records byte-exactly, rebuild SYSTEM/SYS14, and run the whole-asset, raw-sector, EDC/ECC, re-extraction and historical BIN/CUE gates.
