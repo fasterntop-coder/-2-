@@ -9,27 +9,27 @@
 
 ## Current batch
 
-### Batch 172 — PASS COMPUTED MODE1/2352 PBOOK EDC/ECC GATE
+### Batch 173 — PASS CHECKPOINT BIN PBOOK RECOVERY PATH
 
-The Batch171 PBOOK recovery path now has an independent mathematical MODE1/2352 verifier. EDC, ECC-P and ECC-Q are computed directly from each sector instead of trusting historical PASS labels or SHA lineage alone.
+The PBOOK recovery path can now recover the exact 29 registered raw sectors directly from retained full Disc checkpoint BINs or BIN entries inside ZIP archives. Loose raw-sector sidecars are no longer the only recovery source.
 
-## Batch172 components
+## Batch173 components
 
-- `tools/mode1_2352.py`
-- `tools/audit_batch171_pbook_edc_ecc.py`
-- `.github/workflows/batch172-pbook-computed-edc-ecc.yml`
-- `reports/BATCH172_REPORT.md`
+- `tools/recover_pbook_sectors_from_checkpoint_bins.py`
+- `START_B173_RECOVER_PBOOK_FROM_CHECKPOINT_BINS.cmd`
+- `.github/workflows/batch173-pbook-checkpoint-recovery.yml`
+- `reports/BATCH173_REPORT.md`
 
-## Batch172 acceptance contract
+## Batch173 acceptance contract
 
-- Parse the literal Batch110 `M` sector map without importing or executing legacy code.
+- Parse the literal Batch110 sector map through AST without importing or executing legacy code.
 - Require exactly 29 PBOOK sectors: BT 12, EC 5, RC 12.
-- Require pristine Disc 1 SHA-256 `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`.
-- Require every original raw sector SHA-256 as an Expected Write gate.
-- Require every patched raw sector SHA-256.
-- Independently compute and verify sync, mode, EDC, reserved bytes, ECC-P and ECC-Q for original and patched sectors.
-- Reject registered sectors whose original and patched bytes are identical.
-- Emit a per-sector JSON audit only after all 29 sectors pass.
+- Scan only 659,293,824-byte loose BINs and equal-sized BIN entries inside ZIP archives.
+- Accept each target LBA only when its complete 2,352-byte raw-sector SHA-256 equals the registered patched-sector oracle.
+- Independently verify MODE1 sync, mode, EDC, reserved bytes, ECC-P and ECC-Q.
+- Require pristine Disc 1 SHA-256 `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106` before reconstruction.
+- Require source whole-asset Expected Write SHA-256 and replacement whole-asset SHA-256.
+- Optional Disc build requires exact changed-sector accounting and 3/3 re-extraction.
 
 ## PBOOK exact targets
 
@@ -68,7 +68,7 @@ A physical combined 58-asset candidate requires:
 
 - pristine Disc 1 BIN, size `659,293,824`, exact SHA-256 above;
 - `ST2R41_BATCH137_FIFTYFIVE_ASSET_EXACT_RECOVERY_PATCH.zip`, SHA-256 `48adebfe83ced41f38f7960030fb4a9cd24592dac231f51b6f7ce632785ba88c`;
-- all 29 exact Batch110 PBOOK patched raw-sector sidecars, or the three complete PBOOK replacement payloads.
+- either all 29 exact Batch110 PBOOK patched raw-sector sidecars, the three complete PBOOK replacement payloads, or retained checkpoint BINs containing the registered 29 patched sectors.
 
 ## Mandatory safety policy
 
