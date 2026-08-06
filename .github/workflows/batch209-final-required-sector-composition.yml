@@ -1,0 +1,36 @@
+name: Batch209 final required-sector composition gate
+
+on:
+  push:
+    paths:
+      - 'tools/finalize_cd1_with_required_raw_sectors.py'
+      - 'tools/mode1_2352.py'
+      - 'manifests/CD1_REQUIRED_LEGACY_SECTOR_LBA208689.json'
+      - '.github/workflows/batch209-final-required-sector-composition.yml'
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile
+        run: python -m py_compile tools/finalize_cd1_with_required_raw_sectors.py tools/mode1_2352.py
+      - name: Synthetic MODE1/2352 and overlap self-test
+        run: PYTHONPATH=tools python tools/finalize_cd1_with_required_raw_sectors.py --selftest
+      - name: Validate required-sector manifest
+        run: |
+          python - <<'PY'
+          import json
+          p='manifests/CD1_REQUIRED_LEGACY_SECTOR_LBA208689.json'
+          m=json.load(open(p,encoding='utf-8'))
+          assert m['format']=='ST2-CD1-REQUIRED-LEGACY-SECTOR-v1'
+          assert m['sector']['lba']==208689
+          assert len(m['sector']['pristine_sha256'])==64
+          assert len(m['sector']['required_sha256'])==64
+          assert m['sector']['pristine_sha256'] != m['sector']['required_sha256']
+          print('PASS_REQUIRED_SECTOR_MANIFEST')
+          PY
