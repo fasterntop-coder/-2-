@@ -9,28 +9,27 @@
 
 ## Current batch
 
-### Batch 171 — PASS LEGACY PBOOK RAW-SECTOR RECOVERY BRIDGE
+### Batch 172 — PASS COMPUTED MODE1/2352 PBOOK EDC/ECC GATE
 
-The historical Batch110 PBOOK sector contract can now be consumed without executing legacy code. Exact 2,352-byte sidecars are discovered by SHA-256, applied over an exact pristine Disc extraction, and accepted only after whole-asset and Disc-level gates pass.
+The Batch171 PBOOK recovery path now has an independent mathematical MODE1/2352 verifier. EDC, ECC-P and ECC-Q are computed directly from each sector instead of trusting historical PASS labels or SHA lineage alone.
 
-## Batch171 components
+## Batch172 components
 
-- `tools/recover_pbook_from_legacy_sector_package.py`
-- `START_B171_RECOVER_PBOOK_FROM_LEGACY_SECTORS.cmd`
-- `.github/workflows/batch171-pbook-legacy-recovery.yml`
-- `reports/BATCH171_REPORT.md`
+- `tools/mode1_2352.py`
+- `tools/audit_batch171_pbook_edc_ecc.py`
+- `.github/workflows/batch172-pbook-computed-edc-ecc.yml`
+- `reports/BATCH172_REPORT.md`
 
-## Batch171 recovery method
+## Batch172 acceptance contract
 
-- Parse the literal `M` map from `batch110_apply_to_original_bin.py` with `ast.literal_eval`.
-- Never import or execute the historical patcher.
+- Parse the literal Batch110 `M` sector map without importing or executing legacy code.
 - Require exactly 29 PBOOK sectors: BT 12, EC 5, RC 12.
-- Discover loose or ZIP-contained raw sectors only by registered patched-sector SHA-256.
 - Require pristine Disc 1 SHA-256 `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`.
-- Require per-asset source SHA-256 Expected Write.
-- Reconstruct PBOOK_BT, PBOOK_EC and PBOOK_RC and require their complete replacement SHA-256 values.
-- Optional Disc build writes only the 29 registered MODE1/2352 sectors.
-- Require exact changed-sector accounting and 3/3 whole-asset re-extraction.
+- Require every original raw sector SHA-256 as an Expected Write gate.
+- Require every patched raw sector SHA-256.
+- Independently compute and verify sync, mode, EDC, reserved bytes, ECC-P and ECC-Q for original and patched sectors.
+- Reject registered sectors whose original and patched bytes are identical.
+- Emit a per-sector JSON audit only after all 29 sectors pass.
 
 ## PBOOK exact targets
 
