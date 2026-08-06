@@ -3,77 +3,90 @@
 - Goal: CD1 Korean patch candidate 100%
 - Current exact battle/static local bytes: 39/58
 - Historical battle/static certificate: 58/58
+- Actual executable sparse package verified: 21/21 assets
 - Direct deterministic recovery target: 58/58 exact assets
 - Exact story/movie production scope: 37 assets
 
 ## Current batch
 
-### Batch 164 — PASS SK0502 EXACT PRODUCTION PROMOTION
+### Batch 165 — PASS REAL FILE LIBRARY PAYLOAD EXECUTION
 
-A fourth fully compiled story BIN has been promoted into the executable production scope.
+The recovery track has moved beyond hash-only manifests. A real pristine Disc 1 archive and a retained executable sparse raw-sector package were materialized from File Library, applied locally, independently audited, and re-extracted into exact whole assets.
 
-## Newly promoted asset
+## Exact real inputs
 
-### SK0502
+### Pristine Disc 1
 
-- ISO path: `SAKURA1/SK0502.BIN`
-- LBA: 45825
-- size: 107920
-- source SHA-256: `8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4`
-- replacement SHA-256: `0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc`
-- records reviewed: 518/518
-- translated records: 517
-- control records preserved: 1
-- FFFD special controls preserved: 15/15
-- font slots: 509 used + 15 preserved / 537
-- font slots remaining: 13
-- capacity overflow: 0
-- line overflow: 0
-- Japanese remaining: 0
-- reverse-decode mismatches: 0
-- validation: PASS_OFFLINE
+- archive: `015 Sakura Taisen 2 Disc 1 of 3 (J) (2)(1).zip`
+- archive size: `458,507,639`
+- archive SHA-256: `d848e44f6d959d4c80f180196eee64eb29c0fa2be77365716de91899997840a4`
+- extracted BIN size: `659,293,824`
+- extracted BIN SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
 
-## Previously promoted compiled story assets
+### Executable sparse package
 
-- `SAKURA1/SK0403.BIN`
-- `SAKURA1/SK0504.BIN`
-- `SAKURA1/SK0501.BIN`
+- package: `ST2R41_CD1_MASTER_BUILD_V29.zip`
+- package size: `29,017,199`
+- package SHA-256: `367bfb9e0f921124135c8c80c559c82c60a79de43573ca04a768abf6a251e47c`
+- apply contract: `ST2_CD1_MASTER_BUILD_V29/APPLY_STATIC21_PATCH.py`
+- sparse delta directory: `ST2_CD1_MASTER_BUILD_V29/STATIC21_RAW_SECTOR_SPARSE_DELTAS`
 
-## Production scope
+Package Python was not executed by the new recovery path. Literal metadata was parsed with AST and the sparse JSON deltas were independently applied.
 
-The active exact production composition is now:
+## Actual execution gates
+
+- source Disc size and SHA-256: PASS
+- changed raw sectors: `609`
+- original-sector SHA Expected Write: PASS 609/609
+- per-span Expected Write SHA: PASS
+- patched-sector SHA-256: PASS 609/609
+- original MODE1/2352 EDC/ECC: PASS 609/609
+- patched MODE1/2352 EDC/ECC: PASS 609/609
+- unregistered changed sectors: `0`
+- complete candidate Disc SHA-256: `8ceff2afb22e080469ad1adcc8f84f85d45c6b5e838df101beba70f00e3b0861`
+- whole-asset re-extraction: PASS 21/21
+
+## Recovered exact battle/static assets
+
+- final banks: `SYSTEM`, `SYS14`
+- B117 common banks: `SYS06`, `SYS28`, `SYS30`, `SYS32`, `SYS35`, `SYS38`, `SYS39`, `SYS40`, `SYS41`, `SYS42`, `SYS43`, `SYS44`, `SYS48`, `SYS50`
+- B116 banks: `SYS20`, `SYS47`, `STNSYS02`, `SYS21`, `STNSYS03`
+
+These 21 assets are part of the previously established 39/58 local byte scope. Batch165 does not inflate the physical count; it proves that retained real payloads can be safely executed and converted into reusable exact assets.
+
+## New Batch165 components
+
+- `tools/recover_assets_from_sparse_packages.py`
+- `tools/verify_sparse_package_mode1.py`
+- `manifests/BATCH165_REAL_LIBRARY_SPARSE_RECOVERY.json`
+- `START_B165_RECOVER_REAL_SPARSE_PACKAGE.cmd`
+- `.github/workflows/batch165-sparse-recovery.yml`
+- `reports/BATCH165_REPORT.md`
+
+## Story/movie production scope retained
 
 - earlier story MES and SKCM assets: 30
 - promoted compiled story BIN assets: 4
+  - `SAKURA1/SK0403.BIN`
+  - `SAKURA1/SK0504.BIN`
+  - `SAKURA1/SK0501.BIN`
+  - `SAKURA1/SK0502.BIN`
 - Korean-subtitled movie assets: 3
 - total exact production assets: 37
 - subtitle events: 33
 
-## New components
+## Mandatory safety policy
 
-- `manifests/SK0502_FINAL_EXACT_TARGET.json`
-- `START_B164_PRODUCTION_WITH_SK0403_SK0504_SK0501_SK0502.cmd`
-- `.github/workflows/batch164-production.yml`
-- `reports/BATCH164_REPORT.md`
+- no package Python execution;
+- no estimated or inferred game bytes;
+- exact source Disc SHA required;
+- exact original-sector and span-level Expected Write required;
+- exact patched-sector SHA required;
+- MODE1 EDC, ECC-P and ECC-Q required;
+- complete candidate Disc SHA required;
+- whole-asset re-extraction SHA required;
+- no game, font, asset, movie or full Disc bytes committed to GitHub.
 
-## Execution
+## Next production work
 
-The Batch164 launcher composes the 37-asset manifest, recursively scans loose files, ZIP archives and retained checkpoint BINs, and applies every exact recovered subset to a pristine Disc 1 candidate only after all mandatory gates pass.
-
-## Mandatory safety gates
-
-- pristine Disc 1 SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
-- per-asset source SHA-256 Expected Write
-- complete replacement size and SHA-256
-- MODE1/2352 EDC, ECC-P and ECC-Q regeneration
-- changed-sector accounting
-- exact re-extraction of every applied asset
-- no estimated or inferred payload bytes
-
-## Battle/static recovery status
-
-The repository knows and validates all 58 historical battle/static target hashes. Current physically reconstructed local byte scope remains 39/58 until the remaining exact payloads are recovered from loose files or checkpoint BIN/ZIP archives.
-
-## Active byte dependency
-
-A real Batch164 Disc candidate requires the exact pristine Disc 1 BIN and at least one exact replacement asset from the 37-asset production manifest. Full 37/37 production integration requires the exact B51/B52/B62/B64 assets plus the four promoted compiled story BINs matching their registered replacement SHA-256 values.
+Run the Batch165 recovery path over the remaining retained executable sparse packages and master builds, merge unique exact assets by complete SHA-256, and promote only assets outside the already proven 39/58 physical scope. Story/movie production remains active in parallel through the 37-asset Batch164 manifest.
