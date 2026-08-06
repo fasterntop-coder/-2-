@@ -1,0 +1,39 @@
+name: Batch202 CD1 manifest boundary audit
+
+on:
+  push:
+    paths:
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - "manifests/BATCH200_REAL_FULL58_RECOVERY.json"
+      - "tools/audit_cd1_manifest_boundaries.py"
+      - ".github/workflows/batch202-cd1-manifest-boundary-audit.yml"
+  pull_request:
+    paths:
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - "manifests/BATCH200_REAL_FULL58_RECOVERY.json"
+      - "tools/audit_cd1_manifest_boundaries.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile gate
+        run: python -m py_compile tools/audit_cd1_manifest_boundaries.py
+      - name: Audit exact manifest boundaries
+        run: |
+          python tools/audit_cd1_manifest_boundaries.py \
+            --report out/batch202_cd1_manifest_boundary_audit.json
+      - name: Upload manifest-only audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch202-cd1-manifest-boundary-audit
+          path: out/batch202_cd1_manifest_boundary_audit.json
+          if-no-files-found: error
