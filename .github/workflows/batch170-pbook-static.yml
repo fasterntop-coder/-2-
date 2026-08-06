@@ -1,0 +1,41 @@
+name: Batch170 PBOOK exact static closure
+
+on:
+  push:
+    paths:
+      - "manifests/PBOOK_3_EXACT_TARGETS.json"
+      - "tools/recover_integrate_production_assets.py"
+      - "START_B170_RECOVER_PBOOK_3_EXACT.cmd"
+      - ".github/workflows/batch170-pbook-static.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile recovery tool
+        run: python -m py_compile tools/recover_integrate_production_assets.py
+      - name: Validate PBOOK exact manifest
+        run: |
+          python tools/recover_integrate_production_assets.py validate manifests/PBOOK_3_EXACT_TARGETS.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('manifests/PBOOK_3_EXACT_TARGETS.json').read_text(encoding='utf-8'))
+          assert p['source_disc']['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
+          assert p['scope']['asset_count'] == 3
+          assert p['scope']['static_assets'] == 3
+          assets={a['iso_path']:a for a in p['assets']}
+          assert set(assets) == {'SAKURA1/PBOOK_BT.CG','SAKURA1/PBOOK_EC.CG','SAKURA1/PBOOK_RC.CG'}
+          assert sum(a['changed_sector_count'] for a in assets.values()) == 29
+          assert assets['SAKURA1/PBOOK_BT.CG']['replacement_sha256'] == '4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe'
+          assert assets['SAKURA1/PBOOK_EC.CG']['replacement_sha256'] == '378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5'
+          assert assets['SAKURA1/PBOOK_RC.CG']['replacement_sha256'] == 'c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907'
+          PY
