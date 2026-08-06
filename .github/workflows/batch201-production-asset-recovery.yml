@@ -1,0 +1,28 @@
+name: Batch201 production asset recovery
+
+on:
+  push:
+    paths:
+      - "tools/recover_production_assets_by_hash.py"
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - ".github/workflows/batch201-production-asset-recovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and self-test
+        run: |
+          python -m py_compile tools/recover_production_assets_by_hash.py
+          python tools/recover_production_assets_by_hash.py selftest
+      - name: Validate exact production manifest
+        run: |
+          python tools/recover_production_assets_by_hash.py validate-manifest manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json
