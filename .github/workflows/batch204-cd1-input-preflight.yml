@@ -1,0 +1,42 @@
+name: Batch204 CD1 exact input preflight
+
+on:
+  push:
+    paths:
+      - "tools/preflight_cd1_exact_write_inputs.py"
+      - "manifests/CD1_EXACT_WRITE_PLAN.json"
+      - ".github/workflows/batch204-cd1-input-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile preflight tool
+        run: python -m py_compile tools/preflight_cd1_exact_write_inputs.py
+      - name: Verify deterministic blocked result without payload bytes
+        run: |
+          set +e
+          python tools/preflight_cd1_exact_write_inputs.py . --output /tmp/BATCH204_PREFLIGHT_RESULT.json
+          rc=$?
+          set -e
+          test "$rc" -eq 2
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path('/tmp/BATCH204_PREFLIGHT_RESULT.json').read_text(encoding='utf-8'))
+          assert result['batch'] == 204
+          assert result['status'] == 'BLOCKED_EXACT_INPUTS_MISSING'
+          assert result['plan']['asset_count'] == 91
+          assert result['replacement_inputs']['resolved_count'] == 0
+          assert result['replacement_inputs']['missing_count'] == 91
+          assert result['safety']['estimated_payload_bytes'] == 0
+          assert result['safety']['disc_bytes_written'] == 0
+          PY
