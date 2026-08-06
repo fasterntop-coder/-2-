@@ -1,0 +1,50 @@
+name: Batch203 CD1 exact write plan
+
+on:
+  push:
+    paths:
+      - 'tools/build_cd1_exact_write_plan.py'
+      - 'tools/audit_cd1_manifest_boundaries.py'
+      - 'manifests/BATCH200_REAL_FULL58_RECOVERY.json'
+      - 'manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json'
+      - '.github/workflows/batch203-cd1-exact-write-plan.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-write-plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit manifest boundaries
+        run: python tools/audit_cd1_manifest_boundaries.py
+      - name: Build deterministic write plan twice
+        run: |
+          python tools/build_cd1_exact_write_plan.py --output /tmp/plan1.json > /tmp/hash1
+          python tools/build_cd1_exact_write_plan.py --output /tmp/plan2.json > /tmp/hash2
+          cmp /tmp/plan1.json /tmp/plan2.json
+          cmp /tmp/hash1 /tmp/hash2
+      - name: Verify exact scope and safety gates
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/plan1.json', encoding='utf-8'))
+          assert p['asset_count'] == 91
+          assert p['scope_counts'] == {'production': 33, 'static58': 58}
+          assert p['gates']['expected_write'] == 'REQUIRED'
+          assert p['gates']['mode1_edc_ecc'] == 'REQUIRED_AFTER_EACH_WRITE'
+          assert p['gates']['reextraction'] == 'REQUIRED_ALL_ASSETS'
+          assert p['gates']['estimated_or_generated_payload_bytes'] == 0
+          assert p['gates']['disc_bytes_written_by_this_tool'] == 0
+          assert len(p['operations']) == 91
+          print('PASS_BATCH203_EXACT_WRITE_PLAN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch203-cd1-exact-write-plan
+          path: /tmp/plan1.json
