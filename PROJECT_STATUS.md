@@ -5,26 +5,30 @@
 - Historical battle/static certificate: 58/58
 - Actual executable sparse package verified: 21/21 assets
 - Direct deterministic recovery target: 58/58 exact assets
-- Exact story/movie production scope: 38 assets
+- Exact story/movie production scope: 39 assets
 
 ## Current batch
 
-### Batch 166 — PASS SK0505 EXACT PRODUCTION PROMOTION
+### Batch 167 — PASS SK1304 EXACT PRODUCTION PROMOTION
 
-`SAKURA1/SK0505.BIN` has been promoted from the completed Batch61 dialogue QA set into the executable exact production scope.
+`SAKURA1/SK1304.BIN` has been promoted from the completed Batch61 dialogue QA set into the executable exact production scope.
 
 ## Newly promoted story asset
 
-### SK0505
+### SK1304
 
-- LBA: `45989`
-- size: `37,136`
-- source SHA-256: `c2f59f4711a55c722e166ab4114f0f1ac88db459e3312b94a2a916fc01aa23ce`
-- replacement SHA-256: `102709b60da35894b03d2f03716b8a14735f6711031b28fad7cc995cffe73104`
-- records reviewed: `86/86`
-- translated records: `85`
-- control records preserved: `1`
-- font slots: `209 used + 15 preserved / 237`
+- LBA: `46008`
+- size: `44,464`
+- source SHA-256: `591e9b23b035b3bb5786043318695c865d771d22aa8f53fbcc433359b04418f2`
+- replacement SHA-256: `ff6e9b29a6ba76f8ee706f55041a9f83bb6246f24061efbfd00d41d042a54722`
+- records reviewed: `149/149`
+- translated records: `146`
+- control records preserved: `3` (`47`, `113`, `126`)
+- FFFD records: `112`, `125`
+- confirmed translation reuse: `47`
+- new translations: `99`
+- font slots: `236 used + 15 preserved / 252`
+- remaining font slots: `1`
 - capacity overflow: `0`
 - line overflow: `0`
 - Japanese remaining: `0`
@@ -34,22 +38,23 @@
 ## Exact production scope
 
 - earlier story MES and SKCM assets: `30`
-- promoted compiled story BIN assets: `5`
+- promoted compiled story BIN assets: `6`
   - `SAKURA1/SK0403.BIN`
   - `SAKURA1/SK0504.BIN`
   - `SAKURA1/SK0501.BIN`
   - `SAKURA1/SK0502.BIN`
   - `SAKURA1/SK0505.BIN`
+  - `SAKURA1/SK1304.BIN`
 - Korean-subtitled movie assets: `3`
-- total exact production assets: `38`
+- total exact production assets: `39`
 - subtitle events: `33`
 
-## Batch166 components
+## Batch167 components
 
-- `manifests/SK0505_FINAL_EXACT_TARGET.json`
-- `START_B166_PRODUCTION_WITH_SK0403_SK0504_SK0501_SK0502_SK0505.cmd`
-- `.github/workflows/batch166-production.yml`
-- `reports/BATCH166_REPORT.md`
+- `manifests/SK1304_FINAL_EXACT_TARGET.json`
+- `START_B167_PRODUCTION_WITH_SK1304.cmd`
+- `.github/workflows/batch167-production.yml`
+- `reports/BATCH167_REPORT.md`
 
 ## Battle/static recovery baseline retained
 
@@ -78,4 +83,4 @@ The 21 recovered assets remain within the established 39/58 physical byte scope 
 
 ## Next work
 
-Continue executable sparse-package recovery for battle/static assets outside the proven 39/58 physical scope, while promoting the next fully compiled story BIN with exact source/replacement SHA evidence.
+Promote the completed Batch62 `SKCM02.BIN`, `SKCM04.BIN`, and `SKCM05.BIN` exact assets, then continue executable sparse-package recovery outside the proven 39/58 battle/static physical scope.
