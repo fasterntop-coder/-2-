@@ -1,0 +1,45 @@
+name: Batch172 PBOOK computed EDC ECC audit
+
+on:
+  push:
+    paths:
+      - "tools/mode1_2352.py"
+      - "tools/audit_batch171_pbook_edc_ecc.py"
+      - ".github/workflows/batch172-pbook-computed-edc-ecc.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile exact recovery tools
+        run: |
+          python -m py_compile tools/mode1_2352.py
+          python -m py_compile tools/recover_pbook_from_legacy_sector_package.py
+          python -m py_compile tools/audit_batch171_pbook_edc_ecc.py
+      - name: Run independent MODE1 2352 selftest
+        run: python tools/mode1_2352.py
+      - name: Verify corruption rejection
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, 'tools')
+          import mode1_2352 as m
+          sector=bytearray(2352)
+          sector[:12]=m.SYNC
+          sector[15]=1
+          sector[0x810:0x814]=m.edc(sector[:0x810]).to_bytes(4,'little')
+          sector[0x81c:0x8c8]=m._ecc_compute(sector[0x0c:0x81c],86,24,2,86)
+          sector[0x8c8:0x930]=m._ecc_compute(sector[0x0c:0x8c8],52,43,86,88)
+          assert m.verify_mode1_sector(bytes(sector))['valid']
+          for offset in (16,0x810,0x81c,0x8c8):
+              bad=bytearray(sector); bad[offset]^=1
+              assert not m.verify_mode1_sector(bytes(bad))['valid']
+          PY
