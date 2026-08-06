@@ -1,0 +1,31 @@
+name: Batch211 CD1 release certificate
+
+on:
+  push:
+    paths:
+      - 'tools/build_cd1_release_certificate.py'
+      - '.github/workflows/batch211-cd1-release-certificate.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-certificate-builder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile builder
+        run: python -m py_compile tools/build_cd1_release_certificate.py
+      - name: Confirm CLI contract
+        run: python tools/build_cd1_release_certificate.py --help
+      - name: Confirm fail-closed missing inputs
+        run: |
+          set +e
+          python tools/build_cd1_release_certificate.py \
+            --plan /nonexistent/plan.json \
+            --required-sector-result /nonexistent/sector.json \
+            --scope-audit-result /nonexistent/scope.json \
+            --candidate /nonexistent/candidate.bin
+          rc=$?
+          test "$rc" -ne 0
