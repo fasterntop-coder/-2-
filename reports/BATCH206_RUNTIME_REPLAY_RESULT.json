@@ -1,0 +1,31 @@
+{
+  "batch": 206,
+  "status": "PASS_BATCH60_CUMULATIVE_RUNTIME_REPLAY_EXACT",
+  "source": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "package": "Sakura_Taisen_2_Disc1_KR_CP9_Batch60_SK0306_Video05_patch_with_CUE_CMD.zip",
+  "output": {
+    "size": 659293824,
+    "sha256": "7f57743b947704963290e2e108485262c940690c4a3c8d60800a7ae3338f397d"
+  },
+  "expected_output_sha256": "7f57743b947704963290e2e108485262c940690c4a3c8d60800a7ae3338f397d",
+  "package_gates": {
+    "payload_ranges": 115,
+    "new_changed_sectors": 3448,
+    "cumulative_changed_sectors": 59051,
+    "edc_ecc": "59051/59051 PASS",
+    "independent_replay": "PASS"
+  },
+  "content": {
+    "SK0306_records": "78/78 roundtrip PASS",
+    "SK2MV_05_subtitle_events": 3,
+    "audio_packets": 110,
+    "audio_byte_identical": true
+  },
+  "distribution": {
+    "full_bin_retained": false,
+    "reason": "copyrighted full Disc output deleted after verification"
+  }
+}
