@@ -1,0 +1,32 @@
+{
+  "format": "ST2-CD1-LEGACY-SECTOR-SUPERSESSION-v1",
+  "status": "SUPERSEDED_BY_EXACT_ASSET",
+  "legacy_sector": {
+    "lba": 208689,
+    "legacy_required_sha256": "97f604cdb474ebf374e5d95d0d1b77c8fa06816b207f44cb71dfd6893f66b2b0",
+    "pristine_sha256": "3da035f48eb2cdd51b4248b5881b1fe2f30f0779234ce553eca7387286df0246",
+    "legacy_provenance": "Batch55"
+  },
+  "superseding_asset": {
+    "asset": "STNSYS03",
+    "lba": 208663,
+    "size": 82048,
+    "sector_extent": [208663, 208703],
+    "replacement_sha256": "70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d",
+    "source": "Static21 / Batch193 exact asset"
+  },
+  "runtime_proof": {
+    "batch221_candidate_sha256": "e335f7e821821191bc7ecf6776b489949dac4dfe0e1ccdea6f7df8217053c6d8",
+    "candidate_sector_sha256_at_lba208689": "3da035f48eb2cdd51b4248b5881b1fe2f30f0779234ce553eca7387286df0246",
+    "stnsys03_before_legacy_overwrite_sha256": "70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d",
+    "stnsys03_after_legacy_overwrite_sha256": "73227bd7592868ea8260abc3f53c65847d769c432d2ece73fb12a0f5c153839a",
+    "legacy_overwrite_breaks_exact_asset": true
+  },
+  "policy": {
+    "apply_legacy_sector_when_stnsys03_exact_present": false,
+    "priority": "EXACT_WHOLE_ASSET_EXTENT_OVER_LEGACY_RAW_SECTOR",
+    "expected_write": "VERIFY_PRISTINE_SECTOR_REMAINS_WHEN_EXACT_STNSYS03_IS_PRESENT",
+    "edc_ecc": "INHERIT_FROM_EXACT_STATIC21_SECTOR",
+    "estimated_bytes": 0
+  }
+}
