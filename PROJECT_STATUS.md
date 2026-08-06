@@ -4,13 +4,13 @@
 - Current exact battle/static local bytes: 39/58
 - Historical battle/static certificate: 58/58
 - Direct deterministic recovery target: 58/58 exact assets
-- Exact story/movie production scope: 35 assets
+- Exact story/movie production scope: 36 assets
 
 ## Current batch
 
-### Batch 162 — PASS SK0504 EXACT PRODUCTION PROMOTION
+### Batch 163 — PASS SK0501 EXACT PRODUCTION PROMOTION
 
-A second fully compiled story BIN has been promoted into the executable production scope.
+A third fully compiled story BIN has been promoted into the executable production scope.
 
 ## Exact promoted story assets
 
@@ -39,26 +39,45 @@ A second fully compiled story BIN has been promoted into the executable producti
 - reverse-decode mismatches: 0
 - validation: PASS_OFFLINE
 
+### SK0501
+
+- ISO path: `SAKURA1/SK0501.BIN`
+- LBA: 45704
+- size: 246748
+- source SHA-256: `8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f`
+- replacement SHA-256: `6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743`
+- records reviewed: 1559/1559
+- translated records: 1558
+- control records preserved: 1
+- FFFD special controls preserved: 15/15
+- font slots: 712 used + 15 preserved / 892
+- font slots remaining: 165
+- capacity overflow: 0
+- line overflow: 0
+- Japanese remaining: 0
+- reverse-decode mismatches: 0
+- validation: PASS_OFFLINE
+
 ## Production scope
 
 The active exact production composition is now:
 
 - earlier story MES and SKCM assets: 30
-- promoted compiled story BIN assets: 2
+- promoted compiled story BIN assets: 3
 - Korean-subtitled movie assets: 3
-- total exact production assets: 35
+- total exact production assets: 36
 - subtitle events: 33
 
 ## New components
 
-- `manifests/SK0504_FINAL_EXACT_TARGET.json`
-- `START_B162_PRODUCTION_WITH_SK0403_SK0504.cmd`
-- `.github/workflows/batch162-production.yml`
-- `reports/BATCH162_REPORT.md`
+- `manifests/SK0501_FINAL_EXACT_TARGET.json`
+- `START_B163_PRODUCTION_WITH_SK0403_SK0504_SK0501.cmd`
+- `.github/workflows/batch163-production.yml`
+- `reports/BATCH163_REPORT.md`
 
 ## Execution
 
-The Batch162 launcher composes the 35-asset manifest, recursively scans loose files, ZIP archives and retained checkpoint BINs, and applies every exact recovered subset to a pristine Disc 1 candidate only after all mandatory gates pass.
+The Batch163 launcher composes the 36-asset manifest, recursively scans loose files, ZIP archives and retained checkpoint BINs, and applies every exact recovered subset to a pristine Disc 1 candidate only after all mandatory gates pass.
 
 ## Mandatory safety gates
 
@@ -76,4 +95,4 @@ The repository knows and validates all 58 historical battle/static target hashes
 
 ## Active byte dependency
 
-A real Batch162 Disc candidate requires the exact pristine Disc 1 BIN and at least one exact replacement asset from the 35-asset production manifest. Full 35/35 production integration requires the exact B51/B52/B62/B64 assets plus `SK0403_KR_R41_FINAL.BIN` and `SK0504.BIN` matching their registered replacement SHA-256 values.
+A real Batch163 Disc candidate requires the exact pristine Disc 1 BIN and at least one exact replacement asset from the 36-asset production manifest. Full 36/36 production integration requires the exact B51/B52/B62/B64 assets plus `SK0403_KR_R41_FINAL.BIN`, `SK0504.BIN`, and `SK0501.BIN` matching their registered replacement SHA-256 values.
