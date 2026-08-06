@@ -1,0 +1,23 @@
+name: Batch212 CD1 release certificate verifier
+
+on:
+  push:
+    paths:
+      - 'tools/verify_cd1_release_certificate.py'
+      - '.github/workflows/batch212-release-certificate-verifier.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_cd1_release_certificate.py'
+      - '.github/workflows/batch212-release-certificate-verifier.yml'
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent certificate verifier self-test
+        run: python tools/verify_cd1_release_certificate.py --selftest
