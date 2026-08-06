@@ -1,0 +1,24 @@
+{
+  "format": "ST2-CD1-REQUIRED-LEGACY-SECTOR-v1",
+  "status": "REQUIRED_EXACT_PRESERVATION",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "sector": {
+    "lba": 208689,
+    "raw_size": 2352,
+    "pristine_sha256": "3da035f48eb2cdd51b4248b5881b1fe2f30f0779234ce553eca7387286df0246",
+    "required_sha256": "97f604cdb474ebf374e5d95d0d1b77c8fa06816b207f44cb71dfd6893f66b2b0",
+    "provenance": "Batch55 exact runtime replay",
+    "first_dropped_by": "Batch59",
+    "inherited_by": ["Batch60"]
+  },
+  "gates": {
+    "expected_write": "REQUIRED",
+    "mode1_2352_edc_ecc": "REQUIRED",
+    "post_build_sector_sha256": "REQUIRED",
+    "estimated_bytes": 0
+  }
+}
