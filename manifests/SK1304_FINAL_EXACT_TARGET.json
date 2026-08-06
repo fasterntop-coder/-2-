@@ -1,0 +1,51 @@
+{
+  "format": "st2-disc1-production-assets-v1",
+  "goal": "CD1_100_PERCENT",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352,
+    "user_offset": 16,
+    "user_size": 2048
+  },
+  "scope": {
+    "asset_count": 1,
+    "story_assets": 1,
+    "movie_assets": 0,
+    "subtitle_events": 0,
+    "groups": {
+      "R41_BATCH61_SK1304_FINAL": 1
+    }
+  },
+  "assets": [
+    {
+      "iso_path": "SAKURA1/SK1304.BIN",
+      "lba": 46008,
+      "size": 44464,
+      "source_sha256": "591e9b23b035b3bb5786043318695c865d771d22aa8f53fbcc433359b04418f2",
+      "replacement_sha256": "ff6e9b29a6ba76f8ee706f55041a9f83bb6246f24061efbfd00d41d042a54722",
+      "category": "story",
+      "group": "R41_BATCH61_SK1304_FINAL",
+      "record_count": 149,
+      "translated_text_records": 146,
+      "control_records": 3,
+      "control_record_indices": [47, 113, 126],
+      "fffd_record_indices": [112, 125],
+      "custom_control_translation_records": 13,
+      "confirmed_translation_reuse_records": 47,
+      "new_translation_records": 99,
+      "font_slots_used": 236,
+      "font_slots_total": 252,
+      "font_slots_preserved": 15,
+      "font_slots_remaining": 1,
+      "capacity_overflow": 0,
+      "line_overflow": 0,
+      "japanese_remaining_in_korean": 0,
+      "reverse_decode_mismatches": 0,
+      "header_and_pre_table_unchanged": true,
+      "pointer_table_unchanged": true,
+      "control_regions_unchanged": true,
+      "validation": "PASS_OFFLINE"
+    }
+  ]
+}
