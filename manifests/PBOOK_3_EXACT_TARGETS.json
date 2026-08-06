@@ -1,0 +1,57 @@
+{
+  "format": "st2-disc1-production-assets-v1",
+  "goal": "CD1_STATIC_58_OF_58",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352,
+    "user_offset": 16,
+    "user_size": 2048
+  },
+  "scope": {
+    "asset_count": 3,
+    "story_assets": 0,
+    "movie_assets": 0,
+    "subtitle_events": 0,
+    "static_assets": 3,
+    "groups": {
+      "B110_PBOOK_EXACT": 3
+    }
+  },
+  "assets": [
+    {
+      "iso_path": "SAKURA1/PBOOK_BT.CG",
+      "lba": 15609,
+      "size": 87712,
+      "source_sha256": "43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64",
+      "replacement_sha256": "4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe",
+      "category": "static",
+      "group": "B110_PBOOK_EXACT",
+      "changed_sector_count": 12,
+      "validation": "PASS_B110_EDC_ECC_REEXTRACTION",
+      "note": "Independent B110 reconstruction; not historical B82 byte identity"
+    },
+    {
+      "iso_path": "SAKURA1/PBOOK_EC.CG",
+      "lba": 15652,
+      "size": 87456,
+      "source_sha256": "3118ecdf03d7225f9666298b7c93b357c276bbdc27ce0b7020baca12003db3bc",
+      "replacement_sha256": "378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5",
+      "category": "static",
+      "group": "B110_PBOOK_EXACT",
+      "changed_sector_count": 5,
+      "validation": "PASS_B100_EDC_ECC_REEXTRACTION"
+    },
+    {
+      "iso_path": "SAKURA1/PBOOK_RC.CG",
+      "lba": 15695,
+      "size": 58208,
+      "source_sha256": "56f8607a5c3ab6c5ad79b1b3de2910822f3880fa7f2e3938b273a1dfa27bc201",
+      "replacement_sha256": "c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907",
+      "category": "static",
+      "group": "B110_PBOOK_EXACT",
+      "changed_sector_count": 12,
+      "validation": "PASS_B104_EDC_ECC_REEXTRACTION"
+    }
+  ]
+}
