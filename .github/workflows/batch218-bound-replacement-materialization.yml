@@ -1,0 +1,74 @@
+name: Batch218 bound replacement materialization
+
+on:
+  push:
+    paths:
+      - 'tools/materialize_cd1_bound_replacements.py'
+      - '.github/workflows/batch218-bound-replacement-materialization.yml'
+  pull_request:
+    paths:
+      - 'tools/materialize_cd1_bound_replacements.py'
+      - '.github/workflows/batch218-bound-replacement-materialization.yml'
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile verifier
+        run: python -m py_compile tools/materialize_cd1_bound_replacements.py
+      - name: Build synthetic 91-asset binding
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('tmp218')
+          src = root / 'inputs'
+          src.mkdir(parents=True)
+          rows = []
+          for i in range(91):
+              asset = f'ASSET{i:03d}'
+              data = (f'payload-{i:03d}-'.encode() * (i + 1))
+              path = src / f'{asset}.bin'
+              path.write_bytes(data)
+              digest = hashlib.sha256(data).hexdigest()
+              rows.append({
+                  'asset': asset, 'scope': 'synthetic', 'lba': 1000 + i,
+                  'size': len(data), 'replacement_sha256': digest,
+                  'source': {'kind': 'loose', 'path': f'inputs/{asset}.bin', 'size': len(data), 'sha256': digest},
+              })
+          binding = {'status': 'PASS_91_OF_91_REPLACEMENT_INPUT_BINDING', 'asset_count': 91, 'bindings': rows}
+          (root / 'binding.json').write_text(json.dumps(binding), encoding='utf-8')
+          PY
+      - name: Materialize and verify 91 payloads
+        run: |
+          python tools/materialize_cd1_bound_replacements.py \
+            --binding tmp218/binding.json \
+            --input-root tmp218 \
+            --stage-dir tmp218/stage \
+            --manifest tmp218/result.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('tmp218/result.json').read_text())
+          assert result['status'] == 'PASS_91_OF_91_BOUND_REPLACEMENTS_MATERIALIZED'
+          assert result['asset_count'] == 91
+          assert len(list(Path('tmp218/stage').glob('*.bin'))) == 91
+          assert all(x['status'] == 'PASS_RE_READ_SIZE_SHA256_POST_WRITE' for x in result['assets'])
+          PY
+      - name: Reject post-binding payload mutation
+        run: |
+          printf X >> tmp218/inputs/ASSET042.bin
+          if python tools/materialize_cd1_bound_replacements.py \
+            --binding tmp218/binding.json \
+            --input-root tmp218 \
+            --stage-dir tmp218/rejected-stage \
+            --manifest tmp218/rejected.json; then
+            echo 'mutated bound payload was incorrectly accepted' >&2
+            exit 1
+          fi
+          test ! -e tmp218/rejected-stage
