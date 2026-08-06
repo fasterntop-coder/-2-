@@ -1,0 +1,74 @@
+name: Batch167 SK1304 production
+
+on:
+  push:
+    paths:
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - "manifests/SK0403_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0504_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0501_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0502_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0505_FINAL_EXACT_TARGET.json"
+      - "manifests/SK1304_FINAL_EXACT_TARGET.json"
+      - "tools/compose_production_manifests.py"
+      - "tools/recover_integrate_production_assets.py"
+      - ".github/workflows/batch167-production.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile tools
+        run: |
+          python -m py_compile tools/compose_production_manifests.py
+          python -m py_compile tools/recover_integrate_production_assets.py
+      - name: Validate composer selftest
+        run: python tools/compose_production_manifests.py selftest
+      - name: Compose exact 39-asset production manifest
+        run: |
+          python tools/compose_production_manifests.py compose \
+            manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json \
+            manifests/SK0403_FINAL_EXACT_TARGET.json \
+            manifests/SK0504_FINAL_EXACT_TARGET.json \
+            manifests/SK0501_FINAL_EXACT_TARGET.json \
+            manifests/SK0502_FINAL_EXACT_TARGET.json \
+            manifests/SK0505_FINAL_EXACT_TARGET.json \
+            manifests/SK1304_FINAL_EXACT_TARGET.json \
+            --output /tmp/CD1_PRODUCTION_39_ASSETS.json
+      - name: Validate exact production contract
+        run: |
+          python tools/recover_integrate_production_assets.py validate /tmp/CD1_PRODUCTION_39_ASSETS.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('/tmp/CD1_PRODUCTION_39_ASSETS.json').read_text(encoding='utf-8'))
+          assert p['scope']['asset_count'] == 39
+          assert p['scope']['story_assets'] == 36
+          assert p['scope']['movie_assets'] == 3
+          assert p['scope']['subtitle_events'] == 33
+          assets={a['iso_path']:a for a in p['assets']}
+          a=assets['SAKURA1/SK1304.BIN']
+          assert a['lba'] == 46008
+          assert a['size'] == 44464
+          assert a['source_sha256'] == '591e9b23b035b3bb5786043318695c865d771d22aa8f53fbcc433359b04418f2'
+          assert a['replacement_sha256'] == 'ff6e9b29a6ba76f8ee706f55041a9f83bb6246f24061efbfd00d41d042a54722'
+          assert a['record_count'] == 149
+          assert a['translated_text_records'] == 146
+          assert a['control_records'] == 3
+          assert a['control_record_indices'] == [47, 113, 126]
+          assert a['fffd_record_indices'] == [112, 125]
+          assert a['font_slots_remaining'] == 1
+          assert a['capacity_overflow'] == 0
+          assert a['line_overflow'] == 0
+          assert a['japanese_remaining_in_korean'] == 0
+          assert a['reverse_decode_mismatches'] == 0
+          assert a['validation'] == 'PASS_OFFLINE'
+          PY
