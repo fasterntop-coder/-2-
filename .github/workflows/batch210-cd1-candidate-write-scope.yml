@@ -1,0 +1,29 @@
+name: Batch210 CD1 candidate write-scope gate
+
+on:
+  push:
+    paths:
+      - 'tools/audit_cd1_candidate_write_scope.py'
+      - 'tools/mode1_2352.py'
+      - 'manifests/CD1_EXACT_WRITE_PLAN.json'
+      - '.github/workflows/batch210-cd1-candidate-write-scope.yml'
+  pull_request:
+    paths:
+      - 'tools/audit_cd1_candidate_write_scope.py'
+      - 'tools/mode1_2352.py'
+      - 'manifests/CD1_EXACT_WRITE_PLAN.json'
+      - '.github/workflows/batch210-cd1-candidate-write-scope.yml'
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: MODE1/2352 primitive self-test
+        run: python tools/mode1_2352.py
+      - name: Candidate write-scope self-test
+        run: python tools/audit_cd1_candidate_write_scope.py --selftest
