@@ -1,0 +1,61 @@
+{
+  "batch": 220,
+  "status": "PASS_ACTUAL_STATIC21_CD1_CANDIDATE_BUILT_AND_VERIFIED",
+  "source": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "input_package": {
+    "name": "ST2R41_CD1_MASTER_BUILD_V29.zip",
+    "size": 29017199,
+    "sha256": "367bfb9e0f921124135c8c80c559c82c60a79de43573ca04a768abf6a251e47c"
+  },
+  "candidate": {
+    "size": 659293824,
+    "sha256": "8ceff2afb22e080469ad1adcc8f84f85d45c6b5e838df101beba70f00e3b0861",
+    "expected_sha256": "8ceff2afb22e080469ad1adcc8f84f85d45c6b5e838df101beba70f00e3b0861"
+  },
+  "changed_sectors": {
+    "count": 609,
+    "lba_list_sha256": "4a097f6b4741d83df02e3adb68167ec75139006b7e836b24229f264e01c60ce1",
+    "mode1_edc_ecc_pass": 609,
+    "mode1_edc_ecc_fail": 0
+  },
+  "reextraction": {
+    "count": 21,
+    "pass_count": 21,
+    "assets": [
+      {"asset":"SYSTEM","lba":208745,"size":80458,"candidate_sha256":"aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58","reextracted_sha256":"aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58","status":"PASS"},
+      {"asset":"SYS14","lba":207118,"size":82032,"candidate_sha256":"06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d","reextracted_sha256":"06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d","status":"PASS"},
+      {"asset":"SYS06","lba":206791,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS28","lba":207651,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS30","lba":207732,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS32","lba":207813,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS35","lba":207935,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS38","lba":208057,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS39","lba":208097,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS40","lba":208137,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS41","lba":208177,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS42","lba":208217,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS43","lba":208257,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS44","lba":208297,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS48","lba":208460,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS50","lba":208541,"size":80458,"candidate_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextracted_sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","status":"PASS"},
+      {"asset":"SYS47","lba":208420,"size":82048,"candidate_sha256":"af7f5521835e0ae27a8e0bc8209fcae2f4b8d9097ed65223f9e505838052efcb","reextracted_sha256":"af7f5521835e0ae27a8e0bc8209fcae2f4b8d9097ed65223f9e505838052efcb","status":"PASS"},
+      {"asset":"STNSYS02","lba":208826,"size":82048,"candidate_sha256":"b4e36460429b8e7188ab1bca585fd5f69752a2a655e973faf619c0895467de5d","reextracted_sha256":"b4e36460429b8e7188ab1bca585fd5f69752a2a655e973faf619c0895467de5d","status":"PASS"},
+      {"asset":"SYS20","lba":207326,"size":82048,"candidate_sha256":"cf1d3f210f07cd2b405846a4f7f5da24285f2849888ee7c6a2c2eeb82203c180","reextracted_sha256":"cf1d3f210f07cd2b405846a4f7f5da24285f2849888ee7c6a2c2eeb82203c180","status":"PASS"},
+      {"asset":"SYS21","lba":207367,"size":82048,"candidate_sha256":"456dc801d758c33dca6ec95559fd36d5bf33a03e2f69a78fddfb7fe0fb152130","reextracted_sha256":"456dc801d758c33dca6ec95559fd36d5bf33a03e2f69a78fddfb7fe0fb152130","status":"PASS"},
+      {"asset":"STNSYS03","lba":208867,"size":82048,"candidate_sha256":"70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d","reextracted_sha256":"70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d","status":"PASS"}
+    ]
+  },
+  "scope": {
+    "actual_integrated_static_assets": 21,
+    "historical_static_target": 58,
+    "story_movie_integrated": 0
+  },
+  "safety": {
+    "estimated_bytes": 0,
+    "full_disc_retained": false,
+    "full_disc_committed": false
+  }
+}
