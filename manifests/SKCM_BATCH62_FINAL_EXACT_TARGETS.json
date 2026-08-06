@@ -1,0 +1,91 @@
+{
+  "format": "st2-disc1-production-assets-v1",
+  "goal": "CD1_100_PERCENT",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352,
+    "user_offset": 16,
+    "user_size": 2048
+  },
+  "scope": {
+    "asset_count": 3,
+    "story_assets": 3,
+    "movie_assets": 0,
+    "subtitle_events": 0,
+    "groups": {
+      "R41_BATCH62_SKCM_FINAL": 3
+    }
+  },
+  "assets": [
+    {
+      "iso_path": "SAKURA1/SKCM02.BIN",
+      "lba": 46030,
+      "size": 129652,
+      "source_sha256": "ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af",
+      "replacement_sha256": "0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9",
+      "category": "story",
+      "group": "R41_BATCH62_SKCM_FINAL",
+      "record_count": 414,
+      "translated_text_records": 413,
+      "control_records": 1,
+      "control_record_indices": [336],
+      "complex_control_translated_records": 15,
+      "font_slots_used": 520,
+      "font_slots_total": 699,
+      "font_slots_preserved": 15,
+      "font_slots_remaining": 164,
+      "capacity_overflow": 0,
+      "line_overflow": 0,
+      "japanese_remaining_in_korean": 0,
+      "reverse_decode_mismatches": 0,
+      "validation": "PASS_OFFLINE"
+    },
+    {
+      "iso_path": "SAKURA1/SKCM04.BIN",
+      "lba": 46094,
+      "size": 91196,
+      "source_sha256": "59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29",
+      "replacement_sha256": "c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8",
+      "category": "story",
+      "group": "R41_BATCH62_SKCM_FINAL",
+      "record_count": 139,
+      "translated_text_records": 138,
+      "control_records": 1,
+      "control_record_indices": [138],
+      "complex_control_translated_records": 15,
+      "font_slots_used": 409,
+      "font_slots_total": 586,
+      "font_slots_preserved": 15,
+      "font_slots_remaining": 162,
+      "capacity_overflow": 0,
+      "line_overflow": 0,
+      "japanese_remaining_in_korean": 0,
+      "reverse_decode_mismatches": 0,
+      "validation": "PASS_OFFLINE"
+    },
+    {
+      "iso_path": "SAKURA1/SKCM05.BIN",
+      "lba": 46139,
+      "size": 91416,
+      "source_sha256": "99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257",
+      "replacement_sha256": "cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4",
+      "category": "story",
+      "group": "R41_BATCH62_SKCM_FINAL",
+      "record_count": 125,
+      "translated_text_records": 124,
+      "control_records": 1,
+      "control_record_indices": [120],
+      "complex_control_translated_records": 15,
+      "font_slots_used": 412,
+      "font_slots_total": 592,
+      "font_slots_preserved": 15,
+      "font_slots_remaining": 165,
+      "capacity_overflow": 0,
+      "line_overflow": 0,
+      "japanese_remaining_in_korean": 0,
+      "reverse_decode_mismatches": 0,
+      "validation": "PASS_OFFLINE"
+    }
+  ]
+}
