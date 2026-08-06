@@ -1,0 +1,31 @@
+name: Batch173 PBOOK checkpoint recovery
+
+on:
+  push:
+    paths:
+      - "tools/recover_pbook_sectors_from_checkpoint_bins.py"
+      - "tools/recover_pbook_from_legacy_sector_package.py"
+      - "tools/mode1_2352.py"
+      - ".github/workflows/batch173-pbook-checkpoint-recovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile recovery tools
+        run: |
+          python -m py_compile tools/recover_pbook_sectors_from_checkpoint_bins.py
+          python -m py_compile tools/recover_pbook_from_legacy_sector_package.py
+          python -m py_compile tools/mode1_2352.py
+      - name: Run MODE1 verifier selftest
+        run: python tools/mode1_2352.py
+      - name: Run checkpoint recovery selftest
+        run: python tools/recover_pbook_sectors_from_checkpoint_bins.py --selftest
