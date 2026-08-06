@@ -1,0 +1,26 @@
+name: Batch215 plan scope geometry binding
+
+on:
+  push:
+    paths:
+      - "tools/verify_cd1_plan_scope_geometry_binding.py"
+      - ".github/workflows/batch215-plan-scope-geometry-binding.yml"
+  pull_request:
+    paths:
+      - "tools/verify_cd1_plan_scope_geometry_binding.py"
+      - ".github/workflows/batch215-plan-scope-geometry-binding.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reject plan SHA, LBA, and size substitutions
+        run: python tools/verify_cd1_plan_scope_geometry_binding.py --selftest
