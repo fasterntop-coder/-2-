@@ -1,0 +1,22 @@
+name: Batch214 Plan Re-extraction Bijection
+
+on:
+  push:
+    paths:
+      - 'tools/verify_cd1_plan_reextraction_bijection.py'
+      - '.github/workflows/batch214-plan-reextraction-bijection.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_cd1_plan_reextraction_bijection.py'
+      - '.github/workflows/batch214-plan-reextraction-bijection.yml'
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python tools/verify_cd1_plan_reextraction_bijection.py --selftest
