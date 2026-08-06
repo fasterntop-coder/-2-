@@ -1,0 +1,21 @@
+{
+  "format": "ST2-CD1-NEXT-EXACT-ASSET-v1",
+  "status": "RECOVERY_TARGET_FIXED",
+  "asset": "SYS22",
+  "disc": 1,
+  "lba": 207446,
+  "size": 82030,
+  "source_sha256": "e28752f3b6d6e1fe4299adbbd444e6df4e2d1c617a1e3e6e7edf4ea897288d24",
+  "replacement_sha256": "d4bbcd86442f82295afd1631548a56030e0c791e74477b3ac96e31fb2db6c976",
+  "raw_sector_oracle_count": 29,
+  "translated_records": 225,
+  "control_records": 4,
+  "custom_characters": 369,
+  "gates": {
+    "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "sector_sha256": "REQUIRED_29_OF_29",
+    "asset_sha256": "REQUIRED",
+    "post_write_sha256": "REQUIRED",
+    "estimated_bytes": 0
+  }
+}
