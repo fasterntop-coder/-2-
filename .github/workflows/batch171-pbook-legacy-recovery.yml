@@ -1,0 +1,47 @@
+name: Batch171 PBOOK legacy recovery bridge
+
+on:
+  push:
+    paths:
+      - "tools/recover_pbook_from_legacy_sector_package.py"
+      - "START_B171_RECOVER_PBOOK_FROM_LEGACY_SECTORS.cmd"
+      - ".github/workflows/batch171-pbook-legacy-recovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile recovery bridge
+        run: python -m py_compile tools/recover_pbook_from_legacy_sector_package.py
+      - name: Validate immutable contract and safe AST parser
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          p=Path('tools/recover_pbook_from_legacy_sector_package.py')
+          spec=importlib.util.spec_from_file_location('b171', p)
+          m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          assert m.DISC_SIZE == 659293824
+          assert m.DISC_SHA == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
+          assert len(m.ASSETS) == 3
+          assert sum(x['size'] for x in m.ASSETS.values()) == 233376
+          assert {x['replacement_sha256'] for x in m.ASSETS.values()} == {
+            '4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe',
+            '378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5',
+            'c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907'}
+          entries={}
+          for i in range(29):
+            asset='PBOOK_BT' if i < 12 else ('PBOOK_EC' if i < 17 else 'PBOOK_RC')
+            entries[str(1000+i)]={'asset':asset,'file':f'x{i}.bin','original_sha256':'0'*64,'patched_sha256':f'{i:064x}'}
+          text='M='+repr(entries)+'\nraise RuntimeError("must never execute")\n'
+          parsed=m.parse_sector_map(text)
+          assert len(parsed)==29 and set(v['asset'] for v in parsed.values())==set(m.ASSETS)
+          PY
