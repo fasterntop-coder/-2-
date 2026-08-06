@@ -1,0 +1,35 @@
+name: Batch169 B137 exact package verification
+
+on:
+  push:
+    paths:
+      - "tools/verify_batch137_exact_package.py"
+      - ".github/workflows/batch169-b137-package.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-tool:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile verifier
+        run: python -m py_compile tools/verify_batch137_exact_package.py
+      - name: Verify locked constants
+        run: |
+          python - <<'PY'
+          import importlib.util
+          p='tools/verify_batch137_exact_package.py'
+          s=importlib.util.spec_from_file_location('b169',p)
+          m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+          assert m.EXPECTED_ZIP_SHA256 == '48adebfe83ced41f38f7960030fb4a9cd24592dac231f51b6f7ce632785ba88c'
+          assert m.EXPECTED_ZIP_SIZE == 3298916
+          assert m.EXPECTED_SECTORS == 1597
+          assert m.EXPECTED_ASSETS == 55
+          assert m.EXPECTED_OUTPUT_SHA256 == 'b5e8fc8b1a5798d03a3f3bd21a87ce66b742c64a1d8ce3ed3d7dc8db9763d518'
+          PY
