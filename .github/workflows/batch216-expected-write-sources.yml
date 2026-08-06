@@ -1,0 +1,28 @@
+name: Batch216 Expected Write Sources
+
+on:
+  push:
+    paths:
+      - "tools/verify_cd1_expected_write_sources.py"
+      - "tools/mode1_2352.py"
+      - ".github/workflows/batch216-expected-write-sources.yml"
+  pull_request:
+    paths:
+      - "tools/verify_cd1_expected_write_sources.py"
+      - "tools/mode1_2352.py"
+      - ".github/workflows/batch216-expected-write-sources.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify strict Expected Write source and geometry gates
+        run: python tools/verify_cd1_expected_write_sources.py --selftest
