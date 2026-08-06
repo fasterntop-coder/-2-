@@ -1,0 +1,59 @@
+{
+  "schema": "st2-real-library-sparse-recovery-v1",
+  "batch": 165,
+  "status": "PASS_REAL_LIBRARY_SPARSE_PATCH_APPLIED_AND_21_ASSETS_REEXTRACTED",
+  "source_archive": {
+    "name": "015 Sakura Taisen 2 Disc 1 of 3 (J) (2)(1).zip",
+    "size": 458507639,
+    "sha256": "d848e44f6d959d4c80f180196eee64eb29c0fa2be77365716de91899997840a4"
+  },
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "sparse_package": {
+    "name": "ST2R41_CD1_MASTER_BUILD_V29.zip",
+    "size": 29017199,
+    "sha256": "367bfb9e0f921124135c8c80c559c82c60a79de43573ca04a768abf6a251e47c",
+    "apply_contract": "ST2_CD1_MASTER_BUILD_V29/APPLY_STATIC21_PATCH.py",
+    "delta_directory": "ST2_CD1_MASTER_BUILD_V29/STATIC21_RAW_SECTOR_SPARSE_DELTAS"
+  },
+  "execution": {
+    "changed_raw_sectors": 609,
+    "candidate_disc_sha256": "8ceff2afb22e080469ad1adcc8f84f85d45c6b5e838df101beba70f00e3b0861",
+    "candidate_disc_target_match": true,
+    "asset_count": 21,
+    "reextraction": "PASS_21_OF_21",
+    "expected_write": "PASS_ALL_SPANS",
+    "patched_sector_sha256": "PASS_609_OF_609",
+    "unregistered_sector_changes": 0
+  },
+  "assets": [
+    {"name":"SYSTEM","filename":"SYSTEM.MES","lba":208745,"size":80458,"sha256":"aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58"},
+    {"name":"SYS14","filename":"SYS14.MES","lba":207118,"size":82032,"sha256":"06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d"},
+    {"name":"SYS06","filename":"SYS06.MES","lba":206791,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS28","filename":"SYS28.MES","lba":207651,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS30","filename":"SYS30.MES","lba":207732,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS32","filename":"SYS32.MES","lba":207813,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS35","filename":"SYS35.MES","lba":207935,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS38","filename":"SYS38.MES","lba":208057,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS39","filename":"SYS39.MES","lba":208097,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS40","filename":"SYS40.MES","lba":208137,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS41","filename":"SYS41.MES","lba":208177,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS42","filename":"SYS42.MES","lba":208217,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS43","filename":"SYS43.MES","lba":208257,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS44","filename":"SYS44.MES","lba":208297,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS48","filename":"SYS48.MES","lba":208460,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS50","filename":"SYS50.MES","lba":208541,"size":80458,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3"},
+    {"name":"SYS20","filename":"SYS20.MES","lba":207364,"size":82030,"sha256":"55e978d10d4f2ca010b77bec0fa205692923f5ab3b5a2c7deeb1c830e3cf5e8c"},
+    {"name":"SYS47","filename":"SYS47.MES","lba":208419,"size":82030,"sha256":"e14d7ad549447b6c9a63c0f2cb473f4e274959613e32992a77e547ad938a018b"},
+    {"name":"STNSYS02","filename":"STNSYS02.MES","lba":208622,"size":82032,"sha256":"60a7b0c2bfade055910353c945d60244d1e132fe9c306b709aba51b414511945"},
+    {"name":"SYS21","filename":"SYS21.MES","lba":207405,"size":82030,"sha256":"b8ab1c7429f7234968afdc7c62c8ebbcefb2ae772a4b5b8e1cc98a871b342d8c"},
+    {"name":"STNSYS03","filename":"STNSYS03.MES","lba":208663,"size":82048,"sha256":"70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d"}
+  ],
+  "distribution": {
+    "game_bytes_committed": false,
+    "recovered_assets_local_only": true,
+    "full_candidate_disc_deleted_or_local_only": true
+  }
+}
