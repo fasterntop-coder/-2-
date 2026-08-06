@@ -1,0 +1,41 @@
+name: Batch219 materialized stage seal
+
+on:
+  push:
+    paths:
+      - "tools/seal_cd1_materialized_stage.py"
+      - ".github/workflows/batch219-materialized-stage-seal.yml"
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check
+        run: python -m py_compile tools/seal_cd1_materialized_stage.py
+      - name: Build synthetic 91-asset fixture and verify tamper gates
+        run: |
+          python - <<'PY'
+          import hashlib,json,subprocess,tempfile
+          from pathlib import Path
+          root=Path(tempfile.mkdtemp()); stage=root/'stage'; stage.mkdir()
+          writes=[]; assets=[]
+          for i in range(91):
+              name=f'A{i:02d}'; data=(f'payload-{i}').encode(); sha=hashlib.sha256(data).hexdigest(); fn=f'{name}.bin'
+              (stage/fn).write_bytes(data)
+              writes.append({'asset':name,'lba':1000+i,'scope':'test','size':len(data),'replacement_sha256':sha})
+              assets.append({'asset':name,'lba':1000+i,'scope':'test','size':len(data),'sha256':sha,'staged_file':fn})
+          plan=root/'plan.json'; mat=root/'mat.json'; out=root/'seal.json'
+          plan.write_text(json.dumps({'writes':writes})); mat.write_text(json.dumps({'status':'PASS_91_OF_91_BOUND_REPLACEMENTS_MATERIALIZED','asset_count':91,'assets':assets}))
+          cmd=['python','tools/seal_cd1_materialized_stage.py','--materialized',str(mat),'--write-plan',str(plan),'--stage-dir',str(stage),'--output',str(out)]
+          subprocess.run(cmd,check=True)
+          result=json.loads(out.read_text()); assert result['asset_count']==91 and len(result['stage_tree_sha256'])==64
+          (stage/'EXTRA.bin').write_bytes(b'x')
+          assert subprocess.run(cmd).returncode != 0
+          (stage/'EXTRA.bin').unlink(); (stage/'A00.bin').write_bytes(b'tampered')
+          assert subprocess.run(cmd).returncode != 0
+          PY
