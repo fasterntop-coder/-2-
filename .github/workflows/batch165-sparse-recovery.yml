@@ -1,0 +1,53 @@
+name: Batch165 real sparse recovery
+
+on:
+  push:
+    paths:
+      - "tools/recover_assets_from_sparse_packages.py"
+      - "tools/verify_sparse_package_mode1.py"
+      - "manifests/BATCH165_REAL_LIBRARY_SPARSE_RECOVERY.json"
+      - "START_B165_RECOVER_REAL_SPARSE_PACKAGE.cmd"
+      - ".github/workflows/batch165-sparse-recovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile sparse recovery tools
+        run: |
+          python -m py_compile tools/recover_assets_from_sparse_packages.py
+          python -m py_compile tools/verify_sparse_package_mode1.py
+      - name: Validate synthetic sparse recovery roundtrip
+        run: python tools/recover_assets_from_sparse_packages.py selftest
+      - name: Validate independent MODE1 EDC ECC audit
+        run: python tools/verify_sparse_package_mode1.py selftest
+      - name: Validate real Library recovery proof contract
+        run: |
+          python -m json.tool manifests/BATCH165_REAL_LIBRARY_SPARSE_RECOVERY.json >/dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('manifests/BATCH165_REAL_LIBRARY_SPARSE_RECOVERY.json').read_text(encoding='utf-8'))
+          assert p['status'] == 'PASS_REAL_LIBRARY_SPARSE_PATCH_APPLIED_AND_21_ASSETS_REEXTRACTED'
+          assert p['source_archive']['sha256'] == 'd848e44f6d959d4c80f180196eee64eb29c0fa2be77365716de91899997840a4'
+          assert p['source_disc']['sha256'] == 'd6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106'
+          assert p['sparse_package']['sha256'] == '367bfb9e0f921124135c8c80c559c82c60a79de43573ca04a768abf6a251e47c'
+          assert p['execution']['candidate_disc_sha256'] == '8ceff2afb22e080469ad1adcc8f84f85d45c6b5e838df101beba70f00e3b0861'
+          assert p['execution']['changed_raw_sectors'] == 609
+          assert p['execution']['asset_count'] == 21
+          assert p['execution']['reextraction'] == 'PASS_21_OF_21'
+          assets = p['assets']
+          assert len(assets) == 21
+          assert len({a['name'] for a in assets}) == 21
+          assert len({a['lba'] for a in assets}) == 21
+          assert {'SYSTEM','SYS14','SYS20','SYS47','STNSYS02','SYS21','STNSYS03'} <= {a['name'] for a in assets}
+          assert all(len(a['sha256']) == 64 for a in assets)
+          PY
