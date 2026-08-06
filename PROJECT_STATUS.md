@@ -5,56 +5,77 @@
 - Historical battle/static certificate: 58/58
 - Actual executable sparse package verified: 21/21 assets
 - Direct deterministic recovery target: 58/58 exact assets
-- Exact story/movie production scope: 39 assets
+- Exact story/movie production scope: 42 assets
 
 ## Current batch
 
-### Batch 167 — PASS SK1304 EXACT PRODUCTION PROMOTION
+### Batch 168 — PASS BATCH62 SKCM EXACT PRODUCTION PROMOTION
 
-`SAKURA1/SK1304.BIN` has been promoted from the completed Batch61 dialogue QA set into the executable exact production scope.
+The three completed Batch62 character/auxiliary story assets have been promoted into the executable exact production scope.
 
-## Newly promoted story asset
+## Newly promoted story assets
 
-### SK1304
+### SKCM02
 
-- LBA: `46008`
-- size: `44,464`
-- source SHA-256: `591e9b23b035b3bb5786043318695c865d771d22aa8f53fbcc433359b04418f2`
-- replacement SHA-256: `ff6e9b29a6ba76f8ee706f55041a9f83bb6246f24061efbfd00d41d042a54722`
-- records reviewed: `149/149`
-- translated records: `146`
-- control records preserved: `3` (`47`, `113`, `126`)
-- FFFD records: `112`, `125`
-- confirmed translation reuse: `47`
-- new translations: `99`
-- font slots: `236 used + 15 preserved / 252`
-- remaining font slots: `1`
+- ISO path: `SAKURA1/SKCM02.BIN`
+- LBA: `46030`
+- size: `129652`
+- source SHA-256: `ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af`
+- replacement SHA-256: `0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9`
+- records: `414`
+- translated: `413`
+- control preserved: `1` (`336`)
+
+### SKCM04
+
+- ISO path: `SAKURA1/SKCM04.BIN`
+- LBA: `46094`
+- size: `91196`
+- source SHA-256: `59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29`
+- replacement SHA-256: `c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8`
+- records: `139`
+- translated: `138`
+- control preserved: `1` (`138`)
+
+### SKCM05
+
+- ISO path: `SAKURA1/SKCM05.BIN`
+- LBA: `46139`
+- size: `91416`
+- source SHA-256: `99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257`
+- replacement SHA-256: `cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4`
+- records: `125`
+- translated: `124`
+- control preserved: `1` (`120`)
+
+## Batch62 closure
+
+- files processed: `3/3`
+- records reviewed: `678/678`
+- translated records: `675`
+- control records preserved: `3`
+- complex-control translated records: `45`
 - capacity overflow: `0`
 - line overflow: `0`
 - Japanese remaining: `0`
 - reverse-decode mismatches: `0`
-- validation: `PASS_OFFLINE`
+- source inventory completion: `100%`
+- hardware confirmation: pending
 
 ## Exact production scope
 
-- earlier story MES and SKCM assets: `30`
-- promoted compiled story BIN assets: `6`
-  - `SAKURA1/SK0403.BIN`
-  - `SAKURA1/SK0504.BIN`
-  - `SAKURA1/SK0501.BIN`
-  - `SAKURA1/SK0502.BIN`
-  - `SAKURA1/SK0505.BIN`
-  - `SAKURA1/SK1304.BIN`
+- earlier story MES assets: `30`
+- promoted compiled story BIN assets: `9`
 - Korean-subtitled movie assets: `3`
-- total exact production assets: `39`
+- total exact production assets: `42`
 - subtitle events: `33`
 
-## Batch167 components
+## Batch168 components
 
-- `manifests/SK1304_FINAL_EXACT_TARGET.json`
-- `START_B167_PRODUCTION_WITH_SK1304.cmd`
-- `.github/workflows/batch167-production.yml`
-- `reports/BATCH167_REPORT.md`
+- `manifests/SKCM_BATCH62_FINAL_EXACT_TARGETS.json`
+- `START_B168_PRODUCTION_WITH_BATCH62_SKCM.cmd`
+- `.github/workflows/batch168-production.yml`
+- `reports/BATCH168_REPORT.md`
 
 ## Battle/static recovery baseline retained
 
@@ -83,4 +104,4 @@ The 21 recovered assets remain within the established 39/58 physical byte scope 
 
 ## Next work
 
-Promote the completed Batch62 `SKCM02.BIN`, `SKCM04.BIN`, and `SKCM05.BIN` exact assets, then continue executable sparse-package recovery outside the proven 39/58 battle/static physical scope.
+Continue executable sparse-package recovery outside the proven 39/58 battle/static physical scope, prioritizing exact payload recovery for the remaining 19 static assets and retaining the 58/58 historical SHA certificate as the acceptance gate.
