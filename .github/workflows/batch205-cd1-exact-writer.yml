@@ -1,0 +1,40 @@
+name: Batch205 CD1 exact writer
+
+on:
+  push:
+    paths:
+      - "tools/apply_cd1_exact_write_plan.py"
+      - "tools/mode1_2352.py"
+      - ".github/workflows/batch205-cd1-exact-writer.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile exact writer
+        run: python -m py_compile tools/apply_cd1_exact_write_plan.py tools/mode1_2352.py
+      - name: MODE1/2352 independent selftest
+        run: python tools/mode1_2352.py
+      - name: Verify immutable safety contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('tools/apply_cd1_exact_write_plan.py').read_text(encoding='utf-8')
+          required=[
+              'Expected Write source mismatch',
+              'replacement SHA mismatch',
+              're-extraction mismatch',
+              'PASS_91_OF_91_EXACT_WRITE_EDC_ECC_REEXTRACTION',
+              'estimated_payload_bytes',
+          ]
+          for marker in required:
+              assert marker in text, marker
+          PY
