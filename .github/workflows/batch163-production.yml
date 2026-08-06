@@ -1,0 +1,64 @@
+name: Batch163 SK0403 SK0504 SK0501 production
+
+on:
+  push:
+    paths:
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - "manifests/SK0403_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0504_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0501_FINAL_EXACT_TARGET.json"
+      - "tools/compose_production_manifests.py"
+      - "tools/recover_integrate_production_assets.py"
+      - ".github/workflows/batch163-production.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile tools
+        run: |
+          python -m py_compile tools/compose_production_manifests.py
+          python -m py_compile tools/recover_integrate_production_assets.py
+      - name: Validate composer selftest
+        run: python tools/compose_production_manifests.py selftest
+      - name: Compose exact 36-asset production manifest
+        run: |
+          python tools/compose_production_manifests.py compose \
+            manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json \
+            manifests/SK0403_FINAL_EXACT_TARGET.json \
+            manifests/SK0504_FINAL_EXACT_TARGET.json \
+            manifests/SK0501_FINAL_EXACT_TARGET.json \
+            --output /tmp/CD1_PRODUCTION_36_ASSETS.json
+      - name: Validate exact production contract
+        run: |
+          python tools/recover_integrate_production_assets.py validate /tmp/CD1_PRODUCTION_36_ASSETS.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('/tmp/CD1_PRODUCTION_36_ASSETS.json').read_text(encoding='utf-8'))
+          assert p['scope']['asset_count'] == 36
+          assert p['scope']['story_assets'] == 33
+          assert p['scope']['movie_assets'] == 3
+          assert p['scope']['subtitle_events'] == 33
+          assets={a['iso_path']:a for a in p['assets']}
+          assert set(['SAKURA1/SK0403.BIN','SAKURA1/SK0504.BIN','SAKURA1/SK0501.BIN']) <= set(assets)
+          a=assets['SAKURA1/SK0501.BIN']
+          assert a['lba'] == 45704
+          assert a['size'] == 246748
+          assert a['source_sha256'] == '8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f'
+          assert a['replacement_sha256'] == '6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743'
+          assert a['record_count'] == 1559
+          assert a['translated_text_records'] == 1558
+          assert a['control_records'] == 1
+          assert a['special_control_tokens_preserved'] == 15
+          assert a['reverse_decode_mismatches'] == 0
+          assert a['validation'] == 'PASS_OFFLINE'
+          PY
