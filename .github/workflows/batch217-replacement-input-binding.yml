@@ -1,0 +1,45 @@
+name: Batch217 replacement input binding
+
+on:
+  push:
+    paths:
+      - "tools/verify_cd1_replacement_input_binding.py"
+      - ".github/workflows/batch217-replacement-input-binding.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile verifier
+        run: python -m py_compile tools/verify_cd1_replacement_input_binding.py
+      - name: Regression self-test
+        run: |
+          python - <<'PY'
+          import json, tempfile, subprocess
+          from pathlib import Path
+          with tempfile.TemporaryDirectory() as td:
+              root=Path(td)
+              ops=[]; resolved=[]
+              for i in range(91):
+                  asset=f'A{i:02d}.BIN'; digest=f'{i+1:064x}'[-64:]
+                  ops.append({'scope':'production','asset':asset,'lba':1000+i,'size':16,'replacement_sha256':digest})
+                  resolved.append({'scope':'production','asset':asset,'lba':1000+i,'size':16,'replacement_sha256':digest,'source':{'kind':'loose','path':f'/x/{asset}','size':16,'sha256':digest}})
+              plan={'format':'ST2-CD1-EXACT-WRITE-PLAN-v1','asset_count':91,'operations':ops}
+              pre={'status':'PASS_ALL_91_EXACT_INPUTS_READY','replacement_inputs':{'resolved':resolved,'missing':[]}}
+              p=root/'plan.json'; q=root/'pre.json'; o=root/'out.json'
+              p.write_text(json.dumps(plan)); q.write_text(json.dumps(pre))
+              cmd=['python','tools/verify_cd1_replacement_input_binding.py','--plan',str(p),'--preflight',str(q),'--output',str(o)]
+              subprocess.run(cmd,check=True)
+              assert json.loads(o.read_text())['asset_count']==91
+              bad=json.loads(q.read_text()); bad['replacement_inputs']['resolved'][0]['source']['sha256']='0'*64
+              q.write_text(json.dumps(bad))
+              assert subprocess.run(cmd).returncode != 0
+          PY
