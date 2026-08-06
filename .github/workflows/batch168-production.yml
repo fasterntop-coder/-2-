@@ -1,0 +1,81 @@
+name: Batch168 Batch62 SKCM production
+
+on:
+  push:
+    paths:
+      - "manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json"
+      - "manifests/SK0403_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0504_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0501_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0502_FINAL_EXACT_TARGET.json"
+      - "manifests/SK0505_FINAL_EXACT_TARGET.json"
+      - "manifests/SK1304_FINAL_EXACT_TARGET.json"
+      - "manifests/SKCM_BATCH62_FINAL_EXACT_TARGETS.json"
+      - "tools/compose_production_manifests.py"
+      - "tools/recover_integrate_production_assets.py"
+      - ".github/workflows/batch168-production.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile tools
+        run: |
+          python -m py_compile tools/compose_production_manifests.py
+          python -m py_compile tools/recover_integrate_production_assets.py
+      - name: Validate composer selftest
+        run: python tools/compose_production_manifests.py selftest
+      - name: Compose exact 42-asset production manifest
+        run: |
+          python tools/compose_production_manifests.py compose \
+            manifests/CD1_PRODUCTION_STORY_MOVIE_TARGETS.json \
+            manifests/SK0403_FINAL_EXACT_TARGET.json \
+            manifests/SK0504_FINAL_EXACT_TARGET.json \
+            manifests/SK0501_FINAL_EXACT_TARGET.json \
+            manifests/SK0502_FINAL_EXACT_TARGET.json \
+            manifests/SK0505_FINAL_EXACT_TARGET.json \
+            manifests/SK1304_FINAL_EXACT_TARGET.json \
+            manifests/SKCM_BATCH62_FINAL_EXACT_TARGETS.json \
+            --output /tmp/CD1_PRODUCTION_42_ASSETS.json
+      - name: Validate exact production contract
+        run: |
+          python tools/recover_integrate_production_assets.py validate /tmp/CD1_PRODUCTION_42_ASSETS.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('/tmp/CD1_PRODUCTION_42_ASSETS.json').read_text(encoding='utf-8'))
+          assert p['scope']['asset_count'] == 42
+          assert p['scope']['story_assets'] == 39
+          assert p['scope']['movie_assets'] == 3
+          assert p['scope']['subtitle_events'] == 33
+          assets={a['iso_path']:a for a in p['assets']}
+          expected={
+            'SAKURA1/SKCM02.BIN':(46030,129652,'ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af','0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9',414,413,[336]),
+            'SAKURA1/SKCM04.BIN':(46094,91196,'59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29','c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8',139,138,[138]),
+            'SAKURA1/SKCM05.BIN':(46139,91416,'99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257','cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4',125,124,[120]),
+          }
+          for path,(lba,size,src,dst,records,translated,controls) in expected.items():
+              a=assets[path]
+              assert a['lba'] == lba
+              assert a['size'] == size
+              assert a['source_sha256'] == src
+              assert a['replacement_sha256'] == dst
+              assert a['record_count'] == records
+              assert a['translated_text_records'] == translated
+              assert a['control_records'] == 1
+              assert a['control_record_indices'] == controls
+              assert a['complex_control_translated_records'] == 15
+              assert a['capacity_overflow'] == 0
+              assert a['line_overflow'] == 0
+              assert a['japanese_remaining_in_korean'] == 0
+              assert a['reverse_decode_mismatches'] == 0
+              assert a['validation'] == 'PASS_OFFLINE'
+          PY
