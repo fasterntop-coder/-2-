@@ -101,7 +101,7 @@ def main() -> int:
 
     target_parent = args.stage_dir.parent.resolve()
     target_parent.mkdir(parents=True, exist_ok=True)
-    tmp = Path(tempfile.mkdtemp(prefix=".cd1-bound-", dir=target_parent))
+    tmp: Path | None = Path(tempfile.mkdtemp(prefix=".cd1-bound-", dir=target_parent))
     rows: list[dict[str, Any]] = []
     seen: set[str] = set()
     try:
@@ -129,6 +129,7 @@ def main() -> int:
                     f"sha256 {actual_sha}/{expected_sha}"
                 )
 
+            assert tmp is not None
             out_name = f"{asset}.bin"
             out_path = tmp / out_name
             out_path.write_bytes(data)
@@ -150,10 +151,11 @@ def main() -> int:
             raise ValueError("materialized asset set is not exactly 91")
         if args.stage_dir.exists():
             shutil.rmtree(args.stage_dir)
+        assert tmp is not None
         os.replace(tmp, args.stage_dir)
-        tmp = Path()
+        tmp = None
     finally:
-        if tmp and tmp.exists():
+        if tmp is not None and tmp.exists():
             shutil.rmtree(tmp, ignore_errors=True)
 
     result = {
