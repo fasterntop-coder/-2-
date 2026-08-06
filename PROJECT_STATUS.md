@@ -1,82 +1,70 @@
 # Sakura Taisen 2 Disc 1 Patch Project
 
 - Goal: CD1 Korean patch candidate 100%
-- Exact battle-bank package scope: 55/55
-- Exact PBOOK recovery contract: 3/3
-- Deterministic battle/static target: 58/58
+- Exact battle-bank physical recovery: 55/55
+- Exact PBOOK physical recovery: 3/3
+- Exact battle/static physical recovery: 58/58
 - Historical battle/static certificate: 58/58
 - Exact story/movie production scope: 42 assets
+- Authoritative workflow: one `main` lineage only; parallel workflows forbidden
 
 ## Current batch
 
-### Batch 173 — PASS CHECKPOINT BIN PBOOK RECOVERY PATH
+### Batch 200 — PASS REAL FULL58 RECOVERY CLOSURE
 
-The PBOOK recovery path can now recover the exact 29 registered raw sectors directly from retained full Disc checkpoint BINs or BIN entries inside ZIP archives. Loose raw-sector sidecars are no longer the only recovery source.
+The complete battle/static scope has now been physically reconstructed from retained real package bytes and a pristine Disc 1 parent. This is no longer a hash-only or future recovery contract.
 
-## Batch173 components
+## Real recovery inputs
 
-- `tools/recover_pbook_sectors_from_checkpoint_bins.py`
-- `START_B173_RECOVER_PBOOK_FROM_CHECKPOINT_BINS.cmd`
-- `.github/workflows/batch173-pbook-checkpoint-recovery.yml`
-- `reports/BATCH173_REPORT.md`
+- pristine Disc 1 archive: `015 Sakura Taisen 2 Disc 1 of 3 (J) (2)(1).zip`
+  - size: `458,507,639`
+  - SHA-256: `d848e44f6d959d4c80f180196eee64eb29c0fa2be77365716de91899997840a4`
+- pristine BIN:
+  - size: `659,293,824`
+  - SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
+- Batch137 55-bank package:
+  - SHA-256: `48adebfe83ced41f38f7960030fb4a9cd24592dac231f51b6f7ce632785ba88c`
+- Batch110 PBOOK package:
+  - SHA-256: `ed262a52b32c9a326edff85c1d7191ff7b46e3379771d973af536cf06c3103a3`
 
-## Batch173 acceptance contract
+## Batch200 verified result
 
-- Parse the literal Batch110 sector map through AST without importing or executing legacy code.
-- Require exactly 29 PBOOK sectors: BT 12, EC 5, RC 12.
-- Scan only 659,293,824-byte loose BINs and equal-sized BIN entries inside ZIP archives.
-- Accept each target LBA only when its complete 2,352-byte raw-sector SHA-256 equals the registered patched-sector oracle.
-- Independently verify MODE1 sync, mode, EDC, reserved bytes, ECC-P and ECC-Q.
-- Require pristine Disc 1 SHA-256 `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106` before reconstruction.
-- Require source whole-asset Expected Write SHA-256 and replacement whole-asset SHA-256.
-- Optional Disc build requires exact changed-sector accounting and 3/3 re-extraction.
+- exact battle banks: `55/55`
+- exact PBOOK assets: `3/3`
+- exact battle/static assets: `58/58`
+- changed raw sectors: `1,626`
+- unregistered changed sectors: `0`
+- sector payload mismatches: `0`
+- source-sector Expected Write: PASS `1,626/1,626`
+- original MODE1 EDC/ECC: PASS `1,626/1,626`
+- patched MODE1 EDC/ECC: PASS `1,626/1,626`
+- whole-asset re-extraction: PASS `58/58`
+- final Disc SHA-256: `75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20`
 
-## PBOOK exact targets
+## Batch200 components
 
-### PBOOK_BT.CG
+- `tools/recover_real_full58.py`
+- `manifests/BATCH200_REAL_FULL58_RECOVERY.json`
+- `manifests/SINGLE_LINEAGE_LOCK.json`
+- `START_B200_RECOVER_REAL_FULL58.cmd`
+- `.github/workflows/batch200-full58-recovery.yml`
+- `reports/BATCH200_REPORT.md`
 
-- LBA: `15609`
-- size: `87,712`
-- source SHA-256: `43c64ed80b88e798d8d0162ba37660467c7da77af2b5e1928f2c5dee82c56b64`
-- replacement SHA-256: `4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe`
-- changed sectors: `12`
+## Single-lineage rule
 
-### PBOOK_EC.CG
-
-- LBA: `15652`
-- size: `87,456`
-- source SHA-256: `3118ecdf03d7225f9666298b7c93b357c276bbdc27ce0b7020baca12003db3bc`
-- replacement SHA-256: `378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5`
-- changed sectors: `5`
-
-### PBOOK_RC.CG
-
-- LBA: `15695`
-- size: `58,208`
-- source SHA-256: `56f8607a5c3ab6c5ad79b1b3de2910822f3880fa7f2e3938b273a1dfa27bc201`
-- replacement SHA-256: `c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907`
-- changed sectors: `12`
-
-## Static closure state
-
-The deterministic static definition remains 58/58:
-
-- Batch137 exact battle banks: 55/55
-- PBOOK exact targets: 3/3
-
-A physical combined 58-asset candidate requires:
-
-- pristine Disc 1 BIN, size `659,293,824`, exact SHA-256 above;
-- `ST2R41_BATCH137_FIFTYFIVE_ASSET_EXACT_RECOVERY_PATCH.zip`, SHA-256 `48adebfe83ced41f38f7960030fb4a9cd24592dac231f51b6f7ce632785ba88c`;
-- either all 29 exact Batch110 PBOOK patched raw-sector sidecars, the three complete PBOOK replacement payloads, or retained checkpoint BINs containing the registered 29 patched sectors.
+All future work must fetch the latest `main`, read `PROJECT_STATUS.md` and `manifests/SINGLE_LINEAGE_LOCK.json`, then perform exactly one next task on this lineage. Parallel batches or independent chat-driven writes are forbidden.
 
 ## Mandatory safety policy
 
 - no estimated or inferred payload bytes;
 - exact pristine Disc SHA-256 required;
-- exact source SHA-256 Expected Write required;
-- exact replacement size and SHA-256 required;
-- MODE1 EDC, ECC-P and ECC-Q integrity required;
+- exact source-sector Expected Write SHA-256 required;
+- exact package and patched-sector SHA-256 required;
+- MODE1 EDC, ECC-P and ECC-Q required;
 - changed-sector accounting required;
 - exact whole-asset re-extraction required;
 - no copyrighted game, font, asset, movie or full Disc bytes committed to GitHub.
+
+## Next production priority
+
+Battle/static recovery is closed at 58/58. Continue the single CD1 production lineage by integrating the already promoted 42 story/movie assets with this exact static baseline, then advance only newly completed story or movie assets toward the CD1 100% candidate.

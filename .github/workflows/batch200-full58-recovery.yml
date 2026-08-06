@@ -1,0 +1,46 @@
+name: Batch200 real full58 recovery
+
+on:
+  push:
+    paths:
+      - "tools/recover_real_full58.py"
+      - "manifests/BATCH200_REAL_FULL58_RECOVERY.json"
+      - "manifests/SINGLE_LINEAGE_LOCK.json"
+      - "START_B200_RECOVER_REAL_FULL58.cmd"
+      - "reports/BATCH200_REPORT.md"
+      - ".github/workflows/batch200-full58-recovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and primitive self-test
+        run: |
+          python -m py_compile tools/recover_real_full58.py
+          python tools/recover_real_full58.py selftest
+      - name: Validate real 58-asset certificate
+        run: |
+          python tools/recover_real_full58.py validate-manifest manifests/BATCH200_REAL_FULL58_RECOVERY.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('manifests/BATCH200_REAL_FULL58_RECOVERY.json').read_text())
+          lock=json.loads(Path('manifests/SINGLE_LINEAGE_LOCK.json').read_text())
+          assert m['status']=='PASS_REAL_FULL58_EXACT_RECOVERY'
+          assert m['changed_raw_sectors']==1626
+          assert m['unregistered_changed_sectors']==0
+          assert m['original_mode1_edc_ecc_pass']==1626
+          assert m['patched_mode1_edc_ecc_pass']==1626
+          assert m['reextraction']=='58/58 PASS'
+          assert len(m['assets'])==58 and len({a['name'] for a in m['assets']})==58
+          assert lock['active_batch']==200
+          assert lock['parallel_workflows_allowed'] is False
+          PY

@@ -1,0 +1,10 @@
+{
+  "format": "ST2-CD1-SINGLE-LINEAGE-LOCK-v1",
+  "authoritative_branch": "main",
+  "authoritative_status_file": "PROJECT_STATUS.md",
+  "active_batch": 200,
+  "parallel_workflows_allowed": false,
+  "required_start_rule": "Fetch latest main, verify PROJECT_STATUS.md and this lock, then perform exactly one next task on the same lineage.",
+  "required_finish_rule": "Commit only after SHA-256, Expected Write, MODE1 EDC/ECC, changed-sector accounting, and re-extraction gates pass.",
+  "updated_utc": "2026-08-06T09:14:00Z"
+}
