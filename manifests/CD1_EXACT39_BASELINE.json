@@ -1,0 +1,66 @@
+{
+  "format": "ST2-CD1-B132-EXACT39-v1",
+  "status": "PASS_EXACT39_BASELINE_RECOVERED",
+  "workbook": {
+    "name": "BATCH132_RECOVERY_STATUS.xlsx",
+    "sha256": "b5ccba818a59a73918b4b29233110613acd46ef1b000e3d7335a28b9fb6a514a"
+  },
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "historical_verified_candidate": {
+    "sha256": "518c73a08e367a7f36c49a074ec7a91f61007456c99e4e30e73f8bb64575b250",
+    "changed_raw_sectors": 1134,
+    "edc_ecc": "PASS",
+    "reextraction": "39/39 PASS"
+  },
+  "coverage": {
+    "exact_assets": 39,
+    "total_assets": 58,
+    "percent": 67.24137931034483
+  },
+  "assets": [
+    {"asset":"SYS06","source_batch":117,"lba":206791,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS09","source_batch":114,"lba":206913,"size":82052,"sectors":41,"sha256":"9683dcdd99acb73327b6f2158581a4b7d65cd4611150e68217dbc09c55c6edc7","reextraction":"PASS"},
+    {"asset":"SYS10","source_batch":115,"lba":206954,"size":82032,"sectors":41,"sha256":"ae8011902ae6ddab399efd7539a3756dd247fea3ce0d7ef7725182eda4cbe9f5","reextraction":"PASS"},
+    {"asset":"SYS11","source_batch":114,"lba":206995,"size":82032,"sectors":41,"sha256":"99108f930ded341a03b5c01e3b3bf28a7732d002ba1f5f4d46bd455e2ae91a04","reextraction":"PASS"},
+    {"asset":"SYS12","source_batch":115,"lba":207036,"size":82032,"sectors":41,"sha256":"5fe33824852ad409bac7d6baa7b831ec3dd3c3b0c57ce47f19aeaec12f1825de","reextraction":"PASS"},
+    {"asset":"SYS13","source_batch":115,"lba":207077,"size":82032,"sectors":41,"sha256":"21f16f3a3169f79d29fff9813e255a6bec471452c7bf45d4451b4efe0711ab3c","reextraction":"PASS"},
+    {"asset":"SYS14","source_batch":118,"lba":207118,"size":82032,"sectors":41,"sha256":"06597ddf3d34f0463e611f796146bb1e80d7e32df1f59925481669969840b92d","reextraction":"PASS"},
+    {"asset":"SYS15","source_batch":114,"lba":207159,"size":82032,"sectors":41,"sha256":"033611ecac90c76e1df7e7b5418702dcfa302fd43378b78c9558b6c5bb196681","reextraction":"PASS"},
+    {"asset":"SYS16","source_batch":114,"lba":207200,"size":82032,"sectors":41,"sha256":"5e0485ca0c5236e2348b19aa9d74b486ed20420cfbfc0068e432b934e1694609","reextraction":"PASS"},
+    {"asset":"SYS18","source_batch":115,"lba":207282,"size":82030,"sectors":41,"sha256":"9235e5ae983ac3f8f98cfd40ca2e202bfbb345ba8f03b3e884a743afd009f0de","reextraction":"PASS"},
+    {"asset":"SYS19","source_batch":115,"lba":207323,"size":82030,"sectors":41,"sha256":"ece68bbf93a90a72d392d733b7972e89cbe3eb7fbf57de8cb20cf086d00b8532","reextraction":"PASS"},
+    {"asset":"SYS20","source_batch":116,"lba":207364,"size":82030,"sectors":41,"sha256":"55e978d10d4f2ca010b77bec0fa205692923f5ab3b5a2c7deeb1c830e3cf5e8c","reextraction":"PASS"},
+    {"asset":"SYS21","source_batch":116,"lba":207405,"size":82030,"sectors":41,"sha256":"b8ab1c7429f7234968afdc7c62c8ebbcefb2ae772a4b5b8e1cc98a871b342d8c","reextraction":"PASS"},
+    {"asset":"SYS22","source_batch":116,"lba":207446,"size":82030,"sectors":41,"sha256":"d4bbcd86442f82295afd1631548a56030e0c791e74477b3ac96e31fb2db6c976","reextraction":"PASS"},
+    {"asset":"SYS23","source_batch":116,"lba":207487,"size":82030,"sectors":41,"sha256":"2725080f77197bdd0830545106d5301e9544dbc43843e6ef32b795d2fc2031d8","reextraction":"PASS"},
+    {"asset":"SYS24","source_batch":116,"lba":207528,"size":82030,"sectors":41,"sha256":"61241b315f6bd678d7ecf50cff9acc8acf96c63fa2b51b96e88b278e35624a96","reextraction":"PASS"},
+    {"asset":"SYS25","source_batch":116,"lba":207569,"size":81970,"sectors":41,"sha256":"24c1c5acceb5ab5f8f8aa54193d08852bfb4fe1edd7d51c9377f22a077042a87","reextraction":"PASS"},
+    {"asset":"SYS28","source_batch":117,"lba":207651,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS30","source_batch":117,"lba":207732,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS32","source_batch":117,"lba":207813,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS35","source_batch":117,"lba":207935,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS36","source_batch":114,"lba":207975,"size":82032,"sectors":41,"sha256":"36a3744bd66e3944783d45d190780c02c537376dfef26080d5883df1004fb422","reextraction":"PASS"},
+    {"asset":"SYS37","source_batch":114,"lba":208016,"size":82032,"sectors":41,"sha256":"bc20ec54c929f5285fb3eb92f2821ca01e120843202de913368f4f7f5f1ad355","reextraction":"PASS"},
+    {"asset":"SYS38","source_batch":117,"lba":208057,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS39","source_batch":117,"lba":208097,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS40","source_batch":117,"lba":208137,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS41","source_batch":117,"lba":208177,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS42","source_batch":117,"lba":208217,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS43","source_batch":117,"lba":208257,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS44","source_batch":117,"lba":208297,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS45","source_batch":115,"lba":208337,"size":82030,"sectors":41,"sha256":"8d6ea05f74f11896edbfe13012dc9eb0cde8c4ef7ef9cad3261af5a9a617349c","reextraction":"PASS"},
+    {"asset":"SYS46","source_batch":115,"lba":208378,"size":82030,"sectors":41,"sha256":"7810b9275c3e3489fc2f1de808562383070dd5cb111d44ff225de4e3a7b8cb17","reextraction":"PASS"},
+    {"asset":"SYS47","source_batch":116,"lba":208419,"size":82030,"sectors":41,"sha256":"e14d7ad549447b6c9a63c0f2cb473f4e274959613e32992a77e547ad938a018b","reextraction":"PASS"},
+    {"asset":"SYS48","source_batch":117,"lba":208460,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"SYS50","source_batch":117,"lba":208541,"size":80458,"sectors":40,"sha256":"5e89dd92af693ba37e20ab9516d6aca668c8c2a8fd6b480af54ff3b88067efa3","reextraction":"PASS"},
+    {"asset":"STNSYS01","source_batch":115,"lba":208581,"size":82032,"sectors":41,"sha256":"035254b1594bf54fa5a44155e37933e71b51fdae213f59839e41279a2b39b2f8","reextraction":"PASS"},
+    {"asset":"STNSYS02","source_batch":116,"lba":208622,"size":82032,"sectors":41,"sha256":"60a7b0c2bfade055910353c945d60244d1e132fe9c306b709aba51b414511945","reextraction":"PASS"},
+    {"asset":"STNSYS03","source_batch":116,"lba":208663,"size":82048,"sectors":41,"sha256":"70a624feeca087f10cfc82f929d4d80aeb21f45642c2d1996ab6a967aa48297d","reextraction":"PASS"},
+    {"asset":"SYSTEM","source_batch":118,"lba":208745,"size":80458,"sectors":40,"sha256":"aff08f718bb8186c7162601f76b927dfa516c21139f60fc6d3cf27f8a8a84a58","reextraction":"PASS"}
+  ],
+  "estimated_bytes": 0
+}
