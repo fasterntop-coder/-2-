@@ -1,0 +1,20 @@
+{
+  "batch": 231,
+  "goal": "RECOVER_EXACT_STORY_REPLACEMENT_PAYLOADS",
+  "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "policy": {
+    "estimated_bytes_forbidden": true,
+    "accept_only_exact_sha256": true,
+    "expected_write_required_before_integration": true,
+    "mode1_2352_edc_ecc_required_after_integration": true,
+    "reextraction_sha256_required": true
+  },
+  "targets": [
+    {"file":"SK0501.BIN","iso_path":"SAKURA1/SK0501.BIN","lba":45704,"size":246748,"source_sha256":"8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f","replacement_sha256":"6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743","source_batch":60},
+    {"file":"SK0502.BIN","iso_path":"SAKURA1/SK0502.BIN","lba":45825,"size":107920,"source_sha256":"8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4","replacement_sha256":"0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc","source_batch":58},
+    {"file":"SK0503.BIN","iso_path":"SAKURA1/SK0503.BIN","lba":45878,"size":97324,"source_sha256":"4187d409d38e268233a092d33c93490ae6f73080ef2c9c8eed916775cf5a8aca","replacement_sha256":"c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b","source_batch":57},
+    {"file":"SKCM02.BIN","iso_path":"SAKURA1/SKCM02.BIN","lba":46030,"size":129652,"source_sha256":"ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af","replacement_sha256":"0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9","source_batch":62},
+    {"file":"SKCM04.BIN","iso_path":"SAKURA1/SKCM04.BIN","lba":46094,"size":91196,"source_sha256":"59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29","replacement_sha256":"c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8","source_batch":62},
+    {"file":"SKCM05.BIN","iso_path":"SAKURA1/SKCM05.BIN","lba":46139,"size":91416,"source_sha256":"99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257","replacement_sha256":"cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4","source_batch":62}
+  ]
+}
