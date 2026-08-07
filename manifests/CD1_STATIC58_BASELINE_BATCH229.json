@@ -1,0 +1,40 @@
+{
+  "batch": 229,
+  "goal": "CD1_100_PERCENT",
+  "scope": "CD1_BATTLE_STATIC_58_ASSET_BASELINE",
+  "previous_baseline": {
+    "manifest": "manifests/CD1_EXACT51_BASELINE.json",
+    "assets": 51
+  },
+  "added_foundation_assets": [
+    {"asset":"PBOOK_BT","source_batch":110,"lba":15609,"size":87712,"candidate_sha256":"4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe","note":"independent reconstruction; not historical Batch82/83 byte-identical"},
+    {"asset":"PBOOK_EC","source_batch":100,"lba":15652,"size":87456,"candidate_sha256":"378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5"},
+    {"asset":"PBOOK_RC","source_batch":104,"lba":15695,"size":58208,"candidate_sha256":"c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907"},
+    {"asset":"SYS00","source_batch":111,"lba":206545,"size":82045,"candidate_sha256":"d77e54e7b7d2f8a094e2855a199ec33f43ecf5802f139c1d84df3f0de75bc98a"},
+    {"asset":"SYS01","source_batch":111,"lba":208500,"size":82027,"candidate_sha256":"c2bc383d96a9ccfd0c844f28363b6af15063921d42bb9142cf6b8edb4cbf7101"},
+    {"asset":"SYS26","source_batch":108,"lba":206586,"size":82048,"candidate_sha256":"fd01d17f820cfad7a006e9b1ebc35ad618badbfc948a11fefe116438f3db6021"},
+    {"asset":"STNSYS00","source_batch":107,"lba":208704,"size":82048,"candidate_sha256":"92583409bb2f70f19795180e341756d1ad81603138893bf3f270b5f113ce37ad"}
+  ],
+  "batch118_full_disc_evidence": {
+    "status": "PASS_BATTLE_BANK_STATIC_100_PERCENT_55_OF_55_58_ASSET_FULL_DISC_VERIFIED",
+    "assets": 58,
+    "battle_banks": "55/55",
+    "battle_static_records": "12595/12595",
+    "changed_sectors": 1626,
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "mode1_2352_edc_ecc": "PASS",
+    "reextraction": "58/58 PASS",
+    "verification_output_bin_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "cue_sha256": "e7c80b2f7235cfffc7ba729fea20a08e80b828a7f42cc08ec196a91ed8df2e20"
+  },
+  "result": {
+    "static_assets": "58/58",
+    "static_asset_ratio": 1.0,
+    "estimated_bytes_applied": 0,
+    "hardware_validation": "DEFERRED_UNTIL_CD1_FULL_CANDIDATE",
+    "overall_cd1_runtime_implementation_percent": 46.3,
+    "overall_cd1_hardware_confirmed_percent": 44.4
+  },
+  "policy": "Static 58/58 completion must not be reported as overall CD1 100%. Overall completion advances only after story, movies, UI/graphics and static assets are integrated into one validated Disc1 candidate."
+}
