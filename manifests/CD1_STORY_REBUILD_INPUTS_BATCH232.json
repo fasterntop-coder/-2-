@@ -1,0 +1,34 @@
+{
+  "batch": 232,
+  "goal": "CD1_100_PERCENT",
+  "status": "EXACT_STORY_REBUILD_INPUT_CONTRACT",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "sector_format": "MODE1/2352",
+    "user_data_offset": 16,
+    "user_data_size": 2048
+  },
+  "font": {
+    "name": "UnDotum.ttf",
+    "sha256": "34f14208a0a3b70831fc59b8bc7d1ee54eff976d00b1dbddbf8ed3327343fbc9",
+    "geometry": "16x16",
+    "render_size": 14,
+    "format": "4bpp high-nibble-first"
+  },
+  "targets": [
+    {"name":"SK0501.BIN","iso_path":"SAKURA1/SK0501.BIN","lba":45704,"size":246748,"source_sha256":"8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f","compiled_sha256":"6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743","ledger":"R41_SK0501_TRANSLATION_COMPLETE.json","records":1559},
+    {"name":"SK0502.BIN","iso_path":"SAKURA1/SK0502.BIN","lba":45825,"size":107920,"source_sha256":"8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4","compiled_sha256":"0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc","ledger":"R41_SK0502_TRANSLATION_COMPLETE.json","records":518},
+    {"name":"SK0503.BIN","iso_path":"SAKURA1/SK0503.BIN","lba":45878,"size":97324,"source_sha256":"4187d409d38e268233a092d33c93490ae6f73080ef2c9c8eed916775cf5a8aca","compiled_sha256":"c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b","ledger":"R41_SK0503_TRANSLATION_COMPLETE.json","records":393},
+    {"name":"SKCM02.BIN","iso_path":"SAKURA1/SKCM02.BIN","lba":46030,"size":129652,"source_sha256":"ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af","compiled_sha256":"0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9","ledger":"R41_BATCH62_SKCM_TRANSLATION.json","ledger_key":"SKCM02.BIN","records":414},
+    {"name":"SKCM04.BIN","iso_path":"SAKURA1/SKCM04.BIN","lba":46094,"size":91196,"source_sha256":"59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29","compiled_sha256":"c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8","ledger":"R41_BATCH62_SKCM_TRANSLATION.json","ledger_key":"SKCM04.BIN","records":139},
+    {"name":"SKCM05.BIN","iso_path":"SAKURA1/SKCM05.BIN","lba":46139,"size":91416,"source_sha256":"99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257","compiled_sha256":"cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4","ledger":"R41_BATCH62_SKCM_TRANSLATION.json","ledger_key":"SKCM05.BIN","records":125}
+  ],
+  "safety": {
+    "speculative_bytes": false,
+    "candidate_acceptance": "compiled SHA-256 must equal historical expected hash",
+    "source_acceptance": "source SHA-256 must match before any rebuild/recovery",
+    "disc_write": "forbidden in Batch232; source extraction and exact-candidate recovery only",
+    "next_gate": ["Expected Write","LBA collision","MODE1 EDC/ECC","re-extraction"]
+  }
+}
