@@ -1,0 +1,36 @@
+{
+  "batch": 228,
+  "goal": "CD1_OVERALL_PATCH_70_PERCENT_PLUS",
+  "baseline": {
+    "previous_exact_assets": 45,
+    "total_static_assets": 58,
+    "added_batch": 112,
+    "added_assets": ["SYS33", "SYS27", "SYS31", "SYS34", "SYS04", "SYS29"],
+    "exact_assets": 51,
+    "exact_asset_ratio": 0.8793103448275862
+  },
+  "batch112_evidence": {
+    "records": 1374,
+    "reextraction": "13/13 PASS",
+    "lba_conflicts": 0,
+    "edc_ecc": "PASS",
+    "candidate_sha256": {
+      "SYS33": "dd7ae13f8d3040e64f45bda4c8ff4decbd26be009ea3fc705bf30a52a7c39952",
+      "SYS27": "9395944d4333ff570315b105e6989070cb7cf3eee30854cb2c6e78fb778605ce",
+      "SYS31": "2e38e13d50d2f9e0ac2daa810088f9e25b0023214dd0c59372b42c9170e05e89",
+      "SYS34": "26cac2ce38de1b44448fadc04d4181e188e40a496883cc142a7a7a44603d7ef1",
+      "SYS04": "e96b7eaf90a0bad9176e1f5b930c51106cef566aaf00b67119477ac66d7092d3",
+      "SYS29": "dd51615e7e9fc02c17ac6e232e4860c3989f7e00fc063f6978c9881acc49e44f"
+    }
+  },
+  "overall_progress_policy": {
+    "official_runtime_implementation_percent": 46.3,
+    "official_hardware_confirmed_percent": 44.4,
+    "story_offline_candidate": "14865/14875",
+    "movie_static_inventory": "24/24",
+    "static_exact_recovery": "51/58",
+    "rule": "Do not report 70 percent overall until story, movie and UI/static assets are integrated into one validated Disc 1 candidate and the official runtime implementation ledger reaches at least 70.0 percent."
+  },
+  "estimated_bytes": 0,
+  "status": "PASS_EXACT51_BASELINE_OVERALL_70_NOT_YET_CLAIMED"
+}
