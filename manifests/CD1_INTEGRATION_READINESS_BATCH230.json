@@ -1,0 +1,68 @@
+{
+  "format": "ST2-R41-CD1-integration-readiness-batch230-v1",
+  "batch": 230,
+  "target_disc": 1,
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "policy": {
+    "no_speculative_bytes": true,
+    "expected_write_required": true,
+    "sha256_required": true,
+    "mode1_2352_edc_ecc_required": true,
+    "reextraction_required": true,
+    "hardware_validation_separate": true
+  },
+  "static58": {
+    "status": "VERIFIED_COMPLETE",
+    "assets": "58/58",
+    "records": "12595/12595",
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "edc_ecc": "PASS",
+    "reextraction": "58/58 PASS",
+    "verified_candidate_disc_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "source": "Batch118 lineage promoted by Batch229"
+  },
+  "story_source_inventory": {
+    "status": "SOURCE_INVENTORY_COMPLETE_OFFLINE",
+    "legacy_14875_denominator": "RETIRED",
+    "corrected_remaining_inventory_files": "5/5",
+    "corrected_remaining_inventory_records": "913/913",
+    "translated_records": 906,
+    "control_preserved_records": 7,
+    "unprocessed_candidate_files": [],
+    "unprocessed_candidate_records": 0,
+    "batch61_files": ["SAKURA1/SK0505.BIN", "SAKURA1/SK1304.BIN"],
+    "batch62_files": ["SAKURA1/SKCM02.BIN", "SAKURA1/SKCM04.BIN", "SAKURA1/SKCM05.BIN"],
+    "batch62_replacement_hashes": {
+      "SAKURA1/SKCM02.BIN": "0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9",
+      "SAKURA1/SKCM04.BIN": "c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8",
+      "SAKURA1/SKCM05.BIN": "cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4"
+    }
+  },
+  "story_large_bin_known_replacements": {
+    "SAKURA1/SK0501.BIN": "6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743",
+    "SAKURA1/SK0502.BIN": "0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc",
+    "SAKURA1/SK0503.BIN": "c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b"
+  },
+  "movie_static_inventory": {
+    "status": "OFFLINE_INVENTORY_COMPLETE",
+    "inventory": "24/24",
+    "speech_subtitle_candidates": "12/12",
+    "non_dialogue_original_preserved": "6/6",
+    "episode_title_candidates": "6/6",
+    "hardware_validation": false
+  },
+  "master_build_gate": {
+    "status": "BLOCKED_PAYLOAD_BODIES_NOT_PRESENT_IN_ACTIVE_RECOVERY_SET",
+    "reason": "Hashes/manifests prove candidate identities, but a safe raw-sector master build requires the exact replacement file bytes or byte-exact raw-sector payloads for every selected story/movie/UI asset.",
+    "required_before_write": [
+      "exact replacement binary bodies matching declared SHA-256 hashes",
+      "source SHA-256 match for each target asset",
+      "Expected Write range generation",
+      "LBA overlap audit",
+      "MODE1/2352 EDC/ECC regeneration and verification",
+      "post-build byte-exact re-extraction"
+    ]
+  },
+  "overall_progress_rule": "Do not convert offline inventory coverage into CD1 total implementation percentage until the same-disc master candidate is built and verified."
+}
