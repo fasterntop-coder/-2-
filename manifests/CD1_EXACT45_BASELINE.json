@@ -1,0 +1,40 @@
+{
+  "schema": "st2.cd1.exact_static_baseline.v1",
+  "batch": 227,
+  "status": "PASS_EXACT45_BASELINE_PROMOTED",
+  "asset_count": 45,
+  "asset_total": 58,
+  "coverage_percent": 77.6,
+  "base": {
+    "manifest": "manifests/CD1_EXACT39_BASELINE.json",
+    "asset_count": 39,
+    "evidence": "BATCH132_RECOVERY_STATUS.xlsx",
+    "historical_candidate_bin_sha256": "518c73a08e367a7f36c49a074ec7a91f61007456c99e4e30e73f8bb64575b250"
+  },
+  "added_assets": [
+    {"name":"SYS03","size":82025,"sha256":"f8e3c624a1d823f53dbf32e61a8c2ef930f46b829878ba52046aa9e973647603"},
+    {"name":"SYS02","size":82027,"sha256":"c98d2a4a7cacf70b70f02a01b57f3d81743fce978f687c99fb1877ba0e8aaf86"},
+    {"name":"SYS05","size":82027,"sha256":"badea278db907e4ba4f5b2074664f0426df15bd631f2b3b561cfae033c262ba7"},
+    {"name":"SYS08","size":82052,"sha256":"670efd5fc40a77eef11fc4bcc038ea1eb8eef5fac76288348db13fa023f9d9b3"},
+    {"name":"SYS17","size":82032,"sha256":"17a12d5c3df3e0fa2169c4433b22b73213b28556f720a4bb0e2a4a172ded012b"},
+    {"name":"SYS07","size":82048,"sha256":"60b15eb70525e4ce0f7772fbb5a8abc7c02f6406361742a5b7470cb1ab196444"}
+  ],
+  "added_evidence": {
+    "source": "BATCH113_VALIDATION_RESULT.json",
+    "records": 1374,
+    "changed_raw_sectors": 174,
+    "lba_conflicts": 0,
+    "mode1_edc_ecc": "PASS",
+    "whole_disc_diff_limited_to_target_lbas": true,
+    "reextraction": "19/19 PASS",
+    "historical_candidate_bin_sha256": "1b5b758451dce9d920294d3d4a0eea5546894b2b1865c001b79da31e3ee17e07"
+  },
+  "gates": {
+    "estimated_bytes": 0,
+    "sha256_required": true,
+    "expected_write_required": true,
+    "edc_ecc_required": true,
+    "reextraction_required": true
+  },
+  "next": ["B112 신규 6은행", "B111 SYS00/SYS01", "B110/B109 잔여 5자산"]
+}
