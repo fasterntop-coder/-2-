@@ -1,8 +1,13 @@
 {
-  "format": "ST2-CD1-BATCH241-VIDEO10-RECOVERY-GATE-v1",
+  "format": "ST2-CD1-BATCH241-VIDEO9-RECOVERY-GATE-v2",
   "physical_parent_batch": 240,
   "physical_parent_disc_sha256": "dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83",
   "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "supersedes": "ST2-CD1-BATCH241-VIDEO10-RECOVERY-GATE-v1",
+  "correction": {
+    "excluded_already_promoted_asset": "SK2MV_30.CAK",
+    "reason": "Batch240 already physically integrated the exact B64 SK2MV_30.CAK replacement; requesting it again would violate the Batch240-parent no-overlap gate."
+  },
   "policy": {
     "guessed_payload_bytes": false,
     "package_sha_first_for_legacy_zip_only": true,
@@ -17,7 +22,6 @@
     {"package":"ST2B67.zip","sha256":"8fc6dfca6db7b201d4d4dd898e31ddc0d9e3a2a770cc68a528cf653fb7213e67","expected_asset":"SK2MV_06.CAK","lba":112817,"size":9170476,"source_sha256":"5b5f4e6117fd50096cc8ecd882f547f35b757f015713be6768a2ba10f8420379"}
   ],
   "direct_candidates": [
-    {"asset":"SK2MV_30.CAK","lba":134468,"size":7830436,"source_sha256":"b32f9f29b52da7e346c8c9cc1a37ac0f3f0fb2961d5f058a9805486009d43d9b","replacement_sha256":"fab3dd471e909958774170770a9191683d16e670edfed0434167c1ea7e8a988a"},
     {"asset":"SK2MV_43.CAK","lba":161590,"size":7663544,"source_sha256":"5a6d751a81da2ca268eb7577dcbc0ec70816296a5d13c393b50d20a1f0294d41","replacement_sha256":"4f6292715c418a05f2318ac408d136833ca502d8ce969d3d3be4587a99085b9c"},
     {"asset":"SK2MV_44.CAK","lba":165332,"size":7663952,"source_sha256":"8fa249e7f98d2453b389263b48059f8c26eb1302c109513399d4216d549470c5","replacement_sha256":"7827f423244c1ebfce486eb32fc6a032cb617890ec1cfd37b5e4f4072c14b7d6"},
     {"asset":"SK2MV_45.CAK","lba":169075,"size":7656708,"source_sha256":"2d00ea151720802a16dcc4b5642affc8b3ae8eb53fca7f04c473489985b883ae","replacement_sha256":"f6689b9814b2dc883bf5817e286926f3f42ac334786725daf2b6a241383574e1"},
