@@ -1,0 +1,38 @@
+{
+  "batch": 236,
+  "goal": "CD1_100_PERCENT",
+  "format": "ST2-CD1-STORY-EXACT-STRUCTURE-v1",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "raw_sector_size": 2352,
+    "user_offset": 16,
+    "user_size": 2048
+  },
+  "derivation": {
+    "glyph_bytes": 128,
+    "formula_font_start": "file_size - font_slots * 128",
+    "formula_message_start": "font_start - allocated_tokens * 2",
+    "formula_table_start": "message_start - (4 + record_count * 4)",
+    "cross_validation": "The formulas reproduce byte-for-byte the historical Batch57/58/60 direct structure addresses for SK0503/SK0502/SK0501 before being applied to Batch62 SKCM assets.",
+    "speculative_bytes": false
+  },
+  "assets": [
+    {"name":"SK0501.BIN","iso_path":"SAKURA1/SK0501.BIN","lba":45704,"size":246748,"source_sha256":"8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f","compiled_sha256":"6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743","record_count":1559,"allocated_tokens":35892,"font_slots":892,"table_start":54548,"message_start":60788,"font_start":132572,"structure_basis":"HISTORICAL_DIRECT_AND_FORMULA_MATCH"},
+    {"name":"SK0502.BIN","iso_path":"SAKURA1/SK0502.BIN","lba":45825,"size":107920,"source_sha256":"8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4","compiled_sha256":"0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc","record_count":518,"allocated_tokens":9914,"font_slots":537,"table_start":17280,"message_start":19356,"font_start":39184,"structure_basis":"HISTORICAL_DIRECT_AND_FORMULA_MATCH"},
+    {"name":"SK0503.BIN","iso_path":"SAKURA1/SK0503.BIN","lba":45878,"size":97324,"source_sha256":"4187d409d38e268233a092d33c93490ae6f73080ef2c9c8eed916775cf5a8aca","compiled_sha256":"c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b","record_count":393,"allocated_tokens":8662,"font_slots":495,"table_start":15064,"message_start":16640,"font_start":33964,"structure_basis":"HISTORICAL_DIRECT_AND_FORMULA_MATCH"},
+    {"name":"SKCM02.BIN","iso_path":"SAKURA1/SKCM02.BIN","lba":46030,"size":129652,"source_sha256":"ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af","compiled_sha256":"0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9","record_count":414,"allocated_tokens":10956,"font_slots":699,"table_start":16608,"message_start":18268,"font_start":40180,"structure_basis":"BATCH62_EXACT_INVARIANTS_PLUS_CROSS_VALIDATED_FORMULA"},
+    {"name":"SKCM04.BIN","iso_path":"SAKURA1/SKCM04.BIN","lba":46094,"size":91196,"source_sha256":"59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29","compiled_sha256":"c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8","record_count":139,"allocated_tokens":4600,"font_slots":586,"table_start":6428,"message_start":6988,"font_start":16188,"structure_basis":"BATCH62_EXACT_INVARIANTS_PLUS_CROSS_VALIDATED_FORMULA"},
+    {"name":"SKCM05.BIN","iso_path":"SAKURA1/SKCM05.BIN","lba":46139,"size":91416,"source_sha256":"99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257","compiled_sha256":"cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4","record_count":125,"allocated_tokens":4332,"font_slots":592,"table_start":6472,"message_start":6976,"font_start":15640,"structure_basis":"BATCH62_EXACT_INVARIANTS_PLUS_CROSS_VALIDATED_FORMULA"}
+  ],
+  "safety": {
+    "no_guessed_bytes": true,
+    "source_asset_sha_required": true,
+    "compiled_asset_sha_required": true,
+    "expected_write_required": true,
+    "mode1_edc_ecc_required": true,
+    "changed_sector_accounting_required": true,
+    "whole_asset_reextraction_required": true,
+    "repository_game_bytes_forbidden": true
+  }
+}
