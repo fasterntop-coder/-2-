@@ -1,0 +1,31 @@
+name: Batch234 Historical Story Recovery
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate-recovery-tool:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile recovery and MODE1 verifier
+        run: |
+          python -m py_compile tools/mode1_2352.py
+          python -m py_compile tools/recover_cd1_story_from_historical_discs_batch234.py
+      - name: MODE1 EDC/ECC self-test
+        run: python tools/mode1_2352.py
+      - name: Validate exact target contract
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('manifests/CD1_STORY_REBUILD_INPUTS_BATCH232.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert len(d['targets']) == 6
+          assert all(len(t['compiled_sha256']) == 64 for t in d['targets'])
+          assert all(int(t['lba']) > 0 and int(t['size']) > 0 for t in d['targets'])
+          assert d['safety']['speculative_bytes'] is False
+          print('PASS_BATCH234_EXACT_TARGET_CONTRACT')
+          PY
