@@ -19,10 +19,18 @@ def load_ledgers(paths:list[Path])->dict[str,dict]:
     for p in paths:
         obj=json.loads(p.read_text(encoding='utf-8'))
         if 'target' in obj:
-            name=Path(obj['target']).name; out[name]={'records':obj['records']}
-        elif 'files' in obj and 'records' in obj:
-            for name in obj['files']:
-                out[name]={'records':[r for r in obj['records'] if r.get('file')==name]}
+            name=Path(obj['target']).name
+            out[name]={'records':obj['records'],'ledger':p.name}
+            continue
+        if 'files' not in obj:
+            continue
+        for name,node in obj['files'].items():
+            # Batch62 stores each SKCM record array under files[name].records.
+            # A top-level records array is accepted only as a compatibility fallback.
+            rows=node.get('records')
+            if not isinstance(rows,list):
+                rows=[r for r in obj.get('records',[]) if r.get('file')==name]
+            out[name]={'records':rows,'ledger':p.name}
     return out
 
 def verify_formula(a:dict)->dict:
@@ -34,17 +42,28 @@ def verify_formula(a:dict)->dict:
 
 def verify_ledger(a:dict, records:list[dict])->dict:
     rows=sorted(records,key=lambda r:int(r['record']))
-    contiguous=True; cursor=0; sha_anchors=0
+    contiguous=True; cursor=0; sha_anchors=0; bad_record_ids=[]; bad_offsets=[]; missing_sha=[]
     for i,r in enumerate(rows):
-        if int(r['record'])!=i: contiguous=False
-        if int(r['source_word_offset'])!=cursor: contiguous=False
+        rid=int(r['record'])
+        if rid!=i:
+            contiguous=False; bad_record_ids.append({'expected':i,'actual':rid})
+        off=int(r['source_word_offset'])
+        if off!=cursor:
+            contiguous=False; bad_offsets.append({'record':rid,'expected':cursor,'actual':off})
         cursor += int(r['capacity_tokens'])
-        if r.get('source_record_sha256'): sha_anchors+=1
+        h=r.get('source_record_sha256')
+        if isinstance(h,str) and len(h)==64:
+            sha_anchors+=1
+        else:
+            missing_sha.append(rid)
+    record_match=len(rows)==a['record_count']
+    allocation_match=cursor==a['allocated_tokens']
+    all_sha=sha_anchors==a['record_count']
     return {'record_count':len(rows),'allocated_tokens':cursor,'contiguous':contiguous,
-            'record_count_match':len(rows)==a['record_count'],
-            'allocated_tokens_match':cursor==a['allocated_tokens'],
-            'sha_anchors':sha_anchors,
-            'pass':contiguous and len(rows)==a['record_count'] and cursor==a['allocated_tokens']}
+            'record_count_match':record_match,'allocated_tokens_match':allocation_match,
+            'sha_anchors':sha_anchors,'all_records_sha_anchored':all_sha,
+            'bad_record_ids':bad_record_ids,'bad_offsets':bad_offsets,'missing_sha_records':missing_sha,
+            'pass':contiguous and record_match and allocation_match and all_sha}
 
 def import_mode1():
     repo=HERE.parent
@@ -76,7 +95,8 @@ def verify_asset_records(data:bytes,a:dict,records:list[dict])->dict:
         got=sha_bytes(data[off:off+n])
         if got==h: ok+=1
         else: bad.append({'record':r['record'],'offset':off,'expected':h,'actual':got})
-    return {'verified':ok,'mismatches':bad,'pass':not bad}
+    return {'verified':ok,'expected':a['record_count'],'mismatches':bad,
+            'pass':not bad and ok==a['record_count']}
 
 def patch_sector(mode1, raw:bytes, user:bytes)->bytes:
     if len(raw)!=RAW or len(user)!=USER: raise ValueError('sector geometry')
@@ -158,6 +178,8 @@ def main()->int:
             if not lv['pass']: raise SystemExit(f'ledger contract fail: {x["name"]}')
     direct={x['name'] for x in mf['assets'] if x['structure_basis'].startswith('HISTORICAL_DIRECT')}
     if direct!={'SK0501.BIN','SK0502.BIN','SK0503.BIN'} or not all_formula: raise SystemExit('structure formula cross-validation fail')
+    if a.ledger and set(ledgers)!={x['name'] for x in mf['assets']}:
+        raise SystemExit(f'incomplete ledger set: {sorted(ledgers)}')
     mode1=None
     if a.disc:
         mode1=import_mode1()
@@ -170,7 +192,9 @@ def main()->int:
             data=p.read_bytes()
             if len(data)!=x['size'] or sha_bytes(data)!=x['source_sha256']: raise SystemExit(f'source asset SHA mismatch: {x["name"]}')
             vr={'sha256':x['source_sha256'],'size':len(data)}
-            if x['name'] in ledgers: vr['records']=verify_asset_records(data,x,ledgers[x['name']]['records'])
+            if x['name'] in ledgers:
+                vr['records']=verify_asset_records(data,x,ledgers[x['name']]['records'])
+                if not vr['records']['pass']: raise SystemExit(f'record SHA/address verification fail: {x["name"]}')
             result['source_assets'][x['name']]=vr
     if a.disc and a.candidate_dir:
         result['integration']=integrate(a.disc,a.candidate_dir,mf,a.output_disc)
