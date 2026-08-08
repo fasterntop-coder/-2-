@@ -1,0 +1,145 @@
+{
+  "batch": 238,
+  "status": "PASS_PRISTINE_DISC_ABSOLUTE_STORY_ADDRESS_PROOF",
+  "source_archive": {
+    "name": "015 Sakura Taisen 2 Disc 1 of 3 (J) (2)(1).zip",
+    "size": 458507639,
+    "sha256": "d848e44f6d959d4c80f180196eee64eb29c0fa2be77365716de91899997840a4"
+  },
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "sector_format": "MODE1/2352"
+  },
+  "proof_scope": {
+    "assets": 6,
+    "records": 3148,
+    "pointer_entries": 3148,
+    "glyph_slots": 3801,
+    "source_sectors": 376,
+    "mode1_edc_ecc_failed": 0,
+    "record_sha_failed": 0,
+    "pointer_failed": 0,
+    "source_asset_sha_failed": 0
+  },
+  "generated_atlas": {
+    "absolute_record_address_csv_sha256": "6ac8310a19ca4a1ce28647d358fda8c76e5d710d29f764650ffd53c887484ad2",
+    "absolute_record_rows": 3148,
+    "glyph_slot_address_csv_sha256": "8953017fdae68c2b80c8ae8adca26b416e91bd13262472e9af074ae46a0e0795",
+    "glyph_slot_rows": 3801
+  },
+  "table_format": {
+    "byte_order": "big-endian",
+    "count_field": "record_count + 1",
+    "pointer_entry_size": 4,
+    "pointer_unit": "16-bit message words from message_start",
+    "verification": "all 3,148 table pointers equal retained source_word_offset values"
+  },
+  "record_hash_semantics": {
+    "normal_records": "historical source_record_sha256 covers the full fixed allocation through FFFF",
+    "final_record": "historical source_record_sha256 covers the unique FFFF-terminated prefix; zero padding between FFFF and font_start is excluded",
+    "final_zero_padding": {
+      "SK0501.BIN": 4,
+      "SK0502.BIN": 4,
+      "SK0503.BIN": 2,
+      "SKCM02.BIN": 4,
+      "SKCM04.BIN": 2,
+      "SKCM05.BIN": 4
+    }
+  },
+  "assets": {
+    "SK0501.BIN": {
+      "lba": 45704,
+      "size": 246748,
+      "source_sha256": "8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f",
+      "records": 1559,
+      "table_start": 54548,
+      "message_start": 60788,
+      "font_start": 132572,
+      "table_count": 1560,
+      "font_slots": 892,
+      "table_raw": {"lba":45730,"user_offset":1300,"raw_disc_byte":107558276},
+      "message_raw": {"lba":45733,"user_offset":1396,"raw_disc_byte":107565428},
+      "font_raw": {"lba":45768,"user_offset":1500,"raw_disc_byte":107647852}
+    },
+    "SK0502.BIN": {
+      "lba": 45825,
+      "size": 107920,
+      "source_sha256": "8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4",
+      "records": 518,
+      "table_start": 17280,
+      "message_start": 19356,
+      "font_start": 39184,
+      "table_count": 519,
+      "font_slots": 537,
+      "table_raw": {"lba":45833,"user_offset":896,"raw_disc_byte":107800128},
+      "message_raw": {"lba":45834,"user_offset":924,"raw_disc_byte":107802508},
+      "font_raw": {"lba":45844,"user_offset":272,"raw_disc_byte":107825376}
+    },
+    "SK0503.BIN": {
+      "lba": 45878,
+      "size": 97324,
+      "source_sha256": "4187d409d38e268233a092d33c93490ae6f73080ef2c9c8eed916775cf5a8aca",
+      "records": 393,
+      "table_start": 15064,
+      "message_start": 16640,
+      "font_start": 33964,
+      "table_count": 394,
+      "font_slots": 495,
+      "table_raw": {"lba":45885,"user_offset":728,"raw_disc_byte":107922264},
+      "message_raw": {"lba":45886,"user_offset":256,"raw_disc_byte":107924144},
+      "font_raw": {"lba":45894,"user_offset":1196,"raw_disc_byte":107943900}
+    },
+    "SKCM02.BIN": {
+      "lba": 46030,
+      "size": 129652,
+      "source_sha256": "ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af",
+      "records": 414,
+      "table_start": 16608,
+      "message_start": 18268,
+      "font_start": 40180,
+      "table_count": 415,
+      "font_slots": 699,
+      "table_raw": {"lba":46038,"user_offset":224,"raw_disc_byte":108281616},
+      "message_raw": {"lba":46038,"user_offset":1884,"raw_disc_byte":108283276},
+      "font_raw": {"lba":46049,"user_offset":1268,"raw_disc_byte":108308532}
+    },
+    "SKCM04.BIN": {
+      "lba": 46094,
+      "size": 91196,
+      "source_sha256": "59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29",
+      "records": 139,
+      "table_start": 6428,
+      "message_start": 6988,
+      "font_start": 16188,
+      "table_count": 140,
+      "font_slots": 586,
+      "table_raw": {"lba":46097,"user_offset":284,"raw_disc_byte":108420444},
+      "message_raw": {"lba":46097,"user_offset":844,"raw_disc_byte":108421004},
+      "font_raw": {"lba":46101,"user_offset":1852,"raw_disc_byte":108431420}
+    },
+    "SKCM05.BIN": {
+      "lba": 46139,
+      "size": 91416,
+      "source_sha256": "99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257",
+      "records": 125,
+      "table_start": 6472,
+      "message_start": 6976,
+      "font_start": 15640,
+      "table_count": 126,
+      "font_slots": 592,
+      "table_raw": {"lba":46142,"user_offset":328,"raw_disc_byte":108526328},
+      "message_raw": {"lba":46142,"user_offset":832,"raw_disc_byte":108526832},
+      "font_raw": {"lba":46146,"user_offset":1304,"raw_disc_byte":108536712}
+    }
+  },
+  "safety": {
+    "guessed_addresses": false,
+    "guessed_bytes": false,
+    "source_asset_sha_required": true,
+    "pointer_table_required": true,
+    "record_sha_required": true,
+    "mode1_edc_ecc_required": true,
+    "disc_write_performed": false
+  }
+}
