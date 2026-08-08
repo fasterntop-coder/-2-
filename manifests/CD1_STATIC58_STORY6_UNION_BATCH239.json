@@ -1,0 +1,74 @@
+{
+  "batch": 239,
+  "status": "PASS_STATIC58_STORY6_EXACT_UNION_64_OF_64",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "recovered_packages": {
+    "static58_batch118": {
+      "name": "ST2R41_BATCH118_BATTLE_BANK_STATIC_100_PERCENT.zip",
+      "sha256": "391fc74f4c04f64c76c0467ef3411763ee19867638681293724e146b66820130"
+    },
+    "SK0503_batch57": {
+      "name": "ST2R41_B57_SK0503_BIN.zip",
+      "sha256": "6d8a4b1f8689b324ff1effe26188ec4f9447a225b06a72a21d67159e6159276c"
+    },
+    "SK0502_batch58": {
+      "name": "ST2R41_B58_SK0502_BIN.zip",
+      "sha256": "651dc3e6ed3f968d99bc9cce0c99f00c634dcc5926230a8278caa85846bc2575"
+    },
+    "SK0501_batch60": {
+      "name": "ST2R41_B60_SK0501_BIN.zip",
+      "sha256": "4fbae3d8bdc08a1d68064f6ca07c7d467a2ff93612fa3f91c06c7116c91bb6f9"
+    },
+    "SKCM_batch62": {
+      "name": "ST2R41_B62_SKCM_BIN.zip",
+      "sha256": "9500e58d4cdd8f99cd9f7a4179bf1799876c6248f56593bd721386ac8c636216"
+    }
+  },
+  "parents": {
+    "static58_disc_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "static58_assets": 58,
+    "static58_changed_sectors": 1626,
+    "story6_pristine_only_disc_sha256": "d8f4513cdd4e43d6020fb8bf2403c458ced30112002019c934f9c09d7e503a10",
+    "story6_assets": 6,
+    "story6_footprint_sectors": 376,
+    "story6_actual_changed_sectors": 275
+  },
+  "union": {
+    "assets": 64,
+    "output_disc_sha256": "daa1052fabd4142feaf42f14bdb5deefdf486cea8f0db8c939fc18ce6f822a56",
+    "changed_sectors_from_pristine": 1901,
+    "expected_formula": "1626 static + 275 story = 1901",
+    "static_story_lba_conflicts": 0,
+    "unregistered_changed_sectors": 0,
+    "mode1_edc_ecc_changed_sectors": "1901/1901 PASS",
+    "static_reextraction": "58/58 PASS",
+    "story_reextraction": "6/6 PASS",
+    "total_reextraction": "64/64 PASS"
+  },
+  "story_assets": {
+    "SK0501.BIN": {"replacement_sha256":"6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743","footprint_sectors":121,"changed_sectors":82,"changed_lba_first":45733,"changed_lba_last":45814},
+    "SK0502.BIN": {"replacement_sha256":"0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc","footprint_sectors":53,"changed_sectors":43,"changed_lba_first":45834,"changed_lba_last":45876},
+    "SK0503.BIN": {"replacement_sha256":"c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b","footprint_sectors":48,"changed_sectors":40,"changed_lba_first":45886,"changed_lba_last":45925},
+    "SKCM02.BIN": {"replacement_sha256":"0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9","footprint_sectors":64,"changed_sectors":46,"changed_lba_first":46038,"changed_lba_last":46083},
+    "SKCM04.BIN": {"replacement_sha256":"c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8","footprint_sectors":45,"changed_sectors":32,"changed_lba_first":46097,"changed_lba_last":46128},
+    "SKCM05.BIN": {"replacement_sha256":"cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4","footprint_sectors":45,"changed_sectors":32,"changed_lba_first":46142,"changed_lba_last":46173}
+  },
+  "corrected_gate_semantics": {
+    "old_invalid_rule": "every sector in an asset footprint must differ from the parent",
+    "new_rule": "actual changed sectors must be a subset of approved asset footprints; changes outside approved footprints are forbidden",
+    "reason": "story headers, pointer tables, preserved regions and unused tail sectors can be byte-identical to source"
+  },
+  "safety": {
+    "guessed_bytes": false,
+    "expected_write": "PASS for every story footprint sector before write",
+    "candidate_full_sha": "6/6 PASS",
+    "parent_full_sha": "PASS",
+    "changed_sector_accounting": "PASS",
+    "mode1_edc_ecc": "PASS",
+    "whole_asset_reextraction": "64/64 PASS",
+    "full_disc_distributed": false
+  }
+}
