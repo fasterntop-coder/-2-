@@ -2,11 +2,11 @@
   "format": "ST2-CD1-SINGLE-LINEAGE-LOCK-v1",
   "authoritative_branch": "main",
   "authoritative_status_file": "PROJECT_STATUS.md",
-  "active_batch": 239,
-  "authoritative_parent_disc_sha256": "daa1052fabd4142feaf42f14bdb5deefdf486cea8f0db8c939fc18ce6f822a56",
-  "authoritative_physical_assets": 64,
+  "active_batch": 240,
+  "authoritative_parent_disc_sha256": "dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83",
+  "authoritative_physical_assets": 94,
   "parallel_workflows_allowed": false,
-  "required_start_rule": "Fetch latest main, verify PROJECT_STATUS.md and this lock, then perform exactly one next task on the same lineage using Batch239 as the physical parent.",
-  "required_finish_rule": "For game-byte writes, promote only after candidate/source SHA-256, Expected Write, approved-footprint overlap checks, MODE1 EDC/ECC, changed-sector accounting, and whole-asset re-extraction gates pass. Metadata/tooling commits must not promote speculative game bytes or unverified physical candidates.",
-  "updated_utc": "2026-08-08T01:15:00Z"
+  "required_start_rule": "Fetch latest main, read PROJECT_STATUS.md and this lock, then continue only from the Batch240 parent.",
+  "required_finish_rule": "Require exact SHA-256, Expected Write, footprint checks, MODE1 EDC/ECC, changed-sector accounting, and re-extraction before promoting game-byte output.",
+  "updated_utc": "2026-08-08T01:35:00Z"
 }
