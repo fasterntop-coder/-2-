@@ -23,8 +23,10 @@ def sha256_bytes(data: bytes) -> str:
 
 def load_gate(path: Path) -> dict:
     obj = json.loads(path.read_text(encoding='utf-8'))
-    if obj.get('format') != 'ST2-CD1-BATCH241-VIDEO10-RECOVERY-GATE-v1':
+    if obj.get('format') != 'ST2-CD1-BATCH241-VIDEO9-RECOVERY-GATE-v2':
         raise SystemExit('unexpected gate format')
+    if obj.get('correction', {}).get('excluded_already_promoted_asset') != 'SK2MV_30.CAK':
+        raise SystemExit('Batch240 overlap correction missing from gate')
     return obj
 
 
@@ -85,12 +87,12 @@ def recover_direct(candidate_dir: Path, spec: dict, out_dir: Path) -> dict:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description='Recover the remaining 10 exact Disc1 movie candidates without guessing bytes.')
+    ap = argparse.ArgumentParser(description='Recover the remaining 9 exact Disc1 movie candidates without guessing bytes; SK2MV_30 is already in Batch240.')
     ap.add_argument('--gate', type=Path, default=Path('manifests/CD1_BATCH241_VIDEO10_RECOVERY_GATE.json'))
     ap.add_argument('--archive-dir', type=Path, required=True, help='Directory containing trusted ST2B65/66/67 ZIPs')
-    ap.add_argument('--candidate-dir', type=Path, required=True, help='Directory containing exact B63/B64 CAK candidates')
-    ap.add_argument('--output-dir', type=Path, default=Path('BATCH241_VIDEO10_RECOVERED'))
-    ap.add_argument('--result', type=Path, default=Path('BATCH241_VIDEO10_RECOVERY_RESULT.json'))
+    ap.add_argument('--candidate-dir', type=Path, required=True, help='Directory containing exact B63 CAK candidates SK2MV_43..48')
+    ap.add_argument('--output-dir', type=Path, default=Path('BATCH241_VIDEO9_RECOVERED'))
+    ap.add_argument('--result', type=Path, default=Path('BATCH241_VIDEO9_RECOVERY_RESULT.json'))
     args = ap.parse_args()
 
     gate = load_gate(args.gate)
@@ -107,14 +109,17 @@ def main() -> int:
         recovered.append(recover_direct(args.candidate_dir, spec, args.output_dir))
 
     names = [x['asset'] for x in recovered]
-    if len(recovered) != 10 or len(set(names)) != 10:
+    if len(recovered) != 9 or len(set(names)) != 9:
         raise SystemExit('recovery cardinality mismatch')
+    if 'SK2MV_30.CAK' in names:
+        raise SystemExit('Batch240-promoted SK2MV_30.CAK must not be recovered again')
 
     consolidated = {
-        'format': 'ST2-CD1-BATCH241-VIDEO10-CONSOLIDATED-MANIFEST-v1',
+        'format': 'ST2-CD1-BATCH241-VIDEO9-CONSOLIDATED-MANIFEST-v2',
         'physical_parent_batch': 240,
         'physical_parent_disc_sha256': gate['physical_parent_disc_sha256'],
         'pristine_disc_sha256': gate['pristine_disc_sha256'],
+        'already_promoted_in_parent': ['SK2MV_30.CAK'],
         'replacement_files': [
             {
                 'iso_path': f"SAKURA1/{x['asset']}",
@@ -128,14 +133,15 @@ def main() -> int:
         'promotion_allowed': False,
         'promotion_block': 'Run physical-parent overlap, raw-sector Expected Write, changed-sector EDC/ECC, changed-sector accounting, and whole-asset re-extraction gates before any Disc write is promoted.'
     }
-    manifest_path = args.output_dir / 'BATCH241_VIDEO10_CONSOLIDATED_MANIFEST.json'
+    manifest_path = args.output_dir / 'BATCH241_VIDEO9_CONSOLIDATED_MANIFEST.json'
     manifest_path.write_text(json.dumps(consolidated, ensure_ascii=False, indent=2), encoding='utf-8')
 
     result = {
         'batch': 241,
-        'status': 'PASS_EXACT_VIDEO10_RECOVERY_GATE_ONLY',
+        'status': 'PASS_EXACT_VIDEO9_RECOVERY_GATE_ONLY',
         'recovered_assets': len(recovered),
         'assets': recovered,
+        'excluded_already_promoted_asset': 'SK2MV_30.CAK',
         'consolidated_manifest': str(manifest_path),
         'game_bytes_changed': 0,
         'guessed_payload_bytes': False,
