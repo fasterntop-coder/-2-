@@ -1,0 +1,31 @@
+name: Batch233 Story Rebuild Gate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  story-rebuild-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate Batch232 manifest and tooling
+        run: |
+          python -m py_compile tools/prepare_cd1_story_rebuild_batch232.py
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('manifests/CD1_STORY_REBUILD_INPUTS_BATCH232.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d, 'empty manifest'
+          print('Batch232 manifest parse: PASS')
+          PY
+      - name: Preserve exact-write safety chain
+        run: |
+          python -m py_compile tools/mode1_2352.py
+          python -m py_compile tools/preflight_cd1_exact_write_inputs.py
+          python -m py_compile tools/apply_cd1_exact_write_plan.py
+          python -m py_compile tools/verify_cd1_reextraction_asset_records.py
+          python -m py_compile tools/verify_cd1_expected_write_sources.py
+          echo 'SHA-256 / Expected Write / MODE1-2352 / re-extraction gates: tooling PASS'
