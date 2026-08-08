@@ -1,0 +1,121 @@
+{
+  "batch": 240,
+  "status": "PASS_BATCH239_PLUS_PROMOTED30_PHYSICAL_UNION_94_OF_94",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "parent": {
+    "batch": 239,
+    "physical_assets": 64,
+    "disc_sha256": "daa1052fabd4142feaf42f14bdb5deefdf486cea8f0db8c939fc18ce6f822a56",
+    "changed_sectors_from_pristine": 1901
+  },
+  "recovered_packages": {
+    "B51_STORY": {
+      "name": "ST2R41_B51_MES.zip",
+      "size": 55582,
+      "sha256": "a513b7d127112070ccecec9af11f42c6ed878611373b3e47616ed6f153cac8e3",
+      "assets": 9
+    },
+    "B52_STORY": {
+      "name": "ST2R41_B52_MES.zip",
+      "size": 87872,
+      "sha256": "26952e76b5966166b669d386460c55845a5a936c96bc07a71b14679a995458fd",
+      "assets": 18
+    },
+    "B64_MOVIE": {
+      "name": "ST2R41_B64_MOVIE_SUBS_CAK.zip",
+      "size": 14304139,
+      "sha256": "bf9f4e80ed4ea283829f6ab8b108c492a294c528ed76adbcd255f20dc98ac89a",
+      "assets": 3,
+      "subtitle_events": 33,
+      "audio_adx_byte_identical": true
+    }
+  },
+  "new_scope": {
+    "assets": 30,
+    "story_assets": 27,
+    "movie_assets": 3,
+    "footprint_sectors": 14767,
+    "actual_changed_sectors": 13941,
+    "source_asset_sha": "30/30 PASS",
+    "candidate_asset_sha": "30/30 PASS",
+    "new_reextraction": "30/30 PASS"
+  },
+  "union": {
+    "physical_assets": 94,
+    "previous_assets_preserved": "64/64 PASS",
+    "new_assets": "30/30 PASS",
+    "total_reextraction": "94/94 PASS",
+    "changed_sectors_from_pristine": 15842,
+    "expected_formula": "1901 previous + 13941 new = 15842",
+    "new_parent_overlap": 0,
+    "outside_approved_footprint_changes": 0,
+    "new_changed_sector_mode1_edc_ecc": "13941/13941 PASS",
+    "all_changed_sector_mode1_edc_ecc": "15842/15842 PASS",
+    "output_disc_sha256": "dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83"
+  },
+  "source_raw_sector_exception": {
+    "lba": 250901,
+    "origin": "pristine source Disc",
+    "mode": "MODE1",
+    "sync": true,
+    "edc": true,
+    "reserved": true,
+    "ecc_p": true,
+    "ecc_q": false,
+    "policy": "Preserve the exact pristine raw sector when candidate user data is unchanged. If user data changes, rebuild EDC/ECC and require the changed result to pass. Never alter a source defect solely to normalize ECC."
+  },
+  "movie_validation": {
+    "SK2MV_10.CAK": {
+      "lba": 124497,
+      "size": 9411120,
+      "replacement_sha256": "55eaac6b98762a60f77bda33962bbe6760bcaf45e8277518acc758bb37b24019",
+      "audio_adx_sha256": "6be7331e6c6efcddf5e87db8ccdf30ff1f9e8b76a95fede5acc5881670aaeeff",
+      "subtitle_events": 13,
+      "footprint_sectors": 4596,
+      "changed_sectors": 4596
+    },
+    "SK2MV_11.CAK": {
+      "lba": 129093,
+      "size": 11007384,
+      "replacement_sha256": "d408eca93ae59453e6747c99b823cc96ab5df2e76bd3c10813114eb5439cc67b",
+      "audio_adx_sha256": "044aeae7c384d44f02356fa0279ae42f11a51bf5c619c02973ff3c3636b525b2",
+      "subtitle_events": 10,
+      "footprint_sectors": 5375,
+      "changed_sectors": 5375
+    },
+    "SK2MV_30.CAK": {
+      "lba": 134468,
+      "size": 7830436,
+      "replacement_sha256": "fab3dd471e909958774170770a9191683d16e670edfed0434167c1ea7e8a988a",
+      "audio_adx_sha256": "b7c1c4b515eaa2e624bda81fb3216c66c57c264e7414ed343fcdc2add9862658",
+      "subtitle_events": 10,
+      "footprint_sectors": 3824,
+      "changed_sectors": 3814
+    }
+  },
+  "story_changed_sector_summary": {
+    "B51_STORY": {
+      "assets": 9,
+      "footprint_sectors": 324,
+      "changed_sectors": 59
+    },
+    "B52_STORY": {
+      "assets": 18,
+      "footprint_sectors": 648,
+      "changed_sectors": 97
+    }
+  },
+  "safety": {
+    "guessed_bytes": false,
+    "source_full_sha_required": true,
+    "candidate_full_sha_required": true,
+    "raw_sector_expected_write_required": true,
+    "actual_changes_subset_of_approved_footprints": true,
+    "changed_sector_edc_ecc_required": true,
+    "whole_asset_reextraction_required": true,
+    "full_disc_distributed": false
+  }
+}
