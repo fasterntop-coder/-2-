@@ -1,0 +1,42 @@
+{
+  "format": "ST2-CD1-BATCH247-C2FIX-STATIC58-COMPOSITE-v1",
+  "batch": 247,
+  "goal": "CD1_100_PERCENT",
+  "base": {
+    "name": "C2FIX.bin",
+    "size": 659293824,
+    "sha256": "c8fae8c9712a5cbee89b5ab95c7ae36ce88ee37d4ab7e2265d4abbf98706fd5b"
+  },
+  "restored_exact_assets": {
+    "battle_banks": "55/55",
+    "pbook": "3/3",
+    "static_total": "58/58",
+    "pbook_assets": [
+      {"asset":"PBOOK_BT","lba":15609,"size":87712,"sha256":"4376a5c2a59639041793a56cccebe25256b26ef7b4db5d3bad81c2b12d184bfe","source":"Batch110 exact package"},
+      {"asset":"PBOOK_EC","lba":15652,"size":87456,"sha256":"378d92a4daf3db00d7c172ae8d233fad1fe3e1452cb979e9bd8b5610220152f5","source":"Batch109 exact package"},
+      {"asset":"PBOOK_RC","lba":15695,"size":58208,"sha256":"c5bc0866ea5581f64bccb0a9da1c6baf53c77601fa247469441e49d0eaae4907","source":"Batch109 exact package"}
+    ]
+  },
+  "integration": {
+    "method": "whole exact asset insertion into exact C2FIX with MODE1/2352 EDC/ECC regeneration",
+    "guessed_bytes": false,
+    "whole_asset_reextraction": "58/58 PASS",
+    "changed_sector_edc_ecc": "1688/1688 PASS",
+    "expected_write": true,
+    "changed_sector_accounting": true
+  },
+  "output": {
+    "bin_sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a"
+  },
+  "distribution_patch": {
+    "name": "ST2R41_CD1_BATCH247_C2FIX_STATIC58_PATCH.zip",
+    "sha256": "9b6664e9e30ac8ece58fbc6b1a3317c4251539fc4f2fbc31bc2656b66291d161",
+    "delta_sector_count": 1688,
+    "delta_changed_raw_bytes": 2655546,
+    "clean_self_test": "PASS",
+    "target": "exact C2FIX.bin",
+    "whole_output_sha256_gate": true,
+    "whole_asset_reextraction_gate": true
+  },
+  "status": "PASS_EXECUTABLE_STATIC58_PATCH_CREATED"
+}
