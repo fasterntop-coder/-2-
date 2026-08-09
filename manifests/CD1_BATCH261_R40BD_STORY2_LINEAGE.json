@@ -1,0 +1,58 @@
+{
+  "format": "ST2-CD1-BATCH261-R40BD-STORY2-LINEAGE-v1",
+  "batch": 261,
+  "goal": "CD1_100_PERCENT",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a"
+  },
+  "historical_lineages": [
+    {
+      "name": "R40B",
+      "disc_sha256": "2db06a0695da7e14eefe448dbcc4d026857ce427669d2fc975fc93a4d742e119",
+      "validated_changed_sectors": 865,
+      "unexpected_iso_changes": 0,
+      "changed_sector_edc_ecc": "PASS",
+      "asset": {
+        "iso_path": "SAKURA1/SK0306.BIN",
+        "lba": 45428,
+        "size": 50464,
+        "pristine_sha256": "3bc3ef87fb0843a9bf2b71fa37ee168bdc1a84ed9ba9723eb52e6ca68e647455",
+        "records": 78
+      }
+    },
+    {
+      "name": "R40D",
+      "disc_sha256": "125bbc3f5c409fef24c1adc25b69f08a9062934b9ec2db97b3f44b7be7d74512",
+      "validated_changed_sectors": 986,
+      "unexpected_iso_changes": 0,
+      "changed_sector_edc_ecc": "PASS",
+      "asset": {
+        "iso_path": "SAKURA1/SK0402.BIN",
+        "lba": 45504,
+        "size": 249824,
+        "pristine_sha256": "99acc63f1224017588d9e91fd862b83683d45ea3a338fe711033dd94ed0c7852",
+        "records": 1664
+      }
+    }
+  ],
+  "asset_count": 2,
+  "record_count": 1742,
+  "recovery_policy": {
+    "replacement_bytes_source": "exact_full_disc_sha_lineage_only",
+    "guessed_payload_bytes": false,
+    "require_historical_full_disc_sha256": true,
+    "require_pristine_asset_sha256": true,
+    "record_recovered_asset_sha256": true,
+    "require_parent_footprint_nonoverlap": true,
+    "require_expected_write": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_changed_sector_accounting": true,
+    "require_whole_asset_reextraction": true
+  },
+  "status": "READY_FOR_EXACT_R40B_R40D_DISC_RECOVERY_AND_B247_PROMOTION"
+}
