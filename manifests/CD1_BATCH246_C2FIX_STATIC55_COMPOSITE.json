@@ -1,0 +1,46 @@
+{
+  "format": "ST2-CD1-BATCH246-C2FIX-STATIC55-COMPOSITE-v1",
+  "batch": 246,
+  "goal": "CD1_100_PERCENT",
+  "base": {
+    "name": "C2FIX.bin",
+    "size": 659293824,
+    "sha256": "c8fae8c9712a5cbee89b5ab95c7ae36ce88ee37d4ab7e2265d4abbf98706fd5b"
+  },
+  "static_source": {
+    "lineage": "Batch137 exact recovery",
+    "battle_banks_exact": "55/55",
+    "static_assets_exact": "55/58",
+    "unresolved": ["PBOOK_BT", "PBOOK_EC", "PBOOK_RC"]
+  },
+  "integration": {
+    "method": "whole exact static asset replacement into exact C2FIX, preserve C2FIX bytes outside the 55 asset file ranges, regenerate MODE1/2352 EDC/ECC for touched sectors",
+    "c2fix_static_conflict_scan": {
+      "historical_static_changed_sectors": 1597,
+      "c2fix_equal_pristine": 988,
+      "c2fix_other_variant": 609,
+      "blind_sector_merge": false
+    },
+    "whole_asset_reextraction": "55/55 PASS",
+    "touched_asset_footprint_sectors": 2240,
+    "actual_output_changed_sectors_vs_c2fix": 1659,
+    "edc_ecc": "PASS",
+    "guessed_bytes": false
+  },
+  "output": {
+    "bin_sha256": "198b5572507c5c16b3b0c4573dab1a8bfae4e14df2514b5a7a032fa988635af1"
+  },
+  "distribution_patch": {
+    "name": "ST2R41_CD1_BATCH246_C2FIX_STATIC55_PATCH.zip",
+    "sha256": "358591b3d1a6034f0c61f81dd48033171c65b8eb75e8f91650345be715dc871e",
+    "target": "exact C2FIX.bin",
+    "delta_sector_count": 1659,
+    "delta_changed_raw_bytes": 2619456,
+    "clean_self_test": "PASS",
+    "expected_write_per_sector": true,
+    "patched_sector_sha256_per_sector": true,
+    "whole_output_sha256_gate": true,
+    "whole_asset_reextraction_gate": true
+  },
+  "status": "PASS_EXECUTABLE_COMPOSITE_PATCH_CREATED"
+}
