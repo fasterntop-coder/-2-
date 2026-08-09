@@ -1,0 +1,48 @@
+{
+  "format": "ST2-CD1-BATCH269-EVENT34-PLUS-137-UNION-v1",
+  "batch": 269,
+  "goal": "CD1_100_PERCENT",
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "verified_static_assets": 58
+  },
+  "components": [
+    {
+      "name": "Batch267Mass137",
+      "candidate_result_status": "PASS_B247_STATIC58_PLUS_137_ASSET_CUMULATIVE_EXECUTABLE_CANDIDATE",
+      "declared_new_assets": 137,
+      "manifest": "manifests/CD1_BATCH267_STORY121_VIDEO10_UI6_COMPOSITE.json"
+    },
+    {
+      "name": "Batch248Event34",
+      "candidate_result_status": "PASS_B247_PLUS_EVENT34_EXECUTABLE_CANDIDATE",
+      "declared_new_assets": 34,
+      "asset_manifest": "manifests/CD1_BATCH244_EVENT34_PROMOTION.json"
+    }
+  ],
+  "asset_union_policy": {
+    "do_not_assume_171_unique": true,
+    "deduplicate_by_iso_path": true,
+    "duplicate_iso_path_requires_identical_replacement_sha256": true,
+    "conflicting_duplicate_is_fatal": true,
+    "reported_unique_asset_count_must_be_computed": true
+  },
+  "sector_union_policy": {
+    "both_candidates_must_hash_match_their_result_json": true,
+    "both_candidates_must_share_exact_batch247_parent": true,
+    "overlapping_changed_sector_requires_byte_identity": true,
+    "conflicting_changed_sector_is_fatal": true,
+    "expected_write_for_every_promoted_sector": true,
+    "changed_sector_accounting_required": true,
+    "mode1_edc_ecc_for_every_promoted_sector": true,
+    "final_sector_identity_to_source_component_required": true
+  },
+  "safety": {
+    "guessed_payload_bytes": false,
+    "estimated_payload_bytes_allowed": false,
+    "exact_sha256_only": true,
+    "whole_asset_gate_inherited_from_passed_components": true
+  },
+  "status": "READY_FOR_DEDUPLICATED_EVENT34_PLUS_137_EXACT_SECTOR_UNION"
+}
