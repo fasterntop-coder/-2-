@@ -1,0 +1,42 @@
+{
+  "format": "ST2-CD1-BATCH260-R40C-SK0401-LINEAGE-v1",
+  "batch": 260,
+  "goal": "CD1_100_PERCENT",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "verified_r40c_disc": {
+    "size": 659293824,
+    "sha256": "0a8ef45602cec5515e29367601b43951229a402321fd7862dd54a970c01a3dcb",
+    "evidence": "R40C_FINAL_VALIDATION_KO.txt",
+    "changed_sectors": 905,
+    "unexpected_iso_changes": 0,
+    "changed_sector_edc_ecc": "PASS",
+    "new_story_asset": "SAKURA1/SK0401.BIN",
+    "new_records": 398
+  },
+  "replacement": {
+    "iso_path": "SAKURA1/SK0401.BIN",
+    "lba": 45453,
+    "size": 104080,
+    "source_sha256": "2f9a8d68405b330103dfe517fbcf8af6615cab2ddb2554d29d59fc155194b786",
+    "replacement_sha256": "DERIVE_ONLY_FROM_EXACT_R40C_FULL_DISC_SHA",
+    "recovery_policy": "Accept payload bytes only when extracted from a 659293824-byte raw Disc 1 image whose full SHA-256 equals verified_r40c_disc.sha256. Compute and seal the asset SHA after extraction; never infer or synthesize payload bytes."
+  },
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a"
+  },
+  "required_gates": {
+    "exact_full_disc_lineage": true,
+    "pristine_source_sha256": true,
+    "parent_footprint_nonoverlap": true,
+    "expected_write": true,
+    "changed_sector_edc_ecc": true,
+    "changed_sector_accounting": true,
+    "whole_asset_reextraction": true,
+    "guessed_payload_bytes": false
+  },
+  "status": "READY_FOR_EXACT_R40C_RECOVERY_AND_B247_PROMOTION"
+}
