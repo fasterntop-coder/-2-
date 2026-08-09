@@ -1,0 +1,27 @@
+{
+  "format": "ST2-CD1-BATCH262-STORY14-CUMULATIVE-v1",
+  "batch": 262,
+  "goal": "CD1_100_PERCENT",
+  "physical_parent": {"batch":247,"sha256":"d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a"},
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "components": [
+    {"source":"manifests/CD1_BATCH259_STORY11_MEGA_PROMOTION.json","assets":11,"replacement_sha_mode":"fixed_exact_sha256"},
+    {"source":"manifests/CD1_BATCH260_R40C_SK0401_LINEAGE.json","assets":1,"replacement_sha_mode":"exact_full_disc_lineage_recovery"},
+    {"source":"manifests/CD1_BATCH261_R40BD_STORY2_LINEAGE.json","assets":2,"replacement_sha_mode":"exact_full_disc_lineage_recovery"}
+  ],
+  "asset_count": 14,
+  "lineage_recovered_assets": ["SK0306.BIN","SK0401.BIN","SK0402.BIN"],
+  "fixed_sha_assets": ["SK0403.BIN","SK0404.BIN","SK0501.BIN","SK0502.BIN","SK0503.BIN","SK0504.BIN","SK0505.BIN","SK1304.BIN","SKCM02.BIN","SKCM04.BIN","SKCM05.BIN"],
+  "safety": {
+    "guessed_payload_bytes": false,
+    "require_exact_candidate_sha256": true,
+    "require_exact_historical_full_disc_sha256_for_lineage_assets": true,
+    "require_pristine_source_sha256": true,
+    "require_parent_footprint_nonoverlap": true,
+    "require_expected_write": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_changed_sector_accounting": true,
+    "require_whole_asset_reextraction": true
+  },
+  "status": "READY_FOR_FOURTEEN_BANK_EXACT_CANDIDATE_ASSEMBLY_AND_B247_PROMOTION"
+}
