@@ -14,6 +14,20 @@
 
 Batch240 physically unions the exact Batch239 64-asset parent with 30 retained historical payloads: nine B51 event MES files, eighteen B52 event MES files and three B64 subtitled CAK movies.
 
+### Batch 241 — VIDEO9 EXACT RECOVERY GATE READY
+
+Batch240 already contains the exact B64 `SK2MV_30.CAK`, so the remaining movie recovery lane is exactly nine assets, not ten: `SK2MV_04/05/06.CAK` plus `SK2MV_43..48.CAK`.
+
+Canonical recovery components:
+
+- `manifests/CD1_BATCH241_VIDEO9_RECOVERY_GATE.json`
+- `tools/recover_batch241_video9.py`
+- `tools/audit_batch241_video9_gate.py`
+
+The historical `VIDEO10`-named tool is compatibility-only and delegates to the canonical Video9 tool. No new Disc bytes are promoted by Batch241 until the exact nine payloads are recovered and the Batch240-parent overlap, Expected Write, changed-sector EDC/ECC, changed-sector accounting and whole-asset re-extraction gates pass.
+
+The separate historical UI9 lane remains quarantined: no UI candidate is auto-merged unless its exact replacement SHA and lineage are proven. A blocked Video9 or UI9 lane does not authorize guessed bytes and does not stop work on other independently provable Disc 1 tasks.
+
 ## Authoritative source and parent
 
 - pristine Disc SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
@@ -56,6 +70,9 @@ Pristine LBA `250901` has valid sync/mode/EDC/reserved/ECC-P but historical ECC-
 - `tools/integrate_batch239_promoted30_batch240.py`
 - `manifests/CD1_BATCH239_PROMOTED30_UNION_BATCH240.json`
 - `reports/BATCH240_REPORT.md`
+- `manifests/CD1_BATCH241_VIDEO9_RECOVERY_GATE.json`
+- `tools/recover_batch241_video9.py`
+- `tools/audit_batch241_video9_gate.py`
 
 ## Mandatory safety policy
 
@@ -71,4 +88,4 @@ Pristine LBA `250901` has valid sync/mode/EDC/reserved/ECC-P but historical ECC-
 
 ## Next production priority
 
-Use Batch240 SHA `dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83` as the only physical parent. Recover the remaining already-produced movie/story/UI packages from File Library in large groups and add them only after exact source/candidate SHA, footprint overlap, Expected Write, changed-sector EDC/ECC and whole-asset re-extraction gates pass.
+Use Batch240 SHA `dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83` as the only physical parent. Recover the exact Video9 payloads when available, while independently auditing and promoting other already-produced story/UI/movie assets only when their exact candidate SHA and lineage are provable. One blocked recovery lane must not stop other safe Disc 1 work.
