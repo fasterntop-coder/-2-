@@ -1,0 +1,33 @@
+{
+  "format": "ST2-CD1-BATCH267-STORY121-VIDEO10-UI6-COMPOSITE-v1",
+  "batch": 267,
+  "goal": "CD1_100_PERCENT",
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "static_assets": 58
+  },
+  "components": [
+    {"name":"Story121","result_status":"PASS_B247_STATIC58_PLUS_STORY121_EXECUTABLE_CANDIDATE","new_assets":121,"controls":2,"whole_asset_gate":"121/121 PASS"},
+    {"name":"Video10","result_status":"PASS_B247_STATIC58_PLUS_VIDEO10_EXECUTABLE_CANDIDATE","new_assets":10,"whole_asset_gate":"10/10 PASS"},
+    {"name":"UI6","result_status":"PASS_B247_STATIC58_PLUS_UI6_EXECUTABLE_CANDIDATE","new_assets":6,"whole_asset_gate":"6/6 PASS"}
+  ],
+  "new_replacement_assets": 137,
+  "story_controls_preserved": 2,
+  "cumulative_parent_static_plus_new_assets": 195,
+  "composition_policy": {
+    "require_exact_parent_sha256": true,
+    "require_component_output_sha256_match": true,
+    "require_component_result_status": true,
+    "require_component_expected_write_gate": true,
+    "require_component_changed_sector_edc_ecc": true,
+    "require_component_whole_asset_gate": true,
+    "require_component_changed_sector_disjointness": true,
+    "require_final_sector_byte_identity_to_component": true,
+    "require_final_changed_sector_accounting": true,
+    "require_final_changed_sector_edc_ecc": true,
+    "whole_asset_reextraction_preservation_proof": "component whole-asset PASS + disjoint exact sector composition",
+    "guessed_payload_bytes": false
+  },
+  "status": "READY_FOR_EXACT_137_ASSET_CUMULATIVE_SECTOR_COMPOSITION"
+}
