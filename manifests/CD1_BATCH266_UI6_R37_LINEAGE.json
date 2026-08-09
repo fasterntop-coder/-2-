@@ -1,0 +1,38 @@
+{
+  "format": "ST2-CD1-BATCH266-UI6-R37-LINEAGE-v1",
+  "batch": 266,
+  "goal": "CD1_100_PERCENT",
+  "target_disc": 1,
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "policy": "exact full-parent SHA is the Expected Write baseline; pre-existing overlap is permitted only on this exact parent"
+  },
+  "trusted_lineage": {
+    "r37_disc_sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+    "r37_zip_sha256": "ea088c6dbca381ba694442cb9bbb979f9ab3a43609565ab60849b7038bef4967",
+    "r36_disc_sha256": "ef41d60d64e05479c2ca8cb255f29080909b3584c615983b30edaec4d8f4a605",
+    "r36_zip_sha256": "efd8ea58ff62c362714d3227572a250db59adc10ed7468206f4360c2ff4935af"
+  },
+  "replacement_files": [
+    {"iso_path":"SAKURA1/CMD_WIN.CG","lba":4034,"size":4288,"source_sha256":"f732fcd1d9941c00ca1cec33602c8fcd46191ebbb7634b1f7ed5a838866a04df","replacement_sha256":"20a4947ce98752681efecffe9a6022dfb324bc9433ece5ce8da6d567f605ee09"},
+    {"iso_path":"SAKURA1/PBOOK_FL.CG","lba":1658,"size":346016,"source_sha256":"0cb6c798ca4aab0856ce3718c7606adcc1b7cef5f0ec5ac6cd834b091856da45","replacement_sha256":"b172efc442ebca5fc0aade2f92e96cd193a853542213336fecf793e2f881cbdb"},
+    {"iso_path":"SAKURA1/PB_EYE.CG","lba":15725,"size":66240,"source_sha256":"6b57fd7e986c731deefa995e4af02828f51371ea2f99078c836520839b21a4f7","replacement_sha256":"f3ab7b8f52474d772aa9652b3667e3052935a107c361e2aa7574ac807eaa2c98"},
+    {"iso_path":"SAKURA1/TITLE.BIN","lba":1210,"size":154408,"source_sha256":"af775bb149c1ca72984d1a64225d10d4b5103c200aca845b8e06cdf0d41af9a2","replacement_sha256":"0929d80109519c63fb70f46469d3b3b1d4d21c2841b46ba7ac4b4807b0a30ad2"},
+    {"iso_path":"SAKURA1/TTL2CGB.BIN","lba":333,"size":66467,"source_sha256":"d3bb7d54d831fafda164c0a8a1f50b8268d94cf44b4ee0f345e618547d6f2c4d","replacement_sha256":"d9f060c35203b971a00a4ff70816f2a4a60ff739de477d84222b30bb3882a6e5"},
+    {"iso_path":"SAKURA1/TTL2CGB1.BIN","lba":48460,"size":66467,"source_sha256":"d3bb7d54d831fafda164c0a8a1f50b8268d94cf44b4ee0f345e618547d6f2c4d","replacement_sha256":"d9f060c35203b971a00a4ff70816f2a4a60ff739de477d84222b30bb3882a6e5"}
+  ],
+  "asset_count": 6,
+  "policy": {
+    "guessed_payload_bytes": false,
+    "require_exact_candidate_sha256": true,
+    "require_exact_pristine_source_sha256": true,
+    "require_exact_parent_disc_sha256": true,
+    "require_expected_write": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_changed_sector_accounting": true,
+    "require_whole_asset_reextraction": true
+  },
+  "status": "PASS_UI6_EXACT_LINEAGE_LOCKED_NO_GAME_BYTES_GUESSED"
+}
