@@ -1,0 +1,39 @@
+{
+  "format": "ST2-CD1-BATCH249-STORY75-SOURCESET-v1",
+  "batch": 249,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "static_assets": "58/58",
+    "static_whole_asset_reextraction": "58/58 PASS"
+  },
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "source_manifests": [
+    {"name":"BATCH50_PATCH_MANIFEST.json","assets":6},
+    {"name":"BATCH51_PATCH_MANIFEST.json","assets":9},
+    {"name":"BATCH52_PATCH_MANIFEST.json","assets":18},
+    {"name":"BATCH53_PATCH_MANIFEST.json","assets":19},
+    {"name":"BATCH54_PATCH_MANIFEST.json","assets":8},
+    {"name":"BATCH55_PATCH_MANIFEST.json","assets":15}
+  ],
+  "validated_story_assets": 75,
+  "unique_iso_paths": 75,
+  "unique_basenames": 75,
+  "approved_footprint_sectors": 2701,
+  "intra_story_footprint_collisions": 0,
+  "generated_mega_manifest_sha256": "9fcbc56d0bd8cda54532b278e7e14b9edfecaba8d9a433ffccd6ea28343b0854",
+  "event_mes_known_completion": {"files":"109/109","records":"1094/1094","source":"BATCH55 completion ledger"},
+  "safety": {
+    "guessed_payload_bytes": false,
+    "require_exact_candidate_sha256": true,
+    "require_pristine_source_sha256": true,
+    "require_parent_footprint_nonoverlap": true,
+    "require_expected_write": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_changed_sector_accounting": true,
+    "require_whole_asset_reextraction": true
+  },
+  "next_physical_step": "Recover exact 75 replacement MES payloads, then run tools/integrate_batch249_story75.py against exact Batch247 parent.",
+  "status": "PASS_STORY75_MEGA_SET_LOCKED_NO_GAME_BYTES_GUESSED"
+}
