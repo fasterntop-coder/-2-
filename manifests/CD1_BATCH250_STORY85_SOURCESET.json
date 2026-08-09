@@ -1,0 +1,27 @@
+{
+  "format": "ST2-CD1-BATCH250-STORY85-SOURCESET-v1",
+  "batch": 250,
+  "goal": "CD1_100_PERCENT",
+  "parent": {"batch":247,"sha256":"d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a","static_assets":"58/58"},
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "story75": {"source_set":"manifests/CD1_BATCH249_STORY75_SOURCESET.json","assets":75,"approved_footprint_sectors":2701},
+  "additional_exact_assets": [
+    {"iso_path":"SAKURA2/EV02050.MES","lba":248777,"size":71851,"source_sha256":"a3157888399da03e7c12ecda5b38a0fe494052f058329c405431b39bc920f22b","replacement_sha256":"b3a4da3fbcf28cb8228bcb4e08404eb09fd64f416324955e6931e7796b758989"},
+    {"iso_path":"SAKURA2/EV02051.MES","lba":248827,"size":71814,"source_sha256":"d3dbad2690455338d9c5bd45deb423fe1abd256013fbfd1d388226d316029635","replacement_sha256":"f381f1c59ed360def6a4c510c2e4c456848e2ecfad89ce4c0055ae12b2d1798b"},
+    {"iso_path":"SAKURA2/EV02052.MES","lba":248877,"size":71872,"source_sha256":"7651179522253df24f901e0c8436f1aaad319173f253ac372bbdbc92ce116755","replacement_sha256":"ae36f7b646485a7c063b02b29932494a83791b9056f01f15498c5bdfb279bc61"},
+    {"iso_path":"SAKURA2/EV02053.MES","lba":248927,"size":71873,"source_sha256":"36631d77147bb8dcb9bf5530a92c79337ad5fe41b7aaa68cb522c98a16b87a54","replacement_sha256":"ee61191911ec12d1b880e9a670eea6dbcee5823e00868329be21e04100612442"},
+    {"iso_path":"SAKURA2/EV02054.MES","lba":248977,"size":71897,"source_sha256":"776ec047314752614c5d2e18a57adf3cb52faa75ba21c549cfd59b30d62528c6","replacement_sha256":"ddee9ade7e05a586e3f5fc5ac33199c936e8699ffe3114c61119e3d6d526c070"},
+    {"iso_path":"SAKURA2/EV03001.MES","lba":249453,"size":72963,"source_sha256":"ac085b3e322833e9e77901256cff52f0fd29078101092def2a8a92e58ef742d2","replacement_sha256":"eedbfeba75859f91d8688278131141c732f4afcdecd1046ba415f3d60e4d5534"},
+    {"iso_path":"SAKURA2/EV03002.MES","lba":249867,"size":71926,"source_sha256":"f681a5c9511ef01eb1e821a6d9e5236343eb58322d1dcf37d16b0f350cb109b9","replacement_sha256":"62069f3fb5ff7aec68e5c844fd8cafb1471e62518d08f79430a7e81206b7571a"},
+    {"iso_path":"SAKURA2/EV03005.MES","lba":250132,"size":72012,"source_sha256":"c99dedbb0e12a3a338a80a32da1f9dda5b4a219b10c78d6925f06585fa247e50","replacement_sha256":"364e1215e1bbbbb4a72a11db4688b72995aebf22b11918416bd38adcbda80426"},
+    {"iso_path":"SAKURA2/EV03020.MES","lba":249566,"size":71821,"source_sha256":"2831cafa7c20e9be93551b795b9f1c941884b7cebaecb78f8061e21f0c2199fd","replacement_sha256":"dcafc6bad12a2f769d58aeb37c5eb1d8fec5cb7eabf79ddf1b464d2e1a14f062"},
+    {"iso_path":"SAKURA2/EV03021.MES","lba":249816,"size":73972,"source_sha256":"ef061219cbd9a7d7d788efc6b351629e78d131a8ad294016f91bafc08a4c3959","replacement_sha256":"936ff18bfb18487a85eaded8dd892ed23c421d19a5c600192b3c6c10101d2786"}
+  ],
+  "validated_story_assets": 85,
+  "approved_footprint_sectors": 3062,
+  "intra_story_footprint_collisions": 0,
+  "known_event_completion_target": {"files":"109/109","records":"1094/1094"},
+  "remaining_exact_metadata_to_promote_to_story109": 24,
+  "safety": {"guessed_payload_bytes":false,"require_exact_candidate_sha256":true,"require_pristine_source_sha256":true,"require_parent_footprint_nonoverlap":true,"require_expected_write":true,"require_changed_sector_edc_ecc":true,"require_changed_sector_accounting":true,"require_whole_asset_reextraction":true},
+  "status": "PASS_STORY85_EXACT_SOURCE_SET_LOCKED"
+}
