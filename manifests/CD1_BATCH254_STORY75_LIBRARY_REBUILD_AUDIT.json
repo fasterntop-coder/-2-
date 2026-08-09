@@ -1,0 +1,26 @@
+{
+  "format": "ST2-CD1-BATCH254-STORY75-LIBRARY-REBUILD-AUDIT-v1",
+  "batch": 254,
+  "goal": "CD1_100_PERCENT",
+  "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "physical_parent_batch": 247,
+  "physical_parent_sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+  "library_source_manifests": [
+    {"name":"BATCH50_PATCH_MANIFEST.json","sha256":"81de1f2b6fc74e611f5cedb4d69265c0447324e9cb305337f4d9018b4e5a3861","assets":6,"sha256sum_chain":"PASS"},
+    {"name":"BATCH51_PATCH_MANIFEST.json","sha256":"dc5f700aeb1ae9bed4cbbfa1de926b8824bccf98dd109cfb8fe9ab41e546461d","assets":9,"sha256sum_chain":"PASS"},
+    {"name":"BATCH52_PATCH_MANIFEST.json","sha256":"55a7b7328449f542f697baf675f97c23ea093a51d5726622164d2836fcf1bade","assets":18,"sha256sum_chain":"PASS"},
+    {"name":"BATCH53_PATCH_MANIFEST.json","sha256":"423bdd882fce078e6cfd10b9b9bf12785a123bbaac6e940910c033c2af962311","assets":19,"sha256sum_chain":"PASS"},
+    {"name":"BATCH54_PATCH_MANIFEST.json","sha256":"b46b5005d3214e9fdf5242ac313bf26a479f3f28b2df712d5559ea97d8bd8554","assets":8,"sha256sum_chain":"PASS"},
+    {"name":"BATCH55_PATCH_MANIFEST.json","sha256":"db9329bffed005551f9ae3f8cf593c9019c7f75483318f5a2efe8c24332f4db5","assets":15,"sha256sum_chain":"PASS"}
+  ],
+  "replacement_assets": 75,
+  "unique_iso_paths": 75,
+  "approved_footprint_sectors": 2701,
+  "canonical_replacement_list_sha256": "3f61d6109c5f340948410c7f5ef66d3614dd1e2f9821caa9974fd837fb8f4d99",
+  "locally_regenerated_json_sha256": "5735691ce63c8d7fa18f3b62697b25e9dbee23e2d9d9905fb782977648d43e7c",
+  "legacy_recorded_generated_json_sha256": "9fcbc56d0bd8cda54532b278e7e14b9edfecaba8d9a433ffccd6ea28343b0854",
+  "raw_json_sha_relation": "DIFFERENT_SERIALIZED_OR_GENERATED_ARTIFACT",
+  "promotion_policy": "Trust the six independently SHA256SUM-bound source manifests and exact per-asset source/replacement hashes; do not use the legacy aggregate JSON file hash as a game-byte substitute.",
+  "guessed_game_bytes": false,
+  "status": "PASS_75_ASSET_SEMANTIC_SOURCE_CHAIN_LOCKED_RAW_AGGREGATE_HASH_DIFFERENCE_QUARANTINED"
+}
