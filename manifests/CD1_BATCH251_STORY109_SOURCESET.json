@@ -1,0 +1,54 @@
+{
+  "format": "ST2-CD1-BATCH251-STORY109-SOURCESET-v1",
+  "batch": 251,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "static_assets": "58/58",
+    "static_whole_asset_reextraction": "58/58 PASS"
+  },
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "story85": {
+    "source_set": "manifests/CD1_BATCH250_STORY85_SOURCESET.json",
+    "replacement_assets": 85,
+    "status": "PASS_STORY85_EXACT_SOURCE_SET_LOCKED"
+  },
+  "early_exact_replacement_batches": [
+    {"batch":34,"assets":2,"files":["EV00002.MES","EV00020.MES"],"evidence":"R41 Batch34 QA/translation artifacts"},
+    {"batch":35,"assets":1,"files":["EV00050.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH35.xlsx"},
+    {"batch":36,"assets":2,"files":["EV00051.MES","EV00052.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH36.xlsx"},
+    {"batch":37,"assets":1,"files":["EV00054.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH37.xlsx"},
+    {"batch":38,"assets":1,"files":["EV00055.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH38.xlsx"},
+    {"batch":39,"assets":1,"files":["EV00060.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH39.xlsx"},
+    {"batch":40,"assets":1,"files":["EV01001.MES"],"evidence":"R41_EV01001_TRANSLATION.json"},
+    {"batch":41,"assets":2,"files":["EV01002.MES","EV01020.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH41.xlsx"},
+    {"batch":42,"assets":3,"files":["EV01021.MES","EV01022.MES","EV01023.MES"],"evidence":"R41_EV01021_EV01022_EV01023_TRANSLATION.json"},
+    {"batch":43,"assets":2,"files":["EV01030.MES","EV01050.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH43.xlsx"},
+    {"batch":44,"assets":2,"files":["EV01054.MES","EV01055.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH44.xlsx"},
+    {"batch":45,"assets":1,"files":["EV02001.MES"],"evidence":"R41_EV02001_TRANSLATION.json"},
+    {"batch":46,"assets":3,"files":["EV02002.MES","EV02021.MES","EV02025.MES"],"evidence":"ST2_R41_DIALOGUE_QA_BATCH46.xlsx"}
+  ],
+  "early_exact_replacement_assets": 22,
+  "reviewed_unchanged_control_files": [
+    {"iso_path":"SAKURA2/EV00001.MES","lba":247589,"size":16,"sha256":"374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb","records":0,"status":"CONTROL_FILE_UNCHANGED"},
+    {"iso_path":"SAKURA2/EV26001.MES","lba":247615,"size":16,"sha256":"374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb","records":0,"status":"CONTROL_FILE_UNCHANGED"}
+  ],
+  "story_replacement_assets": 107,
+  "story_control_assets": 2,
+  "story_files_accounted": 109,
+  "event_mes_completion": {"files":"109/109","records":"1094/1094"},
+  "remaining_exact_metadata_to_promote": 0,
+  "safety": {
+    "guessed_payload_bytes": false,
+    "require_exact_candidate_sha256": true,
+    "require_pristine_source_sha256": true,
+    "require_parent_footprint_nonoverlap": true,
+    "require_expected_write": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_changed_sector_accounting": true,
+    "require_whole_asset_reextraction": true
+  },
+  "next_physical_step": "Recover the 22 early exact replacement payloads, combine with Story85 payloads, then promote 107 replacement MES while asserting the two control MES remain pristine.",
+  "status": "PASS_STORY109_LOGICAL_SOURCE_SET_LOCKED_NO_GAME_BYTES_GUESSED"
+}
