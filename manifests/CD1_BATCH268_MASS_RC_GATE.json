@@ -1,0 +1,53 @@
+{
+  "format": "ST2-CD1-BATCH268-MASS-RC-GATE-v1",
+  "batch": 268,
+  "goal": "CD1_100_PERCENT",
+  "short_term_goal": "CD1_80_PERCENT_OR_HIGHER_CANDIDATE",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "base_c2fix_sha256": "c8fae8c9712a5cbee89b5ab95c7ae36ce88ee37d4ab7e2265d4abbf98706fd5b",
+    "static_assets": 58,
+    "static_whole_asset_reextraction": "58/58 PASS",
+    "static_changed_sector_edc_ecc": "1688/1688 PASS"
+  },
+  "candidate": {
+    "source_batch": 267,
+    "expected_status": "PASS_B247_STATIC58_PLUS_137_ASSET_CUMULATIVE_EXECUTABLE_CANDIDATE",
+    "new_replacement_assets": 137,
+    "story_controls_preserved": 2,
+    "components": {
+      "Story121": {"assets":121,"whole_asset_gate":"121/121 PASS"},
+      "Video10": {"assets":10,"whole_asset_gate":"10/10 PASS"},
+      "UI6": {"assets":6,"whole_asset_gate":"6/6 PASS"}
+    }
+  },
+  "movie_static_inventory": {
+    "total": 24,
+    "processed": "24/24",
+    "speech_bearing": "12/12 subtitle candidate present",
+    "baseline_c2fix_subtitled": 8,
+    "new_offline_dialogue_candidates": 4,
+    "no_dialogue_original_preserved": 6,
+    "episode_title_card_candidates": 6
+  },
+  "release_gate": {
+    "require_exact_pristine_sha256": true,
+    "require_exact_batch247_sha256": true,
+    "require_exact_batch267_result_status": true,
+    "require_batch267_output_sha256_match": true,
+    "require_expected_write": true,
+    "require_component_sector_overlap_zero": true,
+    "require_changed_sector_accounting": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_component_sector_identity": true,
+    "require_whole_asset_reextraction": true,
+    "require_control_reextraction": true,
+    "guessed_payload_bytes": false
+  },
+  "status": "READY_FOR_FULL_CHAIN_MASS_RC_VALIDATION"
+}
