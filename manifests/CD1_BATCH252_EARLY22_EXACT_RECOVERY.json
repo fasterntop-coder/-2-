@@ -1,0 +1,41 @@
+{
+  "format": "ST2-CD1-BATCH252-EARLY22-EXACT-RECOVERY-v1",
+  "batch": 252,
+  "goal": "CD1_100_PERCENT",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "historical_st2r36_disc_sha256": "ef41d60d64e05479c2ca8cb255f29080909b3584c615983b30edaec4d8f4a605",
+  "historical_st2r36_assets": 19,
+  "batch46_loose_assets": 3,
+  "assets": [
+    {"iso_path":"SAKURA2/EV00002.MES","lba":247457,"size":71798,"source_sha256":"7083856761dbb0d14eed40f10869f15310d3f0c8366b6a1e4e8c14e90958e692","replacement_sha256":"487221ee8a44e4d65c25684d697f29437e2e80f2b66e4615610c4a5c089b1b6d","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00020.MES","lba":247507,"size":74265,"source_sha256":"6ec7360eb1ecb4663f3eb47cd1e36fcff8e1a7f7db061999b13135f8b825828f","replacement_sha256":"79b35568f49be22f9defa046ec74d3b443a7c77072ce544c6974db269496bf4f","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00050.MES","lba":247221,"size":73035,"source_sha256":"8a7c3bce9d74577dff93866a03e64ed65be0bf22cbfcc476d2189485b5af8967","replacement_sha256":"23a0d17cb5d57db1adb1e24ed4f6689e62ccd1600ab581fc5cea4ff3de27febe","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00051.MES","lba":247257,"size":71878,"source_sha256":"8b67beb2afcb7428081f14ddadcf34a53723b02db8acf7ce430bca0a146ec8bd","replacement_sha256":"15c8b3a7c7482dc3ce19dbcea6437782f35d4050bb6d65f81b6bdefb29704975","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00052.MES","lba":247157,"size":72132,"source_sha256":"f93dd3ea8c616a684c0bfb7fc7dc43464c57c07088d3a431ca5b0e1795864cad","replacement_sha256":"62f93fcb26f899de4f21195f0595e1f6f66577165344fc749d8cfe59fea2593c","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00054.MES","lba":247307,"size":72275,"source_sha256":"5b5f88c783ed10a3c9d50c66a0cba510762645e172e1f635a978475b2b733539","replacement_sha256":"30d34ac38f05562011c602b08d3c4364635ebf6a6bd5ebf4aaed8539462b4b51","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00055.MES","lba":247357,"size":72029,"source_sha256":"f4452b452ddb2d28cd518861e9dc09db8f6f6c0c6b61e74701cb67136324e35c","replacement_sha256":"2ccf6783e365a75059d3ce83b6cb9314c57747ede79cd3593b138e36e48357bd","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV00060.MES","lba":247407,"size":72656,"source_sha256":"0449985dca2679d06e66eadaff6bb087072b73a6f34a716a90ccef8f54fcf326","replacement_sha256":"5d72432b556e4ea3ebbf42e1124b4af6c7e265f7f5b3ca810e64a6ee80ef7f26","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01001.MES","lba":247994,"size":73974,"source_sha256":"53bb3025d63224d77178fab4bd82205ab847350bbc39bab8f7451d6d7698836f","replacement_sha256":"630eb7ed936d79c1dfd6725af0126ffe47c5aac60174cb1c5c92a80198cab0a9","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01002.MES","lba":248248,"size":71702,"source_sha256":"93095b06bca46ee4b1b02781bd93d4d126ed21fd51b49127c4e1da76e16e9a96","replacement_sha256":"1512d0947fd597408b3f33d3689b58b344b8321a16ce366c09d7dabb0cd577be","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01020.MES","lba":248096,"size":71910,"source_sha256":"7e4707a9e27cf3fb15c17d849c8e122057c62ead1f05f4b68ba3929951bc4f6c","replacement_sha256":"b990ba0200bbef63c5a74b348469e27f3b67c3ac7f824eb3ddccf79a3c35d471","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01021.MES","lba":248147,"size":72034,"source_sha256":"0314f922c7a4231461d018083642ef9d820a04f56854d482bad1befd85d5d1ce","replacement_sha256":"ea9beabcb037928b7e637f74bc6c4631d2dab7e6692d8068a2b6f861f6ef8486","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01022.MES","lba":248462,"size":71910,"source_sha256":"c2cfce7065d7e7b326a6ed6d5e26d34e064d04414201a40d2e86360b7b866482","replacement_sha256":"a68c88fece81aa3f808ddb9ffb726443815cb4335490d56b4eaefcd1875833e1","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01023.MES","lba":248045,"size":71835,"source_sha256":"db7bfa44739ab89fe03807fd13e40ee7d5e172b6eca20d6941eb6f0390a279a3","replacement_sha256":"ebf96af0ce727edcdec9064f0eba8e51315adc9908e73a5b6bbb5d6d7ebf5a24","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01030.MES","lba":248348,"size":72131,"source_sha256":"e133dbd61fd80744dae5da408b46c7c97a58f8e01f97c39fce37fda1fa9681dd","replacement_sha256":"be6810ab4c5d62427b87b2ebfe8c2594ef7d783a42e82e4d7fa044c75d1af9a8","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01050.MES","lba":248212,"size":72854,"source_sha256":"57ef796130e3a64fbd981a9932fa6ed66c5122ec03791b81bbf0e4c73a893eba","replacement_sha256":"78e34e0b4737596b1eccfeefcef7ffaceb5b8f76737ce61d1827032c628819bd","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01054.MES","lba":248312,"size":72182,"source_sha256":"3096ca7799a7d47f7787b64cfa4d54f2bb3d4b336d7973cac71d5766a85d215a","replacement_sha256":"a8ccd119530f229297702acbebbab780cf12a296186bb89d7cfc7735a772d172","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV01055.MES","lba":248412,"size":72571,"source_sha256":"75dc260148b7741853b0fa4729c23659c2825e7a5a7c8abcc4fe01b52911cd33","replacement_sha256":"1612568c0a7d90f283bc8e5700440d951ea5a52f1af5df8678793e6055d62e18","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV02001.MES","lba":248627,"size":71851,"source_sha256":"83e7ea95b3230dc080d964e6842b39b48f9215361ca6ea99f2024c81a6c3af4e","replacement_sha256":"16a4f10d60ee1f1e935d5820c87bdf5553c0ba59dc404054651045f677aa4f1e","recovery":"ST2R36"},
+    {"iso_path":"SAKURA2/EV02002.MES","lba":249227,"size":71788,"source_sha256":"e642c654d96791b32888ceabf1f5550922a3d261b2b93389fb6f803bb65a6819","replacement_sha256":"26cd1598f89545f9f2722536384774bf1066cb75068d0005a539ec533f47b2ef","recovery":"BATCH46_LOOSE"},
+    {"iso_path":"SAKURA2/EV02021.MES","lba":248677,"size":72286,"source_sha256":"529228a905798b0bc0ad43cdb255232393780c7cb802635dcda8b10667c76199","replacement_sha256":"66f8b238f49d9638da9c9316584c7c4a4896e77b2cdecdfb34bc76159f077716","recovery":"BATCH46_LOOSE"},
+    {"iso_path":"SAKURA2/EV02025.MES","lba":248727,"size":71829,"source_sha256":"3339f71740b2297b6e2ff18c18a737d60fffc4a06176e65e5c86d66e2fe68682","replacement_sha256":"6ee14a69d7ad176309651f61c4aca6705faa69de9bb0c194c0730c5da5933851","recovery":"BATCH46_LOOSE"}
+  ],
+  "asset_count": 22,
+  "safety": {
+    "guessed_payload_bytes": false,
+    "exact_full_disc_gate_for_st2r36": true,
+    "exact_replacement_sha256": true,
+    "exact_pristine_source_sha256": true
+  },
+  "status": "PASS_EARLY22_EXACT_RECOVERY_BINDINGS_LOCKED"
+}
