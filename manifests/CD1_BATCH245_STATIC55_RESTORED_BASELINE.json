@@ -1,0 +1,47 @@
+{
+  "format": "ST2-CD1-BATCH245-STATIC55-RESTORED-v1",
+  "batch": 245,
+  "goal": "CD1_100_PERCENT",
+  "source_lineage": "historical Batch137 exact recovery",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "restored_patch_package": {
+    "name": "ST2R41_BATCH137_FIFTYFIVE_ASSET_EXACT_RECOVERY_PATCH.zip",
+    "sha256": "48adebfe83ced41f38f7960030fb4a9cd24592dac231f51b6f7ce632785ba88c",
+    "internal_manifest_entries": 1607,
+    "internal_manifest_verified": true
+  },
+  "sprint_distribution": {
+    "name": "ST2R41_CD1_SPRINT_STATIC55_RESTORED.zip",
+    "sha256": "a09e56ae0c5f28b2cd665205411f0582b47e5e105318f067f7f65c5643ddc3c1"
+  },
+  "coverage": {
+    "battle_banks_exact": "55/55",
+    "static_assets_exact": "55/58",
+    "unresolved_static_assets": ["PBOOK_BT", "PBOOK_EC", "PBOOK_RC"]
+  },
+  "raw_disc_gate": {
+    "changed_mode1_2352_sectors": 1597,
+    "historical_expected_sectors_without_pbook": 1597,
+    "sector_count_match": true,
+    "expected_write": true,
+    "edc_ecc": "PASS",
+    "whole_asset_reextraction": "55/55 PASS"
+  },
+  "expected_output": {
+    "bin_sha256": "b5e8fc8b1a5798d03a3f3bd21a87ce66b742c64a1d8ce3ed3d7dc8db9763d518",
+    "cue_sha256": "33e869dc4a539b8bb481d85e6568da2c5b4cb641768a124bfca0b8f4f9f75d2b"
+  },
+  "policy": {
+    "guessed_bytes": false,
+    "promotion_requires_exact_source_sha256": true,
+    "promotion_requires_delta_sha256": true,
+    "promotion_requires_original_sector_sha256": true,
+    "promotion_requires_patched_sector_sha256": true,
+    "promotion_requires_final_disc_sha256": true,
+    "promotion_requires_reextraction": true
+  },
+  "status": "PASS_RESTORED_EXECUTABLE_STATIC55_BASELINE"
+}
