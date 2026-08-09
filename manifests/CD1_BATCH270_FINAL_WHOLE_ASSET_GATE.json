@@ -1,0 +1,42 @@
+{
+  "format": "ST2-CD1-BATCH270-FINAL-WHOLE-ASSET-GATE-v1",
+  "batch": 270,
+  "goal": "CD1_100_PERCENT",
+  "input_candidate": {
+    "batch": 269,
+    "required_status": "PASS_B247_STATIC58_PLUS_DEDUP_MASS137_EVENT34_EXECUTABLE_CANDIDATE"
+  },
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "verified_static_assets": 58
+  },
+  "exact_asset_sources": [
+    "manifests/CD1_BATCH253_STORY109_PROMOTION.json",
+    "manifests/CD1_BATCH262_STORY14_CUMULATIVE.json",
+    "manifests/CD1_BATCH266_UI6_R37_LINEAGE.json",
+    "manifests/CD1_BATCH244_EVENT34_PROMOTION.json"
+  ],
+  "runtime_exact_asset_source": {
+    "name": "Video10 sealed manifest",
+    "required": true,
+    "reason": "three package-bound CAK payload SHA-256 values are sealed only after exact historical package recovery"
+  },
+  "gate_policy": {
+    "deduplicate_by_iso_path": true,
+    "duplicate_iso_path_requires_identical_lba_size_replacement_sha256": true,
+    "extract_every_unique_asset_from_final_raw_disc": true,
+    "raw_mode1_user_data_offset": 16,
+    "raw_sector_size": 2352,
+    "iso_user_sector_size": 2048,
+    "require_every_reextracted_asset_sha256": true,
+    "require_batch269_result_output_sha256_match": true,
+    "require_batch269_expected_write_pass": true,
+    "require_batch269_edc_ecc_pass": true,
+    "require_batch269_changed_sector_accounting_pass": true,
+    "guessed_payload_bytes": false,
+    "estimated_payload_bytes_allowed": false
+  },
+  "success_status": "PASS_BATCH270_FINAL_UNION_WHOLE_ASSET_REEXTRACTION",
+  "status": "READY_FOR_FINAL_UNION_WHOLE_ASSET_REEXTRACTION"
+}
