@@ -1,0 +1,67 @@
+{
+  "format": "ST2-CD1-BATCH257-CH45-STORY3-MEGA-PROMOTION-v1",
+  "batch": 257,
+  "goal": "CD1_100_PERCENT",
+  "physical_parent": {
+    "batch": 247,
+    "sha256": "d37c3da740a2cbee168513fd2a6a1b5c7b6d8a2d9486dd6ce270544e50eb529a",
+    "static_assets": "58/58"
+  },
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "replacement_files": [
+    {
+      "iso_path": "SAKURA1/SK0403.BIN",
+      "lba": 45626,
+      "size": 113392,
+      "source_sha256": "2736d124c75afcf99cf0d8646427ba9478b84215c8de64fb29aa73f7cefa9b1e",
+      "replacement_sha256": "94576a14ff92abff690fde9acdd9e5673b834f7d62391be39971f7d70e4932b5",
+      "records_reviewed": 506,
+      "translated_records": 500,
+      "controls": 6,
+      "evidence": "SK0403_KR_FINAL_VALIDATION.json / Batch33"
+    },
+    {
+      "iso_path": "SAKURA1/SK0404.BIN",
+      "lba": 45682,
+      "size": 44804,
+      "source_sha256": "4deb61ff0b8f25ad8494e6753af9b415f6f4351374f39704112574a793f2a710",
+      "replacement_sha256": "7fd50fb8a2b236091b41c5a7b6ff7dc46c992e01790a5d534491649d64d830e5",
+      "records_reviewed": 77,
+      "translated_records": 76,
+      "controls": 1,
+      "evidence": "R41_SK0404_TRANSLATION_COMPLETE.json / Batch56"
+    },
+    {
+      "iso_path": "SAKURA1/SK0501.BIN",
+      "lba": 45704,
+      "size": 246748,
+      "source_sha256": "8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f",
+      "replacement_sha256": "6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743",
+      "records_reviewed": 1559,
+      "translated_records": 1558,
+      "controls": 1,
+      "evidence": "R41_SK0501_TRANSLATION_COMPLETE.json / Batch60"
+    }
+  ],
+  "asset_count": 3,
+  "records_reviewed": 2142,
+  "translated_records": 2134,
+  "control_records": 8,
+  "story_metric_evidence": {
+    "after_SK0501_implemented": 14865,
+    "disc1_story_total": 14875,
+    "disc1_story_percent": 99.9,
+    "remaining": 10
+  },
+  "safety": {
+    "guessed_payload_bytes": false,
+    "require_exact_candidate_sha256": true,
+    "require_pristine_source_sha256": true,
+    "require_parent_footprint_nonoverlap": true,
+    "require_expected_write": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_changed_sector_accounting": true,
+    "require_whole_asset_reextraction": true
+  },
+  "status": "READY_FOR_EXACT_PAYLOAD_RECOVERY_AND_PHYSICAL_PROMOTION"
+}
