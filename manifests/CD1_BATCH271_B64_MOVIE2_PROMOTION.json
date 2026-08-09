@@ -1,0 +1,54 @@
+{
+  "format": "ST2-CD1-BATCH271-B64-MOVIE2-PROMOTION-v1",
+  "batch": 271,
+  "goal": "CD1_100_PERCENT",
+  "purpose": "Promote the two B64 subtitle movies absent from the current Video10 lane by recovering them only from the exact verified Batch240 physical Disc.",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "trusted_recovery_disc": {
+    "batch": 240,
+    "required_status": "PASS_BATCH239_PLUS_PROMOTED30_PHYSICAL_UNION_94_OF_94",
+    "sha256": "dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83",
+    "reextraction": "94/94 PASS"
+  },
+  "target_parent": {
+    "batch": 269,
+    "required_status": "PASS_B247_STATIC58_PLUS_DEDUP_MASS137_EVENT34_EXECUTABLE_CANDIDATE",
+    "sha256_from_result": true
+  },
+  "replacement_files": [
+    {
+      "iso_path": "SAKURA1/SK2MV_10.CAK",
+      "lba": 124497,
+      "size": 9411120,
+      "replacement_sha256": "55eaac6b98762a60f77bda33962bbe6760bcaf45e8277518acc758bb37b24019",
+      "subtitle_events": 13,
+      "historical_batch": 64
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_11.CAK",
+      "lba": 129093,
+      "size": 11007384,
+      "replacement_sha256": "d408eca93ae59453e6747c99b823cc96ab5df2e76bd3c10813114eb5439cc67b",
+      "subtitle_events": 10,
+      "historical_batch": 64
+    }
+  ],
+  "new_unique_assets": 2,
+  "new_subtitle_events": 23,
+  "known_video10_overlap": false,
+  "safety": {
+    "recover_only_from_exact_batch240_sha256": true,
+    "replacement_asset_sha256_required": true,
+    "expected_write_required": true,
+    "write_only_asset_user_data_bytes": true,
+    "rebuild_changed_mode1_edc_ecc": true,
+    "changed_sector_accounting_required": true,
+    "whole_asset_reextraction_required": true,
+    "guessed_payload_bytes": false,
+    "estimated_payload_bytes_allowed": false
+  },
+  "success_status": "PASS_BATCH269_PLUS_B64_MOVIE2_EXECUTABLE_CANDIDATE"
+}
