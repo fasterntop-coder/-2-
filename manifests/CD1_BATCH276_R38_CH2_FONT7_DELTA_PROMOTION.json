@@ -1,0 +1,36 @@
+{
+  "format": "ST2-CD1-BATCH276-R38-CH2-FONT7-DELTA-v1",
+  "batch": 276,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 275,
+    "required_status": "PASS_BATCH274_PLUS_R37_RUNTIME_SUPPORT5_EXECUTABLE_CANDIDATE"
+  },
+  "donor_lineage": {
+    "r37_disc_sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+    "r38_disc_sha256": "5869491e19b4316c61725910561ec47c3f60af1983b4eae9996c5aed9e1cfd8c",
+    "r38_claim": "chapter2 font normalization only; script bytes changed = 0; non-Hangul slots changed = 0"
+  },
+  "assets": [
+    {"iso_path":"SAKURA1/SK0201.BIN","lba":44822,"size":75700},
+    {"iso_path":"SAKURA1/SK0202.BIN","lba":44859,"size":232536},
+    {"iso_path":"SAKURA1/SK0203.BIN","lba":44973,"size":77196},
+    {"iso_path":"SAKURA1/SK0205.BIN","lba":45012,"size":53728},
+    {"iso_path":"SAKURA1/SK0206.BIN","lba":45039,"size":207384},
+    {"iso_path":"SAKURA1/SK0207.BIN","lba":45141,"size":83924},
+    {"iso_path":"SAKURA1/SK0208.BIN","lba":45182,"size":38652}
+  ],
+  "promotion_policy": {
+    "derive_delta_only_from_exact_r37_and_r38_discs": true,
+    "apply_only_bytes_that_changed_r37_to_r38": true,
+    "preserve_all_parent_bytes_outside_donor_delta": true,
+    "conflict_gate": "each touched parent byte must equal the exact R37 byte or already equal the exact R38 byte",
+    "expected_write_sha256": true,
+    "changed_sector_accounting": true,
+    "mode1_edc_ecc": true,
+    "whole_asset_reextraction": "7/7 dynamically sealed merged assets",
+    "guessed_payload_bytes": 0
+  },
+  "success_status": "PASS_BATCH275_PLUS_R38_CH2_FONT7_DELTA_EXECUTABLE_CANDIDATE",
+  "status": "READY_FOR_EXACT_DONOR_DELTA_PROMOTION"
+}
