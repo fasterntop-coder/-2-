@@ -1,0 +1,97 @@
+{
+  "format": "ST2-CD1-BATCH281-MOVIE24-LOGICAL-CLOSURE-v1",
+  "batch": 281,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 280,
+    "manifest": "manifests/CD1_BATCH280_STORY141_CUMULATIVE_RELEASE_CERT.json",
+    "required_status": "PASS_BATCH280_STORY141_CUMULATIVE_RELEASE_CERT"
+  },
+  "trusted_movie_union": {
+    "batch": 273,
+    "manifest": "manifests/CD1_BATCH273_MOVIE12_PHYSICAL_UNION.json",
+    "required_status": "PASS_BATCH269_PLUS_ALL_12_SPEECH_MOVIES_PHYSICAL_UNION",
+    "speech_candidates": 12,
+    "episode_title_cards_inherited": 6
+  },
+  "movie_static_inventory": {
+    "total": 24,
+    "speech_candidate": 12,
+    "episode_title_card_candidate": 6,
+    "no_dialogue_original_preserved": 6,
+    "localized_or_candidate": 18,
+    "identity_preserved": 6,
+    "source_inventory_percent": 100.0
+  },
+  "identity_preserved_movies": [
+    {
+      "iso_path": "SAKURA1/SK2MV_08.CAK",
+      "lba": 119152,
+      "size": 6241984,
+      "source_sha256": "467c4b5737cde30fac0e38c14e791d9c02fcdbc08464ca45eb2adadb039a4b37"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_31.CAK",
+      "lba": 138292,
+      "size": 5364616,
+      "source_sha256": "4d3fd1348adc97713c328276a5a584a734f11d216f4c737b389ad51a1dc42a84"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_33.CAK",
+      "lba": 140912,
+      "size": 3380756,
+      "source_sha256": "f53822d821552d56a74653f17357529552210e0725f96ea6d49192f116ec1c76"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_34.CAK",
+      "lba": 142563,
+      "size": 5234588,
+      "source_sha256": "44506a6097b42c4756d078970de35fdf7fd86badaa716438d5fae51a5768d0ae"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_35.CAK",
+      "lba": 145119,
+      "size": 5045776,
+      "source_sha256": "c15a42d29d9fe3dac2504acde4042f5712bbad947a27bf7fc73054130d75eb70"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_36.CAK",
+      "lba": 147583,
+      "size": 4812884,
+      "source_sha256": "3e5d34c180c05ad3e47594c968504948b79dc939656f588191b0c08c64a8c643"
+    }
+  ],
+  "required_title_cards": [
+    "SAKURA1/SK2MV_43.CAK",
+    "SAKURA1/SK2MV_44.CAK",
+    "SAKURA1/SK2MV_45.CAK",
+    "SAKURA1/SK2MV_46.CAK",
+    "SAKURA1/SK2MV_47.CAK",
+    "SAKURA1/SK2MV_48.CAK"
+  ],
+  "cumulative_logical_coverage": {
+    "story": 141,
+    "static_verified": 58,
+    "movie_static_inventory": 24,
+    "logical_assets_accounted": 223,
+    "note": "223 is logical coverage, not a claim that 223 assets contain changed bytes."
+  },
+  "release_gate": {
+    "require_parent_candidate_sha256": true,
+    "require_pristine_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "require_pristine_size": 659293824,
+    "require_expected_write_chain": true,
+    "require_changed_sector_accounting": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_movie12_trust_chain": true,
+    "require_title_card6_inheritance": true,
+    "require_identity_preserved_movie_reextraction": "6/6",
+    "require_guessed_payload_bytes": 0,
+    "fail_on_unrecognized_lineage": true
+  },
+  "output": {
+    "certificate": "BATCH281_MOVIE24_LOGICAL_CLOSURE_CERT.json",
+    "success_status": "PASS_BATCH281_MOVIE24_LOGICAL_CLOSURE"
+  },
+  "estimated_bytes": 0
+}
