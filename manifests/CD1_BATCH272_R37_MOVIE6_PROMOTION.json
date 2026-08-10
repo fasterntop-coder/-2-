@@ -1,0 +1,72 @@
+{
+  "format": "ST2-CD1-BATCH272-R37-MOVIE6-PROMOTION-v1",
+  "batch": 272,
+  "goal": "Recover six exact C2FIX/R37 subtitle CAKs absent from the current Video10/Batch271 promotion scope and promote them onto the Batch269 cumulative candidate without guessed bytes.",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "recovery_disc": {
+    "label": "ST2R37",
+    "sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+    "size": 659293824,
+    "lineage": "clean original + C2FIX unique assets + ST2R36 authoritative assets"
+  },
+  "parent": {
+    "batch": 269,
+    "required_status": "PASS_B247_STATIC58_PLUS_DEDUP_MASS137_EVENT34_EXECUTABLE_CANDIDATE"
+  },
+  "replacement_files": [
+    {
+      "iso_path": "SAKURA1/SK2MV_00.CAK",
+      "lba": 183922,
+      "size": 27907140,
+      "source_sha256": "d7000bba7e1a4713d15818e9118714bdde1e6cbca8f0de179804bf5cfbc2a5d1",
+      "replacement_sha256": "7016e1ff89fd48574f941eb218a6bddc1386b36f8089346bae49a3a0088d0222"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_03.CAK",
+      "lba": 96169,
+      "size": 23340300,
+      "source_sha256": "4d14a97e1edd526023f8d1d70f3971aad9fcea2453cb776a8610e397c49a86ed",
+      "replacement_sha256": "114b9a8d4354b3bd552003dd7513e2489dc433f40e928c3644b24aeb7a5fd5db"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_07.CAK",
+      "lba": 117295,
+      "size": 3801760,
+      "source_sha256": "bb7f7e6d95df36f6078fd53a5c4e25b6dee5d112e1c10fd7c8984767eec2aff0",
+      "replacement_sha256": "4368a4d35c10751ab21b25d297603ddc72d50bae00c121868d98ba6b981dc8da"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_09.CAK",
+      "lba": 122200,
+      "size": 4702720,
+      "source_sha256": "9852df7a3038a3a3136eb54997156d71d091f2183e402a01859f149848c7c882",
+      "replacement_sha256": "18bfa402ae133a9090364c64ca6f48c0ffbadaf5e3ac5ee6ee46fc8dded83998"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_38.CAK",
+      "lba": 149934,
+      "size": 12851468,
+      "source_sha256": "e22545170fd9ad0e530a3c242ca37482384ac47fd5d03427b4ab128eb941b7f7",
+      "replacement_sha256": "1985c412a49971a100b70662aa5592d9a16cd9761dea8727cf542f18d52d279f"
+    },
+    {
+      "iso_path": "SAKURA1/SK2MV_39.CAK",
+      "lba": 156210,
+      "size": 11017812,
+      "source_sha256": "465c16154449d74307b315c659ebdf0eee3942aa426ae44ca8beb444d142b82d",
+      "replacement_sha256": "aa85fe48334a136506cb6d696f9bac1eb7e9aea9492fd77a94cf31ba09b93a46"
+    }
+  ],
+  "asset_count": 6,
+  "safety_gates": [
+    "exact ST2R37 whole-disc SHA-256",
+    "exact Batch269 result status and output SHA-256",
+    "exact six replacement whole-asset SHA-256 values",
+    "Expected Write for every changed raw sector",
+    "changed-sector MODE1 EDC/ECC verification",
+    "changed-sector accounting",
+    "6/6 whole-asset re-extraction from the final output",
+    "zero guessed payload bytes"
+  ],
+  "guessed_payload_bytes": false
+}
