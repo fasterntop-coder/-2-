@@ -1,0 +1,39 @@
+{
+  "format": "ST2-CD1-BATCH293-B292-PLUS-B56-60-STORY5-EXACT-UNION-v1",
+  "batch": 293,
+  "goal": "CD1_100_PERCENT",
+  "target_disc": 1,
+  "parent_batch": 292,
+  "parent_required_status": "PASS_BATCH292_B291_PLUS_B50_EVENT6_EXACT_UNION",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "legacy_manifests": [
+    {"batch":56,"filename":"SK0404_BATCH56_PATCH_MANIFEST.json","sha256":"6d069fb97d522f88fd909b8943947e31e99091e6cb196b84dd29ea69ce024996"},
+    {"batch":57,"filename":"SK0503_BATCH57_PATCH_MANIFEST.json","sha256":"b72bcb9d629d1e34296f6a31f73ade73a391607d2cca28d1b2dbf9fe641e4658"},
+    {"batch":58,"filename":"SK0502_BATCH58_PATCH_MANIFEST.json","sha256":"e1a4c4289b54e571a0381a11e54661120257a9caa994fbb15622e3a7d9b4f5bc"},
+    {"batch":59,"filename":"SK0504_BATCH59_PATCH_MANIFEST.json","sha256":"62b34866a79f4058b6f08ab6d749e056bd45b75c3ec8652a50ffa5c113c582c3"},
+    {"batch":60,"filename":"SK0501_BATCH60_PATCH_MANIFEST.json","sha256":"17849c8feb64af4486f1f9aefcaef0a2f3113ba700f510af1a2ad33923f0b86a"}
+  ],
+  "assets": [
+    {"batch":56,"iso_path":"SAKURA1/SK0404.BIN","lba":45682,"size":44804,"source_sha256":"4deb61ff0b8f25ad8494e6753af9b415f6f4351374f39704112574a793f2a710","replacement_sha256":"7fd50fb8a2b236091b41c5a7b6ff7dc46c992e01790a5d534491649d64d830e5"},
+    {"batch":57,"iso_path":"SAKURA1/SK0503.BIN","lba":45878,"size":97324,"source_sha256":"4187d409d38e268233a092d33c93490ae6f73080ef2c9c8eed916775cf5a8aca","replacement_sha256":"c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b"},
+    {"batch":58,"iso_path":"SAKURA1/SK0502.BIN","lba":45825,"size":107920,"source_sha256":"8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4","replacement_sha256":"0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc"},
+    {"batch":59,"iso_path":"SAKURA1/SK0504.BIN","lba":45926,"size":127140,"source_sha256":"52d5429c1d0e4029406d63f9b780bda3d78bb3de90233d4e5de488d2713d07bb","replacement_sha256":"619bee36d6e821665df9e09a0b0ffa36021b58fdbda0c3fbf0f81a9e7421f4ac"},
+    {"batch":60,"iso_path":"SAKURA1/SK0501.BIN","lba":45704,"size":246748,"source_sha256":"8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f","replacement_sha256":"6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743"}
+  ],
+  "recovery_rule": "recover payloads only by exact replacement SHA-256 from files/directories/ZIPs; filenames are advisory only",
+  "prewrite_rule": "each current B292 target asset must be exact pristine source SHA or exact frozen replacement SHA; third variants abort",
+  "verification": [
+    "Batch292 report status and output SHA bind parent BIN",
+    "all five legacy manifest SHA-256 values must match",
+    "legacy replacement entries must exactly match frozen B293 asset table",
+    "payload SHA-256 and size exact before any write",
+    "Expected Write before/after raw-sector SHA for every changed sector",
+    "actual changed-LBA set equals Expected Write set",
+    "MODE1/2352 EDC/ECC valid for every final changed sector",
+    "final 5/5 whole-asset re-extraction equals frozen replacement SHA-256",
+    "all bytes outside approved target footprints preserved",
+    "guessed payload bytes = 0"
+  ],
+  "success_status": "PASS_BATCH293_B292_PLUS_B56_60_STORY5_EXACT_UNION",
+  "guessed_payload_bytes": 0
+}
