@@ -1,0 +1,74 @@
+{
+  "format": "ST2-CD1-BATCH273-MOVIE12-PHYSICAL-UNION-v1",
+  "batch": 273,
+  "goal": "Put every Disc 1 speech-bearing movie subtitle candidate into one cumulative physical branch while retaining Batch269 Video10/title-card content.",
+  "common_parent": {
+    "batch": 269,
+    "required_status": "PASS_B247_STATIC58_PLUS_DEDUP_MASS137_EVENT34_EXECUTABLE_CANDIDATE"
+  },
+  "components": [
+    {
+      "batch": 271,
+      "required_status": "PASS_BATCH269_PLUS_B64_MOVIE2_EXECUTABLE_CANDIDATE",
+      "assets": ["SAKURA1/SK2MV_10.CAK", "SAKURA1/SK2MV_11.CAK"]
+    },
+    {
+      "batch": 272,
+      "required_status": "PASS_BATCH269_PLUS_R37_MOVIE6_EXECUTABLE_CANDIDATE",
+      "assets": [
+        "SAKURA1/SK2MV_00.CAK",
+        "SAKURA1/SK2MV_03.CAK",
+        "SAKURA1/SK2MV_07.CAK",
+        "SAKURA1/SK2MV_09.CAK",
+        "SAKURA1/SK2MV_38.CAK",
+        "SAKURA1/SK2MV_39.CAK"
+      ]
+    }
+  ],
+  "inherited_from_batch269": {
+    "speech_movie_candidates": [
+      "SAKURA1/SK2MV_04.CAK",
+      "SAKURA1/SK2MV_05.CAK",
+      "SAKURA1/SK2MV_06.CAK",
+      "SAKURA1/SK2MV_30.CAK"
+    ],
+    "episode_title_cards": [
+      "SAKURA1/SK2MV_43.CAK",
+      "SAKURA1/SK2MV_44.CAK",
+      "SAKURA1/SK2MV_45.CAK",
+      "SAKURA1/SK2MV_46.CAK",
+      "SAKURA1/SK2MV_47.CAK",
+      "SAKURA1/SK2MV_48.CAK"
+    ]
+  },
+  "speech_movie_inventory": {
+    "total": 12,
+    "candidate_in_union": 12,
+    "files": [
+      "SAKURA1/SK2MV_00.CAK",
+      "SAKURA1/SK2MV_03.CAK",
+      "SAKURA1/SK2MV_04.CAK",
+      "SAKURA1/SK2MV_05.CAK",
+      "SAKURA1/SK2MV_06.CAK",
+      "SAKURA1/SK2MV_07.CAK",
+      "SAKURA1/SK2MV_09.CAK",
+      "SAKURA1/SK2MV_10.CAK",
+      "SAKURA1/SK2MV_11.CAK",
+      "SAKURA1/SK2MV_30.CAK",
+      "SAKURA1/SK2MV_38.CAK",
+      "SAKURA1/SK2MV_39.CAK"
+    ]
+  },
+  "merge_policy": {
+    "derive_component_sector_deltas_against_same_exact_B269": true,
+    "overlap_requires_byte_identical_sector": true,
+    "expected_write_required": true,
+    "changed_sector_edc_ecc_required": true,
+    "changed_sector_accounting_required": true,
+    "component_output_sha_required": true,
+    "final_eight_promoted_assets_reextracted": true,
+    "inherited_batch269_gates_required": true,
+    "guessed_payload_bytes": false
+  },
+  "success_status": "PASS_BATCH269_PLUS_ALL_12_SPEECH_MOVIES_PHYSICAL_UNION"
+}
