@@ -1,0 +1,67 @@
+{
+  "format": "ST2-CD1-BATCH284-EVENT42-LATE-TAIL-PROMOTION-v1",
+  "batch": 284,
+  "goal": "Physically promote the exact Batch53+54+55 late Event MES tail onto the verified Batch240 Disc 1 parent",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "parent": {
+    "batch": 240,
+    "sha256": "dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83",
+    "physical_assets": 94,
+    "event_lineage": "Batch51 9 MES + Batch52 18 MES already integrated",
+    "verified_reextraction": "94/94 PASS",
+    "changed_raw_sectors_from_pristine": 15842
+  },
+  "legacy_manifests": [
+    {
+      "batch": 53,
+      "filename": "BATCH53_PATCH_MANIFEST.json",
+      "sha256": "423bdd882fce078e6cfd10b9b9bf12785a123bbaac6e940910c033c2af962311",
+      "replacement_count": 19,
+      "cumulative_event_files_after_batch": 84
+    },
+    {
+      "batch": 54,
+      "filename": "BATCH54_PATCH_MANIFEST.json",
+      "sha256": "b46b5005d3214e9fdf5242ac313bf26a479f3f28b2df712d5559ea97d8bd8554",
+      "replacement_count": 8,
+      "cumulative_event_files_after_batch": 92
+    },
+    {
+      "batch": 55,
+      "filename": "BATCH55_PATCH_MANIFEST.json",
+      "sha256": "db9329bffed005551f9ae3f8cf593c9019c7f75483318f5a2efe8c24332f4db5",
+      "replacement_count": 15,
+      "reviewed_unchanged_controls": 2,
+      "cumulative_event_files_after_batch": 109,
+      "cumulative_event_records_after_batch": 1094
+    }
+  ],
+  "promotion": {
+    "replacement_assets": 42,
+    "expected_parent_physical_assets_after_success": 136,
+    "event_mes_completion_after_success": "109/109 logical; exact late-tail 42/42 physically promoted on B240",
+    "payload_lookup": "SHA-256 content address; filenames are not trusted",
+    "already_target_policy": "accepted and re-extracted; no redundant write",
+    "third_variant_policy": "abort",
+    "guessed_payload_bytes": 0
+  },
+  "mandatory_gates": [
+    "exact Batch240 full-disc SHA-256",
+    "exact legacy manifest SHA-256 for Batch53/54/55",
+    "legacy manifest replacement counts 19+8+15 = 42",
+    "unique iso_path and non-overlapping file LBA footprints",
+    "each parent target asset is exact source_sha256 or replacement_sha256",
+    "replacement payload recovered by exact replacement_sha256",
+    "Expected Write before raw-sector mutation",
+    "MODE1/2352 EDC/ECC rebuilt and verified on every changed sector",
+    "actual changed-LBA set equals Expected Write LBA set",
+    "42/42 whole-asset re-extraction SHA-256",
+    "Batch55 unchanged controls re-extracted byte-exact when present",
+    "guessed payload bytes = 0"
+  ],
+  "copyright_policy": "No game payload, movie, font, or full-disc bytes are committed; only manifests and tooling."
+}
