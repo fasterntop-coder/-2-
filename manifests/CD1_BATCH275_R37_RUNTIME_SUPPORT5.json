@@ -1,0 +1,32 @@
+{
+  "format": "ST2-CD1-BATCH275-R37-RUNTIME-SUPPORT5-v1",
+  "target_disc": 1,
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "recovery_disc_sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+  "recovery_disc_scope": "ST2R37 exact cumulative audit, 82 assets",
+  "parent_batch": 274,
+  "parent_required_status": "PASS_BATCH273_PLUS_EVENT109_COMPLETE_EXECUTABLE_CANDIDATE",
+  "assets": [
+    {"iso_path":"SAKURA1/BTSFONT.BIN","lba":3943,"size":38860,"replacement_sha256":"490bbf4e2d76955b10c0e2cc8d8644210ae0b738dd9214b1a7f9bd9dde816a67","role":"battle font slot support"},
+    {"iso_path":"SAKURA2/M00LOW.BIN","lba":218758,"size":412480,"replacement_sha256":"5238a49aafd485da38f8cca297e085ac31f6fa4538971dd9f3ed2d05b72bc401","role":"episode/runtime low binary"},
+    {"iso_path":"SAKURA2/M01LOW.BIN","lba":219653,"size":412480,"replacement_sha256":"a2fe5a5eb9400dba586e94ef21217cccde85d7c8541be9625980d7e5c5f2a6d4","role":"episode/runtime low binary"},
+    {"iso_path":"SAKURA2/M26LOW.BIN","lba":224206,"size":412480,"replacement_sha256":"9c2dc9b8e9ed3d299719a748b41920a5fdd7995adf3a43c798540a181057c6f3","role":"episode/runtime low binary"},
+    {"iso_path":"SAKURA2/M27LOW.BIN","lba":225106,"size":412480,"replacement_sha256":"6a9a3151b34a7417e280d44cb4486e2b90788fd7099d8da0339224e2df84927f","role":"EV27 runtime font/message support"}
+  ],
+  "recovery_rule": "replacement payloads are extracted only from the exact R37 whole-disc SHA; filenames are not trusted as payload proof",
+  "prewrite_rule": "for every asset, Batch274 bytes must equal either the exact pristine asset extracted from the exact pristine Disc1 or the listed replacement SHA; any third variant aborts",
+  "write_rule": "write only exact R37 replacement payload bytes into fixed ISO extents; no growth and no guessed bytes",
+  "verification": [
+    "Batch274 result status and output whole-disc SHA match parent BIN",
+    "pristine Disc1 whole SHA matches fixed pristine SHA",
+    "R37 recovery Disc whole SHA matches fixed R37 SHA",
+    "R37 5/5 extracted whole-asset SHA matches manifest",
+    "pre-write whole-asset SHA is dynamically proven pristine or exact replacement",
+    "Expected Write before/after SHA for every touched raw sector",
+    "MODE1/2352 EDC/ECC regenerated and verified for all touched sectors",
+    "changed-sector accounting exact against Batch274 parent",
+    "final 5/5 whole-asset re-extraction equals replacement SHA"
+  ],
+  "success_status": "PASS_BATCH274_PLUS_R37_RUNTIME_SUPPORT5_EXECUTABLE_CANDIDATE",
+  "guessed_payload_bytes": false
+}
