@@ -1,0 +1,72 @@
+{
+  "format": "ST2-CD1-BATCH279-STORY141-PHYSICAL-CLOSURE-v1",
+  "batch": 279,
+  "goal": "CD1_100_PERCENT",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "inventory": {
+    "source": "ST2_DISC1_STORY_EXTRACT_MANIFEST.csv",
+    "story_files_total": 141,
+    "sakura1_story_files": 32,
+    "sakura2_event_files": 109
+  },
+  "already_accounted": {
+    "batch263_story": {
+      "replacement_assets": 121,
+      "control_assets": 2,
+      "files_accounted": 123
+    },
+    "c2fix_inherited_early_story": {
+      "replacement_assets": 14,
+      "paths": [
+        "SAKURA1/SK0101.BIN", "SAKURA1/SK0102.BIN", "SAKURA1/SK0103.BIN",
+        "SAKURA1/SK0201.BIN", "SAKURA1/SK0202.BIN", "SAKURA1/SK0203.BIN",
+        "SAKURA1/SK0205.BIN", "SAKURA1/SK0206.BIN", "SAKURA1/SK0207.BIN", "SAKURA1/SK0208.BIN",
+        "SAKURA1/SK0301.BIN", "SAKURA1/SK0302.BIN", "SAKURA1/SK0303.BIN", "SAKURA1/SK0304.BIN"
+      ],
+      "lineage": "C2FIX -> Batch247 physical base",
+      "c2fix_sha256": "c8fae8c9712a5cbee89b5ab95c7ae36ce88ee37d4ab7e2265d4abbf98706fd5b"
+    }
+  },
+  "promotion": {
+    "asset": "SAKURA1/SK0104.BIN",
+    "lba": 44797,
+    "size": 50364,
+    "sectors": 25,
+    "pristine_sha256": "3ff7ccb0a9a31258e6f02064483c99c4df081cea3816c9aa050a20a59fbc66e6",
+    "c2fix_sha256": "1e2559457bf62efad722dc719a34de5ed9105c42d732aa333f4117b68869e0f9",
+    "replacement_sha256": "6a8aa6204bccfaa23362c1d549e3f9a5fe0aa4bbe2e2a003796e9e9670793db7",
+    "donor_disc_sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+    "donor": "ST2R37 exact cumulative",
+    "precedence": "ST2R36 overrides C2FIX"
+  },
+  "identity_controls": [
+    {"path":"SAKURA1/SK0000.BIN","lba":44539,"size":4948,"sha256":"1d13bb6480e902cfbae25dfaada7e78fb9a831f9d3423545d335ce8375a26edd"},
+    {"path":"SAKURA1/SK0204.BIN","lba":45011,"size":1476,"sha256":"0f667489b72bde453c30daf307d796dbde968e989ceed400db44c837b2d62644"},
+    {"path":"SAKURA1/SK0305.BIN","lba":45427,"size":1520,"sha256":"33a71e3f3c225860f415368e1bf2555216f3881f9a9ce48e7fe83f20eba59a7d"}
+  ],
+  "closure_accounting": {
+    "translated_or_localized_replacement_files": 136,
+    "identity_control_files": 5,
+    "story_files_accounted": 141,
+    "story_files_total": 141,
+    "source_inventory_percent": 100.0,
+    "note": "Identity controls are not counted as translated replacements; two EV controls are inherited from Batch263 and three SAKURA1 controls are locked here."
+  },
+  "safety": {
+    "guessed_payload_bytes": false,
+    "require_runtime_bound_parent_sha256": true,
+    "require_exact_r37_donor_sha256": true,
+    "require_current_asset_sha_in": ["pristine", "C2FIX", "replacement"],
+    "require_expected_write": true,
+    "require_changed_sector_accounting": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_whole_asset_reextraction": true,
+    "require_identity_control_reextraction": true
+  },
+  "success_status": "PASS_BATCH279_STORY141_PHYSICAL_CLOSURE",
+  "estimated_bytes": 0
+}
