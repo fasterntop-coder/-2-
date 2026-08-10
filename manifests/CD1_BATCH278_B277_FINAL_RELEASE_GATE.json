@@ -1,0 +1,26 @@
+{
+  "format": "ST2-CD1-BATCH278-B277-FINAL-RELEASE-GATE-v1",
+  "batch": 278,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 277,
+    "required_status": "PASS_BATCH276_PLUS_R39_FONT2_DELTA_EXECUTABLE_CANDIDATE"
+  },
+  "verification": {
+    "verify_parent_result_sha_binding": true,
+    "verify_guessed_payload_bytes_zero": true,
+    "verify_expected_write_records_against_final_disc": true,
+    "verify_changed_sector_accounting_against_batch276": true,
+    "verify_all_changed_mode1_edc_ecc": true,
+    "verify_whole_asset_audit_all_pass": true,
+    "require_assets": "2/2 PASS",
+    "require_whole_asset_reextraction": "2/2 PASS"
+  },
+  "policy": {
+    "no_new_payload_bytes": true,
+    "no_inferred_bytes": true,
+    "trust_exact_b277_output_only_after_gate": true
+  },
+  "success_status": "PASS_BATCH278_B277_FINAL_RELEASE_GATE",
+  "status": "READY"
+}
