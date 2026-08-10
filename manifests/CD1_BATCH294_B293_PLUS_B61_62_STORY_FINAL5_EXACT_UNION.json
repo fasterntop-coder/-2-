@@ -1,0 +1,85 @@
+{
+  "format": "ST2-CD1-batch294-b293-plus-b61-62-story-final5-exact-union-v1",
+  "batch": 294,
+  "target_disc": 1,
+  "parent_batch": 293,
+  "parent_status": "PASS_BATCH293_B292_PLUS_B56_60_STORY5_EXACT_UNION",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "legacy_manifest_sha256": {
+    "61": "4c926e11d0eaeda283b2943b92c77fc54352c33f8c90646eace2f02c23c6f078",
+    "62": "cf132223f83ba37fe0711e5fe4d49dfc055c4df61579eb8cdd782b203fa8eba4"
+  },
+  "replacement_assets": [
+    {
+      "batch": 61,
+      "iso_path": "SAKURA1/SK0505.BIN",
+      "lba": 45989,
+      "size": 37136,
+      "source_sha256": "c2f59f4711a55c722e166ab4114f0f1ac88db459e3312b94a2a916fc01aa23ce",
+      "replacement_sha256": "102709b60da35894b03d2f03716b8a14735f6711031b28fad7cc995cffe73104",
+      "records": 86,
+      "translated_records": 85,
+      "control_preserved_records": 1
+    },
+    {
+      "batch": 61,
+      "iso_path": "SAKURA1/SK1304.BIN",
+      "lba": 46008,
+      "size": 44464,
+      "source_sha256": "591e9b23b035b3bb5786043318695c865d771d22aa8f53fbcc433359b04418f2",
+      "replacement_sha256": "ff6e9b29a6ba76f8ee706f55041a9f83bb6246f24061efbfd00d41d042a54722",
+      "records": 149,
+      "translated_records": 146,
+      "control_preserved_records": 3
+    },
+    {
+      "batch": 62,
+      "iso_path": "SAKURA1/SKCM02.BIN",
+      "lba": 46030,
+      "size": 129652,
+      "source_sha256": "ca7631c90c264b91a13e96dd21d656c59048b9961b182e3d261c146811c883af",
+      "replacement_sha256": "0a2d0edf358b8fe6ab6edbc058e7e1263fc466706312bec43fd9994eb38419d9",
+      "records": 414,
+      "translated_records": 413,
+      "control_preserved_records": 1
+    },
+    {
+      "batch": 62,
+      "iso_path": "SAKURA1/SKCM04.BIN",
+      "lba": 46094,
+      "size": 91196,
+      "source_sha256": "59b7fdb48784a510c5227dd1f3f3ef8c1172c7b00e692ade0d7ffb7ae44e0e29",
+      "replacement_sha256": "c3e78d0b32b87d58d720c0fdd616fbc2fba232b306abe8c528d66a524664c4f8",
+      "records": 139,
+      "translated_records": 138,
+      "control_preserved_records": 1
+    },
+    {
+      "batch": 62,
+      "iso_path": "SAKURA1/SKCM05.BIN",
+      "lba": 46139,
+      "size": 91416,
+      "source_sha256": "99375992aedd61f37cec7fdf7574581abcd7e222be8b01aae0937257752dc257",
+      "replacement_sha256": "cfd966f1cc1783f0da0f988aba92bd7591237cacb10c633da0063ce1f71c29f4",
+      "records": 125,
+      "translated_records": 124,
+      "control_preserved_records": 1
+    }
+  ],
+  "story_inventory_closure": {
+    "records_reviewed": 913,
+    "translated_records": 906,
+    "control_preserved_records": 7,
+    "remaining_candidate_files": 0,
+    "remaining_candidate_records": 0
+  },
+  "promotion_policy": {
+    "guessed_bytes": 0,
+    "allow_asset_states": ["exact_source", "exact_target"],
+    "reject_third_variant": true,
+    "expected_write_required": true,
+    "changed_sector_accounting_required": true,
+    "mode1_2352_edc_ecc_required": true,
+    "whole_asset_reextraction_required": true
+  }
+}
