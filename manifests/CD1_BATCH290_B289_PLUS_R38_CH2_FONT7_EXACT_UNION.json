@@ -1,0 +1,40 @@
+{
+  "format": "ST2-CD1-BATCH290-B289-PLUS-R38-CH2-FONT7-EXACT-UNION-v1",
+  "batch": 290,
+  "goal": "CD1_100_PERCENT",
+  "target_disc": 1,
+  "parent_batch": 289,
+  "parent_required_status": "PASS_BATCH289_B288_PLUS_B267_TITLECARD6_EXACT_UNION",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "baseline_r37_sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+  "donor_r38_sha256": "5869491e19b4316c61725910561ec47c3f60af1983b4eae9996c5aed9e1cfd8c",
+  "asset_count": 7,
+  "known_r37_to_r38_changed_raw_sectors": 198,
+  "converted_hangul_glyph_slots": 2692,
+  "script_pointer_control_bytes_changed": 0,
+  "assets": [
+    {"iso_path":"SAKURA1/SK0201.BIN","lba":44822,"size":75700,"r37_sha256":"de5cfec6e21dd67f8cdde2f9fd783e4e79eb7aa8b2336b1710bfd4e6ab253902","r38_sha256":"b9f507745c968a37ddf649e07ae1de8ad6cfb91a6b7bdc5a7cc2235611396c55"},
+    {"iso_path":"SAKURA1/SK0202.BIN","lba":44859,"size":232536,"r37_sha256":"bf8a8614e1dbba35863417f49cba65c6fbe0c1da74afcd3d22fe121b2feb3c3b","r38_sha256":"25e2309877660d0cd1a77c5a2a40f05e12710b7b6d77e3dca5671397e8ec17de"},
+    {"iso_path":"SAKURA1/SK0203.BIN","lba":44973,"size":77196,"r37_sha256":"0f4800efb6170a6f34193532d4ca259b34d5125e7fe3837860cd28ff114a0886","r38_sha256":"6a44d709c0602a787e5fce592faf62ee0849295542639f338f19a7f6100fbd03"},
+    {"iso_path":"SAKURA1/SK0205.BIN","lba":45012,"size":53728,"r37_sha256":"aa5885900c72786556decda6061f17ddfafb6805cd348cffd4a855f838400663","r38_sha256":"eccb40b4bcf04300b32cb3f19bc7822f151937754eae10cefc9ec2b552287de4"},
+    {"iso_path":"SAKURA1/SK0206.BIN","lba":45039,"size":207384,"r37_sha256":"b07a2e4423f8b8b612d4c8504ca93c3624bbe0133890d8e631741c6099f9b206","r38_sha256":"18a3711605c9eefaa90ad531875d53289db4217bc24a1249076152543a44af64"},
+    {"iso_path":"SAKURA1/SK0207.BIN","lba":45141,"size":83924,"r37_sha256":"8d53ad56ded3d42b4b3bc8099d1ff7d0de6611a95aeb9a3ee9103be44aebe153","r38_sha256":"352ff1a61d0d35d764ee1ef799dbff6454a848e5e55671d9db00daff519487d5"},
+    {"iso_path":"SAKURA1/SK0208.BIN","lba":45182,"size":38652,"r37_sha256":"0f3839c27eba1b4dec636239e4572c0fbb44a45f292d3925a6a21cc7d71ae0c9","r38_sha256":"c8edf70c41dd299cc31136e11bc038c84b910432424d3819c9da58c156c663fa"}
+  ],
+  "recovery_rule": "derive exact raw-sector delta only from exact ST2R37 baseline versus exact ST2R38 donor inside the seven fixed chapter2 scenario extents",
+  "prewrite_rule": "every touched Batch289 parent sector must equal either exact R37 sector or exact R38 target sector; third variants abort",
+  "verification": [
+    "Batch289 report status/output SHA binds parent BIN",
+    "exact whole-disc SHA binding for R37 baseline and R38 donor",
+    "R37 7/7 whole-asset SHA verification",
+    "R38 7/7 whole-asset SHA verification",
+    "derived R37-to-R38 delta sector count equals 198",
+    "Expected Write before/after SHA for every newly changed sector",
+    "actual changed-LBA set equals Expected Write set",
+    "MODE1/2352 EDC/ECC valid for all donor and final changed sectors",
+    "final 7/7 whole-asset re-extraction equals R38 SHA",
+    "guessed payload bytes remains zero"
+  ],
+  "success_status": "PASS_BATCH290_B289_PLUS_R38_CH2_FONT7_EXACT_UNION",
+  "guessed_payload_bytes": false
+}
