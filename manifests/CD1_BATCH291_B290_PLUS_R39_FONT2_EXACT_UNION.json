@@ -1,0 +1,49 @@
+{
+  "format": "ST2-CD1-BATCH291-B290-PLUS-R39-FONT2-EXACT-UNION-v1",
+  "batch": 291,
+  "goal": "CD1_100_PERCENT",
+  "target_disc": 1,
+  "parent_batch": 290,
+  "parent_required_status": "PASS_BATCH290_B289_PLUS_R38_CH2_FONT7_EXACT_UNION",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "baseline_r38_sha256": "5869491e19b4316c61725910561ec47c3f60af1983b4eae9996c5aed9e1cfd8c",
+  "donor_r39_sha256": "57335616e481102fe2ef7ab080871df479211f388eff796d5c6bca7a28958025",
+  "asset_count": 2,
+  "known_r38_to_r39_changed_raw_sectors": 29,
+  "converted_hangul_glyph_slots": 386,
+  "script_pointer_control_bytes_changed": 0,
+  "assets": [
+    {
+      "iso_path": "SAKURA2/M01LOW.BIN",
+      "lba": 219653,
+      "size": 412480,
+      "normalized_glyphs": 340,
+      "preserve_from_offset": "0xE000",
+      "preserve_rule": "dialogue/pointers/control bytes byte-exact"
+    },
+    {
+      "iso_path": "SAKURA2/EV02001.MES",
+      "lba": 248627,
+      "size": 71851,
+      "normalized_glyphs": 46,
+      "preserve_from_offset": "0x1800",
+      "preserve_rule": "dialogue/pointers/control bytes byte-exact; slot 47 preserved"
+    }
+  ],
+  "recovery_rule": "derive exact raw-sector delta only from exact ST2R38 baseline versus exact ST2R39 donor inside the two fixed asset extents",
+  "prewrite_rule": "every touched Batch290 parent sector must equal either exact R38 sector or exact R39 target sector; third variants abort",
+  "verification": [
+    "Batch290 report status/output SHA binds parent BIN",
+    "exact whole-disc SHA binding for R38 baseline and R39 donor",
+    "derive R38-to-R39 delta only inside M01LOW and EV02001 extents",
+    "derived R38-to-R39 delta sector count equals 29",
+    "Expected Write before/after SHA for every newly changed sector",
+    "actual changed-LBA set equals Expected Write set",
+    "MODE1/2352 EDC/ECC valid for all donor and final changed sectors",
+    "final 2/2 whole-asset re-extraction dynamically sealed to exact R39 donor SHA",
+    "all parent bytes outside exact donor delta preserved",
+    "guessed payload bytes remains zero"
+  ],
+  "success_status": "PASS_BATCH291_B290_PLUS_R39_FONT2_EXACT_UNION",
+  "guessed_payload_bytes": false
+}
