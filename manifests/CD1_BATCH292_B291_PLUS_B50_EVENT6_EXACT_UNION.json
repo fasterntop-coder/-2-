@@ -1,0 +1,38 @@
+{
+  "format": "ST2-CD1-BATCH292-B291-PLUS-B50-EVENT6-EXACT-UNION-v1",
+  "batch": 292,
+  "goal": "CD1_100_PERCENT",
+  "target_disc": 1,
+  "parent_batch": 291,
+  "parent_required_status": "PASS_BATCH291_B290_PLUS_R39_FONT2_EXACT_UNION",
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "legacy_manifest": {
+    "filename": "BATCH50_PATCH_MANIFEST.json",
+    "sha256": "81de1f2b6fc74e611f5cedb4d69265c0447324e9cb305337f4d9018b4e5a3861",
+    "replacement_count": 6
+  },
+  "assets": [
+    {"iso_path":"SAKURA2/EV03023.MES","lba":249716,"size":73215,"source_sha256":"0ce63bbf60d4f5f8f5db5d4b17366ff48b3894312fc5a503c661dee415a385d0","replacement_sha256":"809f6de8cb68cd58bef167a02d3016aafb0456e6292362a81a509665279de36e"},
+    {"iso_path":"SAKURA2/EV03024.MES","lba":249666,"size":72715,"source_sha256":"64304d13c7bc169ac465349ddc696dbe84244df48da4dc707163b96db0626c0f","replacement_sha256":"3632edc1ae7f559e21698f02658692a8ede71ab7dda78275ab035fa23d47143a"},
+    {"iso_path":"SAKURA2/EV03025.MES","lba":249616,"size":71971,"source_sha256":"16f942f697e2cffb919196281a4421248d543ee65e6b305dc1025ab9d507e187","replacement_sha256":"10b98f0ad45d59cd144db74092dd8fd475740756125827683aae196f22abb4b7"},
+    {"iso_path":"SAKURA2/EV03051.MES","lba":249766,"size":72195,"source_sha256":"52bb28e84601210e32c576ccb869aaf9de176e721f1a61bbc3513fa72aeaa4bd","replacement_sha256":"9c5923fe9da46a624077a30027cd54954d00139075953f827c074dcb184ea7c1"},
+    {"iso_path":"SAKURA2/EV03052.MES","lba":250067,"size":72823,"source_sha256":"3a3abccf661f164ff226564bdd87de29735a46b89ad0200bc1e5c3eb45f2e7ca","replacement_sha256":"70b219f0534de8980eda46b89beb729858ec67ed1b3e06db7e3e16dcfb9ba0b2"},
+    {"iso_path":"SAKURA2/EV03053.MES","lba":250183,"size":72322,"source_sha256":"a0c60cb97a6b5b1d6bd9725932e00d3e50a83980122acaa2ff43715ebfba28c0","replacement_sha256":"a2410d5fb4eaa275b69b95392782aba2dc6ee20891e9a0a4cfb15697fa460e99"}
+  ],
+  "recovery_rule": "recover payloads only by exact replacement SHA-256 from files/directories/ZIPs; filenames are advisory only",
+  "prewrite_rule": "each current B291 target asset must be exact pristine source SHA or exact Batch50 replacement SHA; third variants abort",
+  "verification": [
+    "Batch291 report status and output SHA bind parent BIN",
+    "exact BATCH50_PATCH_MANIFEST.json SHA-256",
+    "manifest replacement entries exactly match frozen B292 asset table",
+    "payload SHA-256 and size exact before any write",
+    "Expected Write before/after raw-sector SHA for every changed sector",
+    "actual changed-LBA set equals Expected Write set",
+    "MODE1/2352 EDC/ECC valid for every final changed sector",
+    "final 6/6 whole-asset re-extraction equals frozen replacement SHA-256",
+    "all bytes outside approved target footprints preserved",
+    "guessed payload bytes = 0"
+  ],
+  "success_status": "PASS_BATCH292_B291_PLUS_B50_EVENT6_EXACT_UNION",
+  "guessed_payload_bytes": 0
+}
