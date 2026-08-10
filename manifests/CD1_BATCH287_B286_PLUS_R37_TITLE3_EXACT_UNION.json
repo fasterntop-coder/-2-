@@ -1,0 +1,47 @@
+{
+  "batch": 287,
+  "goal": "CD1_100_PERCENT",
+  "operation": "B286_PLUS_R37_TITLE3_EXACT_UNION",
+  "parent_batch": 286,
+  "parent_required_status": "PASS_BATCH286_B285_PLUS_B273_MOVIE12_SECTOR_UNION",
+  "donor": {
+    "name": "ST2R37",
+    "disc_sha256": "56aa846382aae5e284c631d2814c1f7a45d84cb8dba8bc2e47ceff4f81733736",
+    "source_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "provenance": "ST2R37 cumulative audit; R36 authoritative R27 title graphics retained"
+  },
+  "assets": [
+    {
+      "path": "SAKURA1/TITLE.BIN",
+      "lba": 1210,
+      "size": 154408,
+      "sector_count": 76,
+      "target_sha256": "0929d80109519c63fb70f46469d3b3b1d4d21c2841b46ba7ac4b4807b0a30ad2"
+    },
+    {
+      "path": "SAKURA1/TTL2CGB.BIN",
+      "lba": 333,
+      "size": 66467,
+      "sector_count": 33,
+      "target_sha256": "d9f060c35203b971a00a4ff70816f2a4a60ff739de477d84222b30bb3882a6e5"
+    },
+    {
+      "path": "SAKURA1/TTL2CGB1.BIN",
+      "lba": 48460,
+      "size": 66467,
+      "sector_count": 33,
+      "target_sha256": "d9f060c35203b971a00a4ff70816f2a4a60ff739de477d84222b30bb3882a6e5"
+    }
+  ],
+  "rules": {
+    "guessed_payload_bytes": 0,
+    "parent_sector_must_equal": "exact pristine-sector SHA or exact donor-sector SHA",
+    "third_variant": "FAIL_CLOSED",
+    "expected_write": "REQUIRED",
+    "changed_sector_accounting": "REQUIRED",
+    "changed_sector_mode1_edc_ecc": "REQUIRED",
+    "whole_asset_reextraction": "3/3 REQUIRED",
+    "idempotent_if_already_target": true
+  },
+  "success_status": "PASS_BATCH287_B286_PLUS_R37_TITLE3_EXACT_UNION"
+}
