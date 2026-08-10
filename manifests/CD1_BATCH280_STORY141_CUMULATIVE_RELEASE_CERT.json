@@ -1,0 +1,49 @@
+{
+  "format": "ST2-CD1-BATCH280-STORY141-CUMULATIVE-RELEASE-CERT-v1",
+  "batch": 280,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 279,
+    "manifest": "manifests/CD1_BATCH279_STORY141_PHYSICAL_CLOSURE.json",
+    "required_status": "PASS_BATCH279_STORY141_PHYSICAL_CLOSURE"
+  },
+  "trusted_ancestry": {
+    "static58": {
+      "manifest": "manifests/BATCH200_REAL_FULL58_RECOVERY.json",
+      "required_status": "PASS_REAL_FULL58_EXACT_RECOVERY",
+      "asset_count": 58,
+      "changed_raw_sectors": 1626,
+      "reextraction": "58/58 PASS"
+    },
+    "speech_movies": {
+      "manifest": "manifests/CD1_BATCH273_MOVIE12_PHYSICAL_UNION.json",
+      "required_status": "PASS_BATCH269_PLUS_ALL_12_SPEECH_MOVIES_PHYSICAL_UNION",
+      "inventory": 12
+    },
+    "story": {
+      "inventory": 141,
+      "replacement_files": 136,
+      "identity_control_files": 5,
+      "source_inventory_percent": 100.0
+    }
+  },
+  "release_gate": {
+    "require_parent_output_sha256": true,
+    "require_pristine_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "require_pristine_size": 659293824,
+    "require_expected_write": true,
+    "require_changed_sector_accounting": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_whole_asset_reextraction": true,
+    "require_guessed_payload_bytes": 0,
+    "require_story141_closure": true,
+    "require_static58_trust_chain": true,
+    "require_movie12_trust_chain": true,
+    "fail_on_unrecognized_lineage": true
+  },
+  "output": {
+    "certificate": "BATCH280_STORY141_CUMULATIVE_RELEASE_CERT.json",
+    "success_status": "PASS_BATCH280_STORY141_CUMULATIVE_RELEASE_CERT"
+  },
+  "estimated_bytes": 0
+}
