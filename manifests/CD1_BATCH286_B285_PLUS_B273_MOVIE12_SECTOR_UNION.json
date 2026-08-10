@@ -1,0 +1,61 @@
+{
+  "format": "ST2-CD1-BATCH286-B285-PLUS-B273-MOVIE12-SECTOR-UNION-v1",
+  "batch": 286,
+  "goal": "Physically reunite the verified Batch273 12 speech-bearing movie union onto an exact successful Batch285 cumulative Disc 1 candidate by deriving only exact raw-sector deltas against Batch273 common parent Batch269.",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "parent": {
+    "batch": 285,
+    "required_report_status": "PASS_BATCH285_B284_PLUS_B118_STATIC58_SECTOR_UNION",
+    "report_binds_parent_bin_by_output_sha256": true,
+    "event_mes_logical_completion": "109/109",
+    "static_assets_verified": 58
+  },
+  "movie_donor_lineage": {
+    "batch": 273,
+    "required_report_status": "PASS_BATCH269_PLUS_ALL_12_SPEECH_MOVIES_PHYSICAL_UNION",
+    "common_parent_batch": 269,
+    "speech_movie_count": 12,
+    "assets": [
+      "SAKURA1/SK2MV_00.CAK",
+      "SAKURA1/SK2MV_03.CAK",
+      "SAKURA1/SK2MV_04.CAK",
+      "SAKURA1/SK2MV_05.CAK",
+      "SAKURA1/SK2MV_06.CAK",
+      "SAKURA1/SK2MV_07.CAK",
+      "SAKURA1/SK2MV_09.CAK",
+      "SAKURA1/SK2MV_10.CAK",
+      "SAKURA1/SK2MV_11.CAK",
+      "SAKURA1/SK2MV_30.CAK",
+      "SAKURA1/SK2MV_38.CAK",
+      "SAKURA1/SK2MV_39.CAK"
+    ]
+  },
+  "promotion": {
+    "method": "derive exact MODE1/2352 sector delta Batch269->Batch273, then apply each target sector to Batch285 only when Batch285 sector equals the exact Batch269 before-sector or exact Batch273 after-sector",
+    "third_variant_policy": "abort",
+    "already_target_policy": "accept without rewrite",
+    "expected_write_required": true,
+    "changed_sector_accounting_required": true,
+    "changed_sector_edc_ecc_required": true,
+    "movie_asset_reextraction_required": "12/12",
+    "guessed_payload_bytes": 0
+  },
+  "mandatory_gates": [
+    "exact Batch285 report status and report output_sha256 equals parent BIN SHA-256",
+    "exact Batch273 report status and report output_sha256 equals Batch273 donor BIN SHA-256",
+    "Batch273 report parent/common-parent SHA binds exact Batch269 BIN SHA-256",
+    "derive all Batch269->Batch273 changed raw sectors directly from exact BINs",
+    "every target Batch285 sector equals exact Batch269 before SHA or exact Batch273 after SHA; third variant aborts",
+    "Expected Write recorded before mutation",
+    "actual changed-LBA set equals Expected Write LBA set",
+    "MODE1/2352 EDC/ECC valid on every changed final sector",
+    "12/12 speech-movie whole-asset re-extraction equals exact Batch273 donor asset SHA-256",
+    "guessed payload bytes = 0"
+  ],
+  "success_status": "PASS_BATCH286_B285_PLUS_B273_MOVIE12_SECTOR_UNION",
+  "copyright_policy": "No game payload, movie, font, or full-disc bytes are committed; only manifest and tooling."
+}
