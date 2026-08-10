@@ -1,0 +1,52 @@
+{
+  "format": "ST2-CD1-BATCH285-B284-PLUS-B118-STATIC58-SECTOR-UNION-v1",
+  "batch": 285,
+  "goal": "Physically union the verified Batch118 battle/static 58-asset sector set onto an exact successful Batch284 cumulative Disc 1 candidate without overwriting third-variant sectors",
+  "source_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "parent": {
+    "batch": 284,
+    "required_report_status": "PASS_BATCH284_EVENT42_LATE_TAIL_PHYSICAL_PROMOTION",
+    "report_binds_parent_bin_by_output_sha256": true,
+    "physical_assets_reported_by_parent": 136,
+    "event_mes_logical_completion": "109/109"
+  },
+  "donor": {
+    "batch": 118,
+    "disc_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "verified_assets": 58,
+    "verified_changed_raw_sectors": 1626,
+    "verified_reextraction": "58/58 PASS",
+    "verified_edc_ecc": "PASS"
+  },
+  "workbook": {
+    "filename": "BATCH118_BATTLE_BANK_STATIC_100_PERCENT.xlsx",
+    "sha256": "e8c85862c10b6d30ed21156b17ca93be834c5cb5f76cf1f58d97c1db6ca22ce9",
+    "required_sheets": ["Sector Audit 1626", "Assets 58"]
+  },
+  "promotion": {
+    "method": "copy only exact donor raw sectors whose parent sector is either the workbook expected_original_sha256 or already the exact patched_sha256",
+    "third_variant_policy": "abort",
+    "already_target_policy": "accept without rewrite",
+    "guessed_payload_bytes": 0,
+    "asset_overlap_policy": "sector-level SHA gate prevents clobbering any unrelated B284 change"
+  },
+  "mandatory_gates": [
+    "exact Batch284 report status and report output_sha256 equals parent BIN SHA-256",
+    "exact Batch118 donor full-disc SHA-256",
+    "exact Batch118 workbook SHA-256",
+    "Sector Audit row count = 1626 and unique raw_lba count = 1626",
+    "Assets 58 row count = 58",
+    "every donor sector SHA-256 equals patched_sha256 from workbook",
+    "every parent target sector is exact expected_original_sha256 or patched_sha256; third variant aborts",
+    "Expected Write recorded before mutation",
+    "actual changed-LBA set equals Expected Write LBA set",
+    "MODE1/2352 EDC/ECC valid on every changed sector",
+    "58/58 final whole-asset re-extraction SHA-256 equals candidate_sha256 from workbook",
+    "guessed payload bytes = 0"
+  ],
+  "copyright_policy": "No game payload, font, movie, or full-disc bytes are committed; only manifest and tooling."
+}
