@@ -1,0 +1,60 @@
+{
+  "format": "ST2-CD1-BATCH283-DISC1-223-ASSET-RELEASE-GATE-v1",
+  "batch": 283,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 282,
+    "manifest": "manifests/CD1_BATCH282_STATIC58_PHYSICAL_REUNION.json",
+    "required_status": "PASS_BATCH282_STATIC58_PHYSICAL_REUNION"
+  },
+  "trusted_scopes": {
+    "story": {
+      "batch": 279,
+      "manifest": "manifests/CD1_BATCH279_STORY141_PHYSICAL_CLOSURE.json",
+      "accounted": 141,
+      "total": 141
+    },
+    "battle_static": {
+      "batch": 200,
+      "manifest": "manifests/BATCH200_REAL_FULL58_RECOVERY.json",
+      "accounted": 58,
+      "total": 58,
+      "required_reextraction": "58/58 PASS"
+    },
+    "movie_static_inventory": {
+      "batch": 281,
+      "manifest": "manifests/CD1_BATCH281_MOVIE24_LOGICAL_CLOSURE.json",
+      "accounted": 24,
+      "total": 24,
+      "identity_preserved_reextraction": "6/6"
+    }
+  },
+  "cumulative_accounting": {
+    "story": 141,
+    "battle_static": 58,
+    "movie_static_inventory": 24,
+    "logical_assets_accounted": 223,
+    "logical_assets_total": 223,
+    "coverage_percent": 100.0,
+    "note": "Logical coverage accounting only; unchanged identity assets are not claimed as modified bytes."
+  },
+  "release_gate": {
+    "require_pristine_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "require_disc_size": 659293824,
+    "require_parent_result_sha_binding": true,
+    "require_parent_status": "PASS_BATCH282_STATIC58_PHYSICAL_REUNION",
+    "require_guessed_payload_bytes": 0,
+    "require_expected_write": true,
+    "require_changed_sector_accounting": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_static58_whole_asset_reextraction": "58/58",
+    "require_movie6_identity_reextraction": "6/6",
+    "require_story141_trust_chain": true,
+    "fail_on_unrecognized_lineage": true
+  },
+  "output": {
+    "certificate": "BATCH283_DISC1_223_ASSET_RELEASE_CERT.json",
+    "success_status": "PASS_BATCH283_DISC1_223_ASSET_RELEASE_GATE"
+  },
+  "estimated_bytes": 0
+}
