@@ -1,0 +1,36 @@
+{
+  "format": "ST2-CD1-BATCH274-EVENT109-COMPLETION-v1",
+  "target_disc": 1,
+  "pristine_disc_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "parent_batch": 273,
+  "parent_required_status": "PASS_BATCH269_PLUS_ALL_12_SPEECH_MOVIES_PHYSICAL_UNION",
+  "event_mes_total": 109,
+  "event_mes_already_inherited_from_batch269": 34,
+  "legacy_exact_event_mes_to_materialize": 75,
+  "source_manifests": [
+    {"batch": 50, "format": "ST2-R41-batch50-replacement-manifest-v1", "expected_replacement_files": 6},
+    {"batch": 51, "format": "ST2-R41-batch51-replacement-manifest-v1", "expected_replacement_files": 9},
+    {"batch": 52, "format": "ST2-R41-batch52-replacement-manifest-v1", "expected_replacement_files": 18},
+    {"batch": 53, "format": "ST2-R41-batch53-replacement-manifest-v1", "expected_replacement_files": 19},
+    {"batch": 54, "format": "ST2-R41-batch54-replacement-manifest-v1", "expected_replacement_files": 8},
+    {"batch": 55, "format": "ST2-R41-batch55-final-replacement-manifest-v1", "expected_replacement_files": 15}
+  ],
+  "source_manifest_parent_requirement": "each source manifest parent BIN SHA-256 must equal pristine_disc_sha256",
+  "dedup_rule": "iso_path must be unique across the 75 legacy rows; on the Batch273 parent an asset may be SOURCE_SHA (write required) or REPLACEMENT_SHA (already inherited/dedup); any third SHA aborts",
+  "payload_rule": "replacement payload must be found by exact SHA-256 from loose files or ZIP members; filenames are not trusted",
+  "write_rule": "only exact replacement payload bytes are written into the ISO file extent; no guessed bytes and no size growth",
+  "verification": [
+    "Batch273 whole-disc SHA equals Batch273 result output_sha256",
+    "six legacy source manifests have exact expected format, parent SHA and row count",
+    "75 legacy rows are unique by iso_path and carry lba/size/source_sha256/replacement_sha256",
+    "each replacement payload is exact SHA-256 and exact size",
+    "pre-write whole-asset SHA is source_sha256 or replacement_sha256 only",
+    "Expected Write record for every changed raw sector",
+    "MODE1/2352 EDC and ECC regenerated for every touched sector",
+    "changed-sector accounting is exact",
+    "75/75 legacy whole-asset re-extraction equals replacement SHA-256",
+    "final Event MES completion gate is 109/109"
+  ],
+  "success_status": "PASS_BATCH273_PLUS_EVENT109_COMPLETE_EXECUTABLE_CANDIDATE",
+  "guessed_payload_bytes": false
+}
