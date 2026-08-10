@@ -1,0 +1,49 @@
+{
+  "format": "ST2-CD1-BATCH282-STATIC58-PHYSICAL-REUNION-v1",
+  "batch": 282,
+  "goal": "CD1_100_PERCENT",
+  "parent": {
+    "batch": 281,
+    "manifest": "manifests/CD1_BATCH281_MOVIE24_LOGICAL_CLOSURE.json",
+    "required_status": "PASS_BATCH281_MOVIE24_LOGICAL_CLOSURE"
+  },
+  "donor": {
+    "batch": 200,
+    "manifest": "manifests/BATCH200_REAL_FULL58_RECOVERY.json",
+    "required_status": "PASS_REAL_FULL58_EXACT_RECOVERY",
+    "disc_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20",
+    "asset_count": 58,
+    "changed_raw_sectors_from_pristine": 1626,
+    "reextraction": "58/58 PASS"
+  },
+  "pristine": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "promotion_policy": {
+    "unit": "whole_asset_user_data",
+    "asset_source": "BATCH200_REAL_FULL58_RECOVERY.assets",
+    "parent_asset_allowed_states": ["pristine", "exact_donor_replacement"],
+    "fail_on_third_variant": true,
+    "write_only_when_parent_is_pristine": true,
+    "preserve_non_target_parent_sectors": true,
+    "require_expected_write": true,
+    "require_changed_sector_accounting": true,
+    "require_changed_sector_edc_ecc": true,
+    "require_whole_asset_reextraction": "58/58",
+    "require_guessed_payload_bytes": 0
+  },
+  "cumulative_scope_after_pass": {
+    "story": "141/141",
+    "battle_static": "58/58 physical",
+    "movie_inventory": "24/24 logical",
+    "minimum_logical_assets_accounted": 223
+  },
+  "output": {
+    "bin_pattern": "Sakura_Taisen_2_Disc1_B282_Static58_Physical_Reunion.bin",
+    "report": "BATCH282_STATIC58_PHYSICAL_REUNION_RESULT.json",
+    "success_status": "PASS_BATCH282_STATIC58_PHYSICAL_REUNION"
+  },
+  "estimated_bytes": 0
+}
