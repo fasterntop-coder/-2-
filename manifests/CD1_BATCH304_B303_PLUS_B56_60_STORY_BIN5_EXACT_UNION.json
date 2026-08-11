@@ -1,0 +1,37 @@
+{
+  "format": "ST2-CD1-batch304-b303-plus-b56-60-story-bin5-exact-union-v1",
+  "batch": 304,
+  "parent_batch": 303,
+  "goal": "CD1_100_PERCENT",
+  "scope": "Promote five SHA-pinned Batch56-60 Korean story BIN candidates onto the exact Batch303 cumulative parent without guessed bytes.",
+  "historical_source": {
+    "batches": [56,57,58,59,60],
+    "status": "PASS_OFFLINE",
+    "assets": 5,
+    "records_reviewed": 3273,
+    "translated_records": 3268,
+    "control_preserved_records": 5,
+    "capacity_overflow": 0,
+    "japanese_residual": 0,
+    "reverse_decode_errors": 0,
+    "story_metric_after_batch60": "14865/14875 = 99.9% under historical denominator",
+    "hardware_validation": "PENDING"
+  },
+  "assets": [
+    {"asset":"SK0404.BIN","batch":56,"iso_path":"SAKURA1/SK0404.BIN","lba":45682,"size":44804,"source_sha256":"4deb61ff0b8f25ad8494e6753af9b415f6f4351374f39704112574a793f2a710","candidate_sha256":"7fd50fb8a2b236091b41c5a7b6ff7dc46c992e01790a5d534491649d64d830e5","records_reviewed":77,"translated_records":76,"control_preserved":1},
+    {"asset":"SK0501.BIN","batch":60,"iso_path":"SAKURA1/SK0501.BIN","lba":45704,"size":246748,"source_sha256":"8ba6f9332c7dd84b39aa72cb20b98df417d1395db2ec696fd95a9824d879544f","candidate_sha256":"6edc5467e1f5dcbd2e513f06003d17b9c59ddc314a8b325ebba66855b911d743","records_reviewed":1559,"translated_records":1558,"control_preserved":1},
+    {"asset":"SK0502.BIN","batch":58,"iso_path":"SAKURA1/SK0502.BIN","lba":45825,"size":107920,"source_sha256":"8fb80c1353d9ceef632fc7198cf8e8ef045f41f08adcc43dbf7cbb9262273ea4","candidate_sha256":"0b31fca7e96c3e60da04083981fba4624f3dd516dff604ae075d2f52d05da7bc","records_reviewed":518,"translated_records":517,"control_preserved":1},
+    {"asset":"SK0503.BIN","batch":57,"iso_path":"SAKURA1/SK0503.BIN","lba":45878,"size":97324,"source_sha256":"4187d409d38e268233a092d33c93490ae6f73080ef2c9c8eed916775cf5a8aca","candidate_sha256":"c844f857de7260e0b2746d7702460709393d8b08821986129cc5e09de103e76b","records_reviewed":393,"translated_records":392,"control_preserved":1},
+    {"asset":"SK0504.BIN","batch":59,"iso_path":"SAKURA1/SK0504.BIN","lba":45926,"size":127140,"source_sha256":"52d5429c1d0e4029406d63f9b780bda3d78bb3de90233d4e5de488d2713d07bb","candidate_sha256":"619bee36d6e821665df9e09a0b0ffa36021b58fdbda0c3fbf0f81a9e7421f4ac","records_reviewed":726,"translated_records":725,"control_preserved":1}
+  ],
+  "integration_policy": {
+    "allowed_parent_asset_state": ["source_sha256", "candidate_sha256"],
+    "payload_identity": "candidate_sha256",
+    "expected_write": true,
+    "changed_lba_accounting": true,
+    "changed_sector_edc_ecc": true,
+    "whole_asset_reextraction": "5/5",
+    "third_variant": "BLOCK",
+    "guessed_payload_bytes": 0
+  }
+}
