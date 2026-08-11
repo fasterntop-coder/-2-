@@ -145,12 +145,13 @@ def validate_verifier(source: str) -> None:
         require_equal(constants.get(key), expected, f"verifier constant {key}")
 
     required_fragments = (
-        'physical.get("guessed_payload_bytes")',
-        'physical.get("third_variant_assets")',
-        'physical.get("outside_footprint_changes")',
+        '"guessed_payload_bytes": 0',
+        '"third_variant_assets": 0',
+        '"outside_footprint_changes": 0',
         'verify_mode1_sector(b)',
         'source_sha != asset["source_sha256"]',
         'output_sha != asset["candidate_sha256"]',
+        'changed_count != EXPECTED_CHANGED',
     )
     for fragment in required_fragments:
         if fragment not in source:
@@ -175,7 +176,7 @@ def validate_project_status(text: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Batch311: freeze and cross-check the Batch309 authoritative trust chain without re-analyzing already certified bytes."
+        description="Batch311: cross-check the Batch309 authoritative trust chain without re-analyzing already SHA-certified bytes."
     )
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--output-report", type=Path)
