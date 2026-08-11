@@ -1,78 +1,48 @@
 # Sakura Taisen 2 Disc 1 Patch Project
 
 - Goal: CD1 Korean patch candidate 100%
-- Exact battle/static physical recovery: 58/58
-- Exact large-story SK05/SKCM physical integration: 6/6
-- Exact promoted B51/B52 story integration: 27/27
-- Exact B64 subtitle movie integration: 3/3
-- Current exact physical union: 94 assets
-- Authoritative workflow: one `main` lineage only; parallel workflows forbidden
+- **Current physical/static inventory: 223/223 = 100.0%**
+- Story: **141/141**
+- Battle/static: **58/58**
+- Movie static inventory: **24/24**
+- Authoritative workflow: one `main` lineage only; guessed bytes forbidden
 
-## Current batch
+## Current authoritative candidate
 
-### Batch 240 — PASS PHYSICAL UNION 94/94
+### Batch 308 — PASS REAL PHYSICAL/STATIC 223/223
 
-Batch240 physically unions the exact Batch239 64-asset parent with 30 retained historical payloads: nine B51 event MES files, eighteen B52 event MES files and three B64 subtitled CAK movies.
-
-### Batch 241 — VIDEO9 EXACT RECOVERY GATE READY
-
-Batch240 already contains the exact B64 `SK2MV_30.CAK`, so the remaining movie recovery lane is exactly nine assets, not ten: `SK2MV_04/05/06.CAK` plus `SK2MV_43..48.CAK`.
-
-Canonical recovery components:
-
-- `manifests/CD1_BATCH241_VIDEO9_RECOVERY_GATE.json`
-- `tools/recover_batch241_video9.py`
-- `tools/audit_batch241_video9_gate.py`
-
-The historical `VIDEO10`-named tool is compatibility-only and delegates to the canonical Video9 tool. No new Disc bytes are promoted by Batch241 until the exact nine payloads are recovered and the Batch240-parent overlap, Expected Write, changed-sector EDC/ECC, changed-sector accounting and whole-asset re-extraction gates pass.
-
-The separate historical UI9 lane remains quarantined: no UI candidate is auto-merged unless its exact replacement SHA and lineage are proven. A blocked Video9 or UI9 lane does not authorize guessed bytes and does not stop work on other independently provable Disc 1 tasks.
-
-## Authoritative source and parent
+Batch308 is an actual rebuilt MODE1/2352 Disc 1 candidate, not logical accounting alone.
 
 - pristine Disc SHA-256: `d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106`
-- Batch239 parent SHA-256: `daa1052fabd4142feaf42f14bdb5deefdf486cea8f0db8c939fc18ce6f822a56`
-- Batch239 physical assets: `64`
-- Batch239 changed sectors: `1,901`
+- Batch308 Disc SHA-256: `b3cc46918e3e3d5d7a1910776a079d3683d8b3a9961b3443dc0571cb99189e5f`
+- Disc size: `659,293,824`
+- physical/static assets accounted: `223/223`
+- final whole-asset re-extraction: `223/223 PASS`
+- changed sectors vs pristine: `90,128`
+- changed-sector MODE1 EDC/ECC: `90,128/90,128 PASS`
+- guessed payload bytes: `0`
+- third variants accepted: `0`
+- changes outside approved footprints: `0`
 
-## Recovered Batch240 packages
+The physical chain used to reach Batch308 is:
 
-- B51 9 MES: `ST2R41_B51_MES.zip` SHA-256 `a513b7d127112070ccecec9af11f42c6ed878611373b3e47616ed6f153cac8e3`
-- B52 18 MES: `ST2R41_B52_MES.zip` SHA-256 `26952e76b5966166b669d386460c55845a5a936c96bc07a71b14679a995458fd`
-- B64 3 CAK: `ST2R41_B64_MOVIE_SUBS_CAK.zip` SHA-256 `bf9f4e80ed4ea283829f6ab8b108c492a294c528ed76adbcd255f20dc98ac89a`
+- Batch240: 94 assets, SHA `dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83`
+- Batch305 physical union: 142 assets, SHA `93b3b08ff5e27f03e056ec3577068a2ae2b91cc3d961fc5628ad79a479a871b1`
+- Batch306 physical union: 172 assets, SHA `b99a4aebdec0412accf843366fa70b406ccaad1be769fe33b95d81ab36ad4302`
+- Batch307 80% gate: 179 assets, SHA `137a278985d1659cbf21d106683b50dba092a4d31f198f8dd7cd5573b311909c`
+- Batch308 100% physical/static candidate: 223 assets, SHA `b3cc46918e3e3d5d7a1910776a079d3683d8b3a9961b3443dc0571cb99189e5f`
 
-Source SHA and replacement SHA: `30/30 PASS`.
+Batch308 adds 33 exact replacement assets and 11 exact identity controls over Batch307. The final 223/223 gate was rerun against the produced Batch308 BIN: all 223 expected whole assets were re-extracted from the final image and hashed, and all 90,128 sectors that differ from pristine passed MODE1 EDC/ECC verification.
 
-## Batch240 physical result
+## Hardware/release status
 
-- new assets: `30/30 PASS`
-- new story assets: `27`
-- new movie assets: `3`
-- B64 subtitle events: `33`
-- B64 audio ADX: byte-identical according to retained validation
-- new approved footprint: `14,767` sectors
-- new actual changed sectors: `13,941`
-- parent/new overlap: `0`
-- outside-footprint changes: `0`
-- new re-extraction: `30/30 PASS`
-- previous parent assets preserved/re-extracted: `64/64 PASS`
-- total physical assets: `94/94 PASS`
-- total changed sectors from pristine: `15,842`
-- changed-sector MODE1 EDC/ECC: `15,842/15,842 PASS`
-- final Disc SHA-256: `dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83`
-
-## Pristine raw-sector exception policy
-
-Pristine LBA `250901` has valid sync/mode/EDC/reserved/ECC-P but historical ECC-Q mismatch. It is not a patch-created error. Batch240 preserves this raw sector byte-for-byte when its user data is unchanged; source-sector defects are never rewritten solely to normalize ECC. Every sector whose user data is changed by the patch is rebuilt and must pass EDC, ECC-P and ECC-Q.
+**Hardware validation is still pending.** Batch308 is therefore the authoritative **100% physical/static candidate**, not yet the final hardware-certified public release. Re-encoded subtitle/title-card movies must still be playback-tested for timing, visual presentation and stability, and any runtime regressions found in emulator/real hardware testing must be repaired without breaking the Batch308 safety gates.
 
 ## Current production components
 
-- `tools/integrate_batch239_promoted30_batch240.py`
-- `manifests/CD1_BATCH239_PROMOTED30_UNION_BATCH240.json`
-- `reports/BATCH240_REPORT.md`
-- `manifests/CD1_BATCH241_VIDEO9_RECOVERY_GATE.json`
-- `tools/recover_batch241_video9.py`
-- `tools/audit_batch241_video9_gate.py`
+- `manifests/CD1_BATCH308_REAL_PHYSICAL_STATIC_223_OF_223.json`
+- `reports/BATCH308_REAL_PHYSICAL_STATIC_100_PERCENT.md`
+- `tools/verify_batch308_real_physical_static_100.py`
 
 ## Mandatory safety policy
 
@@ -80,12 +50,12 @@ Pristine LBA `250901` has valid sync/mode/EDC/reserved/ECC-P but historical ECC-
 - exact source and candidate SHA-256;
 - raw-sector Expected Write before writes;
 - actual changes only inside approved footprints;
-- preserve unrelated pristine raw-sector anomalies;
-- EDC/ECC on every changed sector;
+- EDC/ECC on every changed output sector;
 - changed-sector accounting;
 - exact whole-asset re-extraction;
+- identity controls must remain exact where required;
 - no copyrighted game/font/movie/full-Disc bytes committed.
 
 ## Next production priority
 
-Use Batch240 SHA `dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83` as the only physical parent. Recover the exact Video9 payloads when available, while independently auditing and promoting other already-produced story/UI/movie assets only when their exact candidate SHA and lineage are provable. One blocked recovery lane must not stop other safe Disc 1 work.
+Use Batch308 SHA `b3cc46918e3e3d5d7a1910776a079d3683d8b3a9961b3443dc0571cb99189e5f` as the physical/static candidate for regression and playback validation. Prioritize movie timing/playback, battle/UI presentation, runtime crash checks and any remaining visual/wording defects. Any correction must retain Expected Write, exact changed-sector accounting, MODE1 EDC/ECC and whole-asset gates.
