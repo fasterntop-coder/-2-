@@ -1,0 +1,29 @@
+name: Batch324 full-track integrity gate
+
+on:
+  push:
+    paths:
+      - 'tools/verify_batch324_full_track_integrity_gate.py'
+      - 'tools/mode1_2352.py'
+      - '.github/workflows/batch324-full-track-integrity-gate.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_batch324_full_track_integrity_gate.py'
+      - 'tools/mode1_2352.py'
+      - '.github/workflows/batch324-full-track-integrity-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  static-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Batch324 gate and dependency
+        run: |
+          python -m py_compile tools/mode1_2352.py tools/verify_batch324_full_track_integrity_gate.py
+      - name: Verify CLI construction
+        run: |
+          python tools/verify_batch324_full_track_integrity_gate.py --help
