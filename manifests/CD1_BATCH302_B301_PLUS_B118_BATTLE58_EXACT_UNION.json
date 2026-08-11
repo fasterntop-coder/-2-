@@ -1,0 +1,36 @@
+{
+  "format": "ST2-CD1-batch302-b301-plus-b118-battle58-exact-union-v1",
+  "batch": 302,
+  "parent_batch": 301,
+  "goal": "CD1_100_PERCENT",
+  "scope": "Promote the complete historically verified Batch118 battle/UI 58-asset union onto the exact Batch301 cumulative parent without guessing bytes.",
+  "canonical_workbook": {
+    "name": "BATCH118_BATTLE_BANK_STATIC_100_PERCENT.xlsx",
+    "sha256": "e8c85862c10b6d30ed21156b17ca93be834c5cb5f76cf1f58d97c1db6ca22ce9",
+    "sheet": "Assets 58"
+  },
+  "historical_validation": {
+    "status": "PASS_BATTLE_BANK_STATIC_100_PERCENT_55_OF_55_58_ASSET_FULL_DISC_VERIFIED",
+    "battle_banks": "55/55",
+    "battle_records": "12595/12595",
+    "battle_static_percent": 100.0,
+    "assets": 58,
+    "changed_raw_sectors": 1626,
+    "lba_conflicts": 0,
+    "other_changed_sectors": 0,
+    "edc_ecc": "PASS",
+    "reextraction": "58/58 PASS",
+    "historical_pristine_output_sha256": "75f300e59bd3ad63ca11d4981f328107aa59397fa894abbf5d02476a6457df20"
+  },
+  "integration_policy": {
+    "asset_rows_source": "Read all 58 rows directly from the SHA-pinned canonical workbook Assets 58 sheet; do not transcribe or infer asset metadata.",
+    "allowed_parent_asset_state": ["original_sha256", "candidate_sha256"],
+    "payload_identity": "candidate_sha256",
+    "expected_write": true,
+    "changed_lba_accounting": true,
+    "changed_sector_edc_ecc": true,
+    "whole_asset_reextraction": "58/58",
+    "third_variant": "BLOCK",
+    "guessed_payload_bytes": 0
+  }
+}
