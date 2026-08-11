@@ -1,0 +1,104 @@
+{
+  "format": "ST2-CD1-BATCH308-REAL-PHYSICAL-STATIC-223-OF-223-v1",
+  "batch": 308,
+  "goal": "CD1_100_PERCENT",
+  "status": "PASS_B308_FINAL_223_OF_223_WHOLE_ASSET_AND_ALL_CHANGED_SECTOR_GATE",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106"
+  },
+  "physical_chain": [
+    {
+      "batch": 240,
+      "assets": 94,
+      "sha256": "dce4e0d7fd114c339243c78205d5d2206e180d8631ab0577b63bc28d6b8bec83",
+      "changed_sectors": 15842,
+      "status": "PASS_PHYSICAL_UNION_94_OF_94"
+    },
+    {
+      "batch": 305,
+      "assets": 142,
+      "sha256": "93b3b08ff5e27f03e056ec3577068a2ae2b91cc3d961fc5628ad79a479a871b1",
+      "new_assets": 48,
+      "new_changed_sectors": 314,
+      "changed_sectors": 16156,
+      "status": "PASS_B305_B240_PLUS_EVENT48_PHYSICAL_UNION_142_ASSETS"
+    },
+    {
+      "batch": 306,
+      "assets": 172,
+      "sha256": "b99a4aebdec0412accf843366fa70b406ccaad1be769fe33b95d81ab36ad4302",
+      "new_assets": 30,
+      "new_changed_sectors": 199,
+      "changed_sectors": 16355,
+      "status": "PASS_B306_B305_PLUS_EVENT30_PHYSICAL_UNION_172_ASSETS"
+    },
+    {
+      "batch": 307,
+      "assets": 179,
+      "sha256": "137a278985d1659cbf21d106683b50dba092a4d31f198f8dd7cd5573b311909c",
+      "new_assets": 7,
+      "new_changed_sectors": 22336,
+      "changed_sectors": 38691,
+      "status": "PASS_B307_PHYSICAL_80_PERCENT_GATE_179_OF_223"
+    },
+    {
+      "batch": 308,
+      "assets": 223,
+      "sha256": "b3cc46918e3e3d5d7a1910776a079d3683d8b3a9961b3443dc0571cb99189e5f",
+      "new_replacement_assets": 33,
+      "new_identity_assets": 11,
+      "new_assets_accounted": 44,
+      "new_footprint_sectors": 66561,
+      "new_changed_sectors": 51437,
+      "changed_sectors": 90128,
+      "status": "PASS_B308_REAL_PHYSICAL_STATIC_100_PERCENT_223_OF_223"
+    }
+  ],
+  "final_accounting": {
+    "story": "141/141",
+    "battle_static": "58/58",
+    "movie_static_inventory": "24/24",
+    "logical_and_physical_static_assets": "223/223",
+    "coverage_percent": 100.0
+  },
+  "batch308_new_scope": {
+    "replacement_assets": 33,
+    "identity_controls": 11,
+    "story_assets_accounted": 29,
+    "movie_assets_accounted": 15,
+    "early_story_r39": 15,
+    "ev01001_r39": 1,
+    "speech_movies_r39": 6,
+    "late_story_exact": 8,
+    "speech_movies_b65_b67": 3,
+    "story_identity_controls": 5,
+    "movie_identity_controls": 6
+  },
+  "trusted_exact_sources": [
+    {"name": "ST2R39 exact reconstructed donor", "sha256": "57335616e481102fe2ef7ab080871df479211f388eff796d5c6bca7a28958025", "assets": 22},
+    {"name": "ST2R40D exact reconstructed donor", "sha256": "125bbc3f5c409fef24c1adc25b69f08a9062934b9ec2db97b3f44b7be7d74512", "assets": 3},
+    {"name": "ST2R41_SK0403_FINAL.zip", "sha256": "3356ad5261b0eca89860bd6164b27cdb2374b3d4b9276e8aee91f1e8ca5eedac", "assets": 1},
+    {"name": "ST2R41_B56_SK0404_BIN.zip", "sha256": "8ea28ce5e7626ca87275469197a669335232ad2ca54ce29c23483550dfdd32c3", "assets": 1},
+    {"name": "ST2R41_B59_SK0504_BIN.zip", "sha256": "e847986be751cbce21047977ecb03eb08e5b09ec7d2ad7d7090b30492401811f", "assets": 1},
+    {"name": "ST2R41_B61_MAINSTORY_BIN.zip", "sha256": "fc980ae780aedce48aec2d4f3df83bd5a129a1d5d81f652bc1c6078138fdc49c", "assets": 2},
+    {"name": "ST2R41_BATCH65_SK2MV04_PACKAGE.zip", "sha256": "e1ed5f9c3f90601d38a9c494ed10e3b5504d9d34e825685a3f7d42554aaf057a", "assets": 1},
+    {"name": "ST2R41_BATCH66_SK2MV05_PACKAGE.zip", "sha256": "a4158fe8f01e9ab478d8a2030903c31b1013ec7b8a0d496ecf66fb7934c53b0b", "assets": 1},
+    {"name": "ST2R41_BATCH67_SK2MV06_PACKAGE.zip", "sha256": "6fc8f023fd2857242575e388ee64be863622797fd2447dd41db2422cdb6c8f1f", "assets": 1}
+  ],
+  "final_gates": {
+    "expected_write_records_batch308": 66561,
+    "changed_sector_accounting": "EXACT_PRISTINE_VS_OUTPUT_DIFF",
+    "whole_asset_reextraction": "223/223 PASS",
+    "changed_sector_mode1_edc_ecc": "90128/90128 PASS",
+    "lba_collisions": 0,
+    "outside_approved_footprint_changes": 0,
+    "third_variant_assets": 0,
+    "guessed_payload_bytes": 0
+  },
+  "hardware_validation": "PENDING for re-encoded subtitle/title-card movies; this is a physical/static 100% candidate, not a hardware-certified final release",
+  "distribution": {
+    "full_disc_committed": false,
+    "copyrighted_payloads_committed": false
+  }
+}
