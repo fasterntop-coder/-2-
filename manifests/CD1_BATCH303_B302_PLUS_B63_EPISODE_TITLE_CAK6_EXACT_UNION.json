@@ -1,0 +1,38 @@
+{
+  "format": "ST2-CD1-batch303-b302-plus-b63-episode-title-cak6-exact-union-v1",
+  "batch": 303,
+  "parent_batch": 302,
+  "goal": "CD1_100_PERCENT",
+  "scope": "Promote the six SHA-pinned Batch63 Korean episode-title CAK candidates onto the exact Batch302 cumulative parent without guessed bytes.",
+  "historical_source": {
+    "name": "ST2_R41_MOVIE_QA_BATCH63.xlsx",
+    "status": "PASS_OFFLINE_CANDIDATE",
+    "episode_title_cards": "6/6",
+    "resolution": "288x144 preserved",
+    "source_fps": 30,
+    "candidate_fps": 20,
+    "source_frames_each": 750,
+    "candidate_frames_each": 500,
+    "adx_audio_identical": "6/6",
+    "source_size_preserved": "6/6",
+    "hardware_validation": "PENDING"
+  },
+  "assets": [
+    {"asset":"SK2MV_43.CAK","iso_path":"SAKURA1/SK2MV_43.CAK","lba":161590,"size":7663544,"source_sha256":"5a6d751a81da2ca268eb7577dcbc0ec70816296a5d13c393b50d20a1f0294d41","candidate_sha256":"4f6292715c418a05f2318ac408d136833ca502d8ce969d3d3be4587a99085b9c","audio_sha256":"64880c46160560f1bdc0a609a3523ce91abb66f7c109e49878472dceb1d5bd8b"},
+    {"asset":"SK2MV_44.CAK","iso_path":"SAKURA1/SK2MV_44.CAK","lba":165332,"size":7663952,"source_sha256":"8fa249e7f98d2453b389263b48059f8c26eb1302c109513399d4216d549470c5","candidate_sha256":"7827f423244c1ebfce486eb32fc6a032cb617890ec1cfd37b5e4f4072c14b7d6","audio_sha256":"6237804ef104c30c77370a0aad71f1e1c4d801f3040758b0d9e52962997207e4"},
+    {"asset":"SK2MV_45.CAK","iso_path":"SAKURA1/SK2MV_45.CAK","lba":169075,"size":7656708,"source_sha256":"2d00ea151720802a16dcc4b5642affc8b3ae8eb53fca7f04c473489985b883ae","candidate_sha256":"f6689b9814b2dc883bf5817e286926f3f42ac334786725daf2b6a241383574e1","audio_sha256":"6b33d69f01c5ef9caf30c7f4ec239dff5f238943dc6deaf61b227999e5ec5875"},
+    {"asset":"SK2MV_46.CAK","iso_path":"SAKURA1/SK2MV_46.CAK","lba":172814,"size":7496584,"source_sha256":"9a1636d18bc34be4708e3db55d53c5dbe1b3bba8712ad6bacab48ef0349007e5","candidate_sha256":"405630c16ba47c6a5786d2c6e1788d8dbdac1da39f5fb4a79ad91a3998935a24","audio_sha256":"c6f0ab1d74952bd13b0b06af50b976052fd1717b8ac2e59e5aa8117fc89a1352"},
+    {"asset":"SK2MV_47.CAK","iso_path":"SAKURA1/SK2MV_47.CAK","lba":176475,"size":7633772,"source_sha256":"b39f1fa13fa77d199113a5244ce6e680b93b7d381fa45a5c6a84ccbc4c6579d6","candidate_sha256":"2493b5c93567683d6b84b1787d772a4ce9d215dc6445eac6ca9cc1e1c9abf545","audio_sha256":"aabf863d09d73f70ae23cda494b8eb08984e2686ca3d530f51df0bcfe2c8fa5a"},
+    {"asset":"SK2MV_48.CAK","iso_path":"SAKURA1/SK2MV_48.CAK","lba":180203,"size":7615920,"source_sha256":"5b305a9b140721a70dd5c426b0ba55baa06b9927d3eafb8fd457650c9dd72fbb","candidate_sha256":"49267efd021d9d11f6e02b45550e045a7c784eac6f1e8b83986a56b22fd462e5","audio_sha256":"ee9d3fa4691bd6b5160f49475c3e7e4fc55efff3d17a70a9fecac35078b6a024"}
+  ],
+  "integration_policy": {
+    "allowed_parent_asset_state": ["source_sha256", "candidate_sha256"],
+    "payload_identity": "candidate_sha256",
+    "expected_write": true,
+    "changed_lba_accounting": true,
+    "changed_sector_edc_ecc": true,
+    "whole_asset_reextraction": "6/6",
+    "third_variant": "BLOCK",
+    "guessed_payload_bytes": 0
+  }
+}
