@@ -1,0 +1,20 @@
+{
+  "format": "ST2-CD1-batch298-b297-plus-b48-49-event5-exact-union-v1",
+  "target_disc": 1,
+  "parent_batch": 297,
+  "pristine_reference_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "source_batches": [48, 49],
+  "replacement_assets": 5,
+  "records_reviewed": 68,
+  "records_translated": 67,
+  "control_preserved_records": 1,
+  "guessed_payload_bytes": 0,
+  "logical_rows_sha256": "a9afe86394baccb90be99bb97da72054e4ae95fcdd7c9243a3129bc5ff98e03e",
+  "replacement_files": [
+    {"source_batch":48,"iso_path":"SAKURA2/EV03001.MES","lba":249453,"size":72963,"source_sha256":"ac085b3e322833e9e77901256cff52f0fd29078101092def2a8a92e58ef742d2","replacement_sha256":"eedbfeba75859f91d8688278131141c732f4afcdecd1046ba415f3d60e4d5534"},
+    {"source_batch":48,"iso_path":"SAKURA2/EV03002.MES","lba":249867,"size":71926,"source_sha256":"f681a5c9511ef01eb1e821a6d9e5236343eb58322d1dcf37d16b0f350cb109b9","replacement_sha256":"62069f3fb5ff7aec68e5c844fd8cafb1471e62518d08f79430a7e81206b7571a"},
+    {"source_batch":48,"iso_path":"SAKURA2/EV03005.MES","lba":250132,"size":72012,"source_sha256":"c99dedbb0e12a3a338a80a32da1f9dda5b4a219b10c78d6925f06585fa247e50","replacement_sha256":"364e1215e1bbbbb4a72a11db4688b72995aebf22b11918416bd38adcbda80426"},
+    {"source_batch":49,"iso_path":"SAKURA2/EV03020.MES","lba":249566,"size":71821,"source_sha256":"2831cafa7c20e9be93551b795b9f1c941884b7cebaecb78f8061e21f0c2199fd","replacement_sha256":"dcafc6bad12a2f769d58aeb37c5eb1d8fec5cb7eabf79ddf1b464d2e1a14f062"},
+    {"source_batch":49,"iso_path":"SAKURA2/EV03021.MES","lba":249816,"size":73972,"source_sha256":"ef061219cbd9a7d7d788efc6b351629e78d131a8ad294016f91bafc08a4c3959","replacement_sha256":"936ff18bfb18487a85eaded8dd892ed23c421d19a5c600192b3c6c10101d2786"}
+  ]
+}
