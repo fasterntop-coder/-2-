@@ -1,0 +1,51 @@
+{
+  "format": "ST2-CD1-BATCH309-B308-PLUS-R39-UI-RUNTIME11-PHYSICAL-UNION-v1",
+  "batch": 309,
+  "goal": "CD1_100_PERCENT",
+  "status": "PASS_B309_B308_PLUS_R39_UI_RUNTIME11_PHYSICAL_UNION",
+  "pristine_sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+  "parent": {
+    "batch": 308,
+    "sha256": "b3cc46918e3e3d5d7a1910776a079d3683d8b3a9961b3443dc0571cb99189e5f",
+    "core_inventory": "223/223 PASS"
+  },
+  "exact_donor": {
+    "name": "ST2R39 exact reconstructed Disc",
+    "sha256": "57335616e481102fe2ef7ab080871df479211f388eff796d5c6bca7a28958025"
+  },
+  "scope": {
+    "supplemental_assets": 11,
+    "battle_command_ui": 1,
+    "battle_visual_ui": 2,
+    "battle_font": 1,
+    "runtime_low_fonts": 4,
+    "title_assets": 3
+  },
+  "assets": [
+    {"path":"SAKURA2/M01LOW.BIN","lba":219653,"size":412480,"source_sha256":"617f193a7133876082b60faf625e58fd392dcad0af61778e4b400cf95872d8a6","candidate_sha256":"4e513dcfba619c16dcce70dcd6ad23fb94b52f395f28798253166808c74d4a58"},
+    {"path":"SAKURA1/CMD_WIN.CG","lba":4034,"size":4288,"source_sha256":"f732fcd1d9941c00ca1cec33602c8fcd46191ebbb7634b1f7ed5a838866a04df","candidate_sha256":"20a4947ce98752681efecffe9a6022dfb324bc9433ece5ce8da6d567f605ee09"},
+    {"path":"SAKURA1/PBOOK_FL.CG","lba":1658,"size":346016,"source_sha256":"0cb6c798ca4aab0856ce3718c7606adcc1b7cef5f0ec5ac6cd834b091856da45","candidate_sha256":"b172efc442ebca5fc0aade2f92e96cd193a853542213336fecf793e2f881cbdb"},
+    {"path":"SAKURA1/PB_EYE.CG","lba":15725,"size":66240,"source_sha256":"6b57fd7e986c731deefa995e4af02828f51371ea2f99078c836520839b21a4f7","candidate_sha256":"f3ab7b8f52474d772aa9652b3667e3052935a107c361e2aa7574ac807eaa2c98"},
+    {"path":"SAKURA2/M00LOW.BIN","lba":218758,"size":412480,"source_sha256":"5ce7e1ebaab575f1170d56df09265dd32445f3918649ccfc6c0766ede536ce7d","candidate_sha256":"5238a49aafd485da38f8cca297e085ac31f6fa4538971dd9f3ed2d05b72bc401"},
+    {"path":"SAKURA2/M26LOW.BIN","lba":224206,"size":412480,"source_sha256":"319df83a369f81104d8774abe2da764ac0f7a7b99d137f233bd85ba9e8ad704b","candidate_sha256":"9c2dc9b8e9ed3d299719a748b41920a5fdd7995adf3a43c798540a181057c6f3"},
+    {"path":"SAKURA2/M27LOW.BIN","lba":225106,"size":412480,"source_sha256":"e2c5cac5dff73c5c9b86c08c102711ca16302bfc7c5813c097612e913907bb89","candidate_sha256":"6a9a3151b34a7417e280d44cb4486e2b90788fd7099d8da0339224e2df84927f"},
+    {"path":"SAKURA1/BTSFONT.BIN","lba":3943,"size":38860,"source_sha256":"340ec8211a10a06b4fee35f36d8d6b858519482d2007f5753b72a16c09928b3f","candidate_sha256":"490bbf4e2d76955b10c0e2cc8d8644210ae0b738dd9214b1a7f9bd9dde816a67"},
+    {"path":"SAKURA1/TITLE.BIN","lba":1210,"size":154408,"source_sha256":"af775bb149c1ca72984d1a64225d10d4b5103c200aca845b8e06cdf0d41af9a2","candidate_sha256":"0929d80109519c63fb70f46469d3b3b1d4d21c2841b46ba7ac4b4807b0a30ad2"},
+    {"path":"SAKURA1/TTL2CGB.BIN","lba":333,"size":66467,"source_sha256":"d3bb7d54d831fafda164c0a8a1f50b8268d94cf44b4ee0f345e618547d6f2c4d","candidate_sha256":"d9f060c35203b971a00a4ff70816f2a4a60ff739de477d84222b30bb3882a6e5"},
+    {"path":"SAKURA1/TTL2CGB1.BIN","lba":48460,"size":66467,"source_sha256":"d3bb7d54d831fafda164c0a8a1f50b8268d94cf44b4ee0f345e618547d6f2c4d","candidate_sha256":"d9f060c35203b971a00a4ff70816f2a4a60ff739de477d84222b30bb3882a6e5"}
+  ],
+  "physical_result": {
+    "new_footprint_sectors": 1174,
+    "new_changed_sectors": 144,
+    "expected_write_records": 1174,
+    "new_asset_reextraction": "11/11 PASS",
+    "cumulative_changed_sectors": 90272,
+    "all_changed_sector_mode1_edc_ecc": "90272/90272 PASS",
+    "lba_collisions": 0,
+    "outside_footprint_changes": 0,
+    "third_variant_assets": 0,
+    "guessed_payload_bytes": 0,
+    "output_sha256": "8fe316ea3c8f5b8128f5a34908fd982534d21b84a613f1e009080092f58bfc01"
+  },
+  "hardware_validation": "PENDING; physical/static candidate"
+}
