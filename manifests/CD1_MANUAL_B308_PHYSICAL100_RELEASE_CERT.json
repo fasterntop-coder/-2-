@@ -1,0 +1,70 @@
+{
+  "format": "ST2-CD1-MANUAL-B308-PHYSICAL100-RELEASE-CERT-v1",
+  "status": "PASS_B308_PHYSICAL_STATIC_100_PERCENT_223_OF_223",
+  "goal": "CD1_100_PERCENT",
+  "scope": "physical/static candidate; hardware certification pending for re-encoded movies",
+  "pristine_disc": {
+    "size": 659293824,
+    "sha256": "d6dba9f9217f0841b660263ac1d7894fc31a40cd854424a1dd4a6dfecda95106",
+    "format": "MODE1/2352"
+  },
+  "parent": {
+    "name": "B307_80PCT_PHYSICAL.bin",
+    "sha256": "137a278985d1659cbf21d106683b50dba092a4d31f198f8dd7cd5573b311909c",
+    "assets_accounted": 179,
+    "coverage_percent": 80.2691
+  },
+  "candidate": {
+    "name": "B308_100PCT_PHYSICAL.bin",
+    "size": 659293824,
+    "sha256": "b3cc46918e3e3d5d7a1910776a079d3683d8b3a9961b3443dc0571cb99189e5f",
+    "physical_static_assets_accounted": 223,
+    "physical_static_assets_total": 223,
+    "coverage_percent": 100.0
+  },
+  "group_accounting": {
+    "story": "141/141",
+    "battle_static": "58/58",
+    "movie_static": "24/24"
+  },
+  "b308_delta": {
+    "replacement_assets": 33,
+    "identity_assets": 11,
+    "assets_accounted": 44,
+    "footprint_sectors": 66561,
+    "changed_sectors": 51437,
+    "replacement_reextraction": "33/33 PASS",
+    "identity_reextraction": "11/11 PASS"
+  },
+  "full_candidate_gates": {
+    "whole_asset_reextraction": "223/223 PASS",
+    "changed_sector_count_from_pristine": 90128,
+    "changed_sector_accounting": "EXACT_PRISTINE_VS_OUTPUT_DIFF",
+    "changed_sector_edc_ecc": "90128/90128 PASS",
+    "lba_collisions": 0,
+    "outside_approved_footprint_changes": 0,
+    "third_variant_assets": 0,
+    "guessed_payload_bytes": 0
+  },
+  "evidence_hashes": {
+    "B308_RESULT.json": "1607f75d5b556338c38dfc08f1ba69ceae7b6afad3fdd8f876e9cbd0fa77eed6",
+    "B308_FULL223_CERT.json": "b673dd97381ab7a75616716854a276806b5c3b6702683cc9671e5b89a81c2184",
+    "B308_EXPECTED_WRITE.json": "5560411c5859f0b6454ed42493c733c3ad2f3fadfab33d323de25f029985b972",
+    "B308_EXPECTED_WRITE_rows": 66561
+  },
+  "trust_chain": {
+    "logical_223_gate": "manifests/CD1_BATCH283_DISC1_223_ASSET_RELEASE_GATE.json",
+    "story141": "manifests/CD1_BATCH279_STORY141_PHYSICAL_CLOSURE.json",
+    "battle_static58": "manifests/BATCH200_REAL_FULL58_RECOVERY.json",
+    "movie24": "manifests/CD1_BATCH281_MOVIE24_LOGICAL_CLOSURE.json"
+  },
+  "hardware_validation": {
+    "status": "PENDING",
+    "reason": "re-encoded subtitle/title-card movies require SSF and/or real Saturn validation",
+    "release_class": "PHYSICAL_STATIC_100_PERCENT_CANDIDATE_NOT_HARDWARE_CERTIFIED_FINAL"
+  },
+  "distribution": {
+    "full_game_bin_committed": false,
+    "certificate_only": true
+  }
+}
