@@ -1,0 +1,52 @@
+name: Batch312 Unified Release Gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/verify_batch312_release_candidate_gate.py'
+      - 'tools/verify_batch311_batch309_trust_chain.py'
+      - 'tools/verify_batch309_ui_runtime11_physical_union.py'
+      - 'manifests/CD1_BATCH309_B308_PLUS_R39_UI_RUNTIME11_PHYSICAL_UNION.json'
+      - 'PROJECT_STATUS.md'
+      - '.github/workflows/batch312-unified-release-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  trust-chain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Batch310-312 gates
+        run: |
+          python -m py_compile \
+            tools/verify_batch309_ui_runtime11_physical_union.py \
+            tools/verify_batch311_batch309_trust_chain.py \
+            tools/verify_batch312_release_candidate_gate.py
+      - name: Run Batch312 trust-only gate
+        run: |
+          python tools/verify_batch312_release_candidate_gate.py \
+            --output-report batch312_trust_report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('batch312_trust_report.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['status'] == 'PASS_B312_TRUST_ONLY_PHYSICAL_NOT_RUN'
+          assert d['authoritative_candidate']['sha256'] == '8fe316ea3c8f5b8128f5a34908fd982534d21b84a613f1e009080092f58bfc01'
+          assert d['authoritative_candidate']['core_assets'] == '223/223 PASS'
+          assert d['authoritative_candidate']['supplemental_assets'] == '11/11 PASS'
+          assert d['authoritative_candidate']['expected_write_records'] == 1174
+          assert d['authoritative_candidate']['changed_sectors'] == 90272
+          assert d['authoritative_candidate']['guessed_payload_bytes'] == 0
+          assert d['authoritative_candidate']['third_variant_assets'] == 0
+          assert d['authoritative_candidate']['outside_footprint_changes'] == 0
+          assert d['release_ready'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch312-trust-report
+          path: batch312_trust_report.json
