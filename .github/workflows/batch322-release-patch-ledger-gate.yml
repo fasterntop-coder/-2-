@@ -1,0 +1,29 @@
+name: Batch322 release patch-ledger gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/verify_batch322_release_patch_ledger_gate.py'
+      - '.github/workflows/batch322-release-patch-ledger-gate.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_batch322_release_patch_ledger_gate.py'
+      - '.github/workflows/batch322-release-patch-ledger-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Batch322 verifier
+        run: python -m py_compile tools/verify_batch322_release_patch_ledger_gate.py
+      - name: Check CLI construction
+        run: python tools/verify_batch322_release_patch_ledger_gate.py --help >/dev/null
