@@ -1,0 +1,21 @@
+{
+  "format": "ST2-CD1-batch301-b300-plus-b34-39-event8-exact-union-v1",
+  "parent_batch": 300,
+  "source_batches": [34,35,36,37,38,39],
+  "replacement_assets": 8,
+  "records_reviewed": 119,
+  "records_translated": 116,
+  "control_preserved_records": 3,
+  "guessed_payload_bytes": 0,
+  "logical_rows_sha256": "a07a86dcde896df03d5bed763f1dad70e76fc35851abddce1823a733d5ad424a",
+  "replacement_files": [
+    {"source_batch":34,"iso_path":"SAKURA2/EV00002.MES","lba":247457,"size":71798,"source_sha256":"7083856761dbb0d14eed40f10869f15310d3f0c8366b6a1e4e8c14e90958e692","replacement_sha256":"07e4f2272b0cc5755f89e1b1c50bb641ac9da8e0c600ca8d8a989f8f392c5708"},
+    {"source_batch":34,"iso_path":"SAKURA2/EV00020.MES","lba":247507,"size":74265,"source_sha256":"6ec7360eb1ecb4663f3eb47cd1e36fcff8e1a7f7db061999b13135f8b825828f","replacement_sha256":"0f2617217b9780c75bab824b91670c3290aa44dc887623853cacd75eb14203d7"},
+    {"source_batch":35,"iso_path":"SAKURA2/EV00050.MES","lba":247221,"size":73035,"source_sha256":"8a7c3bce9d74577dff93866a03e64ed65be0bf22cbfcc476d2189485b5af8967","replacement_sha256":"d7beb00a7ad28348e0a1f3db844d77be7128dcccfe68c507dca91dfd772afb99"},
+    {"source_batch":36,"iso_path":"SAKURA2/EV00051.MES","lba":247257,"size":71878,"source_sha256":"8b67beb2afcb7428081f14ddadcf34a53723b02db8acf7ce430bca0a146ec8bd","replacement_sha256":"b91911966c77a3590d88ae07899781376c2724017933a7a7223d21263e447a2b"},
+    {"source_batch":36,"iso_path":"SAKURA2/EV00052.MES","lba":247157,"size":72132,"source_sha256":"f93dd3ea8c616a684c0bfb7fc7dc43464c57c07088d3a431ca5b0e1795864cad","replacement_sha256":"8a42a64c4648bffb9531d999b6641d46013747424c2d9948b0fb2a271782b0c2"},
+    {"source_batch":37,"iso_path":"SAKURA2/EV00054.MES","lba":247307,"size":72275,"source_sha256":"5b5f88c783ed10a3c9d50c66a0cba510762645e172e1f635a978475b2b733539","replacement_sha256":"9a92f4f3923fe3e55cf4d0152b241d9d19f513485ee209f2adebe3af1560de27"},
+    {"source_batch":38,"iso_path":"SAKURA2/EV00055.MES","lba":247357,"size":72029,"source_sha256":"f4452b452ddb2d28cd518861e9dc09db8f6f6c0c6b61e74701cb67136324e35c","replacement_sha256":"cd958fb83a7d2254aacd3bef9546efade5bacbada6ff437e605cb9375ea7ff43"},
+    {"source_batch":39,"iso_path":"SAKURA2/EV00060.MES","lba":247407,"size":72656,"source_sha256":"0449985dca2679d06e66eadaff6bb087072b73a6f34a716a90ccef8f54fcf326","replacement_sha256":"f26295cffa37706af3792d194c39384e634565029ab2e0c5348153a8966c641d"}
+  ]
+}
