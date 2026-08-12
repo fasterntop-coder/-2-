@@ -1,0 +1,59 @@
+{
+  "format": "ST2-CD1-BATCH329-PSP-QUALITY-REPLACEMENTS-v1",
+  "batch": 329,
+  "status": "PASS_ACTUAL_REPLACEMENT_MES_2_FILES_3_RECORDS",
+  "scope": {
+    "replacement_files": 2,
+    "changed_records": 3
+  },
+  "files": {
+    "EV00002.MES": {
+      "iso_path": "SAKURA2/EV00002.MES",
+      "lba": 247457,
+      "size": 71798,
+      "source_sha256": "07e4f2272b0cc5755f89e1b1c50bb641ac9da8e0c600ca8d8a989f8f392c5708",
+      "replacement_sha256": "5e82fa4fca18eb189b8cf2b6eb6fd80faf79053ddfc735a373d1067894e74752",
+      "aligned_records_for_map": 2,
+      "existing_hangul_glyphs_exact_raster_match": "28/28",
+      "new_font_slots": {"협": 33},
+      "changed_records": [0],
+      "reverse_decoded": {"0": "좋아, 해냈다……\n하지만 저 마조기병은\n분명 「협시」였어……"},
+      "message_offset_table_byte_exact": true,
+      "all_record_metadata_byte_exact": true,
+      "execution_tail_byte_exact": true,
+      "untouched_records_byte_exact": true,
+      "font_changes_limited_to_new_slots": true,
+      "reasons": {"0": "脇侍 is canonicalized as 협시 in the verified battle/system banks; the PSP bridge independently resolves it as 협시."}
+    },
+    "EV00060.MES": {
+      "iso_path": "SAKURA2/EV00060.MES",
+      "lba": 247407,
+      "size": 72656,
+      "source_sha256": "f26295cffa37706af3792d194c39384e634565029ab2e0c5348153a8966c641d",
+      "replacement_sha256": "8d6b79d3b120d0af68437c5a5fe9834aae66a5bcfacee3f7b6cb005a092f2fbd",
+      "aligned_records_for_map": 20,
+      "existing_hangul_glyphs_exact_raster_match": "109/109",
+      "new_font_slots": {"드": 115},
+      "changed_records": [3, 7],
+      "reverse_decoded": {"3": "역시 아이젠클라이드!", "7": "역시 아이젠클라이드!"},
+      "message_offset_table_byte_exact": true,
+      "all_record_metadata_byte_exact": true,
+      "execution_tail_byte_exact": true,
+      "untouched_records_byte_exact": true,
+      "font_changes_limited_to_new_slots": true,
+      "reasons": {
+        "3": "Project canonical proper noun for アイゼンクライト is 아이젠클라이드.",
+        "7": "Project canonical proper noun for アイゼンクライト is 아이젠클라이드."
+      }
+    }
+  },
+  "font_proof": {
+    "family": "Noto Sans CJK Bold",
+    "size_px": 14,
+    "draw_xy": [1, -4],
+    "format": "16x16 4bpp high-nibble-first grayscale",
+    "quantization": "min(15,(alpha+8)//17)"
+  },
+  "guessed_bytes": 0,
+  "parent_disc_write_performed": false
+}
