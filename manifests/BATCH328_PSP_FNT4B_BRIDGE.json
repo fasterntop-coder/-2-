@@ -1,0 +1,74 @@
+{
+  "batch": 328,
+  "format": "st2-psp-fnt4b-saturn-bridge-v1",
+  "status": "PASS_EXACT_PSP_FONT_AND_DISC1_EV_REFERENCE_BRIDGE_NO_SATURN_WRITE",
+  "source": {
+    "fnt4b_sha256": "c441d4dd7e488839a9c8b559c3f0ec32393efb7a194ef22260b47cd826018572",
+    "elf_sha256": "5eeecfd632776385e1301833d1fe57668f22b4232ee3e686952d4795eff5babd"
+  },
+  "cmp": {
+    "decoder_entry_elf_va": "0x0893EADC",
+    "load_init_entry_elf_va": "0x08946204",
+    "type": 0,
+    "parameter": 0,
+    "distance_bits": 12,
+    "length_base": 3,
+    "decompressed_size": 1785860,
+    "decompressed_sha256": "d68a571579f5104e078ad200380b3dc382a1b25d5a8c90348785e8bb92fde3d0"
+  },
+  "font": {
+    "header_bytes": 4,
+    "atlas_glyphs": 3488,
+    "geometry": "32x32",
+    "bpp": 4,
+    "bytes_per_glyph": 512,
+    "atlas_columns": 32,
+    "atlas_rows": 109,
+    "hangul_first_atlas_index": 492,
+    "hangul_last_atlas_index": 2841,
+    "hangul_count": 2350,
+    "hangul_mapping": "KS X 1001 EUC-KR B0A1..C8FE sequentially in JIS 0x3021..0x487E",
+    "sjis_to_jis_entry_elf_va": "0x089464EC",
+    "glyph_render_entry_elf_va": "0x089465A0",
+    "glyph_copy_entry_elf_va": "0x08947210"
+  },
+  "mes_all_psp": {
+    "files": 399,
+    "records": 16666,
+    "hangul_tokens": 138346,
+    "custom_punct_tokens": 565,
+    "control_records": 3893
+  },
+  "disc1_ev_bridge": {
+    "files": 109,
+    "exact_record_count_match": 107,
+    "saturn_placeholder_no_direct_port": 2,
+    "count_mismatch": 0,
+    "psp_records_total": 1178,
+    "plain_records_total": 1178,
+    "hangul_tokens_total": 16251,
+    "custom_punct_tokens_total": 182,
+    "exact_0xE000_size_delta_files": 77
+  },
+  "saturn16_candidate": {
+    "size": 300800,
+    "sha256": "e29f14a4aca43913189f133cc060f1fae2305b298c6467d51cbb33493e8df6d7",
+    "slot_bytes": 128,
+    "palette_indices": {
+      "transparent": 0,
+      "edge": 1,
+      "body": 13
+    },
+    "status": "RASTER_CANDIDATE_ONLY_NOT_GAME_WRITE"
+  },
+  "public_repo_policy": {
+    "third_party_font_binary_committed": false,
+    "third_party_translation_text_committed": false,
+    "only_decoder_mapping_logic_and_hash_metadata_committed": true
+  },
+  "saturn_write": {
+    "performed": false,
+    "reason": "PSP-derived 16x16 font master remains an A/B raster candidate; no authoritative Saturn bytes are written without the normal guarded candidate gate."
+  },
+  "guessed_bytes": 0
+}
